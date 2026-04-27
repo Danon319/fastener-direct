@@ -4,17 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: {
-          DEFAULT: '#d03328',
-          hover: '#6a6056',
-        },
+        red: '#d03328',
+        redHover: '#7c1e18',
         navy: '#1c2024',
-        slate: {
-          DEFAULT: '#2e3f51',
-          hover: '#768597',
-        },
+        slate: '#2e3f51',
+        slateHover: '#768597',
         light: '#ECEEF0',
-        footer: '#161a1d',
+        footerBg: '#161a1d',
         muted: '#6b7a8a',
       },
       fontFamily: {
