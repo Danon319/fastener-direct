@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import { cn } from '@/utils/cn'
 
@@ -12,9 +13,10 @@ import { BrandMark } from './icons'
  * @param {"dark"|"light"} [props.theme="dark"] - Тёмная или светлая тема.
  * @param {number} [props.size=54] - Размер марки в пикселях (текст масштабируется пропорционально).
  * @param {() => void} [props.onClick] - Если передан, корневой элемент — кнопка.
+ * @param {string} [props.to] - Если задан, рендерит Link вместо div/button.
  * @param {string} [props.className] - Дополнительные Tailwind-классы.
  */
-export default function Logo({ variant = 'full', theme = 'dark', size = 54, onClick, className }) {
+export default function Logo({ variant = 'full', theme = 'dark', size = 54, onClick, to, className }) {
   const nameFs = Math.round(size * 0.44)
   const subFs = Math.max(6, Math.round(size * 0.15))
   const nameLs = Math.max(0.5, size * 0.037)
@@ -22,15 +24,16 @@ export default function Logo({ variant = 'full', theme = 'dark', size = 54, onCl
   const gap = Math.round(size * 0.22)
   const subMt = Math.max(2, Math.round(size * 0.11))
 
-  const Tag = onClick ? 'button' : 'div'
+  const Tag = to ? Link : onClick ? 'button' : 'div'
 
   return (
     <Tag
+      {...(to ? { to } : {})}
       onClick={onClick}
       style={{ gap: variant === 'mark' ? 0 : gap }}
       className={cn(
         'inline-flex select-none items-center font-sans',
-        onClick && 'cursor-pointer',
+        (onClick || to) && 'cursor-pointer',
         className
       )}
     >
@@ -68,5 +71,6 @@ Logo.propTypes = {
   theme: PropTypes.oneOf(['dark', 'light']),
   size: PropTypes.number,
   onClick: PropTypes.func,
+  to: PropTypes.string,
   className: PropTypes.string,
 }
