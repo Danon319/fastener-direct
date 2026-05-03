@@ -3,11 +3,16 @@ import PropTypes from 'prop-types'
 import { cn } from '@/utils/cn'
 
 /**
- * Иконка плюса (добавление).
+ * Иконка плюса (открыть меню / добавление).
+ *
+ * Реализация — текстовый символ `+` в `<span>`, не SVG.
+ * Это даёт более «лёгкий» рендер с естественной типографикой шрифта,
+ * скруглённые концы получаются автоматически (зависит от шрифта),
+ * и размер задаётся через font-size.
  *
  * @param {object} props
- * @param {number} [props.size=24] - Ширина и высота в пикселях.
- * @param {string} [props.className] - Дополнительные Tailwind-классы.
+ * @param {number} [props.size=24] - Размер бокса и font-size в пикселях.
+ * @param {string} [props.className] - Дополнительные Tailwind-классы (цвет приходит сюда от родителя).
  * @param {string} [props.ariaLabel] - Если передан — иконка не декоративная.
  */
 export default function Plus({ size = 24, className, ariaLabel }) {
@@ -16,21 +21,16 @@ export default function Plus({ size = 24, className, ariaLabel }) {
     : { 'aria-hidden': 'true' }
 
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn(className)}
+    <span
+      style={{ width: size, height: size, fontSize: size, lineHeight: 1 }}
+      className={cn(
+        'inline-flex select-none items-center justify-center font-sans',
+        className
+      )}
       {...accessibilityProps}
     >
-      <line x1="12" y1="4" x2="12" y2="20" />
-      <line x1="4" y1="12" x2="20" y2="12" />
-    </svg>
+      +
+    </span>
   )
 }
 

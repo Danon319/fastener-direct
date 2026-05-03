@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Neue Montreal';
-  src: url('/font/neue-montreal-medium.woff2') format('woff2');
+  src: url('/fonts/neue-montreal-medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -24,5 +24,13 @@
   body {
     overflow-x: clip;
     max-width: 100%;
+  }
+
+  /* Hide scrollbar visually while preserving scroll functionality */
+  html {
+    scrollbar-width: none; /* Firefox */
+  }
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
   }
 }

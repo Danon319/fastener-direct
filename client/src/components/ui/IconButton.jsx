@@ -15,7 +15,7 @@ import { cn } from '@/utils/cn'
  * @param {React.ReactNode} props.children          - Иконка (Arrow, Plus, Close и т.д.).
  * @param {() => void} [props.onClick]
  * @param {"light"|"dark"|"filled"|"slate"} [props.variant="light"]
- * @param {number} [props.size=44]
+ * @param {number} [props.size=40]
  * @param {boolean} [props.pressed=false]           - Только для variant="filled" — инвертирует цвета.
  * @param {boolean} [props.interactive=true]        - Если false, нет hover-состояния.
  * @param {boolean} [props.visible=true]            - Если false, скрывается с fade и сдвигом.
@@ -27,7 +27,7 @@ const IconButton = React.forwardRef(function IconButton(
     children,
     onClick,
     variant = 'light',
-    size = 44,
+    size = 40,
     pressed = false,
     interactive = true,
     visible = true,

@@ -32,7 +32,7 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
   const sizeClasses =
     size === 'primary'
       ? 'text-[28px] sm:text-[36px] md:text-[52px] lg:text-[72px] xl:text-[88px]'
-      : 'text-[16px] sm:text-[20px] md:text-[28px] lg:text-[56px]'
+      : 'text-[16px] sm:text-[20px] max-[725px]:text-[24px] md:text-[28px] lg:text-[56px]'
 
   // Arrow dimensions per size, синхронизированные с шрифтом.
   // viewBox фиксирован 0 0 50 72; ширина анимируется 0 → arrowW.
@@ -57,8 +57,8 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
         className={cn(
           'inline-flex flex-shrink-0 items-center overflow-hidden',
           arrowDims.h,
-          'transition-[width] duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
-          hover ? arrowDims.w : 'w-0'
+          'transition-[width,margin-right] duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
+          hover ? cn(arrowDims.w, 'mr-[10px]') : 'w-0'
         )}
       >
         <svg
@@ -79,7 +79,11 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
 
   const baseClasses = cn(
     'inline-flex items-center w-fit text-left bg-transparent border-0 m-0 p-0 cursor-pointer',
-    'font-sans font-medium leading-[1.1] tracking-[-0.01em]',
+    'font-sans font-medium leading-none tracking-[-0.01em]',
+    // Half-leading trim — компенсирует пустое пространство ascender/descender внутри
+    // line-box у Neue Montreal Medium. Без этого визуальный gap между MenuItem'ами
+    // ощущается сильно больше, чем заданный на parent gap-[5px].
+    '-mt-[0.22em] -mb-[0.32em]',
     sizeClasses,
     colorClass
   )

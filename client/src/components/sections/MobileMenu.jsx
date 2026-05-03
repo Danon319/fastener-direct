@@ -28,12 +28,8 @@ const CONTENT_STAGGER = 0.06
 // matchMedia-helper для column count. Локальный, только для MobileMenu.
 function useCurtainColumns() {
   const compute = () => {
-    if (typeof window === 'undefined') return 8
-    const w = window.innerWidth
-    if (w >= 1280) return 10
-    if (w >= 1024) return 8
-    if (w >= 640) return 6
-    return 4
+    if (typeof window === 'undefined') return 11
+    return window.innerWidth >= 768 ? 11 : 5
   }
   const [n, setN] = useState(compute)
   useEffect(() => {
@@ -44,11 +40,30 @@ function useCurtainColumns() {
   return n
 }
 
+// matchMedia-helper для размера Logo в MobileMenu.
+// На узких экранах (<375px) логотип уменьшается до 42, чтобы не наезжать
+// на CloseBtn справа. Начиная с 375px — undefined → Logo подхватывает свой
+// собственный дефолт (54).
+function useMobileMenuLogoSize() {
+  const compute = () => {
+    if (typeof window === 'undefined') return undefined
+    return window.innerWidth < 375 ? 42 : undefined
+  }
+  const [size, setSize] = useState(compute)
+  useEffect(() => {
+    const onResize = () => setSize(compute())
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+  return size
+}
+
 /**
  * Внутреннее тело MobileMenu (рендерится только когда открыт).
  */
 function MobileMenuContent({ onClose }) {
   const columns = useCurtainColumns()
+  const logoSize = useMobileMenuLogoSize()
   const [curtainDone, setCurtainDone] = useState(false)
   const overlayRef = useRef(null)
 
@@ -168,12 +183,12 @@ function MobileMenuContent({ onClose }) {
       )}
 
       {/* Content layer */}
-      <div className="relative z-[1] box-border flex h-full flex-col overflow-y-auto p-4 sm:p-5 md:p-8 lg:p-[50px]">
+      <div className="relative z-[1] box-border flex h-full flex-col overflow-y-auto px-6 py-[50px] md:px-12">
         {/* Top: Logo + CloseBtn */}
         <header className="flex items-center justify-between">
           {curtainDone && (
             <motion.div {...fadeIn(0)}>
-              <Logo variant="full" theme="light" />
+              <Logo variant="full" theme="light" size={logoSize} />
             </motion.div>
           )}
           {curtainDone && (
@@ -186,7 +201,7 @@ function MobileMenuContent({ onClose }) {
         </header>
 
         {/* Primary items */}
-        <div className="flex flex-1 flex-col items-start justify-center gap-0.5 sm:gap-1 md:gap-2">
+        <div className="flex flex-1 flex-col items-start justify-center gap-[5px]">
           {curtainDone &&
             MENU_PRIMARY.map((item, i) => (
               <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (2 + i))}>

@@ -35,7 +35,7 @@ const VARIANT_CLASSES = {
 function NavPill({ children, variant = 'default', to, onClick, className, ariaLabel, ...rest }) {
   const classes = cn(
     'inline-flex items-center gap-1.5 rounded-3xl whitespace-nowrap font-medium font-sans cursor-pointer',
-    'px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm',
+    'px-3.5 py-2 text-xs md:px-[18px] md:py-2.5 md:text-sm',
     'transition-colors duration-200',
     VARIANT_CLASSES[variant],
     className
