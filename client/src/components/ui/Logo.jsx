@@ -5,24 +5,40 @@ import { cn } from '@/utils/cn'
 
 import { BrandMark } from './icons'
 
+// Базовые пиксельные размеры марки для пресетов scale.
+// md — текущий дефолт (54). sm — ≈80% (43).
+const SCALE_DEFAULT_SIZE = { md: 54, sm: 43 }
+
 /**
  * Логотип бренда Fastener Direct с маркой и текстовым блоком.
  *
  * @param {object} props
  * @param {"full"|"mark"} [props.variant="full"] - Полный логотип или только марка.
  * @param {"dark"|"light"} [props.theme="dark"] - Тёмная или светлая тема.
- * @param {number} [props.size=54] - Размер марки в пикселях (текст масштабируется пропорционально).
+ * @param {number} [props.size] - Размер марки в пикселях (текст масштабируется пропорционально).
+ *   Если не задан — берётся из пресета `scale`.
+ * @param {"sm"|"md"} [props.scale="md"] - Пресет размера. md=54px (default), sm≈80% (43px).
+ *   Игнорируется, если явно задан `size`.
  * @param {() => void} [props.onClick] - Если передан, корневой элемент — кнопка.
  * @param {string} [props.to] - Если задан, рендерит Link вместо div/button.
  * @param {string} [props.className] - Дополнительные Tailwind-классы.
  */
-export default function Logo({ variant = 'full', theme = 'dark', size = 54, onClick, to, className }) {
-  const nameFs = Math.round(size * 0.44)
-  const subFs = Math.max(6, Math.round(size * 0.15))
-  const nameLs = Math.max(0.5, size * 0.037)
-  const subLs = Math.max(1, size * 0.056)
-  const gap = Math.round(size * 0.22)
-  const subMt = Math.max(2, Math.round(size * 0.11))
+export default function Logo({
+  variant = 'full',
+  theme = 'dark',
+  size,
+  scale = 'md',
+  onClick,
+  to,
+  className,
+}) {
+  const resolvedSize = size ?? SCALE_DEFAULT_SIZE[scale]
+  const nameFs = Math.round(resolvedSize * 0.44)
+  const subFs = Math.max(6, Math.round(resolvedSize * 0.15))
+  const nameLs = Math.max(0.5, resolvedSize * 0.037)
+  const subLs = Math.max(1, resolvedSize * 0.056)
+  const gap = Math.round(resolvedSize * 0.22)
+  const subMt = Math.max(2, Math.round(resolvedSize * 0.11))
 
   const Tag = to ? Link : onClick ? 'button' : 'div'
 
@@ -38,7 +54,7 @@ export default function Logo({ variant = 'full', theme = 'dark', size = 54, onCl
       )}
     >
       <BrandMark
-        size={size}
+        size={resolvedSize}
         className={cn('shrink-0', theme === 'dark' ? 'text-navy' : 'text-white')}
       />
 
@@ -49,7 +65,7 @@ export default function Logo({ variant = 'full', theme = 'dark', size = 54, onCl
             className={cn('whitespace-nowrap', theme === 'dark' ? 'text-navy' : 'text-white')}
           >
             <span className="font-bold">Fastener </span>
-            <span className="font-normal">Direct</span>
+            <span className="font-light">Direct</span>
           </div>
           <div
             style={{ fontSize: subFs, letterSpacing: subLs, marginTop: subMt }}
@@ -70,6 +86,7 @@ Logo.propTypes = {
   variant: PropTypes.oneOf(['full', 'mark']),
   theme: PropTypes.oneOf(['dark', 'light']),
   size: PropTypes.number,
+  scale: PropTypes.oneOf(['sm', 'md']),
   onClick: PropTypes.func,
   to: PropTypes.string,
   className: PropTypes.string,

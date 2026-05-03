@@ -7,10 +7,14 @@ import { cn } from '@/utils/cn'
  * Круглая кнопка-иконка — используется как самостоятельный кликабельный круг
  * (стрелки карусели, кнопки действий).
  *
+ * Поддерживает forwardRef — ref пробрасывается на корневой <button>.
+ * Нужно для click-outside detection (HeroHeader/Header burger triggerRef)
+ * и будущих сценариев focus management.
+ *
  * @param {object} props
  * @param {React.ReactNode} props.children          - Иконка (Arrow, Plus, Close и т.д.).
  * @param {() => void} [props.onClick]
- * @param {"light"|"dark"|"filled"} [props.variant="light"]
+ * @param {"light"|"dark"|"filled"|"slate"} [props.variant="light"]
  * @param {number} [props.size=44]
  * @param {boolean} [props.pressed=false]           - Только для variant="filled" — инвертирует цвета.
  * @param {boolean} [props.interactive=true]        - Если false, нет hover-состояния.
@@ -18,17 +22,20 @@ import { cn } from '@/utils/cn'
  * @param {string} props.ariaLabel                  - ОБЯЗАТЕЛЕН.
  * @param {string} [props.className]
  */
-export default function IconButton({
-  children,
-  onClick,
-  variant = 'light',
-  size = 44,
-  pressed = false,
-  interactive = true,
-  visible = true,
-  ariaLabel,
-  className,
-}) {
+const IconButton = React.forwardRef(function IconButton(
+  {
+    children,
+    onClick,
+    variant = 'light',
+    size = 44,
+    pressed = false,
+    interactive = true,
+    visible = true,
+    ariaLabel,
+    className,
+  },
+  ref
+) {
   const iconSize = Math.round(size * 0.36)
 
   // Цвет иконки зависит от варианта, pressed и interactive
@@ -36,6 +43,8 @@ export default function IconButton({
   if (variant === 'light') {
     iconColorClass = interactive ? 'text-slate group-hover/iconbtn:text-white' : 'text-slate'
   } else if (variant === 'dark') {
+    iconColorClass = 'text-white'
+  } else if (variant === 'slate') {
     iconColorClass = 'text-white'
   } else {
     // filled
@@ -48,6 +57,7 @@ export default function IconButton({
 
   return (
     <button
+      ref={ref}
       type="button"
       aria-label={ariaLabel}
       disabled={!interactive}
@@ -74,8 +84,9 @@ export default function IconButton({
           pressed ? 'bg-white' : 'bg-red',
           interactive && 'hover:bg-redHover',
         ],
-        // Scale on hover
-        interactive && 'hover:scale-[1.18]',
+        variant === 'slate' && ['border-0 bg-slate', interactive && 'hover:bg-navy'],
+        // Scale on hover — для slate variant отключено (по дизайну).
+        interactive && variant !== 'slate' && 'hover:scale-[1.18]',
         // Visibility
         visible ? 'translate-x-0 opacity-100' : 'pointer-events-none translate-x-5 opacity-0',
         className
@@ -84,12 +95,14 @@ export default function IconButton({
       {clonedIcon}
     </button>
   )
-}
+})
+
+export default IconButton
 
 IconButton.propTypes = {
   children: PropTypes.node,
   onClick: PropTypes.func,
-  variant: PropTypes.oneOf(['light', 'dark', 'filled']),
+  variant: PropTypes.oneOf(['light', 'dark', 'filled', 'slate']),
   size: PropTypes.number,
   pressed: PropTypes.bool,
   interactive: PropTypes.bool,
