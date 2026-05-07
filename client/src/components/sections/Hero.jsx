@@ -152,7 +152,7 @@ export default function Hero() {
   // Размер у desktop хардкоден (19.76vw), у stacked — clamp через arbitrary
   // [min(...,...)] чтобы в landscape mobile текст не уезжал за экран.
   const bigBaseClass =
-    'inline-block font-sans font-light leading-[0.82] text-white/50'
+    'inline-block font-sans font-medium leading-[0.82] text-white/50'
   const bigSizeDesktop = 'text-[19.76vw] tracking-[8px]'
   const bigSizeStacked =
     'text-[min(19.76vw,16vh)] tracking-[2px] sm:tracking-[4px] md:tracking-[6px]'
@@ -172,11 +172,11 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 z-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 z-10 bg-black/30" />
+      <div className="absolute inset-0 z-[1] bg-black/30" />
 
       <HeroHeader />
 
-      <div className="absolute inset-0 z-20 flex flex-col justify-end gap-2 px-3 pb-[100px] sm:px-5 md:px-8 lg:px-[50px] xl:px-[60px]">
+      <div className="absolute inset-0 z-[2] flex flex-col justify-end gap-2 px-3 pb-[100px] sm:px-5 md:px-8 lg:px-[50px] xl:px-[60px]">
         {isDesktop ? (
           <>
             {/* Row 1: «Faste» — правый край левой половины. */}
