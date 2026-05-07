@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import HeroHeader from '@/components/sections/HeroHeader'
+import Hero from '@/components/sections/Hero'
 import { useViewport, useCountUp, useScrollDirection } from '@/hooks'
 import {
   Button,
@@ -24,20 +24,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white font-sans text-navy">
-      {/* Dummy Hero — Phase 4 placeholder.
-          Даёт визуальный контекст для HeroHeader (transparent over dark bg)
-          и для триггера Header'а (scrollY > window.innerHeight). */}
-      <section className="relative min-h-screen overflow-hidden bg-navy text-white">
-        <HeroHeader />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="px-4 text-center">
-            <p className="mb-3 text-sm font-semibold tracking-wide text-red">Phase 4 placeholder</p>
-            <h2 className="text-3xl font-medium leading-tight md:text-5xl">
-              Здесь будет Hero-секция с видео-фоном
-            </h2>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       <div className="mx-auto max-w-5xl space-y-12 px-6 py-10">
         <div className="rounded-md border border-sky-300 bg-sky-50 p-3 text-sm text-sky-900">
