@@ -161,7 +161,7 @@ export default function Hero() {
   const taglineFontStacked = 'text-lg sm:text-2xl md:text-4xl'
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="fixed top-0 left-0 right-0 h-screen w-full overflow-hidden z-[1]">
       <video
         ref={videoRef}
         src="/video/factory_bg.mp4"

@@ -58,7 +58,7 @@ FooterAnchor.propTypes = {
 
 function Footer() {
   return (
-    <footer className="w-full bg-footerBg px-4 py-10 font-sans text-white sm:px-6 sm:py-11 md:px-9 md:py-[50px] lg:px-10 lg:py-[60px] xl:px-[50px] xl:py-[70px]">
+    <footer className="fixed bottom-0 left-0 right-0 z-[1] w-full bg-footerBg px-4 py-10 font-sans text-white sm:px-6 sm:py-11 md:px-9 md:py-[50px] lg:px-10 lg:py-[60px] xl:px-[50px] xl:py-[70px]">
       {/* ── TOP BLOCK — 3 columns ── */}
       <div className="grid grid-cols-1 gap-9 pb-9 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-9 sm:pb-11 md:gap-x-7 md:gap-y-10 md:pb-14 lg:gap-x-8 lg:gap-y-[72px] lg:pb-[72px] xl:gap-x-10 xl:gap-y-[90px] xl:pb-[90px]">
         {/* Column 1 — catalog */}
