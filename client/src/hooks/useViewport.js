@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 
 /**
- * Хук определения возможностей устройства, которые недоступны через CSS media queries Tailwind.
+ * Хук определения возможностей устройства, которые не выразить медиазапросами Tailwind в CSS.
  *
- * Адаптив (mobile-first sm/md/lg/xl/2xl) управляется Tailwind-классами.
- * Хук отдаёт только поведенческие сигналы: поддержка hover и её инверсия.
+ * Адаптив (mobile-first, контрольные точки sm/md/lg/xl/2xl) задаётся классами Tailwind.
+ * Хук отдаёт только поведенческие сигналы: поддержка наведения курсора и её инверсия.
  *
  * @returns {{ canHover: boolean, isTouch: boolean }}
- *   canHover - true если устройство поддерживает hover (десктоп с мышью).
- *   isTouch  - инверсия canHover; флаг для touch-ветвей интерфейса.
+ *   canHover — true, если устройство поддерживает наведение курсора (hover).
+ *   isTouch — инверсия canHover; флаг для веток интерфейса на сенсорном вводе.
  */
 export default function useViewport() {
   const [canHover, setCanHover] = useState(() => {

@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from 'react'
  * Хук отслеживания скролла страницы. Возвращает признаки положения и направления.
  *
  * @param {object} [options]
- * @param {number} [options.threshold=0]  Порог в пикселях. `isPastThreshold` становится true,
- *                                        когда `window.scrollY > threshold`.
+ * @param {number} [options.threshold=0]  Порог в пикселях. Свойство `isPastThreshold` истинно,
+ *                                        если `window.scrollY` больше `threshold`.
  * @returns {{ isPastThreshold: boolean, direction: 'up' | 'down' | null }}
- *   isPastThreshold - true когда scrollY превышает threshold.
- *   direction - направление последнего скролла; null до первого движения.
+ *   isPastThreshold — true, когда window.scrollY больше порога threshold.
+ *   direction — направление последнего скролла; null до первого движения.
  */
 export default function useScrollDirection({ threshold = 0 } = {}) {
   const [state, setState] = useState(() => ({

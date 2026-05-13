@@ -1,4 +1,4 @@
-/** Fastener Diagram section — data and constants. */
+/** Данные и константы для круговой диаграммы в блоке о клиентах. */
 
 export const TITLE = 'Fastener Direct: Наши клиенты'
 
@@ -11,7 +11,7 @@ export const sectors = [
   { label: 'Розница', pct: 6.7, color: '#6B7A85' },
 ]
 
-/* SVG geometry */
+/* Геометрия SVG */
 export const IR = 240
 export const OR = 260
 export const R_STROKE = (IR + OR) / 2 // 250
@@ -26,7 +26,7 @@ export const DECO_RINGS = [
   { r: OR + 280 + 280 + 280 },
 ]
 
-/* Animation constants */
+/* Константы анимации */
 export const INTRO_DURATION = 0.5
 export const RING_STAGGER = 0.15
 export const POLOS_WIDTH = 10
@@ -34,5 +34,5 @@ export const OMEGA_SKATE = 600
 export const OMEGA_GROW = 240
 export const OVERLAP = 0.6
 
-/** Ring outline color (white ~12% opacity). */
+/** Цвет контура кольца (белый ~12% непрозрачности). */
 export const RING_COLOR = '#ffffff1f'

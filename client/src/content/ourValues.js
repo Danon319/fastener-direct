@@ -34,7 +34,7 @@ export const CARDS = [
   },
 ]
 
-// Scroll animation constants (desktop only)
+// Константы анимации при скролле (только десктоп)
 export const ANIMATION_DELTA_X_VW = -52
 export const ANIMATION_DELTA_Y_PX = 800
 export const SCROLL_SPACER_HEIGHT_PX = 790

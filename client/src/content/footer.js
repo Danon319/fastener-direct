@@ -1,27 +1,27 @@
 // src/content/footer.js
 //
-// Контент Footer-секции. Реальные тексты взяты из прототипа footer-section.jsx.
-// Плейсхолдеры контактных данных и роутов помечены // TODO.
+// Контент секции подвала. Реальные тексты взяты из прототипа footer-section.jsx.
+// Плейсхолдеры контактных данных и маршрутов помечены // TODO.
 
 // Каталог-категории.
-// Все три ведут на /catalog. Это намеренно — конкретный subpath/query будет
-// добавлен после Phase 6, когда страница каталога обретёт фильтры.
+// Все три ведут на /catalog. Это намеренно — конкретный вложенный путь и параметры строки запроса
+// будут добавлены после этапа 6, когда страница каталога обретёт фильтры.
 export const CATALOG_LINKS = [
   { label: 'Строительный крепёж', to: '/catalog' },
   { label: 'Метизы', to: '/catalog' },
   { label: 'Спецкрепёж', to: '/catalog' },
 ]
 
-// Site-навигация.
+// Навигация по сайту.
 export const NAV_LINKS = [
   { label: 'Заказы', to: '/orders' },
-  { label: 'Доставка', to: '/delivery' }, // TODO: route — page not yet built (Phase 6)
+  { label: 'Доставка', to: '/delivery' }, // TODO: маршрут — страница ещё не реализована (этап 6)
   { label: 'О нас', to: '/about' },
   { label: 'Контакты', to: '/contacts' },
 ]
 
 // Реквизиты.
-// TODO: real contact — заменить на реальные после получения от заказчика.
+// TODO: реальные контакты — заменить на реальные после получения от заказчика.
 export const CONTACT_INFO = {
   email: 'info@fastenerdirect.ru',
   emailHref: 'mailto:info@fastenerdirect.ru',
@@ -33,13 +33,13 @@ export const CONTACT_INFO = {
 }
 
 // Соцсети.
-// TODO: social link — заменить на реальные после получения от заказчика.
+// TODO: ссылки на соцсети — заменить на реальные после получения от заказчика.
 export const SOCIAL_LINKS = {
   youtube: '#',
   vk: '#',
 }
 
-// CTA-блок.
+// Блок призыва к действию.
 export const FOOTER_CTA = {
   heading: 'Есть вопрос, проблема ?',
   contactsLabel: 'Контакты',
@@ -47,7 +47,7 @@ export const FOOTER_CTA = {
   buttonTo: '/contacts',
 }
 
-// Bottom bar.
+// Нижняя полоса.
 export const FOOTER_LEGAL = {
   documentsLabel: 'Документы',
   documentsTo: '/privacy',

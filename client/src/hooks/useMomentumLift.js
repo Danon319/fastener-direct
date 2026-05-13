@@ -1,18 +1,17 @@
 // src/hooks/useMomentumLift.js
 //
-// Heavy follow-through for the scroll wrapper. The wrapped section lags
-// behind scroll during motion, then settles back over ~500ms via a soft
-// spring (overdamped, no bounce). Visually:
-//   - fast scroll down -> wrapper hangs ~100px below base -> settles UP
-//   - fast scroll up   -> wrapper hangs ~100px above base -> settles DOWN
-// Only translateY -- no x/scale/rotate -- so layout, borderRadius, and
-// shadow stay pixel-stable. Amplitude hard-clamped to +/-AMPLITUDE_PX.
+// Инерция «догоняния» для обёртки со скроллом: блок отстаёт от скролла при движении,
+// затем за ~500 мс мягко возвращается пружиной (перекритическое затухание, без отскока). Визуально:
+//   - быстрый скролл вниз → обёртка «отстаёт» примерно на 100 px ниже базы → поднимается вверх
+//   - быстрый скролл вверх → обёртка «отстаёт» примерно на 100 px выше базы → опускается вниз
+// Только translateY — без сдвига по X, масштаба и поворота, чтобы вёрстка, скругление углов
+// и тень не «плыли». Амплитуда жёстко ограничена диапазоном ±AMPLITUDE_PX.
 //
-// Spring tuning: stiffness=83, damping=20, mass=1 -> zeta ~= 1.1 (slightly
-// overdamped) and ~500ms 99% settle. No overshoot.
+// Настройка пружины: stiffness=83, damping=20, mass=1 → zeta ≈ 1,1 (слегка
+// перекритическое затухание) и ~500 мс до ~99% установления. Без перелёта через целевое положение.
 //
-// prefers-reduced-motion: amplitude collapses to 0 (output range [0, 0]),
-// so the wrapper tracks scroll exactly.
+// При prefers-reduced-motion: амплитуда обнуляется (выходной диапазон [0, 0]),
+// обёртка ведёт себя как жёсткая привязка к скроллу.
 
 import {
   useScroll,
@@ -23,7 +22,7 @@ import {
 } from 'motion/react'
 
 const AMPLITUDE_PX = 100
-const VELOCITY_CAP = 2500 // px/s -- scroll speed beyond this is clamped
+const VELOCITY_CAP = 2500 // пикс/с — скорость скролла выше этого значения ограничивается
 
 export function useMomentumLift() {
   const reduce = useReducedMotion()

@@ -1,14 +1,14 @@
 // src/content/hero.js
 //
-// Hero section content. Big text is intentionally truncated ("Faste" not
-// "Fastener") for visual rhythm — symmetric with "Direct" (5+6 letters).
-// Do not "fix" it.
+// Контент секции героя (первый экран). Крупный текст намеренно обрезан («Faste», а не
+// «Fastener») для визуального ритма — симметрично с «Direct» (5+6 букв).
+// Не «исправлять» это.
 
 export const BIG_LEFT = 'Faste'
 export const BIG_RIGHT = 'Direct'
 
-// Tagline rotation pairs. First line — white. Second line — red accent.
-// Each pair is shown ~5s, then crossfades to the next.
+// Пары слоганов для ротации. Первая строка — белая. Вторая — красный акцент.
+// Каждая пара показывается ~5 с, затем плавная смена на следующую.
 export const TAGLINES = [
   ['2%', 'низкая наценка'],
   ['большой выбор', 'товаров'],

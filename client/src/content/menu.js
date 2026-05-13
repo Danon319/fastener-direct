@@ -1,26 +1,26 @@
 // src/content/menu.js
 //
-// Контент MobileMenu (fullscreen overlay).
-// Эти пункты — НЕ те же что в Header. Это пункты, которых в Header нет:
-// разделы для специфичных аудиторий и UI-настройки.
+// Контент полноэкранного мобильного меню.
+// Эти пункты — НЕ те же что в шапке. Это пункты, которых в шапке нет:
+// разделы для специфичных аудиторий и настройки интерфейса.
 
-// Primary items — крупные nav-items с выезжающей стрелкой.
-// Routes — placeholders. После Phase 6 заменить на реальные.
+// Основные пункты — крупные элементы навигации с выезжающей стрелкой.
+// Маршруты — заглушки. После этапа 6 заменить на реальные.
 export const MENU_PRIMARY = [
-  { label: 'Помощь', to: '/help' }, // TODO: route — page not yet built
-  { label: 'Производителям', to: '/sellers' }, // TODO: route — page not yet built
-  { label: 'Связь', to: '/contacts' }, // ведёт на /contacts (есть в Footer)
-  { label: 'О производителях', to: '/manufacturers' }, // TODO: route — page not yet built
+  { label: 'Помощь', to: '/help' }, // TODO: маршрут — страница ещё не реализована
+  { label: 'Производителям', to: '/sellers' }, // TODO: маршрут — страница ещё не реализована
+  { label: 'Связь', to: '/contacts' }, // ведёт на /contacts (есть в подвале)
+  { label: 'О производителях', to: '/manufacturers' }, // TODO: маршрут — страница ещё не реализована
 ]
 
-// Secondary items — UI-переключатели (тема / город). НЕ ссылки.
-// onClick делается no-op в Phase 3 (// TODO: i18n / // TODO: theme switcher).
+// Дополнительные пункты — переключатели интерфейса (тема / город). НЕ ссылки.
+// Обработчик клика (onClick) — заглушка на этапе 3 (// TODO: локализация (i18n) / // TODO: переключатель темы).
 export const MENU_SECONDARY = [
-  { label: 'Тема' }, // TODO: theme switcher (after Phase 6)
-  { label: 'Город' }, // TODO: i18n / city selector (after Phase 6)
+  { label: 'Тема' }, // TODO: переключатель темы (после этапа 6)
+  { label: 'Город' }, // TODO: локализация (i18n) / выбор города (после этапа 6)
 ]
 
-// CTA-кнопка в нижней правой части меню.
+// Кнопка призыва к действию в нижней правой части меню.
 export const MENU_CTA = {
   label: 'Связаться',
   to: '/contacts',

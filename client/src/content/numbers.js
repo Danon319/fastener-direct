@@ -1,18 +1,19 @@
-/** Count-up animation duration in ms. */
+/** Длительность анимации счётчика, мс. */
 export const COUNT_DURATION = 1800
 
-/** Vertical line animation duration in ms. */
+/** Длительность анимации вертикальной линии, мс. */
 export const LINE_DURATION = 700
 
-/** Stagger delay between stat items in seconds. */
+/** Задержка каскада между элементами статистики, с. */
 export const STAGGER_DELAY_S = 0.15
 
 /**
+ * Строка статистики: число, суффикс, подпись.
  * @typedef {{ value: number, suffix: string, label: string }} Stat
  */
 
 /**
- * Stats displayed in row 1 (top row).
+ * Статистика в строке 1 (верхний ряд).
  * @type {Stat[]}
  */
 export const STATS_ROW1 = [
@@ -21,7 +22,7 @@ export const STATS_ROW1 = [
 ]
 
 /**
- * Stats displayed in row 2 (bottom row, offset right on desktop).
+ * Статистика в строке 2 (нижний ряд, сдвиг вправо на десктопе).
  * @type {Stat[]}
  */
 export const STATS_ROW2 = [

@@ -18,15 +18,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Global horizontal overflow guard ──
- * Prevents stray content (decorative motion elements, oversized
- * tables, animated marquees) from making the page wider than the
- * viewport. Without this, fixed/absolute viewport-positioned headers
- * lose their right edge on mobile.
- *
- * Using `clip` instead of `hidden` — `clip` doesn't break sticky
- * positioning in nested contexts (we'll need this in Phase 4+).
- */
 @layer base {
   html,
   body {
