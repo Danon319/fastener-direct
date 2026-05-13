@@ -9,7 +9,7 @@ export default function CtaBannerSection() {
   return (
     <section className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="relative overflow-hidden rounded-3xl aspect-[4/3] md:aspect-[12/5]">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-3xl md:aspect-[12/5]">
           <img
             src={CTA_BANNER.image}
             alt=""

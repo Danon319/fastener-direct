@@ -55,7 +55,7 @@ function HeroHeader() {
       className={cn(
         'absolute left-0 right-0 top-0 z-10',
         'flex items-center justify-between bg-transparent',
-        'px-3 py-4 sm:px-5 sm:py-5 md:px-8 md:py-8 lg:px-[50px] lg:py-[50px]'
+        'px-3 py-4 md:px-8 md:py-8 lg:px-12 lg:py-12'
       )}
     >
       {/* mobile: только марка */}
@@ -82,7 +82,7 @@ function HeroHeader() {
             <div
               ref={dropdownRef}
               className={cn(
-                'absolute right-0 top-[calc(100%+10px)] z-[150] min-w-[180px]',
+                'absolute right-0 top-[calc(100%+10px)] z-[150] min-w-44',
                 'rounded-2xl bg-navy/95 text-white shadow-[0_8px_28px_rgba(0,0,0,0.18)]',
                 'flex flex-col gap-0.5 p-2 font-sans'
               )}
@@ -141,8 +141,8 @@ function HeroHeader() {
 // Внутренний хелпер для пунктов dropdown'а. Inline — не примитив.
 function DropdownItem({ children, onClick, to, dark }) {
   const classes = cn(
-    'w-full px-3.5 py-2.5 text-left bg-transparent rounded-[10px]',
-    'border-0 cursor-pointer font-sans text-[15px] font-medium leading-tight',
+    'w-full px-3.5 py-2.5 text-left bg-transparent rounded-xl',
+    'border-0 cursor-pointer font-sans text-sm font-medium leading-tight',
     'transition-colors duration-150',
     dark ? 'text-white hover:bg-white/10' : 'text-navy hover:bg-black/5'
   )

@@ -183,7 +183,7 @@ function MobileMenuContent({ onClose }) {
       )}
 
       {/* Content layer */}
-      <div className="relative z-[1] box-border flex h-full flex-col overflow-y-auto px-6 py-[50px] md:px-12">
+      <div className="relative z-[1] box-border flex h-full flex-col overflow-y-auto px-6 py-12 md:px-12">
         {/* Top: Logo + CloseBtn */}
         <header className="flex items-center justify-between">
           {curtainDone && (
@@ -201,7 +201,7 @@ function MobileMenuContent({ onClose }) {
         </header>
 
         {/* Primary items */}
-        <div className="flex flex-1 flex-col items-start justify-center gap-[5px]">
+        <div className="flex flex-1 flex-col items-start justify-center gap-1">
           {curtainDone &&
             MENU_PRIMARY.map((item, i) => (
               <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (2 + i))}>

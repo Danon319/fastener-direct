@@ -13,7 +13,7 @@ function PartnerCard({ partner }) {
       onClick={(e) => {
         if (!url) e.preventDefault()
       }}
-      className="group block overflow-hidden rounded-xl bg-card p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition-all duration-300 @container hover:bg-slateHover hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] sm:aspect-[440/290] lg:p-6"
+      className="group block overflow-hidden rounded-3xl bg-card p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition-all duration-300 @container hover:bg-slateHover hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] sm:aspect-[440/290] lg:p-6"
     >
       <div
         className="grid h-full gap-3 lg:gap-4"

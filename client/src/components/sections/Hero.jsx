@@ -56,6 +56,7 @@ function useIsDesktop() {
 export default function Hero() {
   const isDesktop = useIsDesktop()
 
+  const [heroVisible, setHeroVisible] = useState(true)
   const [idx, setIdx] = useState(0)
   const [phase, setPhase] = useState('mount')
 
@@ -146,6 +147,18 @@ export default function Hero() {
     return () => document.removeEventListener('visibilitychange', onVisibility)
   }, [pushTimer, clearTimers])
 
+  // Hide Hero when user scrolls past one viewport height so it doesn't
+  // bleed through behind the Footer.
+  useEffect(() => {
+    const onScroll = () => {
+      setHeroVisible(window.scrollY < window.innerHeight)
+    }
+    // Check immediately in case page loaded mid-scroll (e.g. browser restore)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const [whiteText, redText] = TAGLINES[idx]
 
   // Tailwind-классы для большого текста — общие для desktop и stacked.
@@ -161,7 +174,10 @@ export default function Hero() {
   const taglineFontStacked = 'text-lg sm:text-2xl md:text-4xl'
 
   return (
-    <section className="fixed top-0 left-0 right-0 h-screen w-full overflow-hidden z-[1]">
+    <section
+      className="fixed top-0 left-0 right-0 h-screen w-full overflow-hidden z-[1]"
+      style={{ visibility: heroVisible ? 'visible' : 'hidden' }}
+    >
       <video
         ref={videoRef}
         src="/video/factory_bg.mp4"
@@ -176,7 +192,7 @@ export default function Hero() {
 
       <HeroHeader />
 
-      <div className="absolute inset-0 z-[2] flex flex-col justify-end gap-2 px-3 pb-[100px] sm:px-5 md:px-8 lg:px-[50px] xl:px-[60px]">
+      <div className="absolute inset-0 z-[2] flex flex-col justify-end gap-2 px-3 pb-24 md:px-8 lg:px-12 xl:px-16">
         {isDesktop ? (
           <>
             {/* Row 1: «Faste» — правый край левой половины. */}
@@ -186,7 +202,7 @@ export default function Hero() {
 
             {/* Row 2: [tagline 50%] [Direct flex-1]. */}
             <div className="flex w-full items-end">
-              <div className="flex w-1/2 justify-end pb-[6px] pr-[18px]">
+              <div className="flex w-1/2 justify-end pb-1.5 pr-5">
                 <div className="text-right">
                   <TaglineLine
                     phase={phase}

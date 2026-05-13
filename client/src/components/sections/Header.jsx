@@ -7,7 +7,7 @@
 // Та же UX-логика что и в HeroHeader (Burger <md, nav-pills md+, MenuBtn
 // всегда), но визуально это ПИЛЛ а не absolute прозрачный header.
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { Logo, IconButton, NavPill } from '@/components/ui'
 import { Burger, Plus, User } from '@/components/ui/icons'
@@ -20,23 +20,29 @@ import { cn } from '@/utils/cn'
  */
 function Header() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
+  const location = useLocation()
+  const isHome = location.pathname === '/'
   const [lang, setLang] = useState('ru')
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(!isHome)
   const dropdownRef = useRef(null)
   const triggerRef = useRef(null)
 
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
   const langLabel = LANG_LABELS[lang] // TODO: i18n
 
-  // Threshold: scrollY > viewport height. Прототип использует именно это,
-  // не магические 600px. Совпадает с высотой dummy-Hero в Home.
+  // On Home: show after scrolling past viewport height (Hero).
+  // On other pages: always visible.
   useEffect(() => {
+    if (!isHome) {
+      setVisible(true)
+      return
+    }
     const onScroll = () => setVisible(window.scrollY > window.innerHeight)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [isHome])
 
   // Закрытие dropdown'а: тот же механизм что в HeroHeader.
   useEffect(() => {
@@ -61,12 +67,12 @@ function Header() {
   return (
     <header
       className={cn(
-        'fixed z-[100] flex h-[52px] items-center justify-between',
-        'left-2.5 right-2.5 top-2.5 sm:left-4 sm:right-4 sm:top-4 md:left-7 md:right-7 md:top-7 lg:left-[50px] lg:right-[50px] lg:top-[50px]',
-        'pl-3 pr-1.5 sm:pl-4 sm:pr-1.5 md:pl-5 md:pr-1.5',
+        'fixed z-[100] flex h-14 items-center justify-between',
+        'left-2.5 right-2.5 top-2.5 md:left-7 md:right-7 md:top-7 lg:left-12 lg:right-12 lg:top-12',
+        'pl-3 pr-1.5 md:pl-5 md:pr-1.5',
         'py-1',
-        'bg-white/95 backdrop-blur-[12px]',
-        'rounded-[41.5px] shadow-[0_2px_16px_rgba(0,0,0,0.06)]',
+        'bg-white/95 backdrop-blur-md',
+        'rounded-full',
         'transition-transform duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
         visible ? 'translate-y-0' : '-translate-y-[calc(100%+60px)]'
       )}
@@ -95,7 +101,7 @@ function Header() {
             <div
               ref={dropdownRef}
               className={cn(
-                'absolute right-0 top-[calc(100%+10px)] z-[150] min-w-[180px]',
+                'absolute right-0 top-[calc(100%+10px)] z-[150] min-w-44',
                 'rounded-2xl bg-white text-navy shadow-[0_8px_28px_rgba(0,0,0,0.18)]',
                 'flex flex-col gap-0.5 p-2 font-sans'
               )}
@@ -146,8 +152,8 @@ function Header() {
 
 function DropdownItem({ children, onClick, to }) {
   const classes = cn(
-    'w-full px-3.5 py-2.5 text-left bg-transparent rounded-[10px]',
-    'border-0 cursor-pointer font-sans text-[15px] font-medium leading-tight',
+    'w-full px-3.5 py-2.5 text-left bg-transparent rounded-xl',
+    'border-0 cursor-pointer font-sans text-sm font-medium leading-tight',
     'transition-colors duration-150',
     'text-navy hover:bg-black/5'
   )

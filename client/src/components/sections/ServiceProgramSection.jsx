@@ -144,7 +144,7 @@ export default function ServiceProgramSection() {
     <section className="bg-white px-4 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
       <div
         className={cn(
-          'mx-auto max-w-6xl',
+          'mx-auto max-w-7xl lg:px-12',
           isDesktop && 'grid grid-cols-3 gap-12'
         )}
       >
@@ -155,7 +155,7 @@ export default function ServiceProgramSection() {
           initial="hidden"
           animate={labelInView ? 'visible' : 'hidden'}
           className={cn(
-            'text-sm font-medium uppercase tracking-widest text-muted',
+            'text-2xl font-medium text-muted',
             !isDesktop && 'mb-8'
           )}
         >
