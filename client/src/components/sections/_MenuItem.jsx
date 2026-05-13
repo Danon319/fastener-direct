@@ -31,20 +31,20 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
   // Secondary (MENU_SECONDARY): меньше во всех брейкпойнтах.
   const sizeClasses =
     size === 'primary'
-      ? 'text-[28px] sm:text-[36px] md:text-[52px] lg:text-[72px] xl:text-[88px]'
-      : 'text-[16px] sm:text-[20px] max-[725px]:text-[24px] md:text-[28px] lg:text-[56px]'
+      ? 'text-3xl md:text-5xl lg:text-7xl xl:text-[88px]'
+      : 'text-base md:text-3xl lg:text-6xl'
 
   // Arrow dimensions per size, синхронизированные с шрифтом.
   // viewBox фиксирован 0 0 50 72; ширина анимируется 0 → arrowW.
   const arrowDims =
     size === 'primary'
       ? {
-          w: 'w-[18px] sm:w-[24px] md:w-[36px] lg:w-[50px] xl:w-[60px]',
-          h: 'h-[28px] sm:h-[36px] md:h-[52px] lg:h-[72px] xl:h-[88px]',
+          w: 'w-5 md:w-9 lg:w-12 xl:w-16',
+          h: 'h-7 md:h-14 lg:h-[72px] xl:h-[88px]',
         }
       : {
-          w: 'w-[10px] sm:w-[14px] md:w-[18px] lg:w-[34px]',
-          h: 'h-[16px] sm:h-[20px] md:h-[28px] lg:h-[56px]',
+          w: 'w-2.5 md:w-5 lg:w-9',
+          h: 'h-4 md:h-7 lg:h-14',
         }
 
   const colorClass = color === 'white' ? 'text-white' : 'text-navy'
@@ -58,7 +58,7 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
           'inline-flex flex-shrink-0 items-center overflow-hidden',
           arrowDims.h,
           'transition-[width,margin-right] duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
-          hover ? cn(arrowDims.w, 'mr-[10px]') : 'w-0'
+          hover ? cn(arrowDims.w, 'mr-2.5') : 'w-0'
         )}
       >
         <svg
@@ -82,7 +82,7 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
     'font-sans font-medium leading-none tracking-[-0.01em]',
     // Half-leading trim — компенсирует пустое пространство ascender/descender внутри
     // line-box у Neue Montreal Medium. Без этого визуальный gap между MenuItem'ами
-    // ощущается сильно больше, чем заданный на parent gap-[5px].
+    // ощущается сильно больше, чем заданный на parent gap-1.
     '-mt-[0.22em] -mb-[0.32em]',
     sizeClasses,
     colorClass

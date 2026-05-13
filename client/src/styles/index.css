@@ -30,6 +30,7 @@
 @layer base {
   html,
   body {
+    position: relative;
     overflow-x: clip;
     max-width: 100%;
   }

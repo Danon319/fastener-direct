@@ -7,19 +7,18 @@ import { Arrow } from './icons'
 
 const SIZE_MAP = {
   sm: {
-    button: 'w-[140px] h-[56px] text-[13px] pl-[20px] pr-[9px]',
-    circle: 'w-[38px] h-[38px]',
+    button: 'w-36 h-14 text-xs pl-5 pr-2.5',
+    circle: 'w-10 h-10',
     arrow: 14,
   },
   md: {
-    button: 'w-[161px] h-[66px] text-[15px] pl-[24px] pr-[11px]',
-    circle: 'w-[44px] h-[44px]',
+    button: 'w-40 h-16 text-sm pl-6 pr-3',
+    circle: 'w-11 h-11',
     arrow: 16,
   },
   lg: {
-    button: 'w-[200px] h-[78px] text-[17px] pl-[30px] pr-[14px]',
-    circle: 'w-[56px] h-[56px]',
-
+    button: 'w-52 h-20 text-base pl-8 pr-3.5',
+    circle: 'w-14 h-14',
     arrow: 20,
   },
 }
@@ -63,7 +62,7 @@ export default function Button({
   const circle = (
     <span
       className={cn(
-        'relative shrink-0 overflow-hidden rounded-full border-[1.5px] border-white/35 bg-red',
+        'relative shrink-0 overflow-hidden rounded-full border-[1.5px] border-white/35 bg-red will-change-transform',
         'transition-[transform,background-color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]',
         'group-hover/btn:scale-[1.18] group-hover/btn:border-transparent group-hover/btn:bg-redHover',
         circleSize
@@ -74,7 +73,7 @@ export default function Button({
         className={cn(
           'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
           'transition-[transform,filter,opacity] duration-[220ms] ease-[cubic-bezier(0.55,0,0.9,0.4)]',
-          'group-hover/btn:translate-x-[150%] group-hover/btn:opacity-0 group-hover/btn:blur-[3px]'
+          'group-hover/btn:translate-x-[150%] group-hover/btn:opacity-0 group-hover/btn:blur-sm'
         )}
       >
         <Arrow size={arrowSize} className="text-white" />

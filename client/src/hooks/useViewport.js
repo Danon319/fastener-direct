@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react'
 /**
  * Хук определения возможностей устройства, которые недоступны через CSS media queries Tailwind.
  *
- * Adaptive layout (mobile-first sm/md/lg/xl/2xl) is handled by Tailwind classes.
- * This hook only exposes behavioral signals: hover capability and its inverse.
+ * Адаптив (mobile-first sm/md/lg/xl/2xl) управляется Tailwind-классами.
+ * Хук отдаёт только поведенческие сигналы: поддержка hover и её инверсия.
  *
  * @returns {{ canHover: boolean, isTouch: boolean }}
- *   canHover - true if the primary input device supports hover (desktop with mouse).
- *   isTouch  - inverse of canHover; convenience flag for touch-driven UI branches.
+ *   canHover - true если устройство поддерживает hover (десктоп с мышью).
+ *   isTouch  - инверсия canHover; флаг для touch-ветвей интерфейса.
  */
 export default function useViewport() {
   const [canHover, setCanHover] = useState(() => {

@@ -1,6 +1,6 @@
 // src/components/sections/Footer.jsx
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { Logo, Button } from '@/components/ui'
 import { YouTube, VK } from '@/components/ui/icons'
@@ -57,17 +57,23 @@ FooterAnchor.propTypes = {
 }
 
 function Footer() {
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-[1] w-full bg-footerBg px-4 py-10 font-sans text-white sm:px-6 sm:py-11 md:px-9 md:py-[50px] lg:px-10 lg:py-[60px] xl:px-[50px] xl:py-[70px]">
+    <footer className={cn(
+      'w-full bg-footerBg px-4 py-10 font-sans text-white md:px-8 md:py-12 lg:px-12 lg:py-16',
+      isHome ? 'fixed bottom-0 left-0 right-0 z-0' : 'relative'
+    )}>
       {/* ── TOP BLOCK — 3 columns ── */}
-      <div className="grid grid-cols-1 gap-9 pb-9 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-9 sm:pb-11 md:gap-x-7 md:gap-y-10 md:pb-14 lg:gap-x-8 lg:gap-y-[72px] lg:pb-[72px] xl:gap-x-10 xl:gap-y-[90px] xl:pb-[90px]">
+      <div className="grid grid-cols-1 gap-9 pb-9 sm:grid-cols-3 md:gap-x-7 md:gap-y-10 md:pb-14 lg:gap-x-8 lg:gap-y-[72px] lg:pb-[72px]">
         {/* Column 1 — catalog */}
-        <div className="flex flex-col items-start gap-3.5 sm:gap-4 md:gap-5 lg:gap-[22px] xl:gap-7">
+        <div className="flex flex-col items-start gap-3.5 md:gap-5 lg:gap-6">
           {CATALOG_LINKS.map(({ label, to }) => (
             <FooterLink
               key={label}
               to={to}
-              className="text-lg font-medium sm:text-xl md:text-2xl lg:text-[1.6rem] xl:text-[2rem]"
+              className="text-lg font-medium md:text-2xl lg:text-3xl"
             >
               {label}
             </FooterLink>
@@ -75,12 +81,12 @@ function Footer() {
         </div>
 
         {/* Column 2 — site nav */}
-        <div className="flex flex-col items-start gap-3.5 sm:gap-4 md:gap-5 lg:gap-[22px] xl:gap-7">
+        <div className="flex flex-col items-start gap-3.5 md:gap-5 lg:gap-6">
           {NAV_LINKS.map(({ label, to }) => (
             <FooterLink
               key={label}
               to={to}
-              className="text-lg font-medium sm:text-xl md:text-2xl lg:text-[1.6rem] xl:text-[2rem]"
+              className="text-lg font-medium md:text-2xl lg:text-3xl"
             >
               {label}
             </FooterLink>
@@ -89,7 +95,7 @@ function Footer() {
 
         {/* Column 3 — question + CTA + contacts */}
         <div className="flex flex-col items-start">
-          <h3 className="m-0 text-lg font-medium leading-tight text-white sm:text-xl md:text-2xl lg:text-[1.6rem] xl:text-[2rem]">
+          <h3 className="m-0 text-lg font-medium leading-tight text-white md:text-2xl lg:text-3xl">
             {FOOTER_CTA.heading}
           </h3>
 
@@ -99,8 +105,8 @@ function Footer() {
             </Button>
           </div>
 
-          <div className="mt-8 w-full sm:mt-10 md:mt-12 lg:mt-[60px] xl:mt-20">
-            <div className="mb-4 text-sm font-medium text-slateHover md:text-[0.9375rem] xl:text-base">
+          <div className="mt-8 w-full md:mt-12 lg:mt-16">
+            <div className="mb-4 text-sm font-medium text-slateHover lg:text-base">
               {FOOTER_CTA.contactsLabel}
             </div>
 
@@ -109,13 +115,13 @@ function Footer() {
               <div className="flex flex-col items-start gap-1.5">
                 <FooterAnchor
                   href={CONTACT_INFO.emailHref}
-                  className="text-sm md:text-[0.9375rem] xl:text-base"
+                  className="text-sm lg:text-base"
                 >
                   {CONTACT_INFO.email}
                 </FooterAnchor>
                 <FooterAnchor
                   href={CONTACT_INFO.phoneHref}
-                  className="text-sm md:text-[0.9375rem] xl:text-base"
+                  className="text-sm lg:text-base"
                 >
                   {CONTACT_INFO.phone}
                 </FooterAnchor>
@@ -124,7 +130,7 @@ function Footer() {
                 <FooterAnchor
                   href={CONTACT_INFO.mapHref}
                   target="_blank"
-                  className="text-sm md:text-[0.9375rem] xl:text-base"
+                  className="text-sm lg:text-base"
                 >
                   <span className="block">{CONTACT_INFO.cityLine}</span>
                   <span className="mt-1.5 block">{CONTACT_INFO.streetLine}</span>
@@ -142,7 +148,7 @@ function Footer() {
         <div className="flex items-center gap-8 md:gap-10 lg:gap-11 xl:gap-12">
           <FooterLink
             to={FOOTER_LEGAL.documentsTo}
-            className="text-sm md:text-[0.9375rem] xl:text-base"
+            className="text-sm lg:text-base"
           >
             {FOOTER_LEGAL.documentsLabel}
           </FooterLink>

@@ -13,13 +13,16 @@ export default function useElementHeight(selector) {
     const el = document.querySelector(selector)
     if (!el) return
 
-    setHeight(el.offsetHeight)
+    const timer = setTimeout(() => setHeight(el.offsetHeight), 0)
 
     const ro = new ResizeObserver(([entry]) => {
       setHeight(entry.borderBoxSize?.[0]?.blockSize ?? el.offsetHeight)
     })
     ro.observe(el)
-    return () => ro.disconnect()
+    return () => {
+      clearTimeout(timer)
+      ro.disconnect()
+    }
   }, [selector])
 
   return height
