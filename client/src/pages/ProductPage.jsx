@@ -14,9 +14,7 @@ export default function ProductPage() {
   return (
     <div className="min-h-screen bg-light">
       <div className="flex flex-col items-center justify-center px-4 pb-8 pt-28 md:px-8 md:pt-32 lg:px-12 lg:pt-36">
-        <h1 className="mb-4 font-sans text-2xl font-medium text-navy">
-          Страница товара #{id}
-        </h1>
+        <h1 className="mb-4 font-sans text-2xl font-medium text-navy">Страница товара #{id}</h1>
         <Link
           to="/catalog"
           className="font-sans text-sm text-red transition-colors hover:text-redHover"

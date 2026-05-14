@@ -1,3 +1,4 @@
+// Сворачиваемый блок с чекбоксами: либо плоский список (бренды), либо дерево групп с детьми (isTree).
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { motion, AnimatePresence } from 'motion/react'
@@ -5,17 +6,13 @@ import { motion, AnimatePresence } from 'motion/react'
 import { ChevronDown } from '@/components/ui/icons'
 import { cn } from '@/utils/cn'
 
+/** Строка списка: видимый чекбокс + скрытый нативный input для a11y. */
 function Checkbox({ checked, onChange, label, indented }) {
   return (
-    <label
-      className={cn(
-        'flex cursor-pointer items-center gap-2.5 py-1.5',
-        indented && 'pl-5'
-      )}
-    >
+    <label className={cn('flex cursor-pointer items-center gap-2.5 py-1.5', indented && 'pl-5')}>
       <span
         className={cn(
-          'flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded border transition-colors',
+          'h-4.5 w-4.5 flex shrink-0 items-center justify-center rounded border transition-colors',
           checked ? 'border-red bg-red' : 'border-slate/30 bg-white'
         )}
         aria-hidden="true"
@@ -35,12 +32,7 @@ function Checkbox({ checked, onChange, label, indented }) {
           </svg>
         )}
       </span>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={onChange}
-        className="sr-only"
-      />
+      <input type="checkbox" checked={checked} onChange={onChange} className="sr-only" />
       <span className="font-sans text-sm text-navy">{label}</span>
     </label>
   )
@@ -53,15 +45,10 @@ Checkbox.propTypes = {
   indented: PropTypes.bool,
 }
 
-export default function FilterAccordion({
-  title,
-  items,
-  selected,
-  onToggle,
-  isTree,
-}) {
+export default function FilterAccordion({ title, items, selected, onToggle, isTree }) {
   const [open, setOpen] = useState(true)
 
+  // Режим дерева: родитель — «выбрать всех детей» + частичное состояние; дети — отдельные ключи в selected.
   if (isTree) {
     // items — структура CATEGORY_TREE: [{ label, slug, children: [{ label, categoryKey }] }]
     return (
@@ -100,7 +87,7 @@ export default function FilterAccordion({
                     <label className="flex cursor-pointer items-center gap-2.5 py-1.5">
                       <span
                         className={cn(
-                          'flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded border transition-colors',
+                          'h-4.5 w-4.5 flex shrink-0 items-center justify-center rounded border transition-colors',
                           allChecked
                             ? 'border-red bg-red'
                             : someChecked
@@ -110,7 +97,16 @@ export default function FilterAccordion({
                         aria-hidden="true"
                       >
                         {allChecked && (
-                          <svg width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round">
+                          <svg
+                            width={10}
+                            height={10}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth={3}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                         )}
@@ -131,9 +127,7 @@ export default function FilterAccordion({
                         }}
                         className="sr-only"
                       />
-                      <span className="font-sans text-sm font-medium text-navy">
-                        {group.label}
-                      </span>
+                      <span className="font-sans text-sm font-medium text-navy">{group.label}</span>
                     </label>
 
                     {group.children.map((child) => (
@@ -155,7 +149,7 @@ export default function FilterAccordion({
     )
   }
 
-  // Плоский список
+  // Режим плоского списка: items — строки или { value, label }; selected — массив выбранных value.
   return (
     <div>
       <button

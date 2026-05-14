@@ -48,7 +48,7 @@ function GridOverlay() {
     lines.push(
       <div
         key={i}
-        className="absolute top-0 bottom-0"
+        className="absolute bottom-0 top-0"
         style={{
           left: `${(i / 15) * 100}%`,
           width: '1px',
@@ -129,9 +129,7 @@ function TopBlockDesktop() {
 function TopBlockMobile() {
   return (
     <div className="flex flex-col gap-6 pl-2">
-      <p className="text-xl font-medium leading-tight text-slateHover">
-        {LABEL}
-      </p>
+      <p className="text-xl font-medium leading-tight text-slateHover">{LABEL}</p>
       <h2
         className="font-medium leading-tight text-slate"
         style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)' }}

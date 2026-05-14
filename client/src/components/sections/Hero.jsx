@@ -164,8 +164,7 @@ export default function Hero() {
   // Tailwind-классы для большого текста — общие для desktop и stacked.
   // Размер у desktop хардкоден (19.76vw), у stacked — clamp через arbitrary
   // [min(...,...)] чтобы в landscape mobile текст не уезжал за экран.
-  const bigBaseClass =
-    'inline-block font-sans font-medium leading-[0.82] text-white/50'
+  const bigBaseClass = 'inline-block font-sans font-medium leading-[0.82] text-white/50'
   const bigSizeDesktop = 'text-[19.76vw] tracking-[8px]'
   const bigSizeStacked =
     'text-[min(19.76vw,16vh)] tracking-[2px] sm:tracking-[4px] md:tracking-[6px]'
@@ -175,7 +174,7 @@ export default function Hero() {
 
   return (
     <section
-      className="fixed top-0 left-0 right-0 h-screen w-full overflow-hidden z-[1]"
+      className="fixed left-0 right-0 top-0 z-[1] h-screen w-full overflow-hidden"
       style={{ visibility: heroVisible ? 'visible' : 'hidden' }}
     >
       <video

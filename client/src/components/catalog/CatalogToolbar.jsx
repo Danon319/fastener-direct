@@ -1,3 +1,4 @@
+// Плавающая «пилюля» над каталогом: фильтры (сайдбар), поиск, кнопка открытия дерева категорий.
 import PropTypes from 'prop-types'
 
 import NavPill from '@/components/ui/NavPill'
@@ -17,7 +18,7 @@ export default function CatalogToolbar({
     <div className="mt-[180px] flex justify-center">
       {/* Пилюля тулбара — ширина по содержимому */}
       <div className="inline-flex items-center gap-3 rounded-full bg-white/95 px-5 py-1.5 backdrop-blur-md">
-        {/* Кнопка фильтров */}
+        {/* Открывает FilterSidebar; бейдж — число применённых фильтров (не черновик). */}
         <NavPill variant="default" onClick={onFilterToggle}>
           <Filter size={16} />
           <span className="hidden sm:inline">Фильтры</span>
@@ -28,10 +29,10 @@ export default function CatalogToolbar({
           )}
         </NavPill>
 
-        {/* Поиск */}
+        {/* Клиентский поиск по названию товара на странице каталога */}
         <SearchBar value={searchQuery} onChange={onSearchChange} />
 
-        {/* Кнопка каталога */}
+        {/* Раскрывает CategoryDropdown; стрелка крутится при открытии */}
         <NavPill variant="red" onClick={onCatalogToggle}>
           <span className="hidden sm:inline">Каталог</span>
           <ChevronDown

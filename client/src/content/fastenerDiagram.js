@@ -20,11 +20,7 @@ export const CX = 350
 export const CY = 350
 export const SIZE = 700
 
-export const DECO_RINGS = [
-  { r: OR + 280 },
-  { r: OR + 280 + 280 },
-  { r: OR + 280 + 280 + 280 },
-]
+export const DECO_RINGS = [{ r: OR + 280 }, { r: OR + 280 + 280 }, { r: OR + 280 + 280 + 280 }]
 
 /* Константы анимации */
 export const INTRO_DURATION = 0.5

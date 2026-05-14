@@ -1,8 +1,10 @@
+// Цепочка ссылок: Главная → Каталог → (опционально) категория и подкатегория по slug из URL.
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { BREADCRUMB_LABELS, CATEGORY_TREE } from '@/content/catalog'
 
+/** Slug верхнего уровня из дерева CATEGORY_TREE (последний крошка без ссылки). */
 function isTopLevelSlug(slug) {
   return CATEGORY_TREE.some((g) => g.slug === slug)
 }
@@ -13,6 +15,7 @@ export default function Breadcrumbs({ category, subcategory }) {
     { label: 'Каталог', to: '/catalog' },
   ]
 
+  // Добавляем подписи из BREADCRUMB_LABELS; последний элемент без `to` — текущая страница (не ссылка).
   if (category && BREADCRUMB_LABELS[category]) {
     if (subcategory && BREADCRUMB_LABELS[subcategory]) {
       // Оба уровня: родитель — ссылка, текущий — просто текст

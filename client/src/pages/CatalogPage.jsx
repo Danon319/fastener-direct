@@ -1,3 +1,6 @@
+// Страница каталога: данные из content/catalog (PRODUCTS), без запросов к API.
+// Список товаров сужается по маршруту (/catalog/:category/:subcategory), фильтрам сайдбара,
+// строке поиска и сортируется в useMemo.
 import { useState, useCallback, useMemo, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { AnimatePresence } from 'motion/react'
@@ -9,10 +12,12 @@ import CategoryDropdown from '@/components/catalog/CategoryDropdown'
 import FilterSidebar from '@/components/catalog/FilterSidebar'
 import { PRODUCTS, CATEGORY_TREE } from '@/content/catalog'
 
+/** Мультивыбор: если значение уже в массиве — убрать, иначе добавить (черновик брендов в сайдбаре). */
 function toggleInArray(arr, value) {
   return arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value]
 }
 
+/** Сброс фильтров в сайдбаре и начальное состояние applied. */
 const EMPTY_FILTERS = {
   brands: [],
   priceMin: '',
@@ -23,17 +28,23 @@ const EMPTY_FILTERS = {
 export default function CatalogPage() {
   const { category, subcategory } = useParams()
 
+  // При смене раздела каталога в URL — показать страницу с начала (как новый вход в ветку).
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [category, subcategory])
 
+  // Строка поиска по названию товара (клиентский includes, см. useMemo ниже).
   const [searchQuery, setSearchQuery] = useState('')
+  // Выпадающий блок выбора категории под тулбаром.
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false)
+  // Боковая панель фильтров и сортировки.
   const [isFilterSidebarOpen, setIsFilterSidebarOpen] = useState(false)
   const [activeSort, setActiveSort] = useState(null)
+  // applied — то, что уже влияет на сетку товаров; staged — черновик в сайдбаре до «Применить».
   const [appliedFilters, setAppliedFilters] = useState(EMPTY_FILTERS)
   const [stagedFilters, setStagedFilters] = useState(EMPTY_FILTERS)
 
+  // Счётчик для бейджа «Фильтры» в тулбаре (только применённые значения).
   const activeFilterCount = useMemo(() => {
     let count = appliedFilters.brands.length
     if (appliedFilters.priceMin) count++
@@ -42,6 +53,7 @@ export default function CatalogPage() {
     return count
   }, [appliedFilters])
 
+  // Счётчик «Выбрано фильтров» в подвале сайдбара (черновик до применения).
   const stagedFilterCount = useMemo(() => {
     let count = stagedFilters.brands.length
     if (stagedFilters.priceMin) count++
@@ -50,6 +62,7 @@ export default function CatalogPage() {
     return count
   }, [stagedFilters])
 
+  // --- Выпадающее меню «Каталог» (навигация по URL) ---
   const handleCatalogToggle = useCallback(() => {
     setIsCategoryDropdownOpen((p) => !p)
   }, [])
@@ -58,6 +71,7 @@ export default function CatalogPage() {
     setIsCategoryDropdownOpen(false)
   }, [])
 
+  // --- Сайдбар фильтров: при открытии копируем applied → staged, чтобы редактировать копию ---
   const handleFilterToggle = useCallback(() => {
     setIsFilterSidebarOpen((prev) => {
       if (!prev) {
@@ -67,14 +81,17 @@ export default function CatalogPage() {
     })
   }, [appliedFilters])
 
+  // Закрытие без обязательного применения (staged может отличаться до следующего открытия).
   const handleFilterClose = useCallback(() => {
     setIsFilterSidebarOpen(false)
   }, [])
 
+  // Перенос черновика фильтров на сетку товаров.
   const handleApply = useCallback(() => {
     setAppliedFilters(stagedFilters)
   }, [stagedFilters])
 
+  // Обнулить только черновик в панели (на сетку не влияет, пока не нажали «Применить»).
   const handleReset = useCallback(() => {
     setStagedFilters(EMPTY_FILTERS)
   }, [])
@@ -126,7 +143,7 @@ export default function CatalogPage() {
       result = result.filter((p) => appliedFilters.brands.includes(p.brand))
     }
 
-    // 3. Диапазон цен
+    // 3. Диапазон цен (строки из input → parseFloat; пустое/NaN пропускается).
     if (appliedFilters.priceMin) {
       const min = parseFloat(appliedFilters.priceMin)
       if (!isNaN(min)) {
@@ -151,7 +168,7 @@ export default function CatalogPage() {
       result = result.filter((p) => p.name.toLowerCase().includes(q))
     }
 
-    // 6. Сортировка
+    // 6. Сортировка (копия массива, чтобы не мутировать исходный PRODUCTS).
     if (activeSort) {
       result = [...result]
       switch (activeSort) {
@@ -178,7 +195,7 @@ export default function CatalogPage() {
       <div className="px-4 pb-8 pt-28 md:px-8 md:pt-32 lg:px-12 lg:pt-36">
         <Breadcrumbs category={category} subcategory={subcategory} />
 
-        {/* mb-[200px] — отступ под выпадающее меню категорий */}
+        {/* Тулбар + выпадающий CategoryDropdown; нижний отступ — место под раскрытое меню. */}
         <div className="relative mb-[200px]">
           <CatalogToolbar
             searchQuery={searchQuery}
@@ -189,6 +206,7 @@ export default function CatalogPage() {
             isCatalogOpen={isCategoryDropdownOpen}
           />
 
+          {/* motion: плавное монтирование/размонтирование CategoryDropdown */}
           <AnimatePresence>
             {isCategoryDropdownOpen && (
               <div className="absolute left-0 right-0 top-[calc(100%+10px)] z-40">
@@ -198,7 +216,7 @@ export default function CatalogPage() {
           </AnimatePresence>
         </div>
 
-        {/* Сетка товаров */}
+        {/* Результат useMemo: карточки или пустое состояние. */}
         {filtered.length > 0 ? (
           <div
             className="mt-6 justify-center gap-4 lg:gap-6"
@@ -216,7 +234,7 @@ export default function CatalogPage() {
         )}
       </div>
 
-      {/* Боковая панель фильтров */}
+      {/* Оверлей + выезд слева: сортировка, фильтры (staged), Сбросить / Применить. */}
       <AnimatePresence>
         {isFilterSidebarOpen && (
           <FilterSidebar

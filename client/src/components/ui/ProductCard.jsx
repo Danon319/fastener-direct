@@ -27,10 +27,7 @@ function stopNav(e) {
 
 function QuantitySelector({ quantity, onDecrement, onIncrement }) {
   return (
-    <div
-      className="flex items-center gap-1"
-      onClick={stopNav}
-    >
+    <div className="flex items-center gap-1" onClick={stopNav}>
       <button
         type="button"
         onClick={onDecrement}
@@ -38,9 +35,7 @@ function QuantitySelector({ quantity, onDecrement, onIncrement }) {
       >
         −
       </button>
-      <span className="w-6 text-center font-sans text-sm font-medium text-navy">
-        {quantity}
-      </span>
+      <span className="w-6 text-center font-sans text-sm font-medium text-navy">{quantity}</span>
       <button
         type="button"
         onClick={onIncrement}
@@ -88,11 +83,7 @@ function CartButton({ productId, inStock, quantity }) {
   )
 
   if (!inStock) {
-    return (
-      <span className="font-sans text-sm font-medium text-muted">
-        Нет в наличии
-      </span>
-    )
+    return <span className="font-sans text-sm font-medium text-muted">Нет в наличии</span>
   }
 
   const state = showAdded ? 'added' : inCart ? 'in-cart' : 'idle'
@@ -259,10 +250,7 @@ export default function ProductCard({ product }) {
             )}
           />
           <span
-            className={cn(
-              'font-sans text-xs',
-              product.inStock ? 'text-green-600' : 'text-muted'
-            )}
+            className={cn('font-sans text-xs', product.inStock ? 'text-green-600' : 'text-muted')}
           >
             {product.inStock ? 'В наличии' : 'Нет в наличии'}
           </span>
@@ -282,19 +270,11 @@ export default function ProductCard({ product }) {
               onDecrement={handleDecrement}
               onIncrement={handleIncrement}
             />
-            <CartButton
-              productId={product.id}
-              inStock={product.inStock}
-              quantity={localQty}
-            />
+            <CartButton productId={product.id} inStock={product.inStock} quantity={localQty} />
           </div>
         ) : (
           <div className="mt-auto">
-            <CartButton
-              productId={product.id}
-              inStock={product.inStock}
-              quantity={1}
-            />
+            <CartButton productId={product.id} inStock={product.inStock} quantity={1} />
           </div>
         )}
       </div>

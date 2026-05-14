@@ -24,27 +24,27 @@ function Header() {
   const isHome = location.pathname === '/'
   const [lang, setLang] = useState('ru')
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const [visible, setVisible] = useState(!isHome)
+  const [scrollY, setScrollY] = useState(window.scrollY)
   const dropdownRef = useRef(null)
   const triggerRef = useRef(null)
 
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
   const langLabel = LANG_LABELS[lang] // TODO: i18n
 
-  // On Home: show after scrolling past viewport height (Hero).
-  // On other pages: always visible.
+  // На главной: показывать после прокрутки на высоту экрана (Hero).
+  // На других страницах: всегда видим.
+  
   useEffect(() => {
-    if (!isHome) {
-      setVisible(true)
-      return
+    const onScroll = () => {
+      setScrollY(window.scrollY)
     }
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight)
-    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [isHome])
+  }, [])
 
-  // Закрытие dropdown'а: тот же механизм что в HeroHeader.
+  const visible = !isHome || (scrollY > window.innerHeight)
+
+  // Закрытие dropdown: тот же механизм что в HeroHeader.
   useEffect(() => {
     if (!burgerOpen) return
     const onKey = (e) => {

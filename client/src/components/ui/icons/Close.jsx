@@ -21,10 +21,7 @@ export default function Close({ size = 24, className, ariaLabel }) {
   return (
     <span
       style={{ width: size, height: size, fontSize: size, lineHeight: 1 }}
-      className={cn(
-        'inline-flex select-none items-center justify-center font-sans',
-        className
-      )}
+      className={cn('inline-flex select-none items-center justify-center font-sans', className)}
       {...accessibilityProps}
     >
       ×

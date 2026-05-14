@@ -76,9 +76,7 @@ function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
       <p
         className={cn(
           'text-sm transition-[color,transform] duration-300 lg:text-base',
-          isHovered
-            ? 'translate-x-0 text-white/90'
-            : 'translate-x-6 text-muted lg:translate-x-12'
+          isHovered ? 'translate-x-0 text-white/90' : 'translate-x-6 text-muted lg:translate-x-12'
         )}
       >
         {service.description}
@@ -109,10 +107,7 @@ function MobileRow({ service, index, isLast }) {
       custom={index}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      className={cn(
-        'flex flex-col gap-4 py-8 md:py-10',
-        !isLast && 'border-b border-divider'
-      )}
+      className={cn('flex flex-col gap-4 py-8 md:py-10', !isLast && 'border-b border-divider')}
     >
       <h3 className="text-xl font-medium text-navy md:text-2xl">{service.title}</h3>
       <p className="text-sm text-muted">{service.description}</p>
@@ -142,22 +137,14 @@ export default function ServiceProgramSection() {
 
   return (
     <section className="bg-white px-4 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
-      <div
-        className={cn(
-          'mx-auto max-w-7xl lg:px-12',
-          isDesktop && 'grid grid-cols-3 gap-12'
-        )}
-      >
+      <div className={cn('mx-auto max-w-7xl lg:px-12', isDesktop && 'grid grid-cols-3 gap-12')}>
         {/* Label */}
         <motion.p
           ref={labelRef}
           variants={labelVariants}
           initial="hidden"
           animate={labelInView ? 'visible' : 'hidden'}
-          className={cn(
-            'text-2xl font-medium text-muted',
-            !isDesktop && 'mb-8'
-          )}
+          className={cn('text-2xl font-medium text-muted', !isDesktop && 'mb-8')}
         >
           {SECTION_LABEL}
         </motion.p>

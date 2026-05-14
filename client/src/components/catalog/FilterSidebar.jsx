@@ -1,4 +1,6 @@
-import { useState, useEffect, useCallback } from 'react'
+// Выезжающая слева панель: сортировка, цена, бренд, наличие. Значения — черновик (staged);
+// родитель копирует их в applied по «Применить». Затемнение кликом и Escape закрывают без apply.
+import { useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { motion } from 'motion/react'
 
@@ -7,6 +9,7 @@ import FilterAccordion from './FilterAccordion'
 import { BRANDS } from '@/content/catalog'
 import { cn } from '@/utils/cn'
 
+/** Ключи сортировки совпадают с switch в CatalogPage (filtered useMemo). */
 const SORT_OPTIONS = [
   { key: 'price-asc', label: 'По цене (возрастание) \u2191' },
   { key: 'price-desc', label: 'По цене (убывание) \u2193' },
@@ -14,30 +17,22 @@ const SORT_OPTIONS = [
   { key: 'in-stock', label: 'По наличию' },
 ]
 
+/** Радиогруппа: повторный клик по активной опции снимает сортировку (null). */
 function SortSection({ activeSort, onSortChange }) {
   return (
     <div className="border-b border-light pb-4">
-      <p className="mb-2 font-sans text-sm font-medium text-navy">
-        Сортировка
-      </p>
+      <p className="mb-2 font-sans text-sm font-medium text-navy">Сортировка</p>
       <div className="flex flex-col gap-1">
         {SORT_OPTIONS.map((opt) => (
-          <label
-            key={opt.key}
-            className="flex cursor-pointer items-center gap-2.5 py-1.5"
-          >
+          <label key={opt.key} className="flex cursor-pointer items-center gap-2.5 py-1.5">
             <span
               className={cn(
                 'flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-colors',
-                activeSort === opt.key
-                  ? 'border-red'
-                  : 'border-slate/30'
+                activeSort === opt.key ? 'border-red' : 'border-slate/30'
               )}
               aria-hidden="true"
             >
-              {activeSort === opt.key && (
-                <span className="block h-2 w-2 rounded-full bg-red" />
-              )}
+              {activeSort === opt.key && <span className="block h-2 w-2 rounded-full bg-red" />}
             </span>
             <input
               type="radio"
@@ -60,6 +55,7 @@ SortSection.propTypes = {
   onSortChange: PropTypes.func.isRequired,
 }
 
+/** Два числовых поля «от / до»; значения строками до parseFloat на стороне страницы. */
 function PriceFilter({ priceMin, priceMax, onPriceMinChange, onPriceMaxChange }) {
   return (
     <div>
@@ -94,13 +90,14 @@ PriceFilter.propTypes = {
   onPriceMaxChange: PropTypes.func.isRequired,
 }
 
+/** Кастомный чекбокс «Только в наличии» (нативный input скрыт, стили на span). */
 function AvailabilityFilter({ checked, onChange }) {
   return (
     <div>
       <label className="flex cursor-pointer items-center gap-2.5 py-1.5">
         <span
           className={cn(
-            'flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded border transition-colors',
+            'h-4.5 w-4.5 flex shrink-0 items-center justify-center rounded border transition-colors',
             checked ? 'border-red bg-red' : 'border-slate/30 bg-white'
           )}
           aria-hidden="true"
@@ -120,12 +117,7 @@ function AvailabilityFilter({ checked, onChange }) {
             </svg>
           )}
         </span>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={onChange}
-          className="sr-only"
-        />
+        <input type="checkbox" checked={checked} onChange={onChange} className="sr-only" />
         <span className="font-sans text-sm text-navy">Только в наличии</span>
       </label>
     </div>
@@ -153,7 +145,7 @@ export default function FilterSidebar({
   onClose,
   activeFilterCount,
 }) {
-  // Блокировка прокрутки страницы
+  // Пока панель открыта — не скроллить документ под ней.
   useEffect(() => {
     const html = document.documentElement
     const prev = html.style.overflow
@@ -172,6 +164,7 @@ export default function FilterSidebar({
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
+  // Сначала зафиксировать фильтры на странице, затем закрыть панель.
   const handleApply = useCallback(() => {
     onApply()
     onClose()
@@ -234,13 +227,8 @@ export default function FilterSidebar({
 
             {/* Наличие */}
             <div className="border-t border-light pt-3">
-              <p className="mb-1 font-sans text-sm font-medium text-navy">
-                Наличие
-              </p>
-              <AvailabilityFilter
-                checked={stagedInStockOnly}
-                onChange={onInStockToggle}
-              />
+              <p className="mb-1 font-sans text-sm font-medium text-navy">Наличие</p>
+              <AvailabilityFilter checked={stagedInStockOnly} onChange={onInStockToggle} />
             </div>
           </div>
         </div>
