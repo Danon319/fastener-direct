@@ -67,9 +67,9 @@ function Footer() {
         isHome ? 'fixed bottom-0 left-0 right-0 z-0' : 'relative'
       )}
     >
-      {/* ── TOP BLOCK — 3 columns ── */}
+      {/* ── ВЕРХНИЙ БЛОК — 3 колонки ── */}
       <div className="grid grid-cols-1 gap-9 pb-9 sm:grid-cols-3 md:gap-x-7 md:gap-y-10 md:pb-14 lg:gap-x-8 lg:gap-y-[72px] lg:pb-[72px]">
-        {/* Column 1 — catalog */}
+        {/* Колонка 1 — каталог */}
         <div className="flex flex-col items-start gap-3.5 md:gap-5 lg:gap-6">
           {CATALOG_LINKS.map(({ label, to }) => (
             <FooterLink key={label} to={to} className="text-lg font-medium md:text-2xl lg:text-3xl">
@@ -78,7 +78,7 @@ function Footer() {
           ))}
         </div>
 
-        {/* Column 2 — site nav */}
+        {/* Колонка 2 — навигация */}
         <div className="flex flex-col items-start gap-3.5 md:gap-5 lg:gap-6">
           {NAV_LINKS.map(({ label, to }) => (
             <FooterLink key={label} to={to} className="text-lg font-medium md:text-2xl lg:text-3xl">
@@ -87,7 +87,7 @@ function Footer() {
           ))}
         </div>
 
-        {/* Column 3 — question + CTA + contacts */}
+        {/* Колонка 3 — вопрос + CTA + контакты */}
         <div className="flex flex-col items-start">
           <h3 className="m-0 text-lg font-medium leading-tight text-white md:text-2xl lg:text-3xl">
             {FOOTER_CTA.heading}
@@ -104,7 +104,7 @@ function Footer() {
               {FOOTER_CTA.contactsLabel}
             </div>
 
-            {/* Two sub-columns */}
+            {/* Две подколонки */}
             <div className="flex w-full flex-row flex-wrap justify-between gap-3 md:gap-6 xl:gap-8">
               <div className="flex flex-col items-start gap-1.5">
                 <FooterAnchor href={CONTACT_INFO.emailHref} className="text-sm lg:text-base">
@@ -129,7 +129,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* ── BOTTOM BAR ── */}
+      {/* ── НИЖНЯЯ ПОЛОСА ── */}
       <div className="flex flex-col items-center gap-6 border-t border-white/10 pt-7 md:flex-row md:items-center md:justify-between md:gap-0 md:pt-7 lg:pt-8 xl:pt-9">
         <Logo variant="full" theme="light" to="/" />
 

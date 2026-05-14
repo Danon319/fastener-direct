@@ -106,7 +106,7 @@ export default function Hero() {
     runCycleRef.current = runCycle
   }, [runCycle])
 
-  // Mount sequence: firstEnter → rest → первый цикл ротации.
+  // Запуск при монтировании: firstEnter → rest → первый цикл ротации.
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       setPhase('firstEnter')
@@ -127,7 +127,7 @@ export default function Hero() {
     }
   }, [pushTimer, clearTimers])
 
-  // Pause/resume при visibility-change. Уровень 2: ротация просто
+  // Пауза/возобновление при visibility-change. Уровень 2: ротация просто
   // приостанавливается и возобновляется через REST_MS на возврате.
   useEffect(() => {
     const onVisibility = () => {
@@ -147,13 +147,13 @@ export default function Hero() {
     return () => document.removeEventListener('visibilitychange', onVisibility)
   }, [pushTimer, clearTimers])
 
-  // Hide Hero when user scrolls past one viewport height so it doesn't
-  // bleed through behind the Footer.
+  // Скрываем Hero после прокрутки за высоту viewport, чтобы секция
+  // не проглядывала сквозь Footer.
   useEffect(() => {
     const onScroll = () => {
       setHeroVisible(window.scrollY < window.innerHeight)
     }
-    // Check immediately in case page loaded mid-scroll (e.g. browser restore)
+    // Проверяем сразу на случай если страница открыта в середине скролла.
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -199,7 +199,7 @@ export default function Hero() {
               <span className={`${bigBaseClass} ${bigSizeDesktop}`}>{BIG_LEFT}</span>
             </div>
 
-            {/* Row 2: [tagline 50%] [Direct flex-1]. */}
+            {/* Строка 2: [tagline 50%] [Direct flex-1]. */}
             <div className="flex w-full items-end">
               <div className="flex w-1/2 justify-end pb-1.5 pr-5">
                 <div className="text-right">

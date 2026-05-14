@@ -68,7 +68,7 @@ function HeroHeader() {
       </span>
 
       <nav className="relative flex items-center gap-2 md:gap-0">
-        {/* Mobile (<md): Burger + Dropdown */}
+        {/* Мобильный (<md): Burger + выпадающее меню */}
         <div className="md:hidden">
           <IconButton
             ref={triggerRef}
@@ -113,7 +113,7 @@ function HeroHeader() {
           )}
         </div>
 
-        {/* Desktop (md+): nav-pills inline */}
+        {/* Десктоп (md+): nav-pills инлайн */}
         <div className="hidden md:flex md:items-center">
           <NavPill variant="heroLang" onClick={toggleLang}>
             {langLabel}

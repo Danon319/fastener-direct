@@ -70,7 +70,7 @@ function MobileMenuContent({ onClose }) {
   const curtainTotalMs = ((columns - 1) * CURTAIN_STEP + CURTAIN_DURATION) * 1000
   const lineStepPct = 100 / columns
 
-  // Esc to close.
+  // Закрытие по Escape.
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose()
@@ -79,7 +79,7 @@ function MobileMenuContent({ onClose }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  // Lock <html> scroll while open.
+  // Блокируем скролл документа пока меню открыто.
   useEffect(() => {
     const html = document.documentElement
     const prev = html.style.overflow
@@ -89,13 +89,13 @@ function MobileMenuContent({ onClose }) {
     }
   }, [])
 
-  // Flip curtainDone once last column lands.
+  // Переключаем curtainDone после завершения последней колонки.
   useEffect(() => {
     const t = setTimeout(() => setCurtainDone(true), curtainTotalMs)
     return () => clearTimeout(t)
   }, [curtainTotalMs])
 
-  // Focus-trap. Manual implementation (no external library).
+  // Ловушка фокуса. Ручная реализация (без внешних библиотек).
   useEffect(() => {
     if (!curtainDone) return // ждём пока контент появится
     const root = overlayRef.current
@@ -165,8 +165,8 @@ function MobileMenuContent({ onClose }) {
         </div>
       )}
 
-      {/* Vertical grid lines — после curtainDone, fade-in.
-          Декоративные направляющие, повторяют позицию колонок. */}
+      {/* Вертикальные направляющие — после curtainDone, fade-in.
+          Декоративные, повторяют позицию колонок. */}
       {curtainDone && (
         <motion.div
           aria-hidden="true"
@@ -182,9 +182,9 @@ function MobileMenuContent({ onClose }) {
         />
       )}
 
-      {/* Content layer */}
+      {/* Слой контента */}
       <div className="relative z-[1] box-border flex h-full flex-col overflow-y-auto px-6 py-12 md:px-12">
-        {/* Top: Logo + CloseBtn */}
+        {/* Шапка: Logo + кнопка закрытия */}
         <header className="flex items-center justify-between">
           {curtainDone && (
             <motion.div {...fadeIn(0)}>
@@ -200,7 +200,7 @@ function MobileMenuContent({ onClose }) {
           )}
         </header>
 
-        {/* Primary items */}
+        {/* Основные пункты меню */}
         <div className="flex flex-1 flex-col items-start justify-center gap-1">
           {curtainDone &&
             MENU_PRIMARY.map((item, i) => (
@@ -216,7 +216,7 @@ function MobileMenuContent({ onClose }) {
             ))}
         </div>
 
-        {/* Footer: secondary + CTA */}
+        {/* Подвал: вторичные ссылки + CTA */}
         <footer className="flex flex-col items-stretch gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-12">
             {curtainDone &&

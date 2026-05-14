@@ -24,7 +24,7 @@ const labelVariants = {
 
 /**
  * @param {boolean} canHover
- * @returns {boolean} true when in desktop mode (>=lg + hover)
+ * @returns {boolean} true — десктопный режим (>=lg + hover)
  */
 function useIsDesktop(canHover) {
   const [width, setWidth] = useState(() =>
@@ -40,7 +40,7 @@ function useIsDesktop(canHover) {
   return width >= 1024 && canHover
 }
 
-// --- Desktop row ---
+// --- Строка для десктопа ---
 
 function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
   const isHovered = hoveredId === service.id
@@ -94,7 +94,7 @@ function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
   )
 }
 
-// --- Mobile / tablet row ---
+// --- Строка для мобильного / планшета ---
 
 function MobileRow({ service, index, isLast }) {
   const ref = useRef(null)
@@ -120,12 +120,12 @@ function MobileRow({ service, index, isLast }) {
   )
 }
 
-// --- Main section ---
+// --- Основная секция ---
 
 /**
  * Секция «Сервисная программа».
- * Desktop (>=lg + hover): 2-column grid, hover turns row red.
- * Mobile/tablet: single column, stacked rows with dividers, filled IconButton.
+ * Десктоп (>=lg + hover): 2-колоночная сетка, наведение делает строку красной.
+ * Мобильный/планшет: одна колонка, строки с разделителями, filled IconButton.
  */
 export default function ServiceProgramSection() {
   const { canHover } = useViewport()

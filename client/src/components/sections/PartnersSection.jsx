@@ -19,7 +19,7 @@ function PartnerCard({ partner }) {
         className="grid h-full gap-3 lg:gap-4"
         style={{ gridTemplateColumns: '1fr clamp(140px, 40%, 175px)' }}
       >
-        {/* Left: text + tags */}
+        {/* Левая часть: текст + теги */}
         <div className="flex min-w-0 flex-col justify-between overflow-hidden">
           <div className="min-w-0 overflow-hidden">
             <h4 className="truncate text-[clamp(1.05rem,4.8cqw,1.35rem)] font-medium leading-tight tracking-wide text-slate transition-colors duration-300 group-hover:text-white">
@@ -43,7 +43,7 @@ function PartnerCard({ partner }) {
           </div>
         </div>
 
-        {/* Right: photo + logo placeholders */}
+        {/* Правая часть: фото + логотип */}
         <div className="flex min-w-0 flex-col gap-px overflow-hidden">
           <div className="flex-1 overflow-hidden rounded-lg">
             <img src={photo} alt={name} className="h-full w-full object-cover" />

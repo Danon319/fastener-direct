@@ -207,15 +207,15 @@ function CardsRow({ isDesktop }) {
 
 /**
  * Секция «Наши ценности» с 5 карточками.
- * Desktop: scroll-driven diagonal card animation.
- * Mobile: stacked cards with fade-in.
+ * Десктоп: диагональная scroll-driven анимация карточек.
+ * Мобильный: стопкой с fade-in.
  */
 export default function OurValuesSection() {
   const isDesktop = useIsDesktop()
 
   return (
     <section
-      aria-label="Our values"
+      aria-label="Наши ценности"
       className="relative overflow-hidden rounded-t-2xl bg-tagDate font-sans"
       style={{ padding: isDesktop ? '96px 0 0 0' : '64px 0 64px 0' }}
     >

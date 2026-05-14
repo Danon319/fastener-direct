@@ -47,7 +47,7 @@ const IconButton = React.forwardRef(function IconButton(
   } else if (variant === 'slate') {
     iconColorClass = 'text-white'
   } else {
-    // filled
+    // вариант filled
     iconColorClass = pressed ? 'text-red' : 'text-white'
   }
 
@@ -70,7 +70,7 @@ const IconButton = React.forwardRef(function IconButton(
         'relative flex shrink-0 items-center justify-center overflow-hidden rounded-full',
         'transition-[transform,background-color,border-color,opacity] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
         'group/iconbtn',
-        // Variant base styles
+        // Базовые стили варианта
         variant === 'light' && [
           'border-[1.5px] border-[#ddd] bg-transparent',
           interactive && 'hover:border-transparent hover:bg-redHover',
@@ -85,9 +85,9 @@ const IconButton = React.forwardRef(function IconButton(
           interactive && 'hover:bg-redHover',
         ],
         variant === 'slate' && ['border-0 bg-slate', interactive && 'hover:bg-navy'],
-        // Scale on hover — для slate variant отключено (по дизайну).
+        // Масштаб при наведении — для slate variant отключено (по дизайну).
         interactive && variant !== 'slate' && 'hover:scale-[1.18]',
-        // Visibility
+        // Видимость
         visible ? 'translate-x-0 opacity-100' : 'pointer-events-none translate-x-5 opacity-0',
         className
       )}

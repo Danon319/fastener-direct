@@ -1,0 +1,1 @@
+export const BRANDS = ['TCS', 'COMSOL', 'CONTAINERD', 'SUPERMICRO', 'NETGEAR', 'ZABKA']

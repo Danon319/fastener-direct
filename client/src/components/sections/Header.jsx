@@ -29,7 +29,7 @@ function Header() {
   const triggerRef = useRef(null)
 
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
-  const langLabel = LANG_LABELS[lang] // TODO: i18n
+  const langLabel = LANG_LABELS[lang] // TODO: i18n — реальные переводы после Phase 6
 
   // На главной: показывать после прокрутки на высоту экрана (Hero).
   // На других страницах: всегда видим.
@@ -87,7 +87,7 @@ function Header() {
       </span>
 
       <nav className="relative flex items-center gap-2 md:gap-0">
-        {/* Mobile (<md): Burger + Dropdown (light theme) */}
+        {/* Мобильный (<md): Burger + выпадающее меню (светлая тема) */}
         <div className="md:hidden">
           <IconButton
             ref={triggerRef}
@@ -126,7 +126,7 @@ function Header() {
           )}
         </div>
 
-        {/* Desktop (md+): nav-pills */}
+        {/* Десктоп (md+): nav-pills */}
         <div className="hidden md:flex md:items-center">
           <NavPill variant="default" onClick={toggleLang}>
             {langLabel}

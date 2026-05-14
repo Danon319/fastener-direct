@@ -11,7 +11,7 @@ import {
   STATS_ROW2,
 } from '@/content/numbers'
 
-// Line starts late so it finishes at exactly the same instant as the count-up.
+// Линия стартует позже, чтобы закончиться в тот же момент что и счётчик.
 const LINE_START_DELAY = (COUNT_DURATION - LINE_DURATION) / 1000
 
 /**
@@ -27,7 +27,7 @@ const LINE_START_DELAY = (COUNT_DURATION - LINE_DURATION) / 1000
 function StatItem({ value, suffix, label, delay, inView }) {
   const [countStart, setCountStart] = useState(false)
 
-  // All counters start simultaneously — no per-item stagger.
+  // Все счётчики стартуют одновременно — без разброса между элементами.
   useEffect(() => {
     if (!inView) return
     const timer = setTimeout(() => setCountStart(true), 0)
@@ -39,8 +39,8 @@ function StatItem({ value, suffix, label, delay, inView }) {
 
   return (
     <div className="relative min-w-0 py-2 pl-3.5 md:py-3 md:pl-5 lg:py-4 lg:pl-6">
-      {/* Vertical line — CSS transition for precise timing control.
-          Starts at LINE_START_DELAY so it finishes together with the count-up. */}
+      {/* Вертикальная линия — CSS-transition для точного управления таймингом.
+          Стартует с задержкой LINE_START_DELAY, чтобы закончиться вместе со счётчиком. */}
       <span
         aria-hidden
         className="absolute bottom-0 left-0 top-0 w-px origin-top bg-white/15"
@@ -50,7 +50,7 @@ function StatItem({ value, suffix, label, delay, inView }) {
         }}
       />
 
-      {/* Content — staggered fade + rise via motion */}
+      {/* Содержимое — staggered fade + rise через motion */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 16 }}
@@ -82,20 +82,20 @@ StatItem.propTypes = {
 export default function NumbersSection() {
   const { isTouch } = useViewport()
   const sectionRef = useRef(null)
-  // Single observer on the section — all counters trigger at the same moment.
+  // Один observer на секцию — все счётчики запускаются в один момент.
   const inView = useInView(sectionRef, { once: true, amount: isTouch ? 0.2 : 0.3 })
 
   return (
     <section ref={sectionRef} className="bg-slate px-16 py-16 font-sans lg:py-52">
       <div className="mx-auto w-full max-w-7xl">
-        {/* Row 1 */}
+        {/* Строка 1 */}
         <div className="mb-6 grid grid-cols-1 gap-6 md:mb-12 md:grid-cols-2 md:gap-16 lg:mb-16 lg:gap-24">
           {STATS_ROW1.map((stat, i) => (
             <StatItem key={`r1-${i}`} {...stat} delay={i * STAGGER_DELAY_S} inView={inView} />
           ))}
         </div>
 
-        {/* Row 2 — offset right on desktop */}
+        {/* Строка 2 — смещена вправо на десктопе */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-16 md:pl-16 lg:gap-24 lg:pl-32">
           {STATS_ROW2.map((stat, i) => (
             <StatItem key={`r2-${i}`} {...stat} delay={0.3 + i * STAGGER_DELAY_S} inView={inView} />

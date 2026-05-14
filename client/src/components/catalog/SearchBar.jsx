@@ -6,13 +6,19 @@ import { Search } from '@/components/ui/icons'
 export default function SearchBar({ value, onChange }) {
   return (
     <div className="relative min-w-[200px] max-w-[500px] flex-1">
+      <label htmlFor="catalog-search" className="sr-only">
+        Поиск по каталогу
+      </label>
       {/* Декоративная иконка; клики попадают в input под ней */}
       <Search
         size={18}
         className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted"
       />
       <input
+        id="catalog-search"
+        name="search"
         type="text"
+        autoComplete="off"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Поиск по каталогу"

@@ -49,7 +49,7 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
 
   const colorClass = color === 'white' ? 'text-white' : 'text-navy'
 
-  // Inner content: arrow wrapper (animated width) + label.
+  // Внутреннее содержимое: обёртка стрелки (анимированная ширина) + текст.
   const inner = (
     <>
       <span

@@ -20,7 +20,7 @@ import {
   RING_COLOR,
 } from '@/content/fastenerDiagram'
 
-/* ─── Precomputed segment angles ─── */
+/* ─── Предвычисленные углы сегментов ─── */
 
 const segAngles = (() => {
   const result = []
@@ -33,7 +33,7 @@ const segAngles = (() => {
   return result
 })()
 
-/* ─── Precomputed timings ─── */
+/* ─── Предвычисленные тайминги ─── */
 
 const segTimings = (() => {
   const result = []
@@ -56,7 +56,7 @@ const segTimings = (() => {
 
 const TOTAL_DURATION = Math.max(...segTimings.map((s) => s.totalEnd))
 
-/* ─── Animation math ─── */
+/* ─── Математика анимации ─── */
 
 function easeOut(t) {
   return 1 - Math.pow(1 - t, 3)
@@ -89,7 +89,7 @@ function computeSegmentAt(t, i) {
   return { lead, trail: near, visible: true }
 }
 
-/* ─── SVG arc path ─── */
+/* ─── SVG-дуга ─── */
 
 function arcPath(trailDeg, leadDeg) {
   const DEG = Math.PI / 180
@@ -103,7 +103,7 @@ function arcPath(trailDeg, leadDeg) {
   return `M ${sx} ${sy} A ${R_STROKE} ${R_STROKE} 0 ${large} 1 ${ex} ${ey}`
 }
 
-/* ─── Label position ─── */
+/* ─── Позиция метки ─── */
 
 function computeLabelPos(i) {
   const { near, far } = segAngles[i]
@@ -115,7 +115,7 @@ function computeLabelPos(i) {
   return { lx, ly, isRight }
 }
 
-/* ─── Breakpoint hook (local to this file) ─── */
+/* ─── Хук брейкпоинта (локальный для этого файла) ─── */
 
 function useBreakpoint() {
   const getBp = () => {
@@ -143,7 +143,7 @@ function useBreakpoint() {
   return bp
 }
 
-/* ─── Subcomponents ─── */
+/* ─── Подкомпоненты ─── */
 
 function SegmentPath({ trail, lead, color, visible }) {
   if (!visible || lead - trail < 0.1) return null
@@ -337,7 +337,7 @@ function DonutChart({ inView, bp }) {
   )
 }
 
-/* ─── Main section ─── */
+/* ─── Основная секция ─── */
 
 /**
  * Секция с donut-диаграммой клиентов Fastener Direct.

@@ -1,0 +1,121 @@
+/**
+ * Форма объекта товара:
+ * {
+ *   id: string,             — уникальный идентификатор
+ *   name: string,           — полное название (на русском)
+ *   parentCategory: string, — slug категории верхнего уровня (совпадает с CATEGORY_TREE[].slug)
+ *   subcategory: string,    — categoryKey (совпадает с CATEGORY_TREE[].children[].categoryKey)
+ *   material: string,       — название материала (на русском)
+ *   brand: string,          — название бренда (должно быть в BRANDS)
+ *   brandLogo: string,      — путь до SVG в /public/card_logo/
+ *   price: number,          — цена в рублях с копейками как десятичная часть (например 7.87)
+ *   inStock: boolean,
+ *   image: string,          — путь до фото в /public/product_card/
+ * }
+ */
+export const PRODUCTS = [
+  {
+    id: '1',
+    name: 'Болт 16х90 мм DIN 933 полная резьба, оцинкованный',
+    category: 'bolt',
+    parentCategory: 'stroitelnyj-krepyozh',
+    subcategory: 'bolt',
+    material: 'Медь',
+    brand: 'TCS',
+    brandLogo: '/card/logo/tcs.svg',
+    price: 7.87,
+    inStock: true,
+    image: '/product_card/1.jpg',
+  },
+  {
+    id: '2',
+    name: 'Винт с внутренним шестигранником 8х40 мм класс прочности 8.8 DIN 912 полная резьба, оцинкованный',
+    category: 'screw',
+    parentCategory: 'stroitelnyj-krepyozh',
+    subcategory: 'screw',
+    material: 'Медь',
+    brand: 'CONTAINERD',
+    brandLogo: '/card/logo/containerd.svg',
+    price: 15.24,
+    inStock: true,
+    image: '/product_card/2.jpg',
+  },
+  {
+    id: '3',
+    name: 'Винт установочный с внутр. шестигранником 8х40 мм, класс прочности 12.9 DIN 913 тупой конец, черный',
+    category: 'screw',
+    parentCategory: 'stroitelnyj-krepyozh',
+    subcategory: 'screw',
+    material: 'Алюминий',
+    brand: 'SUPERMICRO',
+    brandLogo: '/card/logo/supermicro.svg',
+    price: 55.52,
+    inStock: false,
+    image: '/product_card/3.jpg',
+  },
+  {
+    id: '4',
+    name: 'Болт 12х150 мм DIN 933 полная резьба, оцинкованный',
+    category: 'bolt',
+    parentCategory: 'stroitelnyj-krepyozh',
+    subcategory: 'bolt',
+    material: 'Алюминий',
+    brand: 'SUPERMICRO',
+    brandLogo: '/card/logo/supermicro.svg',
+    price: 77.12,
+    inStock: true,
+    image: '/product_card/4.jpg',
+  },
+  {
+    id: '5',
+    name: 'Гайка с фланцем М10 DIN 6923 оцинкованная',
+    category: 'nut',
+    parentCategory: 'stroitelnyj-krepyozh',
+    subcategory: 'nut',
+    material: 'Латунь',
+    brand: 'ZABKA',
+    brandLogo: '/card/logo/zabka.svg',
+    price: 8.93,
+    inStock: true,
+    image: '/product_card/5.jpg',
+  },
+  {
+    id: '6',
+    name: 'Гайка крыльчатая врезная М10 DIN 1624 оцинкованная',
+    category: 'nut',
+    parentCategory: 'stroitelnyj-krepyozh',
+    subcategory: 'nut',
+    material: 'Цинк',
+    brand: 'COMSOL',
+    brandLogo: '/card/logo/comsol.svg',
+    price: 13.54,
+    inStock: true,
+    image: '/product_card/6.jpg',
+  },
+  {
+    id: '7',
+    name: 'Анкер химический BIT-STICK 300 мл (полиэстер)',
+    category: 'chemical-anchor',
+    parentCategory: 'himicheskij-krepyozh',
+    subcategory: 'chemical-anchor',
+    material: 'Полиэстер',
+    brand: 'COMSOL',
+    brandLogo: '/card/logo/comsol.svg',
+    price: 2540.87,
+    inStock: false,
+    image: '/product_card/7.jpg',
+  },
+  {
+    id: '8',
+    name: 'Анкер химический VMU plus картридж 410 мл + 2 смесителя, винилэстеровая смола',
+    category: 'chemical-anchor',
+    parentCategory: 'himicheskij-krepyozh',
+    subcategory: 'chemical-anchor',
+    material: 'Винилэстеровая смола',
+    brand: 'COMSOL',
+    brandLogo: '/card/logo/comsol.svg',
+    price: 15.24,
+    inStock: true,
+    image: '/product_card/8.jpg',
+  },
+]
