@@ -26,7 +26,6 @@
     max-width: 100%;
   }
 
-  /* Hide scrollbar visually while preserving scroll functionality */
   html {
     scrollbar-width: none; /* Firefox */
   }

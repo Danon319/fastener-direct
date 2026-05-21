@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { motion, AnimatePresence } from 'motion/react'
 
 import { Heart } from '@/components/ui/icons'
+import useViewport from '@/hooks/useViewport'
 import { useCartStore } from '@/store/slices/cartSlice'
 import { useFavoritesStore } from '@/store/slices/favoritesSlice'
 import { cn } from '@/utils/cn'
@@ -180,6 +181,7 @@ FavoriteButton.propTypes = {
 
 export default function ProductCard({ product }) {
   const { formatted, kopecks } = formatPrice(product.price)
+  const { canHover } = useViewport()
 
   const inCart = useCartStore((s) => s.items.has(product.id))
   const cartQty = useCartStore((s) => s.items.get(product.id) || 0)
@@ -214,10 +216,14 @@ export default function ProductCard({ product }) {
   return (
     <Link
       to={`/product/${product.id}`}
-      className="flex max-h-[450px] max-w-[250px] flex-col overflow-hidden rounded-xl bg-white transition-shadow hover:shadow-md"
+      className={cn(
+        'flex max-h-[450px] max-w-[250px] flex-col overflow-hidden rounded-xl bg-white shadow-sm transition duration-200',
+        // Hover-эффект только на устройствах с курсором (canHover из useViewport)
+        canHover && 'hover:-translate-y-1 hover:shadow-lg'
+      )}
     >
-      {/* Фото — не более 40% высоты карточки */}
-      <div className="relative max-h-[40%] bg-white p-3">
+      {/* Фото — фиксированная высота, чтобы строго удерживать ≤40% от max-h карточки (180/450) */}
+      <div className="relative h-44 shrink-0 bg-white p-3">
         {/* Логотип бренда — верхний левый угол */}
         {product.brandLogo && (
           <img
@@ -231,38 +237,24 @@ export default function ProductCard({ product }) {
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="aspect-square w-full object-contain"
+          className="h-full w-full object-contain"
         />
       </div>
 
-      {/* Информация о товаре */}
-      <div className="flex flex-1 flex-col gap-2 px-4 pb-4">
-        <h3 className="line-clamp-3 font-sans text-sm font-medium leading-snug text-navy">
+      {/* Информация о товаре: цена → название → нижняя строка */}
+      <div className="flex flex-1 flex-col gap-2 px-4 pb-4 pt-3">
+        {/* Цена — крупный размер */}
+        <p className="font-sans text-navy">
+          <span className="text-3xl font-medium">{formatted}</span>
+          <span className="text-base text-muted">.{kopecks} &#8381;</span>
+        </p>
+
+        {/* Название — две строки, цвет navy */}
+        <h3 className="line-clamp-2 font-sans text-sm font-medium leading-snug text-navy">
           {product.name}
         </h3>
 
-        {/* Наличие */}
-        <div className="flex items-center gap-1.5">
-          <span
-            className={cn(
-              'inline-block h-1.5 w-1.5 rounded-full',
-              product.inStock ? 'bg-green-500' : 'bg-muted'
-            )}
-          />
-          <span
-            className={cn('font-sans text-xs', product.inStock ? 'text-green-600' : 'text-muted')}
-          >
-            {product.inStock ? 'В наличии' : 'Нет в наличии'}
-          </span>
-        </div>
-
-        {/* Цена */}
-        <p className="font-sans text-navy">
-          <span className="text-xl font-medium">{formatted}</span>
-          <span className="text-sm text-muted">.{kopecks} &#8381;</span>
-        </p>
-
-        {/* Счётчик количества и кнопка корзины */}
+        {/* Нижняя строка: либо счётчик+кнопка (в наличии), либо красное "Нет в наличии" (OOS) */}
         {product.inStock ? (
           <div className="mt-auto flex items-center gap-2">
             <QuantitySelector
@@ -270,12 +262,12 @@ export default function ProductCard({ product }) {
               onDecrement={handleDecrement}
               onIncrement={handleIncrement}
             />
-            <CartButton productId={product.id} inStock={product.inStock} quantity={localQty} />
+            <CartButton productId={product.id} inStock quantity={localQty} />
           </div>
         ) : (
-          <div className="mt-auto">
-            <CartButton productId={product.id} inStock={product.inStock} quantity={1} />
-          </div>
+          <p className="mt-auto text-center font-sans text-sm font-medium text-red">
+            Нет в наличии
+          </p>
         )}
       </div>
     </Link>

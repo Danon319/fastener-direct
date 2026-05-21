@@ -120,7 +120,7 @@ export default function CatalogPage() {
   const filtered = useMemo(() => {
     let result = PRODUCTS
 
-    // 1. Фильтр по URL-параметрам (2 уровня)
+    // 1. Фильтр по URL-параметрам
     if (category && subcategory) {
       const parent = CATEGORY_TREE.find((g) => g.slug === category)
       const sub = parent?.children.find((c) => c.slug === subcategory)
