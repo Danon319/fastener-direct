@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { motion, AnimatePresence } from 'motion/react'
@@ -208,16 +208,28 @@ export default function ProductCard({ product }) {
     }
   }, [inCart, cartQty, product.id, updateQuantity])
 
-  // Сброс локального количества при удалении из корзины
+  // Hotfix 7.13: при удалении товара из корзины переносим cartQty → localQty,
+  // чтобы видимое количество не «прыгало» обратно к 1 и при повторном добавлении
+  // ушло в корзину то значение, которое пользователь только что видел.
+  const prevCartQtyRef = useRef(0)
   useEffect(() => {
-    if (!inCart) setLocalQty(1)
-  }, [inCart])
+    if (inCart) {
+      prevCartQtyRef.current = cartQty
+    } else if (prevCartQtyRef.current > 0) {
+      setLocalQty(prevCartQtyRef.current)
+      prevCartQtyRef.current = 0
+    }
+  }, [inCart, cartQty])
 
   return (
     <Link
       to={`/product/${product.id}`}
       className={cn(
-        'flex max-h-[450px] max-w-[250px] flex-col overflow-hidden rounded-xl bg-white shadow-sm transition duration-200',
+        // Hotfix 7.6: фиксированная h-[450px] (а не max-h) — единая высота для OOS и in-stock карточек.
+        // Фото h-44 (176px) сохраняет ≤40% от высоты (176/450 = 39.1%).
+        // Hotfix 7.7: добавлен w-full — карточка занимает всю ширину grid-ячейки (до max-w-[250px]),
+        // иначе при отсутствии явной ширины карточка ужималась по содержимому.
+        'flex h-[450px] w-full max-w-[250px] flex-col overflow-hidden rounded-xl bg-white shadow-sm transition duration-200',
         // Hover-эффект только на устройствах с курсором (canHover из useViewport)
         canHover && 'hover:-translate-y-1 hover:shadow-lg'
       )}
@@ -262,7 +274,7 @@ export default function ProductCard({ product }) {
               onDecrement={handleDecrement}
               onIncrement={handleIncrement}
             />
-            <CartButton productId={product.id} inStock quantity={localQty} />
+            <CartButton productId={product.id} inStock quantity={displayQty} />
           </div>
         ) : (
           <p className="mt-auto text-center font-sans text-sm font-medium text-red">
