@@ -114,7 +114,7 @@ export const PRODUCTS = [
     material: 'Винилэстеровая смола',
     brand: 'COMSOL',
     brandLogo: '/card/logo/comsol.svg',
-    price: 15.24,
+    price: 1560.87,
     inStock: true,
     image: '/product_card/8.jpg',
   },

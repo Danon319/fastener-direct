@@ -28,17 +28,3 @@ export const CATEGORY_TREE = [
     children: [],
   },
 ]
-
-export const BREADCRUMB_LABELS = {
-  'stroitelnyj-krepyozh': 'Строительный крепёж',
-  ankery: 'Анкеры',
-  bolty: 'Болты',
-  vinty: 'Винты',
-  gaiki: 'Гайки',
-  'himicheskij-krepyozh': 'Химический крепёж',
-  'himicheskie-ankera': 'Химические анкера',
-  'germetik-i-silikon': 'Герметик и силикон',
-  'montazhnaya-pena': 'Монтажная пена',
-  'zhidkie-gvozdi': 'Жидкие гвозди',
-  'gruzovoj-krepyozh': 'Грузовой крепёж',
-}

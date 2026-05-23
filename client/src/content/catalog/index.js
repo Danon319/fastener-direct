@@ -1,3 +1,4 @@
-export { CATEGORY_TREE, BREADCRUMB_LABELS } from './categories'
+export { CATEGORY_TREE } from './categories'
 export { BRANDS } from './brands'
 export { PRODUCTS } from './products'
+export * from './helpers'
