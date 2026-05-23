@@ -1,8 +1,8 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'motion/react'
 
 import { IconButton, Arrow } from '@/components/ui'
-import { useViewport } from '@/hooks'
+import { useViewport, useMediaQuery } from '@/hooks'
 import { cn } from '@/utils/cn'
 import { SECTION_LABEL, SERVICES } from '@/content/serviceProgram'
 
@@ -20,24 +20,6 @@ const rowVariants = {
 const labelVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
-
-/**
- * @param {boolean} canHover
- * @returns {boolean} true — десктопный режим (>=lg + hover)
- */
-function useIsDesktop(canHover) {
-  const [width, setWidth] = useState(() =>
-    typeof window !== 'undefined' ? window.innerWidth : 1280
-  )
-
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  return width >= 1024 && canHover
 }
 
 // --- Строка для десктопа ---
@@ -129,7 +111,8 @@ function MobileRow({ service, index, isLast }) {
  */
 export default function ServiceProgramSection() {
   const { canHover } = useViewport()
-  const isDesktop = useIsDesktop(canHover)
+  const isLarge = useMediaQuery('(min-width: 1024px)', true)
+  const isDesktop = isLarge && canHover
   const [hoveredId, setHoveredId] = useState(null)
 
   const labelRef = useRef(null)

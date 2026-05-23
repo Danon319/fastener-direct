@@ -4,6 +4,7 @@ import { useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { motion } from 'motion/react'
 
+import { Checkbox } from '@/components/ui'
 import { Close } from '@/components/ui/icons'
 import FilterAccordion from './FilterAccordion'
 import { BRANDS } from '@/content/catalog'
@@ -88,45 +89,6 @@ PriceFilter.propTypes = {
   priceMax: PropTypes.string.isRequired,
   onPriceMinChange: PropTypes.func.isRequired,
   onPriceMaxChange: PropTypes.func.isRequired,
-}
-
-/** Кастомный чекбокс «Только в наличии» (нативный input скрыт, стили на span). */
-function AvailabilityFilter({ checked, onChange }) {
-  return (
-    <div>
-      <label className="flex cursor-pointer items-center gap-2.5 py-1.5">
-        <span
-          className={cn(
-            'h-4.5 w-4.5 flex shrink-0 items-center justify-center rounded border transition-colors',
-            checked ? 'border-red bg-red' : 'border-slate/30 bg-white'
-          )}
-          aria-hidden="true"
-        >
-          {checked && (
-            <svg
-              width={10}
-              height={10}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth={3}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-          )}
-        </span>
-        <input type="checkbox" checked={checked} onChange={onChange} className="sr-only" />
-        <span className="font-sans text-sm text-navy">Только в наличии</span>
-      </label>
-    </div>
-  )
-}
-
-AvailabilityFilter.propTypes = {
-  checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
 }
 
 export default function FilterSidebar({
@@ -228,7 +190,11 @@ export default function FilterSidebar({
             {/* Наличие */}
             <div className="border-t border-light pt-3">
               <p className="mb-1 font-sans text-sm font-medium text-navy">Наличие</p>
-              <AvailabilityFilter checked={stagedInStockOnly} onChange={onInStockToggle} />
+              <Checkbox
+                checked={stagedInStockOnly}
+                onChange={onInStockToggle}
+                label="Только в наличии"
+              />
             </div>
           </div>
         </div>

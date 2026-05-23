@@ -3,47 +3,8 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { motion, AnimatePresence } from 'motion/react'
 
+import { Checkbox } from '@/components/ui'
 import { ChevronDown } from '@/components/ui/icons'
-import { cn } from '@/utils/cn'
-
-/** Строка списка: видимый чекбокс + скрытый нативный input для a11y. */
-function Checkbox({ checked, onChange, label, indented }) {
-  return (
-    <label className={cn('flex cursor-pointer items-center gap-2.5 py-1.5', indented && 'pl-5')}>
-      <span
-        className={cn(
-          'h-4.5 w-4.5 flex shrink-0 items-center justify-center rounded border transition-colors',
-          checked ? 'border-red bg-red' : 'border-slate/30 bg-white'
-        )}
-        aria-hidden="true"
-      >
-        {checked && (
-          <svg
-            width={10}
-            height={10}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-            strokeWidth={3}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-        )}
-      </span>
-      <input type="checkbox" checked={checked} onChange={onChange} className="sr-only" />
-      <span className="font-sans text-sm text-navy">{label}</span>
-    </label>
-  )
-}
-
-Checkbox.propTypes = {
-  checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-  indented: PropTypes.bool,
-}
 
 export default function FilterAccordion({ title, items, selected, onToggle, isTree }) {
   const [open, setOpen] = useState(true)
@@ -84,51 +45,20 @@ export default function FilterAccordion({ title, items, selected, onToggle, isTr
 
                 return (
                   <div key={group.slug} className="pb-1">
-                    <label className="flex cursor-pointer items-center gap-2.5 py-1.5">
-                      <span
-                        className={cn(
-                          'h-4.5 w-4.5 flex shrink-0 items-center justify-center rounded border transition-colors',
-                          allChecked
-                            ? 'border-red bg-red'
-                            : someChecked
-                              ? 'border-red bg-white'
-                              : 'border-slate/30 bg-white'
-                        )}
-                        aria-hidden="true"
-                      >
-                        {allChecked && (
-                          <svg
-                            width={10}
-                            height={10}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="white"
-                            strokeWidth={3}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                        )}
-                        {someChecked && !allChecked && (
-                          <span className="block h-0.5 w-2 rounded bg-red" />
-                        )}
-                      </span>
-                      <input
-                        type="checkbox"
-                        checked={allChecked}
-                        onChange={() => {
-                          // Переключить все дочерние категории
-                          childKeys.forEach((k) => {
-                            const isSelected = selected.includes(k)
-                            if (allChecked && isSelected) onToggle(k)
-                            if (!allChecked && !isSelected) onToggle(k)
-                          })
-                        }}
-                        className="sr-only"
-                      />
-                      <span className="font-sans text-sm font-medium text-navy">{group.label}</span>
-                    </label>
+                    <Checkbox
+                      checked={allChecked}
+                      indeterminate={someChecked && !allChecked}
+                      onChange={() => {
+                        // Переключить все дочерние категории
+                        childKeys.forEach((k) => {
+                          const isSelected = selected.includes(k)
+                          if (allChecked && isSelected) onToggle(k)
+                          if (!allChecked && !isSelected) onToggle(k)
+                        })
+                      }}
+                      label={group.label}
+                      labelClassName="font-medium"
+                    />
 
                     {group.children.map((child) => (
                       <Checkbox
@@ -136,7 +66,7 @@ export default function FilterAccordion({ title, items, selected, onToggle, isTr
                         checked={selected.includes(child.categoryKey)}
                         onChange={() => onToggle(child.categoryKey)}
                         label={child.label}
-                        indented
+                        className="pl-5"
                       />
                     ))}
                   </div>

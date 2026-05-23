@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'motion/react'
 
 import Button from '@/components/ui/Button'
+import { GridLines } from '@/components/ui'
+import { useMediaQuery } from '@/hooks'
 import {
   LABEL,
   HEADING,
@@ -14,22 +16,6 @@ import {
   SPRING_CONFIG,
 } from '@/content/ourValues'
 
-const GRID_LINE_COLOR = '#d1d1d1'
-
-function useIsDesktop() {
-  const [isDesktop, setIsDesktop] = useState(() => {
-    if (typeof window === 'undefined') return true
-    return window.matchMedia('(min-width: 1024px)').matches
-  })
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)')
-    const handler = (e) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-  return isDesktop
-}
-
 function useViewportWidth() {
   const [width, setWidth] = useState(() =>
     typeof window === 'undefined' ? 1920 : window.innerWidth
@@ -40,28 +26,6 @@ function useViewportWidth() {
     return () => window.removeEventListener('resize', handler)
   }, [])
   return width
-}
-
-function GridOverlay() {
-  const lines = []
-  for (let i = 1; i < 15; i++) {
-    lines.push(
-      <div
-        key={i}
-        className="absolute bottom-0 top-0"
-        style={{
-          left: `${(i / 15) * 100}%`,
-          width: '1px',
-          backgroundColor: GRID_LINE_COLOR,
-        }}
-      />
-    )
-  }
-  return (
-    <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-      {lines}
-    </div>
-  )
 }
 
 function ValueCard({ title, description, isDesktop }) {
@@ -211,7 +175,7 @@ function CardsRow({ isDesktop }) {
  * Мобильный: стопкой с fade-in.
  */
 export default function OurValuesSection() {
-  const isDesktop = useIsDesktop()
+  const isDesktop = useMediaQuery('(min-width: 1024px)', true)
 
   return (
     <section
@@ -219,7 +183,7 @@ export default function OurValuesSection() {
       className="relative overflow-hidden rounded-t-2xl bg-tagDate font-sans"
       style={{ padding: isDesktop ? '96px 0 0 0' : '64px 0 64px 0' }}
     >
-      {isDesktop && <GridOverlay />}
+      {isDesktop && <GridLines columns={15} />}
 
       <div
         className="relative z-10 mx-auto max-w-7xl"

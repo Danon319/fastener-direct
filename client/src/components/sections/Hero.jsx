@@ -9,15 +9,15 @@
 // Tagline-машина живёт здесь (Hero — оркестратор фаз), сами анимированные
 // строки — в _TaglineLine. См. spec в Phase 4A prompt.
 //
-// Layout switch ≥1024px реализован локальным matchMedia-helper'ом:
-// на desktop "Faste" и tagline-блок «Direct» располагаются в две строки
-// (Faste — правый край левой половины, [tagline | Direct] — вторая),
-// на стacked (<1024px) — три отдельных строки. Один смонтированный
-// _TaglineLine в каждой роли (избегаем дублирования motion-divs).
-// Прецедент локального matchMedia — useCurtainColumns в MobileMenu.
+// Layout switch ≥1024px: на desktop "Faste" и tagline-блок «Direct»
+// располагаются в две строки (Faste — правый край левой половины,
+// [tagline | Direct] — вторая), на стacked (<1024px) — три отдельных
+// строки. Один смонтированный _TaglineLine в каждой роли (избегаем
+// дублирования motion-divs).
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import HeroHeader from '@/components/sections/HeroHeader'
+import { useMediaQuery } from '@/hooks'
 import { BIG_LEFT, BIG_RIGHT, TAGLINES } from '@/content/hero'
 
 import TaglineLine from './_TaglineLine'
@@ -29,24 +29,6 @@ const SWAP_GAP_MS = 10
 const LINE_STAGGER_MS = 150
 const FIRST_FADE_MS = 700
 
-// Локальный matchMedia-helper. Точка переключения layout — Tailwind lg (1024px).
-// Локальный, не выносится в общий хук — это узкий случай для одного компонента
-// (см. прецедент useCurtainColumns в MobileMenu).
-function useIsDesktop() {
-  const compute = () => {
-    if (typeof window === 'undefined') return false
-    return window.matchMedia('(min-width: 1024px)').matches
-  }
-  const [isDesktop, setIsDesktop] = useState(compute)
-  useEffect(() => {
-    const mql = window.matchMedia('(min-width: 1024px)')
-    const onChange = () => setIsDesktop(mql.matches)
-    mql.addEventListener('change', onChange)
-    return () => mql.removeEventListener('change', onChange)
-  }, [])
-  return isDesktop
-}
-
 /**
  * Hero-секция главной страницы.
  *
@@ -54,7 +36,7 @@ function useIsDesktop() {
  * заголовок «Faste / Direct» + ротирующийся tagline (4 пары × ~5s).
  */
 export default function Hero() {
-  const isDesktop = useIsDesktop()
+  const isDesktop = useMediaQuery('(min-width: 1024px)', false)
 
   const [heroVisible, setHeroVisible] = useState(true)
   const [idx, setIdx] = useState(0)
