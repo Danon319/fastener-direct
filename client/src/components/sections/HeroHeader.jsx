@@ -119,7 +119,12 @@ function HeroHeader() {
             {langLabel}
           </NavPill>
           {NAV_LINKS.map((item) => (
-            <NavPill key={item.label} variant="heroWhite" to={item.to}>
+            <NavPill
+              key={item.label}
+              variant="heroWhite"
+              className="hidden lg:inline-flex"
+              to={item.to}
+            >
               {item.label}
             </NavPill>
           ))}

@@ -1,22 +1,20 @@
 // src/components/sections/Header.jsx
 //
-// Fixed белый pill с backdrop-blur. Появляется через translateY анимацию
-// когда scrollY проходит порог (window.innerHeight = высота dummy-Hero
-// или реальной Hero-секции в Phase 4).
-//
-// Та же UX-логика что и в HeroHeader (Burger <md, nav-pills md+, MenuBtn
-// всегда), но визуально это ПИЛЛ а не absolute прозрачный header.
+// Fixed pill-хедер. Появляется через opacity-fade:
+//   visible = (Home → Hero пройден ; иначе true) AND direction === 'down' AND !overlayActive.
+// При открытом overlay (MobileMenu/FilterSidebar) — фриз, opacity не пересчитывается.
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { Logo, IconButton, NavPill } from '@/components/ui'
 import { Burger, Plus, User } from '@/components/ui/icons'
 import { useUiStore } from '@/store/slices/uiSlice'
+import { useScrollDirection } from '@/hooks'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
 
 /**
- * Fixed pill-хедер. Появляется по скроллу через translateY.
+ * Fixed pill-хедер с opacity-fade появлением.
  */
 function Header() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
@@ -24,26 +22,24 @@ function Header() {
   const isHome = location.pathname === '/'
   const [lang, setLang] = useState('ru')
   const [burgerOpen, setBurgerOpen] = useState(false)
-  // SSR-safe: реальный scrollY синхронизируется через useEffect ниже после mount.
-  const [scrollY, setScrollY] = useState(0)
   const dropdownRef = useRef(null)
   const triggerRef = useRef(null)
 
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
   const langLabel = LANG_LABELS[lang] // TODO: i18n — реальные переводы после Phase 6
 
-  // На главной: показывать после прокрутки на высоту экрана (Hero).
-  // На других страницах: всегда видим.
+  // На главной — порог = высота Hero. На остальных страницах — 0 (Hero нет).
+  const heroThreshold = typeof window !== 'undefined' ? window.innerHeight : 0
+  const { isPastThreshold, direction } = useScrollDirection({
+    threshold: isHome ? heroThreshold : 0,
+  })
 
-  useEffect(() => {
-    const onScroll = () => {
-      setScrollY(window.scrollY)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  const visible = !isHome || scrollY > window.innerHeight
+  // Видимость = (Hero пройден на Home, иначе true) AND направление вниз.
+  // Freeze при открытом overlay (MobileMenu/FilterSidebar) — неявный:
+  // оба компонента блокируют body-scroll → scroll-события не приходят →
+  // direction/isPastThreshold не меняются → visible не пересчитывается.
+  const heroPassed = isHome ? isPastThreshold : true
+  const visible = heroPassed && direction === 'down'
 
   // Закрытие dropdown: тот же механизм что в HeroHeader.
   useEffect(() => {
@@ -74,8 +70,8 @@ function Header() {
         'py-1',
         'bg-white/95 backdrop-blur-md',
         'rounded-full',
-        'transition-transform duration-[400ms] ease-in-out',
-        visible ? 'translate-y-0' : '-translate-y-[calc(100%+60px)]'
+        'transition-opacity duration-300',
+        visible ? 'opacity-100' : 'pointer-events-none opacity-0'
       )}
     >
       {/* mobile: только марка */}
@@ -133,7 +129,12 @@ function Header() {
             {langLabel}
           </NavPill>
           {NAV_LINKS.map((item) => (
-            <NavPill key={item.label} variant="default" to={item.to}>
+            <NavPill
+              key={item.label}
+              variant="default"
+              className="hidden lg:inline-flex"
+              to={item.to}
+            >
               {item.label}
             </NavPill>
           ))}
