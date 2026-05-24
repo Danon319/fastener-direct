@@ -1,4 +1,10 @@
-import { partners, GRID_MIN_CARD, GRID_GAP, GRID_MAX_WIDTH } from '@/content/partners'
+import {
+  partners,
+  SECTION_TITLE,
+  GRID_MIN_CARD,
+  GRID_GAP,
+  GRID_MAX_WIDTH,
+} from '@/content/partners'
 
 /**
  * Карточка партнёра с hover-эффектом через Tailwind group-hover.
@@ -22,15 +28,15 @@ function PartnerCard({ partner }) {
         {/* Левая часть: текст + теги */}
         <div className="flex min-w-0 flex-col justify-between overflow-hidden">
           <div className="min-w-0 overflow-hidden">
-            <h4 className="truncate text-[clamp(1.05rem,4.8cqw,1.35rem)] font-medium leading-tight tracking-wide text-slate transition-colors duration-300 group-hover:text-white">
+            <h4 className="truncate text-[clamp(1.575rem,7.2cqw,2.025rem)] font-medium leading-tight tracking-wide text-slate transition-colors duration-300 group-hover:text-white">
               {name}
             </h4>
-            <p className="mt-1.5 line-clamp-3 text-[clamp(0.6875rem,3.19cqw,0.88rem)] leading-relaxed text-muted transition-colors duration-300 group-hover:text-white">
+            <p className="mt-1.5 line-clamp-3 text-[clamp(0.89rem,4.15cqw,1.14rem)] leading-relaxed text-muted transition-colors duration-300 group-hover:text-white">
               {spec}
             </p>
           </div>
 
-          <div className="mt-2 flex flex-col flex-wrap items-start gap-1">
+          <div className="mt-2 flex flex-col flex-wrap items-start gap-0.5">
             <span className="rounded-md bg-tagDate px-3 py-1.5 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-navy transition-colors duration-300 group-hover:bg-white/90">
               {year}
             </span>
@@ -50,7 +56,7 @@ function PartnerCard({ partner }) {
           </div>
           <div
             className="flex items-center justify-center overflow-hidden rounded-lg bg-white"
-            style={{ flex: '0 0 clamp(38px, 19%, 54px)' }}
+            style={{ flex: '0 0 clamp(61px, 30.4%, 86px)' }}
           >
             <img
               src={logo}
@@ -71,6 +77,7 @@ export default function PartnersSection() {
   return (
     <section className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-10 lg:py-24">
       <div className="mx-auto" style={{ maxWidth: GRID_MAX_WIDTH }}>
+        <p className="mb-8 text-2xl font-medium text-muted">{SECTION_TITLE}</p>
         <div
           className="grid justify-center"
           style={{

@@ -40,13 +40,20 @@ function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
       onMouseEnter={() => onHover(service.id)}
       onMouseLeave={onLeave}
       className={cn(
-        'grid cursor-pointer grid-cols-[1.25fr_1fr_auto] items-center gap-6 rounded-2xl px-6 py-6 md:py-8 lg:py-20',
-        'transition-[background-color,border-color] duration-300',
-        isHovered ? 'bg-red' : 'bg-transparent',
-        !isLast && 'border-b',
-        !isLast && (isHovered ? 'border-transparent' : 'border-divider')
+        'relative grid cursor-pointer grid-cols-[1.25fr_1fr_auto] items-center gap-6 rounded-2xl px-6 py-6 md:py-8 lg:py-20',
+        'transition-colors duration-300',
+        isHovered ? 'bg-red' : 'bg-transparent'
       )}
     >
+      {!isLast && (
+        <span
+          aria-hidden
+          className={cn(
+            'pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-divider transition-opacity duration-300',
+            isHovered && 'opacity-0'
+          )}
+        />
+      )}
       <span
         className={cn(
           'text-xl font-medium transition-colors duration-300 md:text-2xl lg:text-5xl',

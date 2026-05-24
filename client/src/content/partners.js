@@ -1,3 +1,5 @@
+export const SECTION_TITLE = 'Наши партнёры'
+
 export const GRID_MIN_CARD = 420
 export const GRID_GAP = 18
 export const GRID_MAX_COLS = 3
