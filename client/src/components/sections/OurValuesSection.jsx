@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'motion/react'
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 
 import Button from '@/components/ui/Button'
 import { GridLines } from '@/components/ui'
@@ -13,7 +13,6 @@ import {
   ANIMATION_DELTA_Y_PX,
   SCROLL_SPACER_HEIGHT_PX,
   SECTION_TAIL_HEIGHT_PX,
-  SPRING_CONFIG,
 } from '@/content/ourValues'
 
 function useViewportWidth() {
@@ -142,14 +141,12 @@ function DesktopCardsAnimated() {
 
   const { scrollYProgress } = useScroll({
     target: animationZoneRef,
-    offset: ['start 50%', 'end end'],
+    offset: ['start 50%', 'end 50%'],
   })
 
   const deltaX = (viewportWidth * ANIMATION_DELTA_X_VW) / 100
-  const rawX = useTransform(scrollYProgress, [0, 1], [0, deltaX])
-  const rawY = useTransform(scrollYProgress, [0, 1], [0, ANIMATION_DELTA_Y_PX])
-  const x = useSpring(rawX, SPRING_CONFIG)
-  const y = useSpring(rawY, SPRING_CONFIG)
+  const x = useTransform(scrollYProgress, [0, 1], [0, deltaX])
+  const y = useTransform(scrollYProgress, [0, 1], [0, ANIMATION_DELTA_Y_PX])
 
   // При reduced-motion отключаем scroll-driven диагональ — карточки сразу в финальном статичном ряду.
   const motionStyle = shouldReduceMotion
