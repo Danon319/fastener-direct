@@ -60,9 +60,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         className={cn(
           // Hotfix 7.18: min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
           'flex h-11 min-w-11 items-center justify-center transition-colors',
-          isFirst
-            ? 'cursor-default text-slateHover/40'
-            : 'cursor-pointer text-light hover:text-red'
+          isFirst ? 'cursor-default text-slateHover/40' : 'cursor-pointer text-light hover:text-red'
         )}
       >
         <ChevronDown size={18} className="rotate-90" />
@@ -100,9 +98,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         className={cn(
           // Hotfix 7.18: min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
           'flex h-11 min-w-11 items-center justify-center transition-colors',
-          isLast
-            ? 'cursor-default text-slateHover/40'
-            : 'cursor-pointer text-light hover:text-red'
+          isLast ? 'cursor-default text-slateHover/40' : 'cursor-pointer text-light hover:text-red'
         )}
       >
         <ChevronDown size={18} className="-rotate-90" />

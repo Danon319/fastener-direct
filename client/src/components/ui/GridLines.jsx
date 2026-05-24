@@ -26,10 +26,7 @@ export default function GridLines({ columns, colorClass = 'bg-gridLine', classNa
   }
 
   return (
-    <div
-      aria-hidden="true"
-      className={cn('pointer-events-none absolute inset-0', className)}
-    >
+    <div aria-hidden="true" className={cn('pointer-events-none absolute inset-0', className)}>
       {lines}
     </div>
   )

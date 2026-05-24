@@ -1,7 +1,7 @@
 // Hotfix 7.19: единый хук, инкапсулирующий filter / sort / pagination состояние и
 // pipeline для CatalogPage. CatalogPage становится тонким UI-оркестратором,
 // а вся бизнес-логика по фильтрации товаров сосредоточена здесь.
-import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { PRODUCTS, findCategoryBySlug, findSubcategoryBySlug } from '@/content/catalog'
@@ -219,9 +219,14 @@ export default function useCatalogFilters() {
   }, [category, subcategory, appliedFilters, searchQuery, activeSort])
 
   // Hotfix 7.7: при смене входов фильтрации сбрасываем страницу на 1.
-  useEffect(() => {
+  // Паттерн «Adjust state while rendering» из React docs — корректный способ
+  // синхронизировать одно состояние с другим без useEffect (filtered меняется
+  // по ссылке тогда и только тогда, когда меняется любой из её deps).
+  const [prevFiltered, setPrevFiltered] = useState(filtered)
+  if (prevFiltered !== filtered) {
+    setPrevFiltered(filtered)
     setCurrentPage(1)
-  }, [category, subcategory, appliedFilters, searchQuery, activeSort])
+  }
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE))
 

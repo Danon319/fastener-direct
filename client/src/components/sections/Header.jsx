@@ -34,7 +34,7 @@ function Header() {
 
   // На главной: показывать после прокрутки на высоту экрана (Hero).
   // На других страницах: всегда видим.
-  
+
   useEffect(() => {
     const onScroll = () => {
       setScrollY(window.scrollY)
@@ -43,7 +43,7 @@ function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const visible = !isHome || (scrollY > window.innerHeight)
+  const visible = !isHome || scrollY > window.innerHeight
 
   // Закрытие dropdown: тот же механизм что в HeroHeader.
   useEffect(() => {

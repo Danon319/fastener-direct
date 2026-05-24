@@ -53,9 +53,7 @@ export default function Checkbox({
         {indeterminate && <span className="block h-0.5 w-2 rounded bg-red" />}
       </span>
       <input type="checkbox" checked={checked} onChange={onChange} className="sr-only" />
-      {label && (
-        <span className={cn('font-sans text-sm text-navy', labelClassName)}>{label}</span>
-      )}
+      {label && <span className={cn('font-sans text-sm text-navy', labelClassName)}>{label}</span>}
     </label>
   )
 }
