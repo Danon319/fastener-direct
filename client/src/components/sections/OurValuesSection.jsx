@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, useSpring } from 'motion/react'
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'motion/react'
 
 import Button from '@/components/ui/Button'
 import { GridLines } from '@/components/ui'
@@ -71,12 +71,16 @@ function TopBlockDesktop() {
       </p>
       <div
         className="flex flex-col"
+        // -0.52vw — slope «отрицательного» сдвига колонки заголовка, чтобы текст оптически
+        // выравнивался с маркой по референсу Atout (карточки уезжают левее на широких экранах).
         style={{ gridColumn: '7 / 16', marginLeft: 'clamp(-12px, -0.25rem + -0.52vw, -20px)' }}
       >
         <h2
           className="font-medium leading-tight text-slate"
           style={{
+            // 2.46vw — slope роста кегля заголовка между min/max брейкпоинтами (48–72px).
             fontSize: 'clamp(3rem, 1.43rem + 2.46vw, 4.5rem)',
+            // 13.39vw — slope ширины колонки заголовка (560–800px), синхронизирован с кеглем.
             maxWidth: 'clamp(560px, 26.79rem + 13.39vw, 800px)',
           }}
         >
@@ -108,15 +112,21 @@ function TopBlockMobile() {
 }
 
 function MobileCardsStack() {
+  const shouldReduceMotion = useReducedMotion()
   return (
     <div className="flex flex-col gap-6 px-6">
       {CARDS.map((card, i) => (
         <motion.div
           key={card.id}
-          initial={{ opacity: 0, y: 40 }}
+          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: i * 0.05 }}
+          transition={{
+            duration: 0.6,
+            ease: 'easeOut',
+            // 0.05с — шаг stagger между соседними карточками; убираем при reduced-motion.
+            delay: shouldReduceMotion ? 0 : i * 0.05,
+          }}
         >
           <ValueCard title={card.title} description={card.description} isDesktop={false} />
         </motion.div>
@@ -128,6 +138,7 @@ function MobileCardsStack() {
 function DesktopCardsAnimated() {
   const animationZoneRef = useRef(null)
   const viewportWidth = useViewportWidth()
+  const shouldReduceMotion = useReducedMotion()
 
   const { scrollYProgress } = useScroll({
     target: animationZoneRef,
@@ -140,19 +151,15 @@ function DesktopCardsAnimated() {
   const x = useSpring(rawX, SPRING_CONFIG)
   const y = useSpring(rawY, SPRING_CONFIG)
 
+  // При reduced-motion отключаем scroll-driven диагональ — карточки сразу в финальном статичном ряду.
+  const motionStyle = shouldReduceMotion
+    ? { display: 'flex', gap: '1px', paddingLeft: '22vw' }
+    : { display: 'flex', gap: '1px', paddingLeft: '22vw', x, y, willChange: 'transform' }
+
   return (
     <>
       <div ref={animationZoneRef} className="relative">
-        <motion.div
-          style={{
-            display: 'flex',
-            gap: '1px',
-            paddingLeft: '22vw',
-            x,
-            y,
-            willChange: 'transform',
-          }}
-        >
+        <motion.div style={motionStyle}>
           {CARDS.map((card) => (
             <ValueCard key={card.id} title={card.title} description={card.description} isDesktop />
           ))}

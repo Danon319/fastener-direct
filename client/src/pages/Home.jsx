@@ -25,7 +25,7 @@ export default function Home() {
 
       <motion.section
         style={{ y: lift }}
-        className="relative z-10 rounded-2xl bg-light shadow-[0_-8px_30px_rgba(0,0,0,0.12),0_8px_30px_rgba(0,0,0,0.12)] will-change-transform"
+        className="relative z-wrapper rounded-2xl bg-light shadow-[0_-8px_30px_rgba(0,0,0,0.12),0_8px_30px_rgba(0,0,0,0.12)] will-change-transform"
       >
         <OurValuesSection />
         <ServiceProgramSection />

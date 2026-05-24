@@ -33,11 +33,17 @@ export default function Logo({
   className,
 }) {
   const resolvedSize = size ?? SCALE_DEFAULT_SIZE[scale]
+  // Все коэффициенты подобраны от размера марки и выверены визуально по референсу.
+  // 0.44 — высота строки «Fastener Direct» относительно знака (≈44% от его высоты).
   const nameFs = Math.round(resolvedSize * 0.44)
+  // 0.15 — высота subline «CORPORATE CONSTRUCT»; min 6px чтобы не превращалась в нечитаемые точки.
   const subFs = Math.max(6, Math.round(resolvedSize * 0.15))
+  // 0.037 / 0.056 — letter-spacing (трекинг) имени и subline; min — предохранитель от слипания на мелких размерах.
   const nameLs = Math.max(0.5, resolvedSize * 0.037)
   const subLs = Math.max(1, resolvedSize * 0.056)
+  // 0.22 — горизонтальный gap между маркой и текстовым блоком.
   const gap = Math.round(resolvedSize * 0.22)
+  // 0.11 — вертикальный отступ subline от имени, выравнивает baseline по крестовине знака.
   const subMt = Math.max(2, Math.round(resolvedSize * 0.11))
 
   const Tag = to ? Link : onClick ? 'button' : 'div'

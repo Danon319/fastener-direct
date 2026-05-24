@@ -1,6 +1,7 @@
 export { default as useViewport } from './useViewport'
 export { default as useCountUp } from './useCountUp'
 export { default as useScrollDirection } from './useScrollDirection'
-export { useMomentumLift } from './useMomentumLift'
+export { useMomentumLift, AMPLITUDE_PX } from './useMomentumLift'
 export { default as useElementHeight } from './useElementHeight'
 export { default as useMediaQuery } from './useMediaQuery'
+export { default as useCatalogFilters } from './useCatalogFilters'

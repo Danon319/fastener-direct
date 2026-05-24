@@ -7,7 +7,7 @@
 // Y/opacity анимируются за полную длительность 750ms.
 // Blur активен только последние/первые 300ms (peak 2px), чтобы убрать
 // «туман» в покое и при первом появлении.
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'
@@ -41,11 +41,14 @@ function TaglineLine({
   allowWrap = false,
   marginTop = 0,
 }) {
+  const shouldReduceMotion = useReducedMotion()
   const lineDelay = lineDelayMs / 1000
 
   let target
   let transition
 
+  // Hotfix 7.18: при prefers-reduced-motion дегрейдим до opacity-only без y-drift и blur.
+  // Видимое финальное состояние всегда достижимо — никаких скрытых элементов.
   switch (phase) {
     case 'mount':
       target = { y: 0, opacity: 0, filter: 'blur(0px)' }
@@ -53,38 +56,46 @@ function TaglineLine({
       break
     case 'firstEnter':
       target = { y: 0, opacity: 1, filter: 'blur(0px)' }
-      transition = { duration: 0.7, ease: EASE }
+      transition = { duration: shouldReduceMotion ? 0 : 0.7, ease: EASE }
       break
     case 'rest':
       target = { y: 0, opacity: 1, filter: 'blur(0px)' }
       transition = { duration: 0 }
       break
     case 'exiting':
-      target = { y: -Y_OFFSET, opacity: 0, filter: `blur(${BLUR_PEAK})` }
-      transition = {
-        y: { duration: Y_DURATION, delay: lineDelay, ease: EASE },
-        opacity: { duration: Y_DURATION, delay: lineDelay, ease: EASE },
-        // Blur срабатывает только на последних 300ms exit'а: дольше держим
-        // чёткий текст, потом размываем под конец.
-        filter: {
-          duration: BLUR_DURATION,
-          delay: lineDelay + (Y_DURATION - BLUR_DURATION),
-          ease: EASE,
-        },
-      }
+      target = shouldReduceMotion
+        ? { y: 0, opacity: 0, filter: 'blur(0px)' }
+        : { y: -Y_OFFSET, opacity: 0, filter: `blur(${BLUR_PEAK})` }
+      transition = shouldReduceMotion
+        ? { opacity: { duration: Y_DURATION, delay: lineDelay, ease: EASE } }
+        : {
+            y: { duration: Y_DURATION, delay: lineDelay, ease: EASE },
+            opacity: { duration: Y_DURATION, delay: lineDelay, ease: EASE },
+            // Blur срабатывает только на последних 300ms exit'а: дольше держим
+            // чёткий текст, потом размываем под конец.
+            filter: {
+              duration: BLUR_DURATION,
+              delay: lineDelay + (Y_DURATION - BLUR_DURATION),
+              ease: EASE,
+            },
+          }
       break
     case 'preEnter':
-      target = { y: Y_OFFSET, opacity: 0, filter: `blur(${BLUR_PEAK})` }
+      target = shouldReduceMotion
+        ? { y: 0, opacity: 0, filter: 'blur(0px)' }
+        : { y: Y_OFFSET, opacity: 0, filter: `blur(${BLUR_PEAK})` }
       transition = { duration: 0 }
       break
     case 'entering':
       target = { y: 0, opacity: 1, filter: 'blur(0px)' }
-      transition = {
-        y: { duration: Y_DURATION, delay: lineDelay, ease: EASE },
-        opacity: { duration: Y_DURATION, delay: lineDelay, ease: EASE },
-        // Blur снимается за первые 300ms entering — после этого текст чёткий.
-        filter: { duration: BLUR_DURATION, delay: lineDelay, ease: EASE },
-      }
+      transition = shouldReduceMotion
+        ? { opacity: { duration: Y_DURATION, delay: lineDelay, ease: EASE } }
+        : {
+            y: { duration: Y_DURATION, delay: lineDelay, ease: EASE },
+            opacity: { duration: Y_DURATION, delay: lineDelay, ease: EASE },
+            // Blur снимается за первые 300ms entering — после этого текст чёткий.
+            filter: { duration: BLUR_DURATION, delay: lineDelay, ease: EASE },
+          }
       break
     default:
       target = { y: 0, opacity: 1, filter: 'blur(0px)' }

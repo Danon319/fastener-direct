@@ -140,7 +140,7 @@ export default function FilterSidebar({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.25 }}
-        className="fixed inset-0 z-[500] bg-black/40"
+        className="fixed inset-0 z-filterBackdrop bg-black/40"
         onClick={onClose}
       />
 
@@ -150,7 +150,7 @@ export default function FilterSidebar({
         animate={{ x: 0 }}
         exit={{ x: '-100%' }}
         transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-        className="fixed inset-y-0 left-0 z-[501] flex w-[85vw] max-w-xs flex-col bg-white font-sans shadow-xl"
+        className="fixed inset-y-0 left-0 z-filterPanel flex w-[85vw] max-w-xs flex-col bg-white font-sans shadow-xl"
       >
         {/* Шапка */}
         <div className="flex items-center justify-between border-b border-light px-5 py-4">

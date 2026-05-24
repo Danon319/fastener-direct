@@ -63,7 +63,7 @@ export default function Button({
     <span
       className={cn(
         'relative shrink-0 overflow-hidden rounded-full border-[1.5px] border-white/35 bg-red will-change-transform',
-        'transition-[transform,background-color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]',
+        'transition-[transform,background-color,border-color] duration-300 ease-in-out',
         'group-hover/btn:scale-[1.18] group-hover/btn:border-transparent group-hover/btn:bg-redHover',
         circleSize
       )}
@@ -83,7 +83,7 @@ export default function Button({
       <span
         className={cn(
           'absolute left-1/2 top-1/2 -translate-x-[250%] -translate-y-1/2',
-          'transition-transform duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
+          'transition-transform duration-[400ms] ease-in-out',
           'group-hover/btn:-translate-x-1/2'
         )}
       >

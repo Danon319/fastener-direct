@@ -156,7 +156,7 @@ export default function Hero() {
 
   return (
     <section
-      className="fixed left-0 right-0 top-0 z-[1] h-screen w-full overflow-hidden"
+      className="fixed left-0 right-0 top-0 z-hero h-screen w-full overflow-hidden"
       style={{ visibility: heroVisible ? 'visible' : 'hidden' }}
     >
       <video

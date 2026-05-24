@@ -68,7 +68,7 @@ const IconButton = React.forwardRef(function IconButton(
       style={{ width: size, height: size }}
       className={cn(
         'relative flex shrink-0 items-center justify-center overflow-hidden rounded-full',
-        'transition-[transform,background-color,border-color,opacity] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
+        'transition-[transform,background-color,border-color,opacity] duration-[400ms] ease-in-out',
         'group/iconbtn',
         // Базовые стили варианта
         variant === 'light' && [

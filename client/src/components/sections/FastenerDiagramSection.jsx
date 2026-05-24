@@ -1,5 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
-import { motion, useInView, useMotionValue, useMotionValueEvent, animate } from 'motion/react'
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+  animate,
+} from 'motion/react'
 
 import {
   TITLE,
@@ -159,13 +166,18 @@ function SegmentPath({ trail, lead, color, visible }) {
 }
 
 function DecoRing({ r, delay, inView }) {
+  const shouldReduceMotion = useReducedMotion()
   const d = r * 2
   const pct = (d / SIZE) * 100
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.92 }}
+      initial={shouldReduceMotion ? { opacity: 0, scale: 1 } : { opacity: 0, scale: 0.92 }}
       animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.92 }}
-      transition={{ delay, duration: 0.8, ease: 'easeOut' }}
+      transition={{
+        delay: shouldReduceMotion ? 0 : delay,
+        duration: shouldReduceMotion ? 0.2 : 0.8,
+        ease: 'easeOut',
+      }}
       style={{
         position: 'absolute',
         width: pct + '%',
@@ -183,6 +195,7 @@ function DecoRing({ r, delay, inView }) {
 }
 
 function DonutLabel({ i, inView }) {
+  const shouldReduceMotion = useReducedMotion()
   const { lx, ly, isRight } = computeLabelPos(i)
   const { label, pct, color } = sectors[i]
   const xPct = (lx / SIZE) * 100
@@ -196,7 +209,8 @@ function DonutLabel({ i, inView }) {
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : { opacity: 0 }}
       transition={{
-        delay: segTimings[i].startAt,
+        // При reduced-motion убираем stagger по startAt — все flag-labels проявляются одновременно.
+        delay: shouldReduceMotion ? 0 : segTimings[i].startAt,
         duration: 0.4,
         ease: 'easeOut',
       }}
@@ -206,6 +220,8 @@ function DonutLabel({ i, inView }) {
         transform: 'translateY(-100%)',
         borderBottom: `1px solid ${color}`,
         paddingBottom: 8,
+        // i === 2: сектор справа-снизу с самой длинной flag-line (85px против стандартных 20px),
+        // лейбл уводится за пределы donut'а чтобы не наезжать на соседние подписи.
         paddingLeft: isRight ? (i === 2 ? 85 : 20) : 0,
         paddingRight: isRight ? 0 : 20,
         whiteSpace: 'nowrap',
@@ -229,13 +245,14 @@ function DonutLabel({ i, inView }) {
 }
 
 function LegendItem({ i, inView }) {
+  const shouldReduceMotion = useReducedMotion()
   const { label, pct, color } = sectors[i]
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : { opacity: 0 }}
       transition={{
-        delay: segTimings[i].startAt,
+        delay: shouldReduceMotion ? 0 : segTimings[i].startAt,
         duration: 0.4,
         ease: 'easeOut',
       }}
@@ -263,6 +280,7 @@ function Legend({ inView }) {
 }
 
 function DonutChart({ inView, bp }) {
+  const shouldReduceMotion = useReducedMotion()
   const progress = useMotionValue(0)
   const [progressTime, setProgressTime] = useState(0)
 
@@ -272,12 +290,18 @@ function DonutChart({ inView, bp }) {
 
   useEffect(() => {
     if (!inView) return
+    // При reduced-motion пропускаем двухфазную skate+grow анимацию: ставим прогресс в конец,
+    // segments сразу рисуются в полном виде.
+    if (shouldReduceMotion) {
+      progress.set(TOTAL_DURATION)
+      return
+    }
     const controls = animate(progress, TOTAL_DURATION, {
       duration: TOTAL_DURATION,
       ease: 'linear',
     })
     return () => controls.stop()
-  }, [inView, progress])
+  }, [inView, progress, shouldReduceMotion])
 
   const maxWidth =
     bp === 'xl' ? 900 : bp === 'lg' ? 720 : bp === 'md' ? 680 : 'clamp(320px, 90vw, 520px)'

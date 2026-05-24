@@ -35,7 +35,7 @@ export default function CatalogToolbar({
 
   return (
     <div
-      className="fixed left-0 right-0 top-1/2 z-[1] -translate-y-1/2"
+      className="fixed left-0 right-0 top-1/2 z-hero -translate-y-1/2"
       style={{ visibility: visible ? 'visible' : 'hidden' }}
     >
       <div className="flex justify-center px-4">

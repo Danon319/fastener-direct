@@ -10,7 +10,7 @@
 // количество DOM-элементов через CSS), исключение из правила
 // "адаптив только Tailwind".
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 
 import { Logo, IconButton, Button } from '@/components/ui'
 import { Close } from '@/components/ui/icons'
@@ -64,7 +64,9 @@ function useMobileMenuLogoSize() {
 function MobileMenuContent({ onClose }) {
   const columns = useCurtainColumns()
   const logoSize = useMobileMenuLogoSize()
-  const [curtainDone, setCurtainDone] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+  // Hotfix 7.18: при reduced-motion пропускаем curtain — контент-слой виден сразу.
+  const [curtainDone, setCurtainDone] = useState(() => shouldReduceMotion)
   const overlayRef = useRef(null)
 
   const curtainTotalMs = ((columns - 1) * CURTAIN_STEP + CURTAIN_DURATION) * 1000
@@ -91,9 +93,10 @@ function MobileMenuContent({ onClose }) {
 
   // Переключаем curtainDone после завершения последней колонки.
   useEffect(() => {
+    if (shouldReduceMotion) return
     const t = setTimeout(() => setCurtainDone(true), curtainTotalMs)
     return () => clearTimeout(t)
-  }, [curtainTotalMs])
+  }, [curtainTotalMs, shouldReduceMotion])
 
   // Ловушка фокуса. Ручная реализация (без внешних библиотек).
   useEffect(() => {
@@ -122,9 +125,14 @@ function MobileMenuContent({ onClose }) {
   }, [curtainDone])
 
   const fadeIn = (delay) => ({
-    initial: { opacity: 0, y: 10 },
+    initial: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: CONTENT_FADE_DURATION, delay, ease: 'easeOut' },
+    transition: {
+      duration: CONTENT_FADE_DURATION,
+      // При reduced-motion обнуляем stagger-задержки — пункты появляются одновременно.
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: 'easeOut',
+    },
   })
 
   return (
@@ -133,7 +141,7 @@ function MobileMenuContent({ onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label="Главное меню"
-      className="fixed inset-0 z-[1000] overflow-hidden font-sans text-white"
+      className="fixed inset-0 z-menu overflow-hidden font-sans text-white"
       style={{
         backgroundColor: curtainDone ? '#d03328' : 'transparent',
         boxShadow: curtainDone

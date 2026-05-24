@@ -24,7 +24,8 @@ function Header() {
   const isHome = location.pathname === '/'
   const [lang, setLang] = useState('ru')
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const [scrollY, setScrollY] = useState(window.scrollY)
+  // SSR-safe: реальный scrollY синхронизируется через useEffect ниже после mount.
+  const [scrollY, setScrollY] = useState(0)
   const dropdownRef = useRef(null)
   const triggerRef = useRef(null)
 
@@ -67,13 +68,13 @@ function Header() {
   return (
     <header
       className={cn(
-        'fixed z-[100] flex h-14 items-center justify-between',
+        'fixed z-header flex h-14 items-center justify-between',
         'left-2.5 right-2.5 top-2.5 md:left-7 md:right-7 md:top-7 lg:left-12 lg:right-12 lg:top-12',
         'pl-3 pr-1.5 md:pl-5 md:pr-1.5',
         'py-1',
         'bg-white/95 backdrop-blur-md',
         'rounded-full',
-        'transition-transform duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
+        'transition-transform duration-[400ms] ease-in-out',
         visible ? 'translate-y-0' : '-translate-y-[calc(100%+60px)]'
       )}
     >

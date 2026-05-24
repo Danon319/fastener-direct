@@ -15,7 +15,7 @@
 
 import { useScroll, useVelocity, useSpring, useTransform, useReducedMotion } from 'motion/react'
 
-const AMPLITUDE_PX = 100
+export const AMPLITUDE_PX = 100
 const VELOCITY_CAP = 2500 // пикс/с — скорость скролла выше этого значения ограничивается
 
 export function useMomentumLift() {

@@ -10,7 +10,7 @@ function TopStrip() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 right-0 top-0 z-[200] h-[3px] bg-red"
+      className="pointer-events-none fixed left-0 right-0 top-0 z-topstrip h-[3px] bg-red"
     />
   )
 }

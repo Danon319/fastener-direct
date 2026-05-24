@@ -57,7 +57,7 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
         className={cn(
           'inline-flex flex-shrink-0 items-center overflow-hidden',
           arrowDims.h,
-          'transition-[width,margin-right] duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
+          'transition-[width,margin-right] duration-[350ms] ease-in-out',
           hover ? cn(arrowDims.w, 'mr-2.5') : 'w-0'
         )}
       >
