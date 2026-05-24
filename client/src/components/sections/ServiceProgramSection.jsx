@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { motion, useInView } from 'motion/react'
 
 import { IconButton, Arrow } from '@/components/ui'
-import { useViewport, useMediaQuery } from '@/hooks'
+import { useViewport, useBreakpoint } from '@/hooks'
 import { cn } from '@/utils/cn'
 import { SECTION_LABEL, SERVICES } from '@/content/serviceProgram'
 
@@ -111,7 +111,7 @@ function MobileRow({ service, index, isLast }) {
  */
 export default function ServiceProgramSection() {
   const { canHover } = useViewport()
-  const isLarge = useMediaQuery('(min-width: 1024px)', true)
+  const isLarge = useBreakpoint('lg', true)
   const isDesktop = isLarge && canHover
   const [hoveredId, setHoveredId] = useState(null)
 

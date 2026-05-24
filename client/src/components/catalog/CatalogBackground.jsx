@@ -2,7 +2,7 @@
 // светлая заливка + вертикальные колоночные линии (паттерн как в OurValuesSection).
 // Не скроллится с контентом, лежит за всеми остальными слоями (z-0).
 import { GridLines } from '@/components/ui'
-import { useMediaQuery } from '@/hooks'
+import { useBreakpoint } from '@/hooks'
 
 const DESKTOP_COLUMNS = 15
 const MOBILE_COLUMNS = 6
@@ -13,7 +13,7 @@ const MOBILE_COLUMNS = 6
  * Цвет фона совпадает с OurValuesSection (#E4E8EC = tagDate). Декоративный, не интерактивный.
  */
 export default function CatalogBackground() {
-  const isDesktop = useMediaQuery('(min-width: 1024px)', true)
+  const isDesktop = useBreakpoint('lg', true)
   const columns = isDesktop ? DESKTOP_COLUMNS : MOBILE_COLUMNS
 
   return (

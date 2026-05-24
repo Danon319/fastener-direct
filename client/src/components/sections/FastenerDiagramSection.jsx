@@ -8,6 +8,7 @@ import {
   animate,
 } from 'motion/react'
 
+import { useBreakpoint, useMediaQuery } from '@/hooks'
 import {
   TITLE,
   sectors,
@@ -120,34 +121,6 @@ function computeLabelPos(i) {
   const ly = CY + OR * Math.sin(ma)
   const isRight = Math.cos(ma) >= 0
   return { lx, ly, isRight }
-}
-
-/* ─── Хук брейкпоинта (локальный для этого файла) ─── */
-
-function useBreakpoint() {
-  const getBp = () => {
-    if (typeof window === 'undefined') return 'xl'
-    const w = window.innerWidth
-    if (w >= 1440) return 'xl'
-    if (w >= 1024) return 'lg'
-    if (w >= 768) return 'md'
-    return 'sm'
-  }
-
-  const [bp, setBp] = useState(getBp)
-
-  useEffect(() => {
-    const queries = [
-      window.matchMedia('(min-width: 1440px)'),
-      window.matchMedia('(min-width: 1024px)'),
-      window.matchMedia('(min-width: 768px)'),
-    ]
-    const update = () => setBp(getBp())
-    queries.forEach((q) => q.addEventListener('change', update))
-    return () => queries.forEach((q) => q.removeEventListener('change', update))
-  }, [])
-
-  return bp
 }
 
 /* ─── Подкомпоненты ─── */
@@ -370,7 +343,10 @@ function DonutChart({ inView, bp }) {
 export default function FastenerDiagramSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.2 })
-  const bp = useBreakpoint()
+  const is1440 = useMediaQuery('(min-width: 1440px)', true)
+  const isLg = useBreakpoint('lg', true)
+  const isMd = useBreakpoint('md', true)
+  const bp = is1440 ? 'xl' : isLg ? 'lg' : isMd ? 'md' : 'sm'
 
   const isVertical = bp === 'md' || bp === 'sm'
 

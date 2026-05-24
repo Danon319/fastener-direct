@@ -17,7 +17,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import HeroHeader from '@/components/sections/HeroHeader'
-import { useMediaQuery } from '@/hooks'
+import { useBreakpoint } from '@/hooks'
 import { BIG_LEFT, BIG_RIGHT, TAGLINES } from '@/content/hero'
 
 import TaglineLine from './_TaglineLine'
@@ -36,7 +36,7 @@ const FIRST_FADE_MS = 700
  * заголовок «Faste / Direct» + ротирующийся tagline (4 пары × ~5s).
  */
 export default function Hero() {
-  const isDesktop = useMediaQuery('(min-width: 1024px)', false)
+  const isDesktop = useBreakpoint('lg', false)
 
   const [heroVisible, setHeroVisible] = useState(true)
   const [idx, setIdx] = useState(0)

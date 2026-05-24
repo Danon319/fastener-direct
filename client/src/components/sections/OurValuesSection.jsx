@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'mo
 
 import Button from '@/components/ui/Button'
 import { GridLines } from '@/components/ui'
-import { useMediaQuery } from '@/hooks'
+import { useBreakpoint } from '@/hooks'
 import {
   LABEL,
   HEADING,
@@ -182,7 +182,7 @@ function CardsRow({ isDesktop }) {
  * Мобильный: стопкой с fade-in.
  */
 export default function OurValuesSection() {
-  const isDesktop = useMediaQuery('(min-width: 1024px)', true)
+  const isDesktop = useBreakpoint('lg', true)
 
   return (
     <section
