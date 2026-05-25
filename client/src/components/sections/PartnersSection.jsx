@@ -19,10 +19,10 @@ function PartnerCard({ partner }) {
       onClick={(e) => {
         if (!url) e.preventDefault()
       }}
-      className="group block overflow-hidden rounded-xl bg-card p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition-all duration-300 @container hover:bg-slateHover hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] sm:aspect-[440/290] lg:p-6"
+      className="group block overflow-hidden rounded-xl bg-card p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition-all duration-300 @container hover:bg-slateHover hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] sm:aspect-[437/288] lg:p-6"
     >
       <div
-        className="grid h-full gap-3 lg:gap-4"
+        className="grid h-full gap-5 lg:gap-6"
         style={{ gridTemplateColumns: '1fr clamp(140px, 40%, 175px)' }}
       >
         {/* Левая часть: текст + теги */}
@@ -36,14 +36,14 @@ function PartnerCard({ partner }) {
             </p>
           </div>
 
-          <div className="mt-2 flex flex-col flex-wrap items-start gap-0.5">
-            <span className="rounded-md bg-tagDate px-2 py-0 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-navy transition-colors duration-300 group-hover:bg-white/90">
+          <div className="mt-4 flex flex-col flex-wrap items-start gap-0.5">
+            <span className="rounded-md bg-tagDate px-2 py-0 text-[clamp(12px,3.2cqw,14px)] font-medium text-navy transition-colors duration-300 group-hover:bg-white/90">
               {year}
             </span>
-            <span className="rounded-md bg-red px-2 py-0 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-white">
+            <span className="rounded-md bg-red px-2 py-0 text-[clamp(12px,3.2cqw,14px)] font-medium text-white">
               {category}
             </span>
-            <span className="rounded-md bg-navy px-2 py-0 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-white">
+            <span className="rounded-md bg-navy px-2 py-0 text-[clamp(12px,3.2cqw,14px)] font-medium text-white">
               {city}
             </span>
           </div>
@@ -56,7 +56,7 @@ function PartnerCard({ partner }) {
           </div>
           <div
             className="flex items-center justify-center overflow-hidden rounded-lg bg-white"
-            style={{ flex: '0 0 clamp(61px, 30.4%, 86px)' }}
+            style={{ flex: '0 0 clamp(52px, 24%, 70px)' }}
           >
             <img
               src={logo}
@@ -77,7 +77,7 @@ export default function PartnersSection() {
   return (
     <section className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-10 lg:py-24">
       <div className="mx-auto" style={{ maxWidth: GRID_MAX_WIDTH }}>
-        <p className="mb-8 text-2xl font-medium text-muted">{SECTION_TITLE}</p>
+        <p className="mb-8 text-2xl font-medium text-slateHover">{SECTION_TITLE}</p>
         <div
           className="grid justify-center"
           style={{

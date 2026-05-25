@@ -1,6 +1,6 @@
 export const SECTION_TITLE = 'Наши партнёры'
 
-export const GRID_MIN_CARD = 420
+export const GRID_MIN_CARD = 437
 export const GRID_GAP = 18
 export const GRID_MAX_COLS = 3
 export const GRID_MAX_WIDTH = GRID_MIN_CARD * GRID_MAX_COLS + GRID_GAP * (GRID_MAX_COLS - 1)
