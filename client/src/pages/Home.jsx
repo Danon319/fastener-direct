@@ -8,6 +8,7 @@ import NumbersSection from '@/components/sections/NumbersSection'
 import OurValuesSection from '@/components/sections/OurValuesSection'
 import PartnersSection from '@/components/sections/PartnersSection'
 import ServiceProgramSection from '@/components/sections/ServiceProgramSection'
+import { SupportButton } from '@/components/ui'
 import { useMomentumLift, useElementHeight } from '@/hooks'
 
 export default function Home() {
@@ -36,6 +37,8 @@ export default function Home() {
       </motion.section>
 
       <div style={{ height: footerH }} aria-hidden="true" />
+
+      <SupportButton />
     </>
   )
 }
