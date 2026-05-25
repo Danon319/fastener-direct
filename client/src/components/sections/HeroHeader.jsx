@@ -11,7 +11,7 @@
 // MenuBtn (серый круг с +) — виден всегда, открывает MobileMenu (Zustand).
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'motion/react'
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 
 import { Logo, IconButton, NavPill } from '@/components/ui'
 import { Burger, Plus, User } from '@/components/ui/icons'
@@ -19,16 +19,42 @@ import { useUiStore } from '@/store/slices/uiSlice'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
 
+// Hotfix K: координированный mount-entrance — стартует после tagline (Hero выдаёт ~100ms на tagline).
+// Длиннее duration и мягче ease — элементы «выплывают» снизу без рывка.
+const ENTRANCE_DURATION = 0.9
+const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
+const ENTRANCE_Y = 40
+const ENTRANCE_STAGGER = 0.1
+const ENTRANCE_BASE_DELAY = 0.2
+
 /**
  * Fixed хедер поверх Hero-секции (transparent + white text).
  * Уезжает вверх со скроллом через useScroll/useTransform.
  */
 function HeroHeader() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
+  const shouldReduceMotion = useReducedMotion()
   const [lang, setLang] = useState('ru')
   const [burgerOpen, setBurgerOpen] = useState(false)
   const dropdownRef = useRef(null)
   const triggerRef = useRef(null)
+
+  // Index-based delay для последовательного entrance. Невидимые на текущем breakpoint
+  // элементы сохраняют свой индекс — это допустимый компромисс ради простоты.
+  const entranceProps = (index) => {
+    if (shouldReduceMotion) {
+      return { initial: false }
+    }
+    return {
+      initial: { opacity: 0, y: ENTRANCE_Y },
+      animate: { opacity: 1, y: 0 },
+      transition: {
+        duration: ENTRANCE_DURATION,
+        delay: ENTRANCE_BASE_DELAY + index * ENTRANCE_STAGGER,
+        ease: ENTRANCE_EASE,
+      },
+    }
+  }
 
   // HeroHeader уезжает вверх вместе с потоком страницы: translateY = -scrollY.
   // Lenis обновляет window.scrollY интерполированно, поэтому движение плавное.
@@ -68,18 +94,21 @@ function HeroHeader() {
         'px-3 py-4 md:px-8 md:py-8 lg:px-12 lg:py-12'
       )}
     >
-      {/* mobile: только марка */}
-      <span className="md:hidden">
-        <Logo variant="mark" theme="light" to="/" />
-      </span>
-      {/* desktop: full в уменьшенном пресете */}
-      <span className="hidden md:block">
-        <Logo variant="full" theme="light" scale="sm" to="/" />
-      </span>
+      {/* Logo (index 0): mount-entrance — обёртка motion, варианты mobile/desktop внутри */}
+      <motion.div {...entranceProps(0)}>
+        {/* mobile: только марка */}
+        <span className="md:hidden">
+          <Logo variant="mark" theme="light" to="/" />
+        </span>
+        {/* desktop: full в уменьшенном пресете */}
+        <span className="hidden md:block">
+          <Logo variant="full" theme="light" scale="sm" to="/" />
+        </span>
+      </motion.div>
 
       <nav className="relative flex items-center gap-2 md:gap-0">
-        {/* Мобильный (<md): Burger + выпадающее меню */}
-        <div className="md:hidden">
+        {/* Мобильный (<md): Burger + выпадающее меню (index 1) */}
+        <motion.div className="md:hidden" {...entranceProps(1)}>
           <IconButton
             ref={triggerRef}
             variant="filled"
@@ -122,33 +151,44 @@ function HeroHeader() {
               </DropdownItem>
             </div>
           )}
-        </div>
+        </motion.div>
 
-        {/* Десктоп (md+): nav-pills инлайн */}
+        {/* Десктоп (md+): nav-pills инлайн (Lang i=1, NavLinks i=2..4, Account i=5) */}
         <div className="hidden md:flex md:items-center">
-          <NavPill variant="heroLang" className="md:px-5 md:py-3 md:text-base" onClick={toggleLang}>
-            {langLabel}
-          </NavPill>
-          {NAV_LINKS.map((item) => (
-            <NavPill
-              key={item.label}
-              variant="heroWhite"
-              className="hidden lg:inline-flex lg:px-5 lg:py-3 lg:text-base"
-              to={item.to}
-            >
-              {item.label}
+          <motion.div {...entranceProps(1)}>
+            <NavPill variant="heroLang" className="md:px-5 md:py-3 md:text-base" onClick={toggleLang}>
+              {langLabel}
             </NavPill>
+          </motion.div>
+          {NAV_LINKS.map((item, i) => (
+            <motion.div
+              key={item.label}
+              className="hidden lg:inline-flex"
+              {...entranceProps(2 + i)}
+            >
+              <NavPill
+                variant="heroWhite"
+                className="lg:px-5 lg:py-3 lg:text-base"
+                to={item.to}
+              >
+                {item.label}
+              </NavPill>
+            </motion.div>
           ))}
-          <NavPill variant="red" className="md:px-5 md:py-3 md:text-base" to={ACCOUNT_LINK.to}>
-            <User size={18} className="text-white" />
-            {ACCOUNT_LINK.label}
-          </NavPill>
+          <motion.div {...entranceProps(5)}>
+            <NavPill variant="red" className="md:px-5 md:py-3 md:text-base" to={ACCOUNT_LINK.to}>
+              <User size={18} className="text-white" />
+              {ACCOUNT_LINK.label}
+            </NavPill>
+          </motion.div>
         </div>
 
-        {/* MenuBtn — серый круг с +, всегда виден, открывает MobileMenu */}
-        <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={() => setMenuOpen(true)}>
-          <Plus />
-        </IconButton>
+        {/* MenuBtn — серый круг с +, всегда виден, открывает MobileMenu (index 6) */}
+        <motion.div {...entranceProps(6)}>
+          <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={() => setMenuOpen(true)}>
+            <Plus />
+          </IconButton>
+        </motion.div>
       </nav>
     </motion.header>
   )

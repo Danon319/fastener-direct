@@ -15,6 +15,32 @@ import {
   SECTION_TAIL_HEIGHT_PX,
 } from '@/content/ourValues'
 
+// Hotfix K: общий entrance — fade-up 900ms, 100ms stagger, whileInView once.
+// Длиннее duration и мягче ease — элементы «выплывают» снизу без рывка.
+const ENTRANCE_DURATION = 0.9
+const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
+const ENTRANCE_Y = 40
+const ENTRANCE_STAGGER = 0.1
+
+function useEntranceProps() {
+  const shouldReduceMotion = useReducedMotion()
+  return (index) => {
+    if (shouldReduceMotion) {
+      return { initial: false }
+    }
+    return {
+      initial: { opacity: 0, y: ENTRANCE_Y },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true, amount: 0.3 },
+      transition: {
+        duration: ENTRANCE_DURATION,
+        delay: index * ENTRANCE_STAGGER,
+        ease: ENTRANCE_EASE,
+      },
+    }
+  }
+}
+
 function useViewportWidth() {
   const [width, setWidth] = useState(() =>
     typeof window === 'undefined' ? 1920 : window.innerWidth
@@ -54,6 +80,7 @@ function ValueCard({ title, description, isDesktop }) {
 }
 
 function TopBlockDesktop() {
+  const entrance = useEntranceProps()
   return (
     <div
       style={{
@@ -62,19 +89,21 @@ function TopBlockDesktop() {
         columnGap: '15px',
       }}
     >
-      <p
+      <motion.p
+        {...entrance(0)}
         className="text-2xl font-medium leading-none text-slateHover"
         style={{ gridColumn: '1 / span 3' }}
       >
         {LABEL}
-      </p>
+      </motion.p>
       <div
         className="flex flex-col"
         // -0.52vw — slope «отрицательного» сдвига колонки заголовка, чтобы текст оптически
         // выравнивался с маркой по референсу Atout (карточки уезжают левее на широких экранах).
         style={{ gridColumn: '7 / 16', marginLeft: 'clamp(-12px, -0.25rem + -0.52vw, -20px)' }}
       >
-        <h2
+        <motion.h2
+          {...entrance(1)}
           className="font-medium leading-tight text-slate"
           style={{
             // 2.46vw — slope роста кегля заголовка между min/max брейкпоинтами (48–72px).
@@ -84,28 +113,35 @@ function TopBlockDesktop() {
           }}
         >
           {HEADING}
-        </h2>
-        <div className="mt-12">
+        </motion.h2>
+        <motion.div {...entrance(2)} className="mt-12">
           <Button text={BUTTON_TEXT} to="/about" />
-        </div>
+        </motion.div>
       </div>
     </div>
   )
 }
 
 function TopBlockMobile() {
+  const entrance = useEntranceProps()
   return (
     <div className="flex flex-col gap-6 pl-2">
-      <p className="text-xl font-medium leading-tight text-slateHover">{LABEL}</p>
-      <h2
+      <motion.p
+        {...entrance(0)}
+        className="text-xl font-medium leading-tight text-slateHover"
+      >
+        {LABEL}
+      </motion.p>
+      <motion.h2
+        {...entrance(1)}
         className="font-medium leading-tight text-slate"
         style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)' }}
       >
         {HEADING}
-      </h2>
-      <div className="mt-6">
+      </motion.h2>
+      <motion.div {...entrance(2)} className="mt-6">
         <Button text={BUTTON_TEXT} to="/about" />
-      </div>
+      </motion.div>
     </div>
   )
 }

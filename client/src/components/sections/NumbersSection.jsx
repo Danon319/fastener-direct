@@ -1,30 +1,30 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion, useInView } from 'motion/react'
+import { motion, useInView, useReducedMotion } from 'motion/react'
 import PropTypes from 'prop-types'
 
 import { useViewport, useCountUp } from '@/hooks'
-import {
-  COUNT_DURATION,
-  LINE_DURATION,
-  STAGGER_DELAY_S,
-  STATS_ROW1,
-  STATS_ROW2,
-} from '@/content/numbers'
+import { COUNT_DURATION, LINE_DURATION, STATS_ROW1, STATS_ROW2 } from '@/content/numbers'
 
 // Линия стартует позже, чтобы закончиться в тот же момент что и счётчик.
 const LINE_START_DELAY = (COUNT_DURATION - LINE_DURATION) / 1000
+
+// Hotfix K: общий entrance — все числа fade-up синхронно (без stagger между собой).
+// Длиннее duration и мягче ease — числа «выплывают» снизу.
+const ENTRANCE_DURATION = 0.9
+const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
+const ENTRANCE_Y = 40
 
 /**
  * Одна статистическая ячейка: вертикальная линия + число (count-up) + подпись.
  *
  * @param {Object}  props
- * @param {number}  props.value        - Целевое число.
- * @param {string}  props.suffix       - Суффикс после числа (например «+», «ч», «лет»).
- * @param {string}  props.label        - Подпись под числом.
- * @param {number}  props.delay        - Задержка entrance-анимации (fade+rise) в секундах.
- * @param {boolean} props.inView       - Секция в viewport — все счётчики стартуют одновременно.
+ * @param {number}  props.value              - Целевое число.
+ * @param {string}  props.suffix             - Суффикс после числа (например «+», «ч», «лет»).
+ * @param {string}  props.label              - Подпись под числом.
+ * @param {boolean} props.inView             - Секция в viewport — все счётчики стартуют одновременно.
+ * @param {boolean} props.shouldReduceMotion - Флаг сниженного движения.
  */
-function StatItem({ value, suffix, label, delay, inView }) {
+function StatItem({ value, suffix, label, inView, shouldReduceMotion }) {
   const [countStart, setCountStart] = useState(false)
 
   // Все счётчики стартуют одновременно — без разброса между элементами.
@@ -36,6 +36,14 @@ function StatItem({ value, suffix, label, delay, inView }) {
 
   const num = useCountUp(value, COUNT_DURATION, countStart)
   const formatted = value >= 1000 ? num.toLocaleString('ru-RU') : num
+
+  const contentMotion = shouldReduceMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: ENTRANCE_Y },
+        animate: { opacity: inView ? 1 : 0, y: inView ? 0 : ENTRANCE_Y },
+        transition: { duration: ENTRANCE_DURATION, ease: ENTRANCE_EASE },
+      }
 
   return (
     <div className="relative min-w-0 py-2 pl-3.5 md:py-3 md:pl-5 lg:py-4 lg:pl-6">
@@ -50,12 +58,8 @@ function StatItem({ value, suffix, label, delay, inView }) {
         }}
       />
 
-      {/* Содержимое — staggered fade + rise через motion */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 16 }}
-        transition={{ duration: 0.7, ease: 'easeOut', delay: delay + 0.15 }}
-      >
+      {/* Содержимое — синхронный fade-up для всех чисел секции */}
+      <motion.div {...contentMotion}>
         <div className="mb-2 whitespace-nowrap font-sans text-6xl font-normal leading-none tracking-tight text-white lg:text-9xl">
           {formatted}
           {suffix}
@@ -70,8 +74,8 @@ StatItem.propTypes = {
   value: PropTypes.number.isRequired,
   suffix: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  delay: PropTypes.number.isRequired,
   inView: PropTypes.bool.isRequired,
+  shouldReduceMotion: PropTypes.bool.isRequired,
 }
 
 /**
@@ -81,6 +85,7 @@ StatItem.propTypes = {
  */
 export default function NumbersSection() {
   const { isTouch } = useViewport()
+  const shouldReduceMotion = useReducedMotion()
   const sectionRef = useRef(null)
   // Один observer на секцию — все счётчики запускаются в один момент.
   const inView = useInView(sectionRef, { once: true, amount: isTouch ? 0.2 : 0.3 })
@@ -91,14 +96,24 @@ export default function NumbersSection() {
         {/* Строка 1 */}
         <div className="mb-6 grid grid-cols-1 gap-6 md:mb-12 md:grid-cols-2 md:gap-16 lg:mb-16 lg:gap-24">
           {STATS_ROW1.map((stat, i) => (
-            <StatItem key={`r1-${i}`} {...stat} delay={i * STAGGER_DELAY_S} inView={inView} />
+            <StatItem
+              key={`r1-${i}`}
+              {...stat}
+              inView={inView}
+              shouldReduceMotion={shouldReduceMotion}
+            />
           ))}
         </div>
 
         {/* Строка 2 — смещена вправо на десктопе */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-16 md:pl-16 lg:gap-24 lg:pl-32">
           {STATS_ROW2.map((stat, i) => (
-            <StatItem key={`r2-${i}`} {...stat} delay={0.3 + i * STAGGER_DELAY_S} inView={inView} />
+            <StatItem
+              key={`r2-${i}`}
+              {...stat}
+              inView={inView}
+              shouldReduceMotion={shouldReduceMotion}
+            />
           ))}
         </div>
       </div>

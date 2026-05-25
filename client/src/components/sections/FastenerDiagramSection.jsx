@@ -349,9 +349,11 @@ export default function FastenerDiagramSection() {
   const bp = is1440 ? 'xl' : isLg ? 'lg' : isMd ? 'md' : 'sm'
 
   const isVertical = bp === 'md' || bp === 'sm'
+  const shouldReduceMotion = useReducedMotion()
 
-  const titleInitial = isVertical ? { opacity: 0, y: 20 } : { opacity: 0, x: -20 }
-  const titleAnimate = inView ? { opacity: 1, x: 0, y: 0 } : titleInitial
+  // Hotfix K: общий entrance — fade-up y:40→0 «выплывает» снизу мягко (expo-out ease).
+  const titleInitial = shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+  const titleAnimate = inView ? { opacity: 1, y: 0 } : titleInitial
 
   return (
     <section
@@ -368,7 +370,7 @@ export default function FastenerDiagramSection() {
         <motion.p
           initial={titleInitial}
           animate={titleAnimate}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.9, ease: [0.22, 1, 0.36, 1] }}
           className={
             'relative z-10 text-xl font-medium leading-normal text-red md:text-2xl lg:text-xl xl:text-2xl' +
             (isVertical ? ' text-center' : ' text-left')

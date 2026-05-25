@@ -1,26 +1,17 @@
 import { useRef, useState } from 'react'
-import { motion, useInView } from 'motion/react'
+import { motion, useInView, useReducedMotion } from 'motion/react'
 
 import { IconButton, Arrow } from '@/components/ui'
 import { useViewport, useBreakpoint } from '@/hooks'
 import { cn } from '@/utils/cn'
 import { SECTION_LABEL, SERVICES } from '@/content/serviceProgram'
 
-const ENTRANCE_STAGGER = 0.12
-
-const rowVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut', delay: i * ENTRANCE_STAGGER },
-  }),
-}
-
-const labelVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
+// Hotfix K: общий entrance — fade-up 900ms, 100ms stagger, single inView для всей секции.
+// Длиннее duration и мягче ease — элементы «выплывают» снизу без рывка.
+const ENTRANCE_DURATION = 0.9
+const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
+const ENTRANCE_Y = 40
+const ENTRANCE_STAGGER = 0.1
 
 // --- Dual-arrow swap (паттерн из Button.jsx) ---
 
@@ -54,19 +45,25 @@ function DualArrow({ size = 14, className }) {
 
 // --- Строка для десктопа ---
 
-function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
+function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast, inView, shouldReduceMotion }) {
   const isHovered = hoveredId === service.id
 
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.15 })
+  // Hotfix K: единый inView для секции, delay = (index + 1) * 0.1s.
+  const motionProps = shouldReduceMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: ENTRANCE_Y },
+        animate: inView ? { opacity: 1, y: 0 } : { opacity: 0, y: ENTRANCE_Y },
+        transition: {
+          duration: ENTRANCE_DURATION,
+          delay: (index + 1) * ENTRANCE_STAGGER,
+          ease: ENTRANCE_EASE,
+        },
+      }
 
   return (
     <motion.div
-      ref={ref}
-      variants={rowVariants}
-      custom={index}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
+      {...motionProps}
       onMouseEnter={() => onHover(service.id)}
       onMouseLeave={onLeave}
       className={cn(
@@ -115,17 +112,22 @@ function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
 
 // --- Строка для мобильного / планшета ---
 
-function MobileRow({ service, index, isLast }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.3 })
+function MobileRow({ service, index, isLast, inView, shouldReduceMotion }) {
+  const motionProps = shouldReduceMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: ENTRANCE_Y },
+        animate: inView ? { opacity: 1, y: 0 } : { opacity: 0, y: ENTRANCE_Y },
+        transition: {
+          duration: ENTRANCE_DURATION,
+          delay: (index + 1) * ENTRANCE_STAGGER,
+          ease: ENTRANCE_EASE,
+        },
+      }
 
   return (
     <motion.div
-      ref={ref}
-      variants={rowVariants}
-      custom={index}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
+      {...motionProps}
       className={cn('flex flex-col gap-4 py-8 md:py-10', !isLast && 'border-b border-divider')}
     >
       <h3 className="text-xl font-medium text-navy md:text-2xl">{service.title}</h3>
@@ -150,26 +152,33 @@ export default function ServiceProgramSection() {
   const { canHover } = useViewport()
   const isLarge = useBreakpoint('lg', true)
   const isDesktop = isLarge && canHover
+  const shouldReduceMotion = useReducedMotion()
   const [hoveredId, setHoveredId] = useState(null)
 
-  const labelRef = useRef(null)
-  const labelInView = useInView(labelRef, { once: true, amount: 0.3 })
+  // Hotfix K: единый observer на всю секцию — label и карточки стартуют от одного тригера.
+  const sectionRef = useRef(null)
+  const inView = useInView(sectionRef, { once: true, amount: 0.2 })
+
+  const labelProps = shouldReduceMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: ENTRANCE_Y },
+        animate: inView ? { opacity: 1, y: 0 } : { opacity: 0, y: ENTRANCE_Y },
+        transition: { duration: ENTRANCE_DURATION, ease: ENTRANCE_EASE },
+      }
 
   return (
-    <section className="bg-white px-4 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
+    <section ref={sectionRef} className="bg-white px-4 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
       <div className={cn('mx-auto max-w-7xl lg:px-12', isDesktop && 'grid grid-cols-3 gap-12')}>
-        {/* Label */}
+        {/* Label (t=0) */}
         <motion.p
-          ref={labelRef}
-          variants={labelVariants}
-          initial="hidden"
-          animate={labelInView ? 'visible' : 'hidden'}
+          {...labelProps}
           className={cn('text-2xl font-medium text-muted', !isDesktop && 'mb-8')}
         >
           {SECTION_LABEL}
         </motion.p>
 
-        {/* Rows */}
+        {/* Rows: stagger 0.1s начиная с t=0.1s */}
         <div className={isDesktop ? 'col-span-2' : ''}>
           {SERVICES.map((service, i) =>
             isDesktop ? (
@@ -181,6 +190,8 @@ export default function ServiceProgramSection() {
                 onHover={setHoveredId}
                 onLeave={() => setHoveredId(null)}
                 isLast={i === SERVICES.length - 1}
+                inView={inView}
+                shouldReduceMotion={shouldReduceMotion}
               />
             ) : (
               <MobileRow
@@ -188,6 +199,8 @@ export default function ServiceProgramSection() {
                 service={service}
                 index={i}
                 isLast={i === SERVICES.length - 1}
+                inView={inView}
+                shouldReduceMotion={shouldReduceMotion}
               />
             )
           )}

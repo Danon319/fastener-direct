@@ -15,6 +15,7 @@
 // строки. Один смонтированный _TaglineLine в каждой роли (избегаем
 // дублирования motion-divs).
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
 
 import { useBreakpoint } from '@/hooks'
 import { BIG_LEFT, BIG_RIGHT, TAGLINES } from '@/content/hero'
@@ -28,6 +29,13 @@ const SWAP_GAP_MS = 10
 const LINE_STAGGER_MS = 150
 const FIRST_FADE_MS = 700
 
+// Hotfix K: координированный entrance — Faste/Direct в t=0, tagline в t=100ms.
+// Длиннее duration и мягче ease — элементы «выплывают» из-под линии, без рывка.
+const ENTRANCE_DURATION = 0.9
+const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
+const ENTRANCE_Y = 40
+const TAGLINE_ENTRANCE_DELAY_S = 0.1
+
 /**
  * Hero-секция главной страницы.
  *
@@ -36,6 +44,7 @@ const FIRST_FADE_MS = 700
  */
 export default function Hero() {
   const isDesktop = useBreakpoint('lg', false)
+  const shouldReduceMotion = useReducedMotion()
 
   const [heroVisible, setHeroVisible] = useState(true)
   const [idx, setIdx] = useState(0)
@@ -153,6 +162,17 @@ export default function Hero() {
   const taglineFontDesktop = 'text-5xl xl:text-6xl'
   const taglineFontStacked = 'text-lg sm:text-2xl md:text-4xl'
 
+  // Mount-based entrance: Faste/Direct в t=0, tagline стартует через initialDelay внутри firstEnter.
+  const bigEntranceInitial = shouldReduceMotion
+    ? { opacity: 1, y: 0 }
+    : { opacity: 0, y: ENTRANCE_Y }
+  const bigEntranceAnimate = { opacity: 1, y: 0 }
+  const bigEntranceTransition = {
+    duration: shouldReduceMotion ? 0 : ENTRANCE_DURATION,
+    ease: ENTRANCE_EASE,
+  }
+  const taglineInitialDelay = shouldReduceMotion ? 0 : TAGLINE_ENTRANCE_DELAY_S
+
   return (
     <section
       className="fixed left-0 right-0 top-0 z-hero h-screen w-full overflow-hidden"
@@ -175,7 +195,14 @@ export default function Hero() {
           <>
             {/* Row 1: «Faste» — правый край левой половины. */}
             <div className="w-1/2 text-right">
-              <span className={`${bigBaseClass} ${bigSizeDesktop}`}>{BIG_LEFT}</span>
+              <motion.span
+                initial={bigEntranceInitial}
+                animate={bigEntranceAnimate}
+                transition={bigEntranceTransition}
+                className={`${bigBaseClass} ${bigSizeDesktop}`}
+              >
+                {BIG_LEFT}
+              </motion.span>
             </div>
 
             {/* Строка 2: [tagline 50%] [Direct flex-1]. */}
@@ -188,6 +215,7 @@ export default function Hero() {
                     colorClass="text-white"
                     fontSizeClass={taglineFontDesktop}
                     lineDelayMs={0}
+                    initialDelay={taglineInitialDelay}
                     align="right"
                   />
                   <TaglineLine
@@ -196,13 +224,21 @@ export default function Hero() {
                     colorClass="text-red"
                     fontSizeClass={taglineFontDesktop}
                     lineDelayMs={LINE_STAGGER_MS}
+                    initialDelay={taglineInitialDelay}
                     align="right"
                     marginTop={10}
                   />
                 </div>
               </div>
               <div className="flex-1">
-                <span className={`${bigBaseClass} ${bigSizeDesktop}`}>{BIG_RIGHT}</span>
+                <motion.span
+                  initial={bigEntranceInitial}
+                  animate={bigEntranceAnimate}
+                  transition={bigEntranceTransition}
+                  className={`${bigBaseClass} ${bigSizeDesktop}`}
+                >
+                  {BIG_RIGHT}
+                </motion.span>
               </div>
             </div>
           </>
@@ -210,12 +246,26 @@ export default function Hero() {
           <>
             {/* Row 1: «Faste» — на всю ширину, по левому краю. */}
             <div className="w-full text-left">
-              <span className={`${bigBaseClass} ${bigSizeStacked}`}>{BIG_LEFT}</span>
+              <motion.span
+                initial={bigEntranceInitial}
+                animate={bigEntranceAnimate}
+                transition={bigEntranceTransition}
+                className={`${bigBaseClass} ${bigSizeStacked}`}
+              >
+                {BIG_LEFT}
+              </motion.span>
             </div>
 
             {/* Row 2: «Direct» — на всю ширину, по правому краю. */}
             <div className="w-full text-right">
-              <span className={`${bigBaseClass} ${bigSizeStacked}`}>{BIG_RIGHT}</span>
+              <motion.span
+                initial={bigEntranceInitial}
+                animate={bigEntranceAnimate}
+                transition={bigEntranceTransition}
+                className={`${bigBaseClass} ${bigSizeStacked}`}
+              >
+                {BIG_RIGHT}
+              </motion.span>
             </div>
 
             {/* Row 3: tagline — на всю ширину, по левому краю, с верхним отступом. */}
@@ -226,6 +276,7 @@ export default function Hero() {
                 colorClass="text-white"
                 fontSizeClass={taglineFontStacked}
                 lineDelayMs={0}
+                initialDelay={taglineInitialDelay}
                 align="left"
                 allowWrap
               />
@@ -235,6 +286,7 @@ export default function Hero() {
                 colorClass="text-red"
                 fontSizeClass={taglineFontStacked}
                 lineDelayMs={LINE_STAGGER_MS}
+                initialDelay={taglineInitialDelay}
                 align="left"
                 allowWrap
                 marginTop={10}

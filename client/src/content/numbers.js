@@ -4,9 +4,6 @@ export const COUNT_DURATION = 1800
 /** Длительность анимации вертикальной линии, мс. */
 export const LINE_DURATION = 700
 
-/** Задержка каскада между элементами статистики, с. */
-export const STAGGER_DELAY_S = 0.15
-
 /**
  * Строка статистики: число, суффикс, подпись.
  * @typedef {{ value: number, suffix: string, label: string }} Stat

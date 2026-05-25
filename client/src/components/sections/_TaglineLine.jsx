@@ -27,6 +27,7 @@ const Y_OFFSET = 25
  * @param {string} props.colorClass - Tailwind-класс цвета (text-white | text-red).
  * @param {string} props.fontSizeClass - Tailwind-класс размера шрифта (responsive набор одной строкой).
  * @param {number} [props.lineDelayMs=0] - Задержка фазы для этой строки (stagger).
+ * @param {number} [props.initialDelay=0] - Задержка фазы firstEnter (mount entrance координация).
  * @param {'left'|'right'} [props.align='left'] - Выравнивание текста.
  * @param {boolean} [props.allowWrap=false] - Если true — разрешить перенос.
  * @param {number} [props.marginTop=0] - Верхний отступ в px.
@@ -37,6 +38,7 @@ function TaglineLine({
   colorClass,
   fontSizeClass,
   lineDelayMs = 0,
+  initialDelay = 0,
   align = 'left',
   allowWrap = false,
   marginTop = 0,
@@ -56,7 +58,12 @@ function TaglineLine({
       break
     case 'firstEnter':
       target = { y: 0, opacity: 1, filter: 'blur(0px)' }
-      transition = { duration: shouldReduceMotion ? 0 : 0.7, ease: EASE }
+      // Hotfix K: initialDelay координирует tagline с Hero entrance (Faste/Direct → tagline → HeroHeader).
+      transition = {
+        duration: shouldReduceMotion ? 0 : 0.7,
+        delay: shouldReduceMotion ? 0 : initialDelay,
+        ease: EASE,
+      }
       break
     case 'rest':
       target = { y: 0, opacity: 1, filter: 'blur(0px)' }
@@ -128,6 +135,7 @@ TaglineLine.propTypes = {
   colorClass: PropTypes.string.isRequired,
   fontSizeClass: PropTypes.string.isRequired,
   lineDelayMs: PropTypes.number,
+  initialDelay: PropTypes.number,
   align: PropTypes.oneOf(['left', 'right']),
   allowWrap: PropTypes.bool,
   marginTop: PropTypes.number,
