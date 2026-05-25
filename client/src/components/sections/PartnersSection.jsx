@@ -19,7 +19,7 @@ function PartnerCard({ partner }) {
       onClick={(e) => {
         if (!url) e.preventDefault()
       }}
-      className="group block overflow-hidden rounded-3xl bg-card p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition-all duration-300 @container hover:bg-slateHover hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] sm:aspect-[440/290] lg:p-6"
+      className="group block overflow-hidden rounded-xl bg-card p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition-all duration-300 @container hover:bg-slateHover hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] sm:aspect-[440/290] lg:p-6"
     >
       <div
         className="grid h-full gap-3 lg:gap-4"
@@ -37,13 +37,13 @@ function PartnerCard({ partner }) {
           </div>
 
           <div className="mt-2 flex flex-col flex-wrap items-start gap-0.5">
-            <span className="rounded-md bg-tagDate px-3 py-1.5 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-navy transition-colors duration-300 group-hover:bg-white/90">
+            <span className="rounded-md bg-tagDate px-2 py-0 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-navy transition-colors duration-300 group-hover:bg-white/90">
               {year}
             </span>
-            <span className="rounded-md bg-red px-3 py-1.5 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-white">
+            <span className="rounded-md bg-red px-2 py-0 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-white">
               {category}
             </span>
-            <span className="rounded-md bg-navy px-3 py-1.5 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-white">
+            <span className="rounded-md bg-navy px-2 py-0 text-[clamp(10.8px,2.88cqw,12.6px)] font-medium text-white">
               {city}
             </span>
           </div>

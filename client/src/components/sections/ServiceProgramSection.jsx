@@ -22,6 +22,36 @@ const labelVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 }
 
+// --- Dual-arrow swap (паттерн из Button.jsx) ---
+
+function DualArrow({ size = 14, className }) {
+  return (
+    <span className={cn('relative block', className)} style={{ width: size, height: size }}>
+      {/* Стрелка 1: видна в покое, уходит вправо с блюром при hover на строку */}
+      <span
+        className={cn(
+          'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+          'transition-[transform,filter,opacity] duration-[220ms] ease-[cubic-bezier(0.55,0,0.9,0.4)]',
+          'group-hover/row:translate-x-[150%] group-hover/row:opacity-0 group-hover/row:blur-sm'
+        )}
+      >
+        <Arrow size={size} />
+      </span>
+
+      {/* Стрелка 2: скрыта слева, выезжает в центр при hover */}
+      <span
+        className={cn(
+          'absolute left-1/2 top-1/2 -translate-x-[250%] -translate-y-1/2',
+          'transition-transform duration-[400ms] ease-in-out',
+          'group-hover/row:-translate-x-1/2'
+        )}
+      >
+        <Arrow size={size} />
+      </span>
+    </span>
+  )
+}
+
 // --- Строка для десктопа ---
 
 function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
@@ -40,7 +70,7 @@ function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
       onMouseEnter={() => onHover(service.id)}
       onMouseLeave={onLeave}
       className={cn(
-        'relative grid cursor-pointer grid-cols-[1.25fr_1fr_auto] items-center gap-6 rounded-2xl px-6 py-6 md:py-8 lg:py-20',
+        'group/row relative grid cursor-pointer grid-cols-[1.25fr_1fr_auto] items-center gap-6 rounded-2xl px-6 py-6 md:py-8 lg:py-20',
         'transition-colors duration-300',
         isHovered ? 'bg-red' : 'bg-transparent'
       )}
@@ -77,7 +107,7 @@ function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast }) {
         interactive
         ariaLabel={service.title}
       >
-        <Arrow />
+        <DualArrow />
       </IconButton>
     </motion.div>
   )
