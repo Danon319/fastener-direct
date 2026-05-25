@@ -201,7 +201,7 @@ function MobileMenuContent({ onClose }) {
           )}
           {curtainDone && (
             <motion.div {...fadeIn(CONTENT_STAGGER)}>
-              <IconButton variant="slate" ariaLabel="Закрыть меню" onClick={onClose}>
+              <IconButton variant="slate" size={48} ariaLabel="Закрыть меню" onClick={onClose}>
                 <Close />
               </IconButton>
             </motion.div>

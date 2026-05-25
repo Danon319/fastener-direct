@@ -43,8 +43,8 @@ export default function Logo({
   const subLs = Math.max(1, resolvedSize * 0.056)
   // 0.22 — горизонтальный gap между маркой и текстовым блоком.
   const gap = Math.round(resolvedSize * 0.22)
-  // 0.11 — вертикальный отступ subline от имени, выравнивает baseline по крестовине знака.
-  const subMt = Math.max(2, Math.round(resolvedSize * 0.11))
+  // 0.055 — вертикальный отступ subline от имени (уменьшен в 2× от исходного 0.11).
+  const subMt = Math.max(1, Math.round(resolvedSize * 0.055))
 
   const Tag = to ? Link : onClick ? 'button' : 'div'
 
@@ -60,24 +60,29 @@ export default function Logo({
       )}
     >
       <BrandMark
-        size={resolvedSize}
-        className={cn('shrink-0', theme === 'dark' ? 'text-navy' : 'text-white')}
+        size={40}
+        className={cn(
+          'shrink-0 md:h-[50px] md:w-[50px]',
+          theme === 'dark' ? 'text-navy' : 'text-white'
+        )}
       />
 
       {variant === 'full' && (
         <div className="flex min-w-0 flex-col overflow-hidden leading-none">
           <div
             style={{ fontSize: nameFs, letterSpacing: nameLs }}
-            className={cn('whitespace-nowrap', theme === 'dark' ? 'text-navy' : 'text-white')}
+            className={cn(
+              'whitespace-nowrap md:!text-[26px]',
+              theme === 'dark' ? 'text-navy' : 'text-white'
+            )}
           >
-            <span className="font-bold">Fastener </span>
-            <span className="font-light">Direct</span>
+            Fastener <span className="font-light">Direct</span>
           </div>
           <div
             style={{ fontSize: subFs, letterSpacing: subLs, marginTop: subMt }}
             className={cn(
-              'self-end whitespace-nowrap font-medium',
-              theme === 'dark' ? 'text-muted' : 'text-white/50'
+              'self-end whitespace-nowrap font-medium md:!text-[8px]',
+              theme === 'dark' ? 'text-navy' : 'text-white'
             )}
           >
             CORPORATE CONSTRUCT

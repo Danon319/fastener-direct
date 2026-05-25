@@ -73,6 +73,7 @@ function HeroHeader() {
           <IconButton
             ref={triggerRef}
             variant="filled"
+            size={48}
             ariaLabel="Меню навигации"
             onClick={() => setBurgerOpen((v) => !v)}
           >
@@ -115,27 +116,27 @@ function HeroHeader() {
 
         {/* Десктоп (md+): nav-pills инлайн */}
         <div className="hidden md:flex md:items-center">
-          <NavPill variant="heroLang" onClick={toggleLang}>
+          <NavPill variant="heroLang" className="md:px-5 md:py-3 md:text-base" onClick={toggleLang}>
             {langLabel}
           </NavPill>
           {NAV_LINKS.map((item) => (
             <NavPill
               key={item.label}
               variant="heroWhite"
-              className="hidden lg:inline-flex"
+              className="hidden lg:inline-flex lg:px-5 lg:py-3 lg:text-base"
               to={item.to}
             >
               {item.label}
             </NavPill>
           ))}
-          <NavPill variant="red" to={ACCOUNT_LINK.to}>
+          <NavPill variant="red" className="md:px-5 md:py-3 md:text-base" to={ACCOUNT_LINK.to}>
             <User size={18} className="text-white" />
             {ACCOUNT_LINK.label}
           </NavPill>
         </div>
 
         {/* MenuBtn — серый круг с +, всегда виден, открывает MobileMenu */}
-        <IconButton variant="slate" ariaLabel="Открыть меню" onClick={() => setMenuOpen(true)}>
+        <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={() => setMenuOpen(true)}>
           <Plus />
         </IconButton>
       </nav>

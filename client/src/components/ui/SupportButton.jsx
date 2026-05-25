@@ -15,7 +15,7 @@ const ARROW_SIZE = 18
  */
 export default function SupportButton() {
   const heroThreshold = typeof window !== 'undefined' ? window.innerHeight : 0
-  const { isPastThreshold } = useScrollDirection({ threshold: heroThreshold })
+  const { isPastThreshold, direction } = useScrollDirection({ threshold: heroThreshold })
 
   const [isFooterZone, setIsFooterZone] = useState(false)
 
@@ -32,7 +32,7 @@ export default function SupportButton() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const visible = isPastThreshold && !isFooterZone
+  const visible = isPastThreshold && !isFooterZone && direction === 'down'
 
   return (
     <Link
