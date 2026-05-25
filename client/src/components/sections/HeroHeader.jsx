@@ -1,14 +1,17 @@
 // src/components/sections/HeroHeader.jsx
 //
-// Absolute header поверх Hero (transparent фон, белый текст).
-// В Phase 3 размещается внутри dummy-Hero секции в Home.jsx.
-// В Phase 4 переедет в реальную Hero-секцию (внутрь компонента Hero).
+// Fixed header поверх Hero (transparent фон, белый текст).
+// Рендерится в Home.jsx параллельно Hero (не внутри). При скролле уезжает
+// вверх синхронно со scrollY через motion useScroll/useTransform.
+// К моменту scrollY = innerHeight / 2 уже полностью за верхним краем,
+// в этот же момент появляется обычный Header (нет overlap-диапазона).
 //
 // Mobile (<md): Burger открывает локальный dropdown с пунктами nav.
 // Desktop (md+): nav-pills видны inline.
 // MenuBtn (серый круг с +) — виден всегда, открывает MobileMenu (Zustand).
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { motion, useScroll, useTransform } from 'motion/react'
 
 import { Logo, IconButton, NavPill } from '@/components/ui'
 import { Burger, Plus, User } from '@/components/ui/icons'
@@ -17,7 +20,8 @@ import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
 
 /**
- * Absolute хедер поверх Hero-секции (transparent + white text).
+ * Fixed хедер поверх Hero-секции (transparent + white text).
+ * Уезжает вверх со скроллом через useScroll/useTransform.
  */
 function HeroHeader() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
@@ -25,6 +29,11 @@ function HeroHeader() {
   const [burgerOpen, setBurgerOpen] = useState(false)
   const dropdownRef = useRef(null)
   const triggerRef = useRef(null)
+
+  // HeroHeader уезжает вверх вместе с потоком страницы: translateY = -scrollY.
+  // Lenis обновляет window.scrollY интерполированно, поэтому движение плавное.
+  const { scrollY } = useScroll()
+  const translateY = useTransform(scrollY, (v) => -v)
 
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
   const langLabel = LANG_LABELS[lang] // TODO: i18n — реальные переводы после Phase 6
@@ -51,9 +60,10 @@ function HeroHeader() {
   }, [burgerOpen])
 
   return (
-    <header
+    <motion.header
+      style={{ y: translateY }}
       className={cn(
-        'absolute left-0 right-0 top-0 z-10',
+        'fixed left-0 right-0 top-0 z-header',
         'flex items-center justify-between bg-transparent',
         'px-3 py-4 md:px-8 md:py-8 lg:px-12 lg:py-12'
       )}
@@ -140,7 +150,7 @@ function HeroHeader() {
           <Plus />
         </IconButton>
       </nav>
-    </header>
+    </motion.header>
   )
 }
 

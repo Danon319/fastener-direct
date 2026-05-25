@@ -14,7 +14,7 @@ const ARROW_SIZE = 18
  * Появляется когда Hero скрыт, исчезает когда Footer входит в viewport.
  */
 export default function SupportButton() {
-  const heroThreshold = typeof window !== 'undefined' ? window.innerHeight : 0
+  const heroThreshold = typeof window !== 'undefined' ? window.innerHeight / 2 : 0
   const { isPastThreshold, direction } = useScrollDirection({ threshold: heroThreshold })
 
   const [isFooterZone, setIsFooterZone] = useState(false)

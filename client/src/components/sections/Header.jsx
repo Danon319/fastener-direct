@@ -28,8 +28,9 @@ function Header() {
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
   const langLabel = LANG_LABELS[lang] // TODO: i18n — реальные переводы после Phase 6
 
-  // На главной — порог = высота Hero. На остальных страницах — 0 (Hero нет).
-  const heroThreshold = typeof window !== 'undefined' ? window.innerHeight : 0
+  // На главной — порог = 50% Hero (на этом моменте HeroHeader уже уехал).
+  // На остальных страницах — 0 (Hero нет).
+  const heroThreshold = typeof window !== 'undefined' ? window.innerHeight / 2 : 0
   const { isPastThreshold, direction } = useScrollDirection({
     threshold: isHome ? heroThreshold : 0,
   })

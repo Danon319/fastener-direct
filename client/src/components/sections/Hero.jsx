@@ -16,7 +16,6 @@
 // дублирования motion-divs).
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import HeroHeader from '@/components/sections/HeroHeader'
 import { useBreakpoint } from '@/hooks'
 import { BIG_LEFT, BIG_RIGHT, TAGLINES } from '@/content/hero'
 
@@ -170,8 +169,6 @@ export default function Hero() {
         className="absolute inset-0 z-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 z-[1] bg-black/30" />
-
-      <HeroHeader />
 
       <div className="absolute inset-0 z-[2] flex flex-col justify-end gap-2 px-3 pb-24 md:px-8 lg:px-12 xl:px-16">
         {isDesktop ? (
