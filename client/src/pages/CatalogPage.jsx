@@ -19,7 +19,7 @@ import CatalogBackground from '@/components/catalog/CatalogBackground'
 import ActiveFilterChips from '@/components/catalog/ActiveFilterChips'
 import ProductCardSkeleton from '@/components/catalog/ProductCardSkeleton'
 import Pagination from '@/components/catalog/Pagination'
-import { useMomentumLift, useElementHeight, useCatalogFilters, AMPLITUDE_PX } from '@/hooks'
+import { useElementHeight, useCatalogFilters } from '@/hooks'
 
 // Длительность «фейковой» первичной загрузки (мс) — пока показываются скелетоны.
 const INITIAL_LOAD_MS = 300
@@ -41,7 +41,6 @@ const GRID_STYLE = {
 export default function CatalogPage() {
   const { category, subcategory } = useParams()
 
-  const lift = useMomentumLift()
   const footerH = useElementHeight('footer')
   const filters = useCatalogFilters()
 
@@ -106,14 +105,8 @@ export default function CatalogPage() {
       {/* Спейсер: создаёт «peek» — каталог-секция выглядывает ~10% из-под низа вьюпорта. */}
       <div className="h-[90vh]" aria-hidden="true" />
 
-      {/* Тёмная каталог-секция: motion + momentumLift, скруглённые верхние углы.
-          Hotfix 7.7: pb-[100px] добавлен внизу секции — компенсация для отрицательного overshoot
-          пружины momentum-lift (амплитуда ±100px). При резком скролле вверх секция «уезжает»
-          на -100px, и без этого паддинга под её низом проглядывал CatalogBackground. */}
-      <motion.section
-        style={{ y: lift, paddingBottom: AMPLITUDE_PX }}
-        className="relative z-wrapper min-h-screen rounded-t-2xl bg-navy will-change-transform"
-      >
+      {/* Тёмная каталог-секция: скруглённые верхние углы, поверх CatalogBackground. */}
+      <section className="relative z-wrapper min-h-screen rounded-t-2xl bg-navy">
         <div className="px-4 pb-8 pt-10 md:px-8 md:pt-14 lg:px-12 lg:pt-16">
           <ActiveFilterChips
             category={category}
@@ -175,7 +168,7 @@ export default function CatalogPage() {
             Hotfix 7.7: высота уменьшена вдвое — между последним рядом карточек и Footer
             оставалось слишком много пустого тёмного пространства. */}
         <div style={{ height: footerH / 2 }} aria-hidden="true" />
-      </motion.section>
+      </section>
 
       {/* Плавающая FAB «наверх» — появляется после прокрутки >300px. */}
       <ScrollToTopButton />

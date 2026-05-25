@@ -1,7 +1,7 @@
 export { default as useViewport } from './useViewport'
 export { default as useCountUp } from './useCountUp'
 export { default as useScrollDirection } from './useScrollDirection'
-export { useMomentumLift, AMPLITUDE_PX } from './useMomentumLift'
+export { default as useLenis } from './useLenis'
 export { default as useElementHeight } from './useElementHeight'
 export { default as useMediaQuery } from './useMediaQuery'
 export { default as useBreakpoint } from './useBreakpoint'

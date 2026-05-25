@@ -12,8 +12,10 @@ import Footer from './components/sections/Footer'
 import Header from './components/sections/Header'
 import TopStrip from './components/sections/TopStrip'
 import MobileMenu from './components/sections/MobileMenu'
+import { useLenis } from './hooks'
 
 function App() {
+  useLenis()
   return (
     <>
       <TopStrip />
