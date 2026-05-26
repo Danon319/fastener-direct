@@ -46,10 +46,10 @@ export default function CtaBannerSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24"
+      className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-10 lg:py-24"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="relative aspect-[2/3] overflow-hidden rounded-xl md:aspect-[2/1]">
+      <div className="mx-auto max-w-[1347px]">
+        <div className="relative overflow-hidden rounded-xl md:h-[560px]">
           <motion.img
             {...imgMotion}
             src={CTA_BANNER.image}
@@ -57,17 +57,20 @@ export default function CtaBannerSection() {
             className="absolute inset-0 h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-black/55" />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: 'color-mix(in oklab, #2e3f51 40%, transparent)' }}
+          />
 
-          <div className="relative flex h-full flex-col justify-start p-6 md:p-10 lg:p-14">
+          <div className="relative flex flex-col justify-start p-6 md:h-full md:p-10 lg:p-14">
             <motion.h2
               {...titleMotion}
-              className="max-w-md text-3xl font-medium text-white md:max-w-lg md:text-4xl lg:max-w-3xl lg:text-5xl"
+              className="max-w-[1050px] text-[36px] font-medium leading-[1.15] text-white md:text-[48px] lg:text-[56px]"
             >
               {CTA_BANNER.title}
             </motion.h2>
 
-            <motion.div {...buttonMotion} className="mt-6">
+            <motion.div {...buttonMotion} className="mt-6 max-w-[1050px]">
               <Button text={CTA_BANNER.buttonText} size="md" />
             </motion.div>
           </div>
