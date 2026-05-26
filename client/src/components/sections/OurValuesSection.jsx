@@ -79,8 +79,48 @@ function ValueCard({ title, description, isDesktop }) {
   )
 }
 
+// Hotfix K.3: один <motion.span> на слово с интерполяцией цвета по scroll-progress.
+// useTransform всегда вызывается (для соблюдения правил хуков); при isStatic
+// рендерим обычный <span> с финальным тёмным цветом.
+function ScrollColorWord({ word, index, total, scrollYProgress, isStatic, isLast }) {
+  const color = useTransform(
+    scrollYProgress,
+    [index / total, (index + 1) / total],
+    ['#ffffff', '#2E3F51']
+  )
+  const suffix = isLast ? '' : ' '
+  if (isStatic) {
+    return (
+      <span style={{ color: '#2E3F51' }}>
+        {word}
+        {suffix}
+      </span>
+    )
+  }
+  return (
+    <motion.span style={{ color }}>
+      {word}
+      {suffix}
+    </motion.span>
+  )
+}
+
 function TopBlockDesktop() {
   const entrance = useEntranceProps()
+  const shouldReduceMotion = useReducedMotion()
+  const headingRef = useRef(null)
+  // Hotfix K.3.1: расширяем зону анимации, чтобы перекраска шла, пока заголовок
+  // реально виден пользователю.
+  // start 0.85 → progress=0 когда верх заголовка в 85% от верха viewport
+  //   (заголовок только начал входить снизу, но уже виден).
+  // end 0.1 → progress=1 когда низ заголовка в 10% от верха viewport
+  //   (заголовок почти ушёл вверх) — animation охватывает всё время видимости.
+  const { scrollYProgress } = useScroll({
+    target: headingRef,
+    offset: ['start 0.90', 'end 0.6'],
+  })
+  const words = HEADING.split(' ')
+
   return (
     <div
       style={{
@@ -103,19 +143,29 @@ function TopBlockDesktop() {
         style={{ gridColumn: '7 / 16', marginLeft: 'clamp(-12px, -0.25rem + -0.52vw, -20px)' }}
       >
         <motion.h2
+          ref={headingRef}
           {...entrance(1)}
-          className="font-medium leading-tight text-slate"
-          style={{
-            // 2.46vw — slope роста кегля заголовка между min/max брейкпоинтами (48–72px).
-            fontSize: 'clamp(3rem, 1.43rem + 2.46vw, 4.5rem)',
-            // 13.39vw — slope ширины колонки заголовка (560–800px), синхронизирован с кеглем.
-            maxWidth: 'clamp(560px, 26.79rem + 13.39vw, 800px)',
-          }}
+          className="text-[64px] font-medium leading-[1.1] xl:text-[76px] 2xl:text-[88px]"
+          // Hotfix K.3: explicit width 890px переопределяет ограничение grid-колонки
+          // (родитель занимает 9/15 ≈ 556–768px); marginLeft: -50px — сдвиг влево.
+          // На lg/xl правая часть может уходить под клип секции (overflow-hidden),
+          // на 1440px+ помещается с запасом.
+          style={{ width: '890px', marginLeft: '-50px' }}
         >
-          {HEADING}
+          {words.map((word, i) => (
+            <ScrollColorWord
+              key={`${word}-${i}`}
+              word={word}
+              index={i}
+              total={words.length}
+              scrollYProgress={scrollYProgress}
+              isStatic={shouldReduceMotion}
+              isLast={i === words.length - 1}
+            />
+          ))}
         </motion.h2>
         <motion.div {...entrance(2)} className="mt-12">
-          <Button text={BUTTON_TEXT} to="/about" />
+          <Button text={BUTTON_TEXT} to="/about" size="lg" />
         </motion.div>
       </div>
     </div>
@@ -126,16 +176,12 @@ function TopBlockMobile() {
   const entrance = useEntranceProps()
   return (
     <div className="flex flex-col gap-6 pl-2">
-      <motion.p
-        {...entrance(0)}
-        className="text-xl font-medium leading-tight text-slateHover"
-      >
+      <motion.p {...entrance(0)} className="text-xl font-medium leading-tight text-slateHover">
         {LABEL}
       </motion.p>
       <motion.h2
         {...entrance(1)}
-        className="font-medium leading-tight text-slate"
-        style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)' }}
+        className="text-[36px] font-medium leading-[1.1] text-slate md:text-[42px]"
       >
         {HEADING}
       </motion.h2>
