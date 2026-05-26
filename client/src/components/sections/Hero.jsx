@@ -181,11 +181,12 @@ export default function Hero() {
       <video
         ref={videoRef}
         src="/video/factory_bg.mp4"
-        poster="/video/factory_bg-poster.png"
+        poster="/video/factory_bg-page.png"
         autoPlay
         muted
         loop
         playsInline
+        onEnded={(e) => e.target.play()}
         className="absolute inset-0 z-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 z-[1] bg-black/30" />
