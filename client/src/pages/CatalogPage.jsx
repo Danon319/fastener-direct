@@ -1,11 +1,5 @@
-// Страница каталога: данные из content/catalog (PRODUCTS), без запросов к API.
-// Hotfix 7.5: лэндинг-архитектура — фиксированный тулбар, тёмная каталог-секция
-// (motion.section + momentumLift) поднимается над фоном с вертикальными колоночными линиями.
-// Hotfix 7.6: тулбар закреплён по центру и переключается в visibility:hidden при прокрутке
-// за высоту вьюпорта (паттерн Hero). Breadcrumbs удалены. Footer-спейсер перенесён внутрь
-// каталог-секции — bg-navy продолжается до Footer. Добавлена FAB «наверх».
-// Hotfix 7.19: вся filter/sort/pagination логика вынесена в useCatalogFilters; здесь
-// остался только UI-оркестратор (модалки, скелетоны, JSX-композиция).
+// UI-оркестратор каталога: модалки, скелетоны, JSX-композиция.
+// Логика фильтрации/сортировки/пагинации — useCatalogFilters. Данные из content/catalog (PRODUCTS).
 import { useState, useCallback, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
@@ -27,17 +21,22 @@ const INITIAL_LOAD_MS = 300
 const SKELETON_COUNT = 8
 // Шаг задержки между появлением соседних карточек в stagger fade-in.
 const CARD_STAGGER_S = 0.04
-// Hotfix 7.13: верхний потолок задержки. Без него последняя из 16 карточек ждала 0.75с
-// и каждое переключение страницы ощущалось как лаг.
+// Верхний потолок задержки — без него последняя карточка ждала 0.75с (лаг при переключении).
 const MAX_STAGGER_DELAY_S = 0.25
 const CARD_FADE_DURATION_S = 0.3
 
-// Hotfix 7.18: вынесено в const, чтобы skeleton-grid и real-grid использовали один источник правды.
 const GRID_STYLE = {
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 250px))',
 }
 
+/**
+ * Страница каталога товаров.
+ *
+ * Лэндинг-архитектура: фиксированный CatalogToolbar (центр вьюпорта) +
+ * тёмная каталог-секция (bg-navy) поверх CatalogBackground.
+ * Фильтрация, сортировка, пагинация — useCatalogFilters.
+ */
 export default function CatalogPage() {
   const { category, subcategory } = useParams()
 
@@ -49,7 +48,6 @@ export default function CatalogPage() {
     window.scrollTo(0, 0)
   }, [category, subcategory])
 
-  // Hotfix 7.5: первичная загрузка — флаг сбрасывается через INITIAL_LOAD_MS (скелетоны → карточки).
   const [isInitialLoading, setIsInitialLoading] = useState(true)
   useEffect(() => {
     const t = setTimeout(() => setIsInitialLoading(false), INITIAL_LOAD_MS)
@@ -153,7 +151,7 @@ export default function CatalogPage() {
           )}
         </div>
 
-        {/* Hotfix 7.7: пагинация — только если страниц больше одной. 50px отступа до footer-спейсера. */}
+        {/* Пагинация — только если страниц больше одной. */}
         {filters.totalPages > 1 && (
           <Pagination
             currentPage={filters.currentPage}
@@ -163,10 +161,8 @@ export default function CatalogPage() {
           />
         )}
 
-        {/* Hotfix 7.6: спейсер под фиксированный Footer внесён внутрь тёмной секции,
-            чтобы bg-navy продолжался до самого Footer и фон каталога не «просвечивал».
-            Hotfix 7.7: высота уменьшена вдвое — между последним рядом карточек и Footer
-            оставалось слишком много пустого тёмного пространства. */}
+        {/* Спейсер под фиксированный Footer внутри тёмной секции — bg-navy продолжается до Footer.
+            Высота footerH/2: оставляем умеренный отступ между последним рядом карточек и Footer. */}
         <div style={{ height: footerH / 2 }} aria-hidden="true" />
       </section>
 

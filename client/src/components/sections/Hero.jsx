@@ -1,19 +1,5 @@
-// src/components/sections/Hero.jsx
-//
-// Hero-секция с видео-фоном, дарк-overlay'ем, прозрачным HeroHeader'ом
-// и большим заголовком «Faste / Direct» с анимированным tagline.
-//
-// Phase 4A: только визуал и tagline-машина. Никакого параллакса/momentum
-// lift / fixed-positioning — всё это Phase 4B.
-//
-// Tagline-машина живёт здесь (Hero — оркестратор фаз), сами анимированные
-// строки — в _TaglineLine. См. spec в Phase 4A prompt.
-//
-// Layout switch ≥1024px: на desktop "Faste" и tagline-блок «Direct»
-// располагаются в две строки (Faste — правый край левой половины,
-// [tagline | Direct] — вторая), на стacked (<1024px) — три отдельных
-// строки. Один смонтированный _TaglineLine в каждой роли (избегаем
-// дублирования motion-divs).
+// Hero-секция: видео-фон, заголовок «Faste / Direct», ротирующийся tagline (state machine из 6 фаз).
+// Desktop ≥lg: двустрочный layout; stacked <lg: три строки. TaglineLine — приватный дочерний компонент.
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 
@@ -29,8 +15,7 @@ const SWAP_GAP_MS = 10
 const LINE_STAGGER_MS = 150
 const FIRST_FADE_MS = 700
 
-// Hotfix K: координированный entrance — Faste/Direct в t=0, tagline в t=100ms.
-// Длиннее duration и мягче ease — элементы «выплывают» из-под линии, без рывка.
+// Entrance: Faste/Direct в t=0, tagline в t=100ms. Мягкий ease — элементы «выплывают» снизу.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
@@ -137,6 +122,24 @@ export default function Hero() {
     return () => document.removeEventListener('visibilitychange', onVisibility)
   }, [pushTimer, clearTimers])
 
+  // Надёжный loop видео: нативный `loop` и событие `ended` нестабильны в
+  // Chrome/Safari для определённых кодеков (видео доигрывает и зависает на
+  // последнем кадре). Превентивно сбрасываем currentTime за ~0.3с до конца
+  // через timeupdate — это срабатывает раньше, чем браузер успевает войти
+  // в «ended»-состояние, и видео крутится без рывка.
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const handleTimeUpdate = () => {
+      if (video.duration && video.duration - video.currentTime < 0.3) {
+        video.currentTime = 0
+        video.play().catch(() => {})
+      }
+    }
+    video.addEventListener('timeupdate', handleTimeUpdate)
+    return () => video.removeEventListener('timeupdate', handleTimeUpdate)
+  }, [])
+
   // Скрываем Hero после прокрутки за высоту viewport, чтобы секция
   // не проглядывала сквозь Footer.
   useEffect(() => {
@@ -186,7 +189,6 @@ export default function Hero() {
         muted
         loop
         playsInline
-        onEnded={(e) => e.target.play()}
         className="absolute inset-0 z-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 z-[1] bg-black/30" />

@@ -1,3 +1,5 @@
+// Иконка ВКонтакте для Footer.
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'

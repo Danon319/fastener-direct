@@ -1,3 +1,4 @@
+// Секция статистики: 4 числа (count-up) в 2 строки × 2 колонки. Каждая пара триггерит свой viewport-observer.
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, useReducedMotion } from 'motion/react'
 import PropTypes from 'prop-types'
@@ -8,9 +9,6 @@ import { COUNT_DURATION, LINE_DURATION, STATS_ROW1, STATS_ROW2 } from '@/content
 // Линия стартует позже, чтобы закончиться в тот же момент что и счётчик.
 const LINE_START_DELAY = (COUNT_DURATION - LINE_DURATION) / 1000
 
-// Hotfix K.1b: попарный entrance — каждая визуальная строка (пара чисел) появляется
-// независимо при попадании СВОЕЙ строки в viewport. Stagger между парами — естественный
-// из позиции скролла, без явных задержек.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
@@ -80,18 +78,14 @@ StatItem.propTypes = {
 }
 
 /**
- * Секция статистики: 4 числа в 2 строки × 2 колонки на десктопе,
- * 1 колонка на мобиле. Вторая строка сдвинута вправо на десктопе.
- *
- * Hotfix K.1b: каждая визуальная строка (пара) имеет собственный useInView и
- * стартует независимо. Внутри пары оба счётчика стартуют и финишируют одновременно.
+ * Секция статистики: 4 числа в 2 строки × 2 колонки на десктопе, 1 колонка на мобиле.
+ * Каждая пара имеет собственный useInView. Внутри пары счётчики стартуют одновременно.
  */
 export default function NumbersSection() {
   const { isTouch } = useViewport()
   const shouldReduceMotion = useReducedMotion()
   const row1Ref = useRef(null)
   const row2Ref = useRef(null)
-  // Per-pair observers — каждая пара триггерит свой entrance и count-up независимо.
   const viewportOptions = { once: true, amount: isTouch ? 0.2 : 0.8 }
   const row1InView = useInView(row1Ref, viewportOptions)
   const row2InView = useInView(row2Ref, viewportOptions)

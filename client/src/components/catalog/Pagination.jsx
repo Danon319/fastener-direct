@@ -1,6 +1,5 @@
-// Пагинация для каталога: «‹ 1 ... 4 5 6 ... 265 ›».
-// Рендерится только при totalPages > 1 (логика — снаружи, в CatalogPage).
-// Hotfix 7.7: текстовый минималистичный вид без рамок, под тёмный bg-navy секции.
+// Пагинация каталога: «‹ 1 ... 4 5 6 ... 265 ›». Рендерится только при totalPages > 1 (CatalogPage).
+// Текстовый минималистичный вид без рамок, под тёмный bg-navy фон секции.
 import PropTypes from 'prop-types'
 
 import { ChevronDown } from '@/components/ui/icons'
@@ -58,7 +57,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         disabled={isFirst}
         aria-label="Предыдущая страница"
         className={cn(
-          // Hotfix 7.18: min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
+          // min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
           'flex h-11 min-w-11 items-center justify-center transition-colors',
           isFirst ? 'cursor-default text-slateHover/40' : 'cursor-pointer text-light hover:text-red'
         )}
@@ -78,7 +77,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
             onClick={() => onPageChange(item.value)}
             aria-current={item.value === currentPage ? 'page' : undefined}
             className={cn(
-              // Hotfix 7.18: min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
+              // min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
               'flex h-11 min-w-11 cursor-pointer items-center justify-center px-2 transition-colors',
               item.value === currentPage
                 ? 'font-medium text-red underline underline-offset-4'
@@ -96,7 +95,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         disabled={isLast}
         aria-label="Следующая страница"
         className={cn(
-          // Hotfix 7.18: min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
+          // min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
           'flex h-11 min-w-11 items-center justify-center transition-colors',
           isLast ? 'cursor-default text-slateHover/40' : 'cursor-pointer text-light hover:text-red'
         )}

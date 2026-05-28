@@ -1,17 +1,13 @@
-// src/hooks/useLenis.js
-//
-// Глобальная плавная прокрутка через библиотеку Lenis.
-// Хук вызывается один раз на верхнем уровне (App.jsx).
-// При prefers-reduced-motion: reduce — Lenis не инициализируется и страница
-// использует нативный мгновенный скролл.
-//
-// Lenis перехватывает wheel/touch события и интерполирует скролл через RAF,
-// нативные API (window.scrollY, useScroll из motion/react, scroll-listeners
-// на window) продолжают работать корректно.
+// Инициализирует глобальную плавную прокрутку через Lenis. Вызывается один раз в App.jsx.
+// При prefers-reduced-motion: reduce — Lenis не инициализируется, используется нативный скролл.
 
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 
+/**
+ * Подключает плавную прокрутку Lenis на всю страницу через RAF-цикл.
+ * Нативные API (window.scrollY, useScroll из motion/react) продолжают работать корректно.
+ */
 export default function useLenis() {
   useEffect(() => {
     if (typeof window === 'undefined') return

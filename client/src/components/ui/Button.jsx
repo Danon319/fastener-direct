@@ -1,3 +1,5 @@
+// CTA-кнопка-таблетка с анимированным красным кругом и стрелкой. Поддерживает Link и button.
+
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 

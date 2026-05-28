@@ -1,8 +1,5 @@
-// Плавающая «пилюля» над каталогом: фильтры (сайдбар), поиск, кнопка открытия дерева категорий.
-// Hotfix 7.6: тулбар закреплён фиксированно по центру вьюпорта (паттерн Hero на лэндинге).
-// Без motion-привязки к скроллу — при прокрутке за высоту вьюпорта тулбар становится
-// visibility: hidden (так же, как Hero). Дочерний контент (CategoryDropdown) рендерится
-// внутри этого же fixed-контейнера, чтобы дроп-даун следовал за тулбаром.
+// Плавающая «пилюля» над каталогом: фильтры (сайдбар), поиск, кнопка дерева категорий.
+// Фиксирован по центру вьюпорта; скрывается при прокрутке за его высоту (как Hero).
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
@@ -41,8 +38,7 @@ export default function CatalogToolbar({
       <div className="flex justify-center px-4">
         {/* Пилюля тулбара — ширина по содержимому */}
         <div className="inline-flex items-center gap-3 rounded-full bg-white/95 px-5 py-1.5 shadow-lg backdrop-blur-md">
-          {/* Открывает FilterSidebar; бейдж — число применённых фильтров (не черновик).
-              Hotfix 7.7: переопределяем фон/цвет — кнопка на slateHover, иконка/текст светлые. */}
+          {/* Открывает FilterSidebar; бейдж — число применённых фильтров (не черновик staged). */}
           <NavPill
             variant="default"
             onClick={onFilterToggle}

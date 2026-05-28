@@ -1,16 +1,12 @@
-// src/components/sections/_MenuItem.jsx
-//
-// Крупный nav-item для MobileMenu с выезжающей при hover стрелкой слева.
-// Размеры адаптируются через Tailwind responsive classes.
-// Приватный компонент — используется только в MobileMenu.jsx.
+// Крупный nav-item с hover-стрелкой для MobileMenu.
+// Приватный компонент — используется только внутри MobileMenu.jsx.
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { cn } from '@/utils/cn'
 
-// Custom arrow path — взят 1:1 из прототипа hero_section.jsx
-// (viewBox 0 0 50 72, см. строки 733-745 прототипа).
+// Путь стрелки — взят 1:1 из прототипа (viewBox 0 0 50 72).
 const ARROW_PATH = 'M 4 36 L 46 36 M 30 20 L 46 36 L 30 52'
 
 /**
@@ -26,16 +22,13 @@ const ARROW_PATH = 'M 4 36 L 46 36 M 30 20 L 46 36 L 30 52'
 function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
   const [hover, setHover] = useState(false)
 
-  // Tailwind classes per size — точные пиксели из прототипа.
-  // Primary (MENU_PRIMARY): мобильные размеры → desktop.
-  // Secondary (MENU_SECONDARY): меньше во всех брейкпойнтах.
+  // Tailwind-классы по размеру — точные пиксели из прототипа.
   const sizeClasses =
     size === 'primary'
       ? 'text-3xl md:text-5xl lg:text-7xl xl:text-[88px]'
       : 'text-base md:text-3xl lg:text-6xl'
 
-  // Arrow dimensions per size, синхронизированные с шрифтом.
-  // viewBox фиксирован 0 0 50 72; ширина анимируется 0 → arrowW.
+  // Размеры стрелки по размеру, синхронизированы с шрифтом. viewBox 0 0 50 72.
   const arrowDims =
     size === 'primary'
       ? {
@@ -80,9 +73,8 @@ function MenuItem({ label, size = 'primary', color = 'white', to, onClick }) {
   const baseClasses = cn(
     'inline-flex items-center w-fit text-left bg-transparent border-0 m-0 p-0 cursor-pointer',
     'font-sans font-medium leading-none tracking-[-0.01em]',
-    // Half-leading trim — компенсирует пустое пространство ascender/descender внутри
-    // line-box у Neue Montreal Medium. Без этого визуальный gap между MenuItem'ами
-    // ощущается сильно больше, чем заданный на parent gap-1.
+    // Компенсация пустого пространства ascender/descender в line-box Neue Montreal Medium.
+    // Без этого визуальный gap между пунктами ощущается больше, чем заданный gap-1.
     '-mt-[0.22em] -mb-[0.32em]',
     sizeClasses,
     colorClass

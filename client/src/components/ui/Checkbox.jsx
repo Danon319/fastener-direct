@@ -1,3 +1,5 @@
+// Кастомный чекбокс с поддержкой indeterminate-состояния и a11y-нативным input.
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'

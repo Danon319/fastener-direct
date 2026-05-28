@@ -1,3 +1,5 @@
+// Реэкспорт всех SVG-иконок проекта.
+
 export { default as BrandMark } from './BrandMark'
 export { default as User } from './User'
 export { default as YouTube } from './YouTube'

@@ -1,3 +1,4 @@
+// Главная страница: Hero + HeroHeader + лэндинг-секции + SupportButton. Footer-спейсер через useElementHeight.
 import { useEffect } from 'react'
 
 import CtaBannerSection from '@/components/sections/CtaBannerSection'

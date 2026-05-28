@@ -1,8 +1,4 @@
-// src/components/sections/Header.jsx
-//
-// Fixed pill-хедер. Появляется через opacity-fade:
-//   visible = (Home → Hero пройден ; иначе true) AND direction === 'down' AND !overlayActive.
-// При открытом overlay (MobileMenu/FilterSidebar) — фриз, opacity не пересчитывается.
+// Fixed pill-хедер с opacity-fade. Виден после прокрутки Hero вниз; на остальных страницах — всегда.
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -143,7 +139,12 @@ function Header() {
           </NavPill>
         </div>
 
-        <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={() => setMenuOpen(true)}>
+        <IconButton
+          variant="slate"
+          size={48}
+          ariaLabel="Открыть меню"
+          onClick={() => setMenuOpen(true)}
+        >
           <Plus />
         </IconButton>
       </nav>

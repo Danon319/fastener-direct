@@ -1,18 +1,6 @@
-/**
- * Форма объекта товара:
- * {
- *   id: string,             — уникальный идентификатор
- *   name: string,           — полное название (на русском)
- *   parentCategory: string, — slug категории верхнего уровня (совпадает с CATEGORY_TREE[].slug)
- *   subcategory: string,    — categoryKey (совпадает с CATEGORY_TREE[].children[].categoryKey)
- *   material: string,       — название материала (на русском)
- *   brand: string,          — название бренда (должно быть в BRANDS)
- *   brandLogo: string,      — путь до SVG в /public/card_logo/
- *   price: number,          — цена в рублях с копейками как десятичная часть (например 7.87)
- *   inStock: boolean,
- *   image: string,          — путь до фото в /public/product_card/
- * }
- */
+// Массив товаров каталога. Схема объекта:
+// { id, name, parentCategory (slug), subcategory (categoryKey), material, brand, brandLogo, price, inStock, image }
+
 export const PRODUCTS = [
   {
     id: '1',

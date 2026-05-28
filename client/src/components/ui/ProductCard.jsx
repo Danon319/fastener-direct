@@ -1,3 +1,5 @@
+// Карточка товара каталога: фото, цена, счётчик количества, кнопки корзины и избранного.
+
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -208,9 +210,8 @@ export default function ProductCard({ product }) {
     }
   }, [inCart, cartQty, product.id, updateQuantity])
 
-  // Hotfix 7.13: при удалении товара из корзины переносим cartQty → localQty,
-  // чтобы видимое количество не «прыгало» обратно к 1 и при повторном добавлении
-  // ушло в корзину то значение, которое пользователь только что видел.
+  // При удалении из корзины сохраняем cartQty в localQty — при повторном добавлении
+  // уйдёт то количество, которое пользователь только что видел.
   const prevCartQtyRef = useRef(0)
   useEffect(() => {
     if (inCart) {
@@ -225,10 +226,8 @@ export default function ProductCard({ product }) {
     <Link
       to={`/product/${product.id}`}
       className={cn(
-        // Hotfix 7.6: фиксированная h-[450px] (а не max-h) — единая высота для OOS и in-stock карточек.
-        // Фото h-44 (176px) сохраняет ≤40% от высоты (176/450 = 39.1%).
-        // Hotfix 7.7: добавлен w-full — карточка занимает всю ширину grid-ячейки (до max-w-[250px]),
-        // иначе при отсутствии явной ширины карточка ужималась по содержимому.
+        // h-[450px] фиксированная (не max-h) — единая высота для OOS и in-stock карточек.
+        // w-full — без явной ширины карточка ужималась по содержимому grid-ячейки.
         'flex h-[450px] w-full max-w-[250px] flex-col overflow-hidden rounded-xl bg-white shadow-sm transition duration-200',
         // Hover-эффект только на устройствах с курсором (canHover из useViewport)
         canHover && 'hover:-translate-y-1 hover:shadow-lg'
@@ -236,7 +235,6 @@ export default function ProductCard({ product }) {
     >
       {/* Фото — фиксированная высота, чтобы строго удерживать ≤40% от max-h карточки (180/450) */}
       <div className="relative h-44 shrink-0 bg-white p-3">
-        {/* Логотип бренда — верхний левый угол */}
         {product.brandLogo && (
           <img
             src={product.brandLogo}
@@ -255,13 +253,11 @@ export default function ProductCard({ product }) {
 
       {/* Информация о товаре: цена → название → нижняя строка */}
       <div className="flex flex-1 flex-col gap-2 px-4 pb-4 pt-3">
-        {/* Цена — крупный размер */}
         <p className="font-sans text-navy">
           <span className="text-3xl font-medium">{formatted}</span>
           <span className="text-base text-muted">.{kopecks} &#8381;</span>
         </p>
 
-        {/* Название — две строки, цвет navy */}
         <h3 className="line-clamp-2 font-sans text-sm font-medium leading-snug text-navy">
           {product.name}
         </h3>

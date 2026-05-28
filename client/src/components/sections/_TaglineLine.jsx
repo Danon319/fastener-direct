@@ -1,12 +1,5 @@
-// src/components/sections/_TaglineLine.jsx
-//
 // Приватный компонент Hero — одна анимированная строка tagline.
-// Управляется prop'ом `phase` снаружи (Hero держит state machine).
-// Шесть фаз: mount → firstEnter → rest → exiting → preEnter → entering → rest.
-//
-// Y/opacity анимируются за полную длительность 750ms.
-// Blur активен только последние/первые 300ms (peak 2px), чтобы убрать
-// «туман» в покое и при первом появлении.
+// Управляется prop'ом phase снаружи (Hero держит state machine). Y/opacity — 750ms, blur — первые/последние 300ms.
 import { motion, useReducedMotion } from 'motion/react'
 import PropTypes from 'prop-types'
 
@@ -49,8 +42,7 @@ function TaglineLine({
   let target
   let transition
 
-  // Hotfix 7.18: при prefers-reduced-motion дегрейдим до opacity-only без y-drift и blur.
-  // Видимое финальное состояние всегда достижимо — никаких скрытых элементов.
+  // При prefers-reduced-motion — деградация до opacity-only, без y-drift и blur.
   switch (phase) {
     case 'mount':
       target = { y: 0, opacity: 0, filter: 'blur(0px)' }
@@ -58,7 +50,7 @@ function TaglineLine({
       break
     case 'firstEnter':
       target = { y: 0, opacity: 1, filter: 'blur(0px)' }
-      // Hotfix K: initialDelay координирует tagline с Hero entrance (Faste/Direct → tagline → HeroHeader).
+      // initialDelay координирует tagline с Hero entrance (Faste/Direct → tagline → HeroHeader).
       transition = {
         duration: shouldReduceMotion ? 0 : 0.7,
         delay: shouldReduceMotion ? 0 : initialDelay,

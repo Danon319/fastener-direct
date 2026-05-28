@@ -1,3 +1,5 @@
+// Дерево категорий каталога: top-level категории и подкатегории со slug'ами и categoryKey.
+
 export const CATEGORY_TREE = [
   {
     label: 'Строительный крепёж',

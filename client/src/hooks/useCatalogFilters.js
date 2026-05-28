@@ -1,17 +1,16 @@
-// Hotfix 7.19: единый хук, инкапсулирующий filter / sort / pagination состояние и
-// pipeline для CatalogPage. CatalogPage становится тонким UI-оркестратором,
-// а вся бизнес-логика по фильтрации товаров сосредоточена здесь.
+// Хук состояния и pipeline фильтрации каталога: фильтры, сортировка, пагинация.
+// Используется в CatalogPage — вся логика фильтрации сосредоточена здесь.
 import { useState, useCallback, useMemo } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { PRODUCTS, findCategoryBySlug, findSubcategoryBySlug } from '@/content/catalog'
 
-/** Мультивыбор: если значение уже в массиве — убрать, иначе добавить. */
+// Мультивыбор: если значение уже в массиве — убрать, иначе добавить.
 function toggleInArray(arr, value) {
   return arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value]
 }
 
-/** Начальное состояние staged- и applied-фильтров (нет ни одного активного фильтра). */
+// Начальное состояние staged- и applied-фильтров (нет ни одного активного фильтра).
 const EMPTY_FILTERS = {
   brands: [],
   priceMin: '',
@@ -19,10 +18,10 @@ const EMPTY_FILTERS = {
   inStockOnly: false,
 }
 
-// Hotfix 7.7: фиксированное число товаров на странице (~4 ряда × 4 колонки на десктопе).
+// 16 товаров на странице — ~4 ряда × 4 колонки на десктопе.
 const ITEMS_PER_PAGE = 16
 
-/** Подсчёт активных условий в одном объекте фильтров (для бейджа и подвала сайдбара). */
+// Подсчёт активных условий в объекте фильтров (для бейджа и подвала сайдбара).
 function countFilters(f) {
   let count = f.brands.length
   if (f.priceMin) count++
@@ -94,7 +93,6 @@ export default function useCatalogFilters() {
     setStagedFilters((prev) => ({ ...prev, inStockOnly: !prev.inStockOnly }))
   }, [])
 
-  // Перед открытием сайдбара CatalogPage вызывает sync, чтобы редактировать копию applied.
   const syncStagedFromApplied = useCallback(() => {
     setStagedFilters(appliedFilters)
   }, [appliedFilters])
@@ -218,10 +216,8 @@ export default function useCatalogFilters() {
     return result
   }, [category, subcategory, appliedFilters, searchQuery, activeSort])
 
-  // Hotfix 7.7: при смене входов фильтрации сбрасываем страницу на 1.
-  // Паттерн «Adjust state while rendering» из React docs — корректный способ
-  // синхронизировать одно состояние с другим без useEffect (filtered меняется
-  // по ссылке тогда и только тогда, когда меняется любой из её deps).
+  // При смене входов фильтрации сбрасываем страницу на 1.
+  // «Adjust state while rendering» — корректный способ синхронизации двух состояний без useEffect.
   const [prevFiltered, setPrevFiltered] = useState(filtered)
   if (prevFiltered !== filtered) {
     setPrevFiltered(filtered)

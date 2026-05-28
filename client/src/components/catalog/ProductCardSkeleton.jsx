@@ -1,7 +1,7 @@
 // Плейсхолдер карточки товара на время первичной загрузки страницы каталога.
 // Размеры повторяют ProductCard (max-w-[250px], max-h-[450px], h-44 фото).
 
-/** Скелетон-карточка с пульсирующими блоками-заглушками. */
+// Скелетон-карточка с пульсирующими блоками-заглушками.
 export default function ProductCardSkeleton() {
   return (
     <div className="flex max-h-[450px] max-w-[250px] flex-col overflow-hidden rounded-xl bg-white shadow-sm">

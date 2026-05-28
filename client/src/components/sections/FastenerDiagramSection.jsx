@@ -1,3 +1,4 @@
+// Секция с donut-диаграммой клиентов. Анимированные сегменты (двухфазная skate+grow), декоративные кольца, лейблы.
 import { useState, useRef, useEffect } from 'react'
 import {
   motion,
@@ -28,8 +29,6 @@ import {
   RING_COLOR,
 } from '@/content/fastenerDiagram'
 
-/* ─── Предвычисленные углы сегментов ─── */
-
 const segAngles = (() => {
   const result = []
   let cum = 0
@@ -40,8 +39,6 @@ const segAngles = (() => {
   }
   return result
 })()
-
-/* ─── Предвычисленные тайминги ─── */
 
 const segTimings = (() => {
   const result = []
@@ -63,8 +60,6 @@ const segTimings = (() => {
 })()
 
 const TOTAL_DURATION = Math.max(...segTimings.map((s) => s.totalEnd))
-
-/* ─── Математика анимации ─── */
 
 function easeOut(t) {
   return 1 - Math.pow(1 - t, 3)
@@ -97,8 +92,6 @@ function computeSegmentAt(t, i) {
   return { lead, trail: near, visible: true }
 }
 
-/* ─── SVG-дуга ─── */
-
 function arcPath(trailDeg, leadDeg) {
   const DEG = Math.PI / 180
   const sa = -Math.PI / 2 + trailDeg * DEG
@@ -111,8 +104,6 @@ function arcPath(trailDeg, leadDeg) {
   return `M ${sx} ${sy} A ${R_STROKE} ${R_STROKE} 0 ${large} 1 ${ex} ${ey}`
 }
 
-/* ─── Позиция метки ─── */
-
 function computeLabelPos(i) {
   const { near, far } = segAngles[i]
   const midDeg = (near + far) / 2
@@ -122,8 +113,6 @@ function computeLabelPos(i) {
   const isRight = Math.cos(ma) >= 0
   return { lx, ly, isRight }
 }
-
-/* ─── Подкомпоненты ─── */
 
 function SegmentPath({ trail, lead, color, visible }) {
   if (!visible || lead - trail < 0.1) return null
@@ -334,8 +323,6 @@ function DonutChart({ inView, bp }) {
   )
 }
 
-/* ─── Основная секция ─── */
-
 /**
  * Секция с donut-диаграммой клиентов Fastener Direct.
  * Анимированные сегменты (skate+grow), декоративные кольца, лейблы на desktop, легенда на mobile.
@@ -351,7 +338,6 @@ export default function FastenerDiagramSection() {
   const isVertical = bp === 'md' || bp === 'sm'
   const shouldReduceMotion = useReducedMotion()
 
-  // Hotfix K: общий entrance — fade-up y:40→0 «выплывает» снизу мягко (expo-out ease).
   const titleInitial = shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
   const titleAnimate = inView ? { opacity: 1, y: 0 } : titleInitial
 

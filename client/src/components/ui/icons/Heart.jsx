@@ -1,7 +1,18 @@
+// Иконка сердца (избранное). Поддерживает filled-режим для состояния «добавлено».
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'
 
+/**
+ * Иконка сердца для кнопки избранного.
+ *
+ * @param {object} props
+ * @param {number} [props.size=24] - Ширина и высота в пикселях.
+ * @param {boolean} [props.filled=false] - Если true, сердце залито цветом.
+ * @param {string} [props.className] - Дополнительные Tailwind-классы.
+ * @param {string} [props.ariaLabel] - Если передан — иконка не декоративная.
+ */
 export default function Heart({ size = 24, filled = false, className, ariaLabel }) {
   const accessibilityProps = ariaLabel
     ? { role: 'img', 'aria-label': ariaLabel }

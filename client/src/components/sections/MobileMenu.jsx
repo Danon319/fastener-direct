@@ -1,14 +1,5 @@
-// src/components/sections/MobileMenu.jsx
-//
-// Fullscreen overlay z-1000. Открывается из любого MenuBtn через Zustand.
-// Curtain-анимация (4/6/8/10 колонок), грид-линии после curtainDone,
-// контент с staggered fade-in, Esc/click-outside закрытие, body scroll-lock,
-// focus-trap.
-//
-// matchMedia-helper для curtainColumns — локальный, не выносится в
-// общий хук. Это узко-специфичный случай (нельзя контролировать
-// количество DOM-элементов через CSS), исключение из правила
-// "адаптив только Tailwind".
+// Fullscreen overlay-меню (z-menu). Curtain-анимация колонками, грид-линии, staggered fade-in контента.
+// Esc/click-outside закрытие, scroll-lock, focus-trap.
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 
@@ -40,10 +31,7 @@ function useCurtainColumns() {
   return n
 }
 
-// matchMedia-helper для размера Logo в MobileMenu.
-// На узких экранах (<375px) логотип уменьшается до 42, чтобы не наезжать
-// на CloseBtn справа. Начиная с 375px — undefined → Logo подхватывает свой
-// собственный дефолт (54).
+// На экранах <375px логотип уменьшается до 42px, чтобы не перекрывать CloseBtn. С 375px — дефолт Logo (54px).
 function useMobileMenuLogoSize() {
   const compute = () => {
     if (typeof window === 'undefined') return undefined
@@ -65,7 +53,7 @@ function MobileMenuContent({ onClose }) {
   const columns = useCurtainColumns()
   const logoSize = useMobileMenuLogoSize()
   const shouldReduceMotion = useReducedMotion()
-  // Hotfix 7.18: при reduced-motion пропускаем curtain — контент-слой виден сразу.
+  // При reduced-motion пропускаем curtain — контент-слой виден сразу.
   const [curtainDone, setCurtainDone] = useState(() => shouldReduceMotion)
   const overlayRef = useRef(null)
 

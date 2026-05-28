@@ -1,3 +1,5 @@
+// Zustand-слайс избранного. Хранит Set<productId>.
+
 import { create } from 'zustand'
 
 export const useFavoritesStore = create((set, get) => ({

@@ -1,3 +1,4 @@
+// Секция «Сервисная программа». Десктоп: 2-колоночная сетка, hover-строки. Мобильный: стопка с разделителями.
 import { useRef, useState } from 'react'
 import { motion, useInView, useReducedMotion } from 'motion/react'
 
@@ -6,8 +7,6 @@ import { useViewport, useBreakpoint } from '@/hooks'
 import { cn } from '@/utils/cn'
 import { SECTION_LABEL, SERVICES } from '@/content/serviceProgram'
 
-// Hotfix K: общий entrance — fade-up 900ms, 100ms stagger, single inView для всей секции.
-// Длиннее duration и мягче ease — элементы «выплывают» снизу без рывка.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
@@ -18,23 +17,23 @@ const ENTRANCE_STAGGER = 0.1
 function DualArrow({ size = 14, className }) {
   return (
     <span className={cn('relative block', className)} style={{ width: size, height: size }}>
-      {/* Стрелка 1: видна в покое, уходит вправо с блюром при hover на строку */}
+      {/* Стрелка 1: видна в покое, уходит вправо с блюром при наведении на кнопку */}
       <span
         className={cn(
           'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
           'transition-[transform,filter,opacity] duration-[220ms] ease-[cubic-bezier(0.55,0,0.9,0.4)]',
-          'group-hover/row:translate-x-[150%] group-hover/row:opacity-0 group-hover/row:blur-sm'
+          'group-hover/iconbtn:translate-x-[150%] group-hover/iconbtn:opacity-0 group-hover/iconbtn:blur-sm'
         )}
       >
         <Arrow size={size} />
       </span>
 
-      {/* Стрелка 2: скрыта слева, выезжает в центр при hover */}
+      {/* Стрелка 2: скрыта слева, выезжает в центр при наведении на кнопку */}
       <span
         className={cn(
           'absolute left-1/2 top-1/2 -translate-x-[250%] -translate-y-1/2',
           'transition-transform duration-[400ms] ease-in-out',
-          'group-hover/row:-translate-x-1/2'
+          'group-hover/iconbtn:-translate-x-1/2'
         )}
       >
         <Arrow size={size} />
@@ -45,10 +44,18 @@ function DualArrow({ size = 14, className }) {
 
 // --- Строка для десктопа ---
 
-function DesktopRow({ service, index, hoveredId, onHover, onLeave, isLast, inView, shouldReduceMotion }) {
+function DesktopRow({
+  service,
+  index,
+  hoveredId,
+  onHover,
+  onLeave,
+  isLast,
+  inView,
+  shouldReduceMotion,
+}) {
   const isHovered = hoveredId === service.id
 
-  // Hotfix K: единый inView для секции, delay = (index + 1) * 0.1s.
   const motionProps = shouldReduceMotion
     ? { initial: false }
     : {
@@ -155,7 +162,7 @@ export default function ServiceProgramSection() {
   const shouldReduceMotion = useReducedMotion()
   const [hoveredId, setHoveredId] = useState(null)
 
-  // Hotfix K: единый observer на всю секцию — label и карточки стартуют от одного тригера.
+  // Единый observer на всю секцию — label и все строки стартуют от одного тригера.
   const sectionRef = useRef(null)
   const inView = useInView(sectionRef, { once: true, amount: 0.2 })
 

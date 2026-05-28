@@ -10,7 +10,7 @@ import FilterAccordion from './FilterAccordion'
 import { BRANDS } from '@/content/catalog'
 import { cn } from '@/utils/cn'
 
-/** Ключи сортировки совпадают с switch в CatalogPage (filtered useMemo). */
+// Ключи сортировки совпадают с switch в CatalogPage (filtered useMemo).
 const SORT_OPTIONS = [
   { key: 'price-asc', label: 'По цене (возрастание) \u2191' },
   { key: 'price-desc', label: 'По цене (убывание) \u2193' },
@@ -18,7 +18,7 @@ const SORT_OPTIONS = [
   { key: 'in-stock', label: 'По наличию' },
 ]
 
-/** Радиогруппа: повторный клик по активной опции снимает сортировку (null). */
+// Радиогруппа: повторный клик по активной опции снимает сортировку (null).
 function SortSection({ activeSort, onSortChange }) {
   return (
     <div className="border-b border-light pb-4">
@@ -56,7 +56,7 @@ SortSection.propTypes = {
   onSortChange: PropTypes.func.isRequired,
 }
 
-/** Два числовых поля «от / до»; значения строками до parseFloat на стороне страницы. */
+// Два числовых поля «от / до»; значения строками до parseFloat на стороне страницы.
 function PriceFilter({ priceMin, priceMax, onPriceMinChange, onPriceMaxChange }) {
   return (
     <div>

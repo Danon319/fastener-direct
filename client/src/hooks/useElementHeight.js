@@ -1,11 +1,14 @@
-// src/hooks/useElementHeight.js
-//
-// Возвращает высоту элемента по border-box через ResizeObserver.
-// Принимает строку CSS-селектора (например 'footer') для поиска элемента.
-// Используется в Home.jsx: отступ под фиксированный подвал по высоте Footer.
+// Возвращает высоту DOM-элемента по CSS-селектору через ResizeObserver. Используется для отступа под фиксированный Footer.
 
 import { useEffect, useState } from 'react'
 
+/**
+ * Отслеживает высоту DOM-элемента, найденного по CSS-селектору.
+ * Использует ResizeObserver — обновляет значение при изменении размеров элемента.
+ *
+ * @param {string} selector - CSS-селектор элемента, например 'footer'.
+ * @returns {number} - Высота элемента в пикселях (border-box).
+ */
 export default function useElementHeight(selector) {
   const [height, setHeight] = useState(0)
 

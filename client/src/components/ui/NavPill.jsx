@@ -1,14 +1,4 @@
-// src/components/ui/NavPill.jsx
-//
-// Pill-кнопка для Header и HeroHeader.
-// 4 variants:
-//   - default   — Header (белый pill state): прозрачный, hover серый.
-//   - heroWhite — HeroHeader: белый фон, hover серый.
-//   - heroLang  — HeroHeader lang-switcher: прозрачный с белой обводкой.
-//   - red       — кнопка "Аккаунт" (с UserIcon): красный фон, hover redHover.
-//
-// Поддерживает optional `to` (Link) или `onClick` (button). Если задан `to`,
-// рендерит <Link>, иначе <button>.
+// Pill-кнопка навигации для Header и HeroHeader. Поддерживает варианты оформления, Link и button.
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 

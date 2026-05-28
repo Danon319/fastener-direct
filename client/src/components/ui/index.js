@@ -1,3 +1,5 @@
+// Реэкспорт UI-примитивов и иконок проекта.
+
 export { default as Button } from './Button'
 export { default as IconButton } from './IconButton'
 export { default as Logo } from './Logo'

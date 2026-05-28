@@ -1,3 +1,5 @@
+// Иконка закрытия (×). Реализована через текстовый символ, не SVG.
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'

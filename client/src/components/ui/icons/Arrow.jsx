@@ -1,3 +1,5 @@
+// Иконка стрелки вправо. Используется внутри Button и ScrollToTopButton.
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'

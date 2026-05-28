@@ -1,3 +1,5 @@
+// Контент секции «Сервисная программа» — метка и карточки услуг.
+
 export const SECTION_LABEL = 'Сервисная программа'
 
 export const SERVICES = [

@@ -1,11 +1,10 @@
+// CTA-баннер с фоновым фото, overlay и кнопкой. Entrance: title + photo scale синхронно, кнопка +0.1s.
 import { useRef } from 'react'
 import { motion, useInView, useReducedMotion } from 'motion/react'
 
 import Button from '@/components/ui/Button'
 import { CTA_BANNER } from '@/content/ctaBanner'
 
-// Hotfix K: entrance — title + photo scale синхронно t=0, кнопка t=0.1s.
-// Длиннее duration и мягче ease — текст «выплывает» снизу, фото плавно увеличивается.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
@@ -23,7 +22,7 @@ export default function CtaBannerSection() {
     ? { initial: false }
     : {
         initial: { scale: 1.05 },
-        animate: { scale: inView ? 1 : 1.05 },
+        animate: { scale: inView ? 1.2 : 1.05 },
         transition: { duration: ENTRANCE_DURATION, ease: ENTRANCE_EASE },
       }
 
@@ -44,10 +43,7 @@ export default function CtaBannerSection() {
       }
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-10 lg:py-24"
-    >
+    <section ref={sectionRef} className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-10 lg:py-24">
       <div className="mx-auto max-w-[1347px]">
         <div className="relative overflow-hidden rounded-xl md:h-[560px]">
           <motion.img

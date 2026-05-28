@@ -1,3 +1,5 @@
+// Zustand-слайс корзины. Хранит Map<productId, quantity>.
+
 import { create } from 'zustand'
 
 export const useCartStore = create((set, get) => ({

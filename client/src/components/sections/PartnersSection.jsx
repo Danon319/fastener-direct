@@ -1,3 +1,4 @@
+// Секция партнёров-производителей: адаптивная auto-fit сетка карточек с container-query типографикой.
 import { useRef } from 'react'
 import { motion, useInView, useReducedMotion } from 'motion/react'
 
@@ -10,16 +11,13 @@ import {
   GRID_MAX_WIDTH,
 } from '@/content/partners'
 
-// Hotfix K: общий entrance — title t=0, карточки stagger по rows (0.1s между рядами).
-// Длиннее duration и мягче ease — карточки «выплывают» снизу.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
 const ENTRANCE_STAGGER = 0.1
 
-// Пороги колонок для auto-fit minmax(437,1fr) layout — приближения с учётом padding'а секции.
-// Сетка max-width = 437*3 + 18*2 = 1347, при lg padding px-10 → ≥1428px viewport даёт 3 col.
-// На md+ переход 1 → 2 col происходит около 960px viewport (container 892+ при px-8 padding).
+// Пороги колонок для auto-fit minmax(437px,1fr): ≥1428px → 3 col, ≥960px → 2 col.
+// Соответствуют CSS-сетке с учётом padding'а секции (px-8/px-10).
 const COL_2_QUERY = '(min-width: 960px)'
 const COL_3_QUERY = '(min-width: 1428px)'
 
@@ -109,10 +107,7 @@ export default function PartnersSection() {
       }
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-10 lg:py-24"
-    >
+    <section ref={sectionRef} className="bg-tagDate px-4 py-16 md:px-8 md:py-20 lg:px-10 lg:py-24">
       <div className="mx-auto" style={{ maxWidth: GRID_MAX_WIDTH }}>
         <motion.p {...titleMotion} className="mb-8 text-2xl font-medium text-slateHover">
           {SECTION_TITLE}

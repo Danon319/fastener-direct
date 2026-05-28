@@ -6,10 +6,8 @@ import { AnimatePresence, motion } from 'motion/react'
 import IconButton from '@/components/ui/IconButton'
 import { Arrow } from '@/components/ui/icons'
 
-// Порог видимости — кнопка появляется, когда пользователь прокрутил вниз больше этого значения.
 const SHOW_THRESHOLD = 300
-// Hotfix 7.7: 1.5× базового размера IconButton (40 → 60), иконка масштабируется
-// внутри IconButton пропорционально (size * 0.36).
+// 60px — 1.5× базового размера IconButton (40), иконка масштабируется пропорционально (size * 0.36).
 const BUTTON_SIZE = 60
 
 export default function ScrollToTopButton() {

@@ -1,4 +1,4 @@
-// src/components/sections/Footer.jsx
+// Подвал сайта: навигация, контакты, соцсети, юридика. Фиксированный на главной, относительный на остальных страницах.
 import PropTypes from 'prop-types'
 import { Link, useLocation } from 'react-router-dom'
 

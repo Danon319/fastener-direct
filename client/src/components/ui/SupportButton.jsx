@@ -1,3 +1,5 @@
+// Фиксированная кнопка «Поддержка»: появляется ниже Hero, скрывается у Footer.
+
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 

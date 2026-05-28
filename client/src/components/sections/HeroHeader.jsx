@@ -1,14 +1,5 @@
-// src/components/sections/HeroHeader.jsx
-//
-// Fixed header поверх Hero (transparent фон, белый текст).
-// Рендерится в Home.jsx параллельно Hero (не внутри). При скролле уезжает
-// вверх синхронно со scrollY через motion useScroll/useTransform.
-// К моменту scrollY = innerHeight / 2 уже полностью за верхним краем,
-// в этот же момент появляется обычный Header (нет overlap-диапазона).
-//
-// Mobile (<md): Burger открывает локальный dropdown с пунктами nav.
-// Desktop (md+): nav-pills видны inline.
-// MenuBtn (серый круг с +) — виден всегда, открывает MobileMenu (Zustand).
+// Fixed хедер поверх Hero (прозрачный фон, белый текст). Рендерится в Home.jsx параллельно Hero.
+// Уезжает вверх со скроллом через useScroll/useTransform; к scrollY = innerHeight/2 полностью скрыт.
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
@@ -19,8 +10,7 @@ import { useUiStore } from '@/store/slices/uiSlice'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
 
-// Hotfix K: координированный mount-entrance — стартует после tagline (Hero выдаёт ~100ms на tagline).
-// Длиннее duration и мягче ease — элементы «выплывают» снизу без рывка.
+// Mount-entrance координирован с tagline (~100ms задержка). Мягкий ease — элементы «выплывают» снизу.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
@@ -156,7 +146,11 @@ function HeroHeader() {
         {/* Десктоп (md+): nav-pills инлайн (Lang i=1, NavLinks i=2..4, Account i=5) */}
         <div className="hidden md:flex md:items-center">
           <motion.div {...entranceProps(1)}>
-            <NavPill variant="heroLang" className="md:px-5 md:py-3 md:text-base" onClick={toggleLang}>
+            <NavPill
+              variant="heroLang"
+              className="md:px-5 md:py-3 md:text-base"
+              onClick={toggleLang}
+            >
               {langLabel}
             </NavPill>
           </motion.div>
@@ -166,11 +160,7 @@ function HeroHeader() {
               className="hidden lg:inline-flex"
               {...entranceProps(2 + i)}
             >
-              <NavPill
-                variant="heroWhite"
-                className="lg:px-5 lg:py-3 lg:text-base"
-                to={item.to}
-              >
+              <NavPill variant="heroWhite" className="lg:px-5 lg:py-3 lg:text-base" to={item.to}>
                 {item.label}
               </NavPill>
             </motion.div>
@@ -185,7 +175,12 @@ function HeroHeader() {
 
         {/* MenuBtn — серый круг с +, всегда виден, открывает MobileMenu (index 6) */}
         <motion.div {...entranceProps(6)}>
-          <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={() => setMenuOpen(true)}>
+          <IconButton
+            variant="slate"
+            size={48}
+            ariaLabel="Открыть меню"
+            onClick={() => setMenuOpen(true)}
+          >
             <Plus />
           </IconButton>
         </motion.div>

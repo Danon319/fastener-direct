@@ -1,3 +1,5 @@
+// Логотип Fastener Direct с маркой и текстовым блоком. Поддерживает варианты и масштабирование.
+
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 

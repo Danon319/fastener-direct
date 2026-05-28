@@ -1,3 +1,5 @@
+// Иконка бургер-меню (три горизонтальные линии).
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'

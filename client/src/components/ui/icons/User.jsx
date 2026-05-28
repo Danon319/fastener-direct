@@ -1,3 +1,5 @@
+// Иконка пользователя (силуэт). Используется в NavPill «Аккаунт».
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'

@@ -1,3 +1,5 @@
+// Анимирует числовой счётчик от 0 до целевого значения за указанное время (кривая ease-out cubic).
+
 import { useEffect, useRef, useState } from 'react'
 
 /**

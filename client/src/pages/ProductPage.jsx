@@ -1,3 +1,4 @@
+// Страница товара — плейсхолдер. Показывает id из URL и ссылку обратно в каталог.
 import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 

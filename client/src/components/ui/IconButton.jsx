@@ -1,3 +1,5 @@
+// Круглая кнопка-иконка с вариантами оформления. Поддерживает forwardRef для click-outside detection.
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -47,7 +49,6 @@ const IconButton = React.forwardRef(function IconButton(
   } else if (variant === 'slate') {
     iconColorClass = 'text-white'
   } else {
-    // вариант filled
     iconColorClass = pressed ? 'text-red' : 'text-white'
   }
 

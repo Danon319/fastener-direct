@@ -1,7 +1,4 @@
-// src/components/sections/TopStrip.jsx
-//
-// Тонкая красная полоса 3px поверх всего. Декоративная, не интерактивная.
-// z-200 — выше Header (z-100), но ниже MobileMenu (z-1000).
+// Декоративная красная полоса 3px, фиксированная сверху страницы. z-topstrip — выше Header, ниже MobileMenu.
 import { motion, useReducedMotion } from 'motion/react'
 
 // Длительность slide-in анимации полосы при первом mount App (1 сек).

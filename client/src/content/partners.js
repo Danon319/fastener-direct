@@ -1,3 +1,5 @@
+// Данные партнёров-производителей и константы сетки карточек.
+
 export const SECTION_TITLE = 'Наши партнёры'
 
 export const GRID_MIN_CARD = 437

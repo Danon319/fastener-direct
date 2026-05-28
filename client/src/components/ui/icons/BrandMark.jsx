@@ -1,3 +1,5 @@
+// Марка бренда Fastener Direct (SVG-фигура). Используется внутри Logo.
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'

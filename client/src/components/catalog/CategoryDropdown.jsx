@@ -7,7 +7,7 @@ import { motion } from 'motion/react'
 import { CATEGORY_TREE } from '@/content/catalog'
 import { cn } from '@/utils/cn'
 
-/** Возврат со списка подкатегорий к сетке родительских категорий. */
+// Возврат со списка подкатегорий к сетке родительских категорий.
 function BackButton({ onClick }) {
   return (
     <button

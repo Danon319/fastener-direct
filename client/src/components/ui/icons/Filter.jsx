@@ -1,7 +1,17 @@
+// Иконка фильтра (три горизонтальные линии убывающей длины).
+
 import PropTypes from 'prop-types'
 
 import { cn } from '@/utils/cn'
 
+/**
+ * Иконка фильтра.
+ *
+ * @param {object} props
+ * @param {number} [props.size=24] - Ширина и высота в пикселях.
+ * @param {string} [props.className] - Дополнительные Tailwind-классы.
+ * @param {string} [props.ariaLabel] - Если передан — иконка не декоративная.
+ */
 export default function Filter({ size = 24, className, ariaLabel }) {
   const accessibilityProps = ariaLabel
     ? { role: 'img', 'aria-label': ariaLabel }
