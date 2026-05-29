@@ -30,7 +30,7 @@ export const CONTACT_INFO = {
 // Соцсети.
 // TODO: ссылки на соцсети — заменить на реальные после получения от заказчика.
 export const SOCIAL_LINKS = {
-  youtube: '#',
+  youtube: 'https://youtu.be/dQw4w9WgXcQ?si=RLu_EYImoT5WEigY',
   vk: '#',
 }
 
