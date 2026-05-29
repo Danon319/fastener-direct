@@ -10,7 +10,6 @@ function toggleInArray(arr, value) {
   return arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value]
 }
 
-// Начальное состояние staged- и applied-фильтров (нет ни одного активного фильтра).
 const EMPTY_FILTERS = {
   brands: [],
   priceMin: '',
@@ -18,7 +17,6 @@ const EMPTY_FILTERS = {
   inStockOnly: false,
 }
 
-// 16 товаров на странице — ~4 ряда × 4 колонки на десктопе.
 const ITEMS_PER_PAGE = 16
 
 // Подсчёт активных условий в объекте фильтров (для бейджа и подвала сайдбара).
@@ -67,7 +65,6 @@ export default function useCatalogFilters() {
   const { category, subcategory } = useParams()
   const navigate = useNavigate()
 
-  // Контролируемые значения каталога.
   const [searchQuery, setSearchQuery] = useState('')
   const [activeSort, setActiveSort] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
