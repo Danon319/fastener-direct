@@ -1,5 +1,11 @@
 {
+  "scripts": {
+    "claude": "claude"
+  },
   "dependencies": {
     "docker": "^1.0.0"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-code": "^2.1.154"
   }
 }
