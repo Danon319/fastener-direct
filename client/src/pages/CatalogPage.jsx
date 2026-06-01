@@ -67,11 +67,9 @@ export default function CatalogPage() {
 
   // При открытии сайдбара — копируем applied → staged через хук.
   const handleFilterToggle = useCallback(() => {
-    setIsFilterSidebarOpen((prev) => {
-      if (!prev) filters.syncStagedFromApplied()
-      return !prev
-    })
-  }, [filters])
+    if (!isFilterSidebarOpen) filters.syncStagedFromApplied()
+    setIsFilterSidebarOpen((prev) => !prev)
+  }, [isFilterSidebarOpen, filters.syncStagedFromApplied])
 
   const handleFilterClose = useCallback(() => {
     setIsFilterSidebarOpen(false)

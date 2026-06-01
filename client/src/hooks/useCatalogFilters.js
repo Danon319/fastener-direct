@@ -228,8 +228,8 @@ export default function useCatalogFilters() {
     [filtered, currentPage]
   )
 
-  const activeFilterCount = useMemo(() => countFilters(appliedFilters), [appliedFilters])
-  const stagedFilterCount = useMemo(() => countFilters(stagedFilters), [stagedFilters])
+  const activeFilterCount = countFilters(appliedFilters)
+  const stagedFilterCount = countFilters(stagedFilters)
 
   return {
     searchQuery,
