@@ -1,5 +1,5 @@
-// Глобальный Zustand store — точка сборки всех слайсов.
+// Barrel независимых Zustand-сторов. Каждая фича — свой стор в slices/.
 
-import { create } from 'zustand'
-
-export const useStore = create(() => ({}))
+export { useUiStore } from './slices/uiSlice'
+export { useCartStore } from './slices/cartSlice'
+export { useFavoritesStore } from './slices/favoritesSlice'
