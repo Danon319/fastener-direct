@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 import { Logo, IconButton, NavPill } from '@/components/ui'
 import { Burger, Plus, User } from '@/components/ui/icons'
-import { useUiStore } from '@/store/slices/uiSlice'
+import { useUiStore } from '@/store'
 import { useScrollDirection } from '@/hooks'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
@@ -16,6 +16,7 @@ function Header() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
   const location = useLocation()
   const isHome = location.pathname === '/'
+  // Состояние хедера: язык, открыт ли бургер-дропдаун, и ссылки на дропдаун/кнопку для закрытия по клику снаружи.
   const [lang, setLang] = useState('ru')
   const [burgerOpen, setBurgerOpen] = useState(false)
   const dropdownRef = useRef(null)

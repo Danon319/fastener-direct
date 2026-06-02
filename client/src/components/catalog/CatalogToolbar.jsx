@@ -9,6 +9,10 @@ import { cn } from '@/utils/cn'
 
 import SearchBar from './SearchBar'
 
+/**
+ * Плавающая панель над каталогом: кнопка фильтров (с бейджем), поиск и кнопка дерева категорий.
+ * Зафиксирована по центру экрана, прячется при прокрутке за высоту экрана (как Hero).
+ */
 export default function CatalogToolbar({
   searchQuery,
   onSearchChange,

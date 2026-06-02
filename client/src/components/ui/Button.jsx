@@ -7,6 +7,7 @@ import { cn } from '@/utils/cn'
 
 import { Arrow } from './icons'
 
+// Размеры кнопки, круга и стрелки для трёх вариантов: sm / md / lg.
 const SIZE_MAP = {
   sm: {
     button: 'w-36 h-14 text-xs pl-5 pr-2.5',

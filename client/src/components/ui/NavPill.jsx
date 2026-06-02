@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { cn } from '@/utils/cn'
 
+// Классы оформления для четырёх вариантов pill-кнопки.
 const VARIANT_CLASSES = {
   default: 'bg-transparent text-navy hover:bg-pillHover',
   heroWhite: 'bg-white text-navy hover:bg-pillHover',

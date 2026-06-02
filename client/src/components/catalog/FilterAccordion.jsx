@@ -6,6 +6,15 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Checkbox } from '@/components/ui'
 import { ChevronDown } from '@/components/ui/icons'
 
+/**
+ * Сворачиваемый блок фильтра со списком чекбоксов (например, бренды или наличие).
+ *
+ * @param {Object} props
+ * @param {string} props.title - Заголовок блока.
+ * @param {Array<string|{value: string, label: string}>} props.items - Пункты списка.
+ * @param {string[]} props.selected - Выбранные значения.
+ * @param {(value: string) => void} props.onToggle - Переключение пункта.
+ */
 export default function FilterAccordion({ title, items, selected, onToggle }) {
   const [open, setOpen] = useState(true)
 

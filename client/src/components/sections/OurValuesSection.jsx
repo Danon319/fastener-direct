@@ -16,11 +16,13 @@ import {
   SECTION_TAIL_HEIGHT_PX,
 } from '@/content/ourValues'
 
+// Настройки анимации появления блоков: длительность, плавность, сдвиг в начале и задержка между блоками.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
 const ENTRANCE_STAGGER = 0.1
 
+// Готовит настройки анимации появления для блока по его номеру: блоки всплывают один за другим (или сразу, если анимации отключены).
 function useEntranceProps() {
   const shouldReduceMotion = useReducedMotion()
   return (index) => {
@@ -107,11 +109,11 @@ function TopBlockDesktop() {
   const entrance = useEntranceProps()
   const shouldReduceMotion = useReducedMotion()
   const headingRef = useRef(null)
-  // Зона анимации: start 0.90 — заголовок входит снизу, end 0.6 — ещё виден.
+  // Зона анимации: start 0.90 — заголовок входит снизу, end 0.75 — ещё виден.
   // Перекраска охватывает всё время видимости заголовка в viewport.
   const { scrollYProgress } = useScroll({
     target: headingRef,
-    offset: ['start 0.90', 'end 0.6'],
+    offset: ['start 0.90', 'end 0.75'],
   })
   const words = HEADING.split(' ')
 
@@ -202,6 +204,7 @@ function MobileCardsStack() {
   )
 }
 
+// Карточки на десктопе: при прокрутке едут по диагонали (сдвиг зависит от прогресса прокрутки). Если анимации отключены — стоят неподвижным рядом.
 function DesktopCardsAnimated() {
   const animationZoneRef = useRef(null)
   const viewportWidth = useViewportWidth()

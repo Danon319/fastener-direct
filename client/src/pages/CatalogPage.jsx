@@ -1,6 +1,6 @@
 // UI-оркестратор каталога: модалки, скелетоны, JSX-композиция.
 // Логика фильтрации/сортировки/пагинации — useCatalogFilters. Данные из content/catalog (PRODUCTS).
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 
@@ -58,22 +58,22 @@ export default function CatalogPage() {
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false)
   const [isFilterSidebarOpen, setIsFilterSidebarOpen] = useState(false)
 
-  const handleCatalogToggle = useCallback(() => {
+  const handleCatalogToggle = () => {
     setIsCategoryDropdownOpen((p) => !p)
-  }, [])
-  const handleCatalogClose = useCallback(() => {
+  }
+  const handleCatalogClose = () => {
     setIsCategoryDropdownOpen(false)
-  }, [])
+  }
 
   // При открытии сайдбара — копируем applied → staged через хук.
-  const handleFilterToggle = useCallback(() => {
+  const handleFilterToggle = () => {
     if (!isFilterSidebarOpen) filters.syncStagedFromApplied()
     setIsFilterSidebarOpen((prev) => !prev)
-  }, [isFilterSidebarOpen, filters.syncStagedFromApplied])
+  }
 
-  const handleFilterClose = useCallback(() => {
+  const handleFilterClose = () => {
     setIsFilterSidebarOpen(false)
-  }, [])
+  }
 
   return (
     <>

@@ -3,6 +3,13 @@ import PropTypes from 'prop-types'
 
 import { Search } from '@/components/ui/icons'
 
+/**
+ * Поле поиска по каталогу — контролируемый input.
+ *
+ * @param {Object} props
+ * @param {string} props.value - Текущая строка поиска.
+ * @param {(value: string) => void} props.onChange - Вызывается при вводе текста.
+ */
 export default function SearchBar({ value, onChange }) {
   return (
     <div className="relative min-w-[200px] max-w-[500px] flex-1">

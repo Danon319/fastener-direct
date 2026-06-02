@@ -11,6 +11,7 @@ import {
   GRID_MAX_WIDTH,
 } from '@/content/partners'
 
+// Настройки анимации появления: длительность, плавность, сдвиг в начале и задержка между рядами карточек.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
@@ -121,6 +122,7 @@ export default function PartnersSection() {
         >
           {partners.map((p, i) => {
             const rowIndex = Math.floor(i / cols)
+            // Карточки появляются по рядам: задержка зависит от номера ряда, поэтому карточки одного ряда всплывают вместе.
             const cardMotion = shouldReduceMotion
               ? { initial: false }
               : {

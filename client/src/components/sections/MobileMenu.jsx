@@ -5,11 +5,12 @@ import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 
 import { Logo, IconButton, Button } from '@/components/ui'
 import { Close } from '@/components/ui/icons'
-import { useUiStore } from '@/store/slices/uiSlice'
+import { useUiStore } from '@/store'
 import { MENU_PRIMARY, MENU_SECONDARY, MENU_CTA } from '@/content/menu'
 
 import MenuItem from './_MenuItem'
 
+// Тайминги анимации-шторки (падающие колонки) и проявления контента после неё.
 const CURTAIN_STEP = 0.08
 const CURTAIN_DURATION = 0.7
 const CURTAIN_EASE = [0.55, 0, 0.1, 1]

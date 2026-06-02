@@ -1,6 +1,6 @@
 // Выезжающая слева панель: сортировка, цена, бренд, наличие. Значения — черновик (staged);
 // родитель копирует их в applied по «Применить». Затемнение кликом и Escape закрывают без apply.
-import { useEffect, useCallback } from 'react'
+import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { motion } from 'motion/react'
 
@@ -91,6 +91,11 @@ PriceFilter.propTypes = {
   onPriceMaxChange: PropTypes.func.isRequired,
 }
 
+/**
+ * Выезжающая слева панель фильтров: сортировка, цена, бренды, наличие.
+ * Значения — черновик (staged); применяются к каталогу только по кнопке «Применить».
+ * Клик по затемнению или Escape закрывают панель без применения.
+ */
 export default function FilterSidebar({
   activeSort,
   onSortChange,
@@ -127,10 +132,10 @@ export default function FilterSidebar({
   }, [onClose])
 
   // Сначала зафиксировать фильтры на странице, затем закрыть панель.
-  const handleApply = useCallback(() => {
+  const handleApply = () => {
     onApply()
     onClose()
-  }, [onApply, onClose])
+  }
 
   return (
     <>

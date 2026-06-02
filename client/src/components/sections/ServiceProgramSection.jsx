@@ -7,6 +7,7 @@ import { useViewport, useBreakpoint } from '@/hooks'
 import { cn } from '@/utils/cn'
 import { SECTION_LABEL, SERVICES } from '@/content/serviceProgram'
 
+// Настройки анимации появления строк: длительность, плавность, сдвиг в начале и задержка между строками.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40

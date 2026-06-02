@@ -1,8 +1,3 @@
-// src/App.jsx
-//
-// BrowserRouter в main.jsx (Phase 0 scaffold). В App.jsx используем
-// fragment + Routes. TopStrip / Header / MobileMenu лежат снаружи Routes,
-// потому что они site-wide.
 import { Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'

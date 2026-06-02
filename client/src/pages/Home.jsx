@@ -12,6 +12,10 @@ import ServiceProgramSection from '@/components/sections/ServiceProgramSection'
 import { SupportButton } from '@/components/ui'
 import { useElementHeight } from '@/hooks'
 
+/**
+ * Главная страница: Hero с шапкой, лэндинг-секции в скруглённой обёртке и плавающая кнопка поддержки.
+ * Внизу — спейсер высотой с подвал, потому что на главной подвал зафиксирован за контентом.
+ */
 export default function Home() {
   const footerH = useElementHeight('footer')
 

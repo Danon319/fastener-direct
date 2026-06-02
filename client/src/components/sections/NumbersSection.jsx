@@ -9,6 +9,7 @@ import { COUNT_DURATION, LINE_DURATION, STATS_ROW1, STATS_ROW2 } from '@/content
 // Линия стартует позже, чтобы закончиться в тот же момент что и счётчик.
 const LINE_START_DELAY = (COUNT_DURATION - LINE_DURATION) / 1000
 
+// Настройки анимации появления чисел: длительность, плавность и сдвиг в начале.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
@@ -84,6 +85,7 @@ StatItem.propTypes = {
 export default function NumbersSection() {
   const { isTouch } = useViewport()
   const shouldReduceMotion = useReducedMotion()
+  // Каждая строка чисел отслеживает своё появление на экране отдельно — пара запускается, когда видна именно она.
   const row1Ref = useRef(null)
   const row2Ref = useRef(null)
   const viewportOptions = { once: true, amount: isTouch ? 0.2 : 0.8 }

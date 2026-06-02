@@ -28,6 +28,7 @@ export default function useScrollDirection({ threshold = 0 } = {}) {
 
       prevScrollY.current = current
 
+      // Обновляем state, только если реально сменилось направление или пересекли порог — иначе лишние ререндеры на каждый пиксель скролла.
       setState((s) => {
         const directionChanged = newDirection !== null && newDirection !== s.direction
         const thresholdChanged = newIsPastThreshold !== s.isPastThreshold

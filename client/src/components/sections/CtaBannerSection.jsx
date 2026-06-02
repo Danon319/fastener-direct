@@ -5,6 +5,7 @@ import { motion, useInView, useReducedMotion } from 'motion/react'
 import Button from '@/components/ui/Button'
 import { CTA_BANNER } from '@/content/ctaBanner'
 
+// Настройки анимации появления: длительность, плавность, сдвиг в начале и задержка кнопки.
 const ENTRANCE_DURATION = 0.9
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
@@ -18,6 +19,7 @@ export default function CtaBannerSection() {
   const sectionRef = useRef(null)
   const inView = useInView(sectionRef, { once: true, amount: 0.3 })
 
+  // Ниже — как элементы баннера появляются при прокрутке: фон чуть увеличивается, заголовок и кнопка выезжают снизу (кнопка с задержкой).
   const imgMotion = shouldReduceMotion
     ? { initial: false }
     : {

@@ -8,6 +8,7 @@ import { BIG_LEFT, BIG_RIGHT, TAGLINES } from '@/content/hero'
 
 import TaglineLine from './_TaglineLine'
 
+// Тайминги цикла смены подзаголовка (в мс): пауза, уход, вход, зазор между сменами, сдвиг второй строки, первое появление.
 const REST_MS = 5000
 const EXIT_MS = 750
 const ENTER_MS = 750
@@ -31,6 +32,7 @@ export default function Hero() {
   const isDesktop = useBreakpoint('lg', false)
   const shouldReduceMotion = useReducedMotion()
 
+  // Состояние секции: видна ли она, номер текущего подзаголовка и фаза анимации (всего 6 фаз).
   const [heroVisible, setHeroVisible] = useState(true)
   const [idx, setIdx] = useState(0)
   const [phase, setPhase] = useState('mount')
@@ -51,6 +53,7 @@ export default function Hero() {
     timersRef.current = []
   }, [])
 
+  // Один цикл смены подзаголовка: уходит вверх → меняем текст → въезжает → пауза → снова запускает себя.
   const runCycle = useCallback(() => {
     setPhase('exiting')
     pushTimer(

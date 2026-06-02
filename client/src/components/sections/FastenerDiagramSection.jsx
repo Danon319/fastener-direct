@@ -29,6 +29,7 @@ import {
   RING_COLOR,
 } from '@/content/fastenerDiagram'
 
+// Заранее считаем углы каждого сектора: где он начинается и где заканчивается по кругу (в градусах).
 const segAngles = (() => {
   const result = []
   let cum = 0
@@ -40,6 +41,7 @@ const segAngles = (() => {
   return result
 })()
 
+// Заранее считаем тайминги каждого сектора: когда он стартует и сколько длятся его две фазы прорисовки.
 const segTimings = (() => {
   const result = []
   let t = INTRO_DURATION
@@ -61,10 +63,12 @@ const segTimings = (() => {
 
 const TOTAL_DURATION = Math.max(...segTimings.map((s) => s.totalEnd))
 
+// Плавное замедление к концу (ease-out): анимация быстро стартует и мягко тормозит.
 function easeOut(t) {
   return 1 - Math.pow(1 - t, 3)
 }
 
+// Считает, насколько дорисован сектор i на момент времени t: возвращает начало и конец видимой дуги.
 function computeSegmentAt(t, i) {
   const timing = segTimings[i]
   const { near, far } = segAngles[i]
@@ -92,6 +96,7 @@ function computeSegmentAt(t, i) {
   return { lead, trail: near, visible: true }
 }
 
+// Строит SVG-путь дуги по углам начала и конца (переводит градусы в координаты точек на окружности).
 function arcPath(trailDeg, leadDeg) {
   const DEG = Math.PI / 180
   const sa = -Math.PI / 2 + trailDeg * DEG
@@ -104,6 +109,7 @@ function arcPath(trailDeg, leadDeg) {
   return `M ${sx} ${sy} A ${R_STROKE} ${R_STROKE} 0 ${large} 1 ${ex} ${ey}`
 }
 
+// Считает, где разместить подпись сектора: точку на внешнем радиусе по его середине и с какой она стороны.
 function computeLabelPos(i) {
   const { near, far } = segAngles[i]
   const midDeg = (near + far) / 2
@@ -241,6 +247,7 @@ function Legend({ inView }) {
   )
 }
 
+// Сама круговая диаграмма: кольца, анимируемые сегменты и подписи. Прогресс анимации гонит линейный таймер.
 function DonutChart({ inView, bp }) {
   const shouldReduceMotion = useReducedMotion()
   const progress = useMotionValue(0)
@@ -328,6 +335,7 @@ function DonutChart({ inView, bp }) {
  * Анимированные сегменты (skate+grow), декоративные кольца, лейблы на desktop, легенда на mobile.
  */
 export default function FastenerDiagramSection() {
+  // По ширине экрана выбираем брейкпоинт (xl/lg/md/sm) и вертикальную ли раскладку; inView — появилась ли секция.
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.2 })
   const is1440 = useMediaQuery('(min-width: 1440px)', true)

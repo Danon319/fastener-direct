@@ -4,6 +4,9 @@ import { useParams, Link } from 'react-router-dom'
 
 import { useElementHeight } from '@/hooks'
 
+/**
+ * Страница товара — пока заглушка: показывает id из URL и ссылку обратно в каталог.
+ */
 export default function ProductPage() {
   const { id } = useParams()
   const footerH = useElementHeight('footer')

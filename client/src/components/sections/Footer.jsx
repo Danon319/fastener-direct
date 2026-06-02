@@ -56,6 +56,10 @@ FooterAnchor.propTypes = {
   target: PropTypes.string,
 }
 
+/**
+ * Подвал сайта: каталог, навигация, контакты, соцсети и нижняя юридическая полоса.
+ * На главной зафиксирован внизу (лежит за контентом), на остальных страницах — обычный в потоке.
+ */
 function Footer() {
   const location = useLocation()
   const isHome = location.pathname === '/'

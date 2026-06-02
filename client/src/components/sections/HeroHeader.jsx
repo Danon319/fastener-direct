@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 
 import { Logo, IconButton, NavPill } from '@/components/ui'
 import { Burger, Plus, User } from '@/components/ui/icons'
-import { useUiStore } from '@/store/slices/uiSlice'
+import { useUiStore } from '@/store'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
 
@@ -24,6 +24,7 @@ const ENTRANCE_BASE_DELAY = 0.2
 function HeroHeader() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
   const shouldReduceMotion = useReducedMotion()
+  // Состояние хедера: язык, открыт ли бургер-дропдаун, и ссылки на дропдаун/кнопку для закрытия по клику снаружи.
   const [lang, setLang] = useState('ru')
   const [burgerOpen, setBurgerOpen] = useState(false)
   const dropdownRef = useRef(null)

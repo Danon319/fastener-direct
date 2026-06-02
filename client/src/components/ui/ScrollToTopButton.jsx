@@ -10,6 +10,10 @@ const SHOW_THRESHOLD = 300
 // 60px — 1.5× базового размера IconButton (40), иконка масштабируется пропорционально (size * 0.36).
 const BUTTON_SIZE = 60
 
+/**
+ * Плавающая круглая кнопка в правом нижнем углу: по клику плавно прокручивает страницу наверх.
+ * Появляется только после прокрутки больше SHOW_THRESHOLD пикселей.
+ */
 export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false)
 

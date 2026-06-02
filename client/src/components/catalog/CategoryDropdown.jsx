@@ -1,5 +1,5 @@
 // Двухшаговый выбор раздела: карточки верхнего уровня → подкатегории; navigate на маршруты /catalog/...
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { motion } from 'motion/react'
@@ -37,6 +37,13 @@ BackButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 }
 
+/**
+ * Выпадающий выбор раздела в два шага: карточки категорий → их подкатегории.
+ * Переходит на маршруты /catalog/... и закрывается через onClose.
+ *
+ * @param {Object} props
+ * @param {() => void} props.onClose - Закрыть панель.
+ */
 export default function CategoryDropdown({ onClose }) {
   const navigate = useNavigate()
   // null — показаны родительские категории; иначе — выбранный узел и его children.
@@ -52,31 +59,25 @@ export default function CategoryDropdown({ onClose }) {
   }, [onClose])
 
   // Переход на ветку каталога; при наличии подкатегорий — второй шаг без закрытия панели.
-  const handleCategoryClick = useCallback(
-    (cat) => {
-      navigate(`/catalog/${cat.slug}`)
-      if (cat.children.length > 0) {
-        setSelectedParent(cat)
-      } else {
-        onClose()
-      }
-    },
-    [navigate, onClose]
-  )
+  const handleCategoryClick = (cat) => {
+    navigate(`/catalog/${cat.slug}`)
+    if (cat.children.length > 0) {
+      setSelectedParent(cat)
+    } else {
+      onClose()
+    }
+  }
 
   // Конечный slug подкатегории; после перехода панель закрывается.
-  const handleSubcategoryClick = useCallback(
-    (parentSlug, subSlug) => {
-      navigate(`/catalog/${parentSlug}/${subSlug}`)
-      onClose()
-    },
-    [navigate, onClose]
-  )
+  const handleSubcategoryClick = (parentSlug, subSlug) => {
+    navigate(`/catalog/${parentSlug}/${subSlug}`)
+    onClose()
+  }
 
   // Сброс шага «подкатегории» без смены URL (остаёмся на маршруте родителя из предыдущего клика).
-  const handleBack = useCallback(() => {
+  const handleBack = () => {
     setSelectedParent(null)
-  }, [])
+  }
 
   // Высота/opacity — анимация появления при монтировании внутри AnimatePresence на CatalogPage.
   return (

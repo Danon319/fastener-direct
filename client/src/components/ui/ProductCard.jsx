@@ -1,14 +1,13 @@
 // Карточка товара каталога: фото, цена, счётчик количества, кнопки корзины и избранного.
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { motion, AnimatePresence } from 'motion/react'
 
 import { Heart } from '@/components/ui/icons'
 import useViewport from '@/hooks/useViewport'
-import { useCartStore } from '@/store/slices/cartSlice'
-import { useFavoritesStore } from '@/store/slices/favoritesSlice'
+import { useCartStore, useFavoritesStore } from '@/store'
 import { cn } from '@/utils/cn'
 
 // Длительность состояния "Добавлено" перед переходом в "В корзине"
@@ -23,6 +22,7 @@ function formatPrice(price) {
   return { formatted, kopecks }
 }
 
+// Гасит переход по ссылке-карточке при клике по внутренним кнопкам (счётчик, корзина, избранное).
 function stopNav(e) {
   e.preventDefault()
   e.stopPropagation()
@@ -70,20 +70,17 @@ function CartButton({ productId, inStock, quantity }) {
     return () => clearTimeout(t)
   }, [showAdded])
 
-  const handleClick = useCallback(
-    (e) => {
-      stopNav(e)
-      if (!inStock) return
-      if (!inCart) {
-        addToCart(productId, quantity)
-        setShowAdded(true)
-      } else {
-        removeFromCart(productId)
-        setShowAdded(false)
-      }
-    },
-    [inCart, inStock, productId, quantity, addToCart, removeFromCart]
-  )
+  const handleClick = (e) => {
+    stopNav(e)
+    if (!inStock) return
+    if (!inCart) {
+      addToCart(productId, quantity)
+      setShowAdded(true)
+    } else {
+      removeFromCart(productId)
+      setShowAdded(false)
+    }
+  }
 
   if (!inStock) {
     return <span className="font-sans text-sm font-medium text-muted">Нет в наличии</span>
@@ -181,10 +178,17 @@ FavoriteButton.propTypes = {
   productId: PropTypes.string.isRequired,
 }
 
+/**
+ * Карточка товара: фото, цена, счётчик количества и кнопки «в корзину» / «в избранное».
+ *
+ * @param {Object} props
+ * @param {Object} props.product - Данные товара (id, name, price, brand, image, inStock и т.д.).
+ */
 export default function ProductCard({ product }) {
   const { formatted, kopecks } = formatPrice(product.price)
   const { canHover } = useViewport()
 
+  // Состояние корзины для этого товара: лежит ли он там, сколько штук и функция смены количества.
   const inCart = useCartStore((s) => s.items.has(product.id))
   const cartQty = useCartStore((s) => s.items.get(product.id) || 0)
   const updateQuantity = useCartStore((s) => s.updateQuantity)
@@ -194,21 +198,21 @@ export default function ProductCard({ product }) {
   // Если товар в корзине — показываем количество из стора
   const displayQty = inCart ? cartQty : localQty
 
-  const handleDecrement = useCallback(() => {
+  const handleDecrement = () => {
     if (inCart) {
       if (cartQty > 1) updateQuantity(product.id, cartQty - 1)
     } else {
       setLocalQty((q) => Math.max(1, q - 1))
     }
-  }, [inCart, cartQty, product.id, updateQuantity])
+  }
 
-  const handleIncrement = useCallback(() => {
+  const handleIncrement = () => {
     if (inCart) {
       updateQuantity(product.id, cartQty + 1)
     } else {
       setLocalQty((q) => q + 1)
     }
-  }, [inCart, cartQty, product.id, updateQuantity])
+  }
 
   // При удалении из корзины сохраняем cartQty в localQty — при повторном добавлении
   // уйдёт то количество, которое пользователь только что видел.
