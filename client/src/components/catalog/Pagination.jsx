@@ -49,7 +49,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
   return (
     <nav
       aria-label="Страницы каталога"
-      className={cn('flex items-center justify-center gap-4 font-sans text-base', className)}
+      className={cn('flex items-center justify-center gap-2 font-sans text-[15px]', className)}
     >
       <button
         type="button"
@@ -57,9 +57,11 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         disabled={isFirst}
         aria-label="Предыдущая страница"
         className={cn(
-          // min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
-          'flex h-11 min-w-11 items-center justify-center transition-colors',
-          isFirst ? 'cursor-default text-slateHover/40' : 'cursor-pointer text-light hover:text-red'
+          // h-11 min-w-11 (44px) — WCAG 2.5.5 touch-target.
+          'grid h-11 min-w-11 place-items-center rounded-full transition-colors',
+          isFirst
+            ? 'cursor-default text-light/25'
+            : 'cursor-pointer text-light/80 hover:bg-white/10 hover:text-white'
         )}
       >
         <ChevronDown size={18} className="rotate-90" />
@@ -67,8 +69,8 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
 
       {items.map((item) =>
         item.kind === 'ellipsis' ? (
-          <span key={item.key} className="text-slateHover">
-            ...
+          <span key={item.key} className="grid h-11 min-w-8 place-items-center text-slateHover">
+            …
           </span>
         ) : (
           <button
@@ -77,11 +79,11 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
             onClick={() => onPageChange(item.value)}
             aria-current={item.value === currentPage ? 'page' : undefined}
             className={cn(
-              // min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
-              'flex h-11 min-w-11 cursor-pointer items-center justify-center px-2 transition-colors',
+              // h-11 min-w-11 (44px) — WCAG 2.5.5 touch-target.
+              'grid h-11 min-w-11 cursor-pointer place-items-center rounded-full px-3 transition-colors',
               item.value === currentPage
-                ? 'font-medium text-red underline underline-offset-4'
-                : 'text-light hover:text-red'
+                ? 'bg-red font-medium text-white'
+                : 'text-light/80 hover:bg-white/10 hover:text-white'
             )}
           >
             {item.value}
@@ -95,9 +97,11 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         disabled={isLast}
         aria-label="Следующая страница"
         className={cn(
-          // min-w-11 min-h-11 (44px) — WCAG 2.5.5 touch-target.
-          'flex h-11 min-w-11 items-center justify-center transition-colors',
-          isLast ? 'cursor-default text-slateHover/40' : 'cursor-pointer text-light hover:text-red'
+          // h-11 min-w-11 (44px) — WCAG 2.5.5 touch-target.
+          'grid h-11 min-w-11 place-items-center rounded-full transition-colors',
+          isLast
+            ? 'cursor-default text-light/25'
+            : 'cursor-pointer text-light/80 hover:bg-white/10 hover:text-white'
         )}
       >
         <ChevronDown size={18} className="-rotate-90" />

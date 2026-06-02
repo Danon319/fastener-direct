@@ -1,19 +1,25 @@
-// UI-оркестратор каталога: модалки, скелетоны, JSX-композиция.
-// Логика фильтрации/сортировки/пагинации — useCatalogFilters. Данные из content/catalog (PRODUCTS).
+// UI-оркестратор каталога: прозрачная шапка + светлый hero-блок с закрепляемым тулбаром
+// + тёмная (navy) секция с сеткой товаров. Логика фильтрации/сортировки/пагинации — useCatalogFilters.
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
+import PropTypes from 'prop-types'
 
 import ProductCard from '@/components/ui/ProductCard'
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
+import { GridLines } from '@/components/ui'
+import { Search } from '@/components/ui/icons'
+import CatalogHeader from '@/components/catalog/CatalogHeader'
 import CatalogToolbar from '@/components/catalog/CatalogToolbar'
-import CategoryDropdown from '@/components/catalog/CategoryDropdown'
-import FilterSidebar from '@/components/catalog/FilterSidebar'
-import CatalogBackground from '@/components/catalog/CatalogBackground'
+import FilterButton from '@/components/catalog/FilterButton'
+import SearchBar from '@/components/catalog/SearchBar'
+import SortDropdown from '@/components/catalog/SortDropdown'
+import CategoryButton from '@/components/catalog/CategoryButton'
 import ActiveFilterChips from '@/components/catalog/ActiveFilterChips'
 import ProductCardSkeleton from '@/components/catalog/ProductCardSkeleton'
 import Pagination from '@/components/catalog/Pagination'
-import { useElementHeight, useCatalogFilters } from '@/hooks'
+import { useBreakpoint, useCatalogFilters } from '@/hooks'
+import { useUiStore } from '@/store'
 
 // Длительность «фейковой» первичной загрузки (мс) — пока показываются скелетоны.
 const INITIAL_LOAD_MS = 300
@@ -21,27 +27,63 @@ const INITIAL_LOAD_MS = 300
 const SKELETON_COUNT = 8
 // Шаг задержки между появлением соседних карточек в stagger fade-in.
 const CARD_STAGGER_S = 0.04
-// Верхний потолок задержки — без него последняя карточка ждала 0.75с (лаг при переключении).
+// Верхний потолок задержки — иначе последняя карточка ждёт слишком долго.
 const MAX_STAGGER_DELAY_S = 0.25
 const CARD_FADE_DURATION_S = 0.3
 
+// Колоночные линии фона hero-блока.
+const DESKTOP_COLUMNS = 15
+const MOBILE_COLUMNS = 6
+
 const GRID_STYLE = {
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 250px))',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(208px, 1fr))',
+  gap: '18px',
+}
+
+// Пустой результат — стилизован под тёмную секцию.
+function EmptyState({ onReset }) {
+  return (
+    <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">
+      <span className="grid h-16 w-16 place-items-center rounded-full bg-white/5 text-slateHover">
+        <Search size={26} />
+      </span>
+      <div>
+        <p className="text-[17px] font-medium text-light">Ничего не найдено</p>
+        <p className="mt-1 text-[13.5px] text-slateHover">
+          Попробуйте изменить запрос или сбросить фильтры
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={onReset}
+        className="inline-flex h-10 items-center gap-2 rounded-full bg-red px-5 text-[13px] font-medium text-white transition-colors hover:bg-redHover"
+      >
+        Сбросить фильтры
+      </button>
+    </div>
+  )
+}
+
+EmptyState.propTypes = {
+  onReset: PropTypes.func.isRequired,
 }
 
 /**
  * Страница каталога товаров.
  *
- * Лэндинг-архитектура: фиксированный CatalogToolbar (центр вьюпорта) +
- * тёмная каталог-секция (bg-navy) поверх CatalogBackground.
+ * Композиция: прозрачная CatalogHeader (уезжает вверх) → светлый hero-блок с
+ * закрепляемым CatalogToolbar → тёмная секция (bg-navy) с сеткой товаров и пагинацией.
  * Фильтрация, сортировка, пагинация — useCatalogFilters.
  */
 export default function CatalogPage() {
   const { category, subcategory } = useParams()
+  const navigate = useNavigate()
 
-  const footerH = useElementHeight('footer')
   const filters = useCatalogFilters()
+  const setMenuOpen = useUiStore((s) => s.setMenuOpen)
+  const isDesktop = useBreakpoint('lg', true)
+  const columns = isDesktop ? DESKTOP_COLUMNS : MOBILE_COLUMNS
 
   // При смене раздела каталога в URL — показать страницу с начала (как новый вход в ветку).
   useEffect(() => {
@@ -54,79 +96,73 @@ export default function CatalogPage() {
     return () => clearTimeout(t)
   }, [])
 
-  // UI-состояние модалок (filter/category-dropdown).
-  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false)
-  const [isFilterSidebarOpen, setIsFilterSidebarOpen] = useState(false)
-
-  const handleCatalogToggle = () => {
-    setIsCategoryDropdownOpen((p) => !p)
-  }
-  const handleCatalogClose = () => {
-    setIsCategoryDropdownOpen(false)
-  }
-
-  // При открытии сайдбара — копируем applied → staged через хук.
-  const handleFilterToggle = () => {
-    if (!isFilterSidebarOpen) filters.syncStagedFromApplied()
-    setIsFilterSidebarOpen((prev) => !prev)
-  }
-
-  const handleFilterClose = () => {
-    setIsFilterSidebarOpen(false)
+  // Снять все применённые фильтры (для пустого состояния).
+  const resetAllFilters = () => {
+    navigate('/catalog')
+    filters.setSearchQuery('')
+    filters.appliedFilters.brands.forEach((b) => filters.removeFilter('brand', b))
+    filters.removeFilter('price')
+    filters.removeFilter('inStock')
   }
 
   return (
     <>
-      {/* Декоративный фиксированный фон со светлой заливкой и колоночными линиями (z-0). */}
-      <CatalogBackground />
+      <CatalogHeader />
 
-      {/* Тулбар-«Hero»: fixed по центру вьюпорта, прячется (visibility:hidden) при прокрутке. Внутрь — Dropdown. */}
-      <CatalogToolbar
-        searchQuery={filters.searchQuery}
-        onSearchChange={filters.setSearchQuery}
-        onFilterToggle={handleFilterToggle}
-        activeFilterCount={filters.activeFilterCount}
-        onCatalogToggle={handleCatalogToggle}
-        isCatalogOpen={isCategoryDropdownOpen}
-      >
-        <AnimatePresence>
-          {isCategoryDropdownOpen && (
-            <div className="absolute left-1/2 top-[calc(100%+10px)] z-40 w-full max-w-3xl -translate-x-1/2 px-4">
-              <CategoryDropdown onClose={handleCatalogClose} />
-            </div>
-          )}
-        </AnimatePresence>
-      </CatalogToolbar>
+      {/* ── Светлый hero-блок с колоночными линиями + закрепляемый тулбар ── */}
+      <div className="relative z-40 bg-light">
+        <GridLines columns={columns} />
+        <div className="relative mx-auto max-w-[1500px] px-6 pb-20 pt-24 md:px-10 md:pt-32 lg:pb-24 lg:pt-36">
+          <CatalogToolbar onMenuOpen={() => setMenuOpen(true)}>
+            <FilterButton
+              count={filters.activeFilterCount}
+              stagedBrands={filters.stagedBrands}
+              stagedPriceMin={filters.stagedPriceMin}
+              stagedPriceMax={filters.stagedPriceMax}
+              stagedInStockOnly={filters.stagedInStockOnly}
+              onToggleBrand={filters.toggleStagedBrand}
+              onPriceMinChange={filters.setStagedPriceMin}
+              onPriceMaxChange={filters.setStagedPriceMax}
+              onInStockToggle={filters.toggleStagedInStockOnly}
+              onSyncStaged={filters.syncStagedFromApplied}
+              onApply={filters.applyStaged}
+              onReset={filters.resetStaged}
+            />
+            <SearchBar value={filters.searchQuery} onChange={filters.setSearchQuery} />
+            <SortDropdown value={filters.activeSort} onChange={filters.setActiveSort} />
+            <CategoryButton />
+          </CatalogToolbar>
+        </div>
+      </div>
 
-      {/* Спейсер: создаёт «peek» — каталог-секция выглядывает ~10% из-под низа вьюпорта. */}
-      <div className="h-[90vh]" aria-hidden="true" />
-
-      {/* Тёмная каталог-секция: скруглённые верхние углы, поверх CatalogBackground. */}
-      <section className="relative z-wrapper min-h-screen rounded-t-2xl bg-navy">
-        <div className="px-4 pb-8 pt-10 md:px-8 md:pt-14 lg:px-12 lg:pt-16">
-          <ActiveFilterChips
-            category={category}
-            subcategory={subcategory}
-            searchQuery={filters.searchQuery}
-            brands={filters.appliedFilters.brands}
-            priceMin={filters.appliedFilters.priceMin}
-            priceMax={filters.appliedFilters.priceMax}
-            inStockOnly={filters.appliedFilters.inStockOnly}
-            onClearSearch={() => filters.removeFilter('search')}
-            onRemoveBrand={(brand) => filters.removeFilter('brand', brand)}
-            onClearPrice={() => filters.removeFilter('price')}
-            onClearInStock={() => filters.removeFilter('inStock')}
-          />
+      {/* ── Тёмная секция каталога: скруглённый верх, поверх стыка с hero ── */}
+      <section className="relative z-10 -mt-3 min-h-screen rounded-t-2xl bg-navy">
+        <div className="mx-auto max-w-[1500px] px-6 pb-16 pt-8 md:px-10">
+          <div className="mb-6">
+            <ActiveFilterChips
+              category={category}
+              subcategory={subcategory}
+              searchQuery={filters.searchQuery}
+              brands={filters.appliedFilters.brands}
+              priceMin={filters.appliedFilters.priceMin}
+              priceMax={filters.appliedFilters.priceMax}
+              inStockOnly={filters.appliedFilters.inStockOnly}
+              onClearSearch={() => filters.removeFilter('search')}
+              onRemoveBrand={(brand) => filters.removeFilter('brand', brand)}
+              onClearPrice={() => filters.removeFilter('price')}
+              onClearInStock={() => filters.removeFilter('inStock')}
+            />
+          </div>
 
           {/* Сетка: скелетоны на initial load, иначе stagger fade-in реальных карточек. */}
           {isInitialLoading ? (
-            <div className="mt-4 justify-center gap-4 lg:gap-6" style={GRID_STYLE}>
+            <div className="justify-items-center" style={GRID_STYLE}>
               {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
                 <ProductCardSkeleton key={i} />
               ))}
             </div>
           ) : filters.pagedProducts.length > 0 ? (
-            <div className="mt-4 justify-center gap-4 lg:gap-6" style={GRID_STYLE}>
+            <div className="justify-items-center" style={GRID_STYLE}>
               <AnimatePresence mode="popLayout">
                 {filters.pagedProducts.map((product, i) => (
                   <motion.div
@@ -145,7 +181,7 @@ export default function CatalogPage() {
               </AnimatePresence>
             </div>
           ) : (
-            <p className="py-20 text-center font-sans text-lg text-slateHover">Ничего не найдено</p>
+            <EmptyState onReset={resetAllFilters} />
           )}
         </div>
 
@@ -155,39 +191,13 @@ export default function CatalogPage() {
             currentPage={filters.currentPage}
             totalPages={filters.totalPages}
             onPageChange={filters.setCurrentPage}
-            className="mb-[50px]"
+            className="pb-14"
           />
         )}
-
-        {/* Спейсер под фиксированный Footer внутри тёмной секции — bg-navy продолжается до Footer.
-            Высота footerH/2: оставляем умеренный отступ между последним рядом карточек и Footer. */}
-        <div style={{ height: footerH / 2 }} aria-hidden="true" />
       </section>
 
-      {/* Плавающая FAB «наверх» — появляется после прокрутки >300px. */}
+      {/* Плавающая FAB «наверх» — появляется после прокрутки. */}
       <ScrollToTopButton />
-
-      {/* Оверлей + выезд слева: сортировка, фильтры (staged), Сбросить / Применить. */}
-      <AnimatePresence>
-        {isFilterSidebarOpen && (
-          <FilterSidebar
-            activeSort={filters.activeSort}
-            onSortChange={filters.setActiveSort}
-            stagedBrands={filters.stagedBrands}
-            stagedPriceMin={filters.stagedPriceMin}
-            stagedPriceMax={filters.stagedPriceMax}
-            stagedInStockOnly={filters.stagedInStockOnly}
-            onToggleBrand={filters.toggleStagedBrand}
-            onPriceMinChange={filters.setStagedPriceMin}
-            onPriceMaxChange={filters.setStagedPriceMax}
-            onInStockToggle={filters.toggleStagedInStockOnly}
-            onApply={filters.applyStaged}
-            onReset={filters.resetStaged}
-            onClose={handleFilterClose}
-            activeFilterCount={filters.stagedFilterCount}
-          />
-        )}
-      </AnimatePresence>
     </>
   )
 }

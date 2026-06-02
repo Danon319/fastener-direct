@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Home from './pages/Home'
 import CatalogPage from './pages/CatalogPage'
@@ -11,10 +11,13 @@ import { useLenis } from './hooks'
 
 function App() {
   useLenis()
+  // Каталог рендерит собственную прозрачную шапку (CatalogHeader), поэтому общий Header скрываем.
+  const { pathname } = useLocation()
+  const isCatalog = pathname === '/catalog' || pathname.startsWith('/catalog/')
   return (
     <>
       <TopStrip />
-      <Header />
+      {!isCatalog && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<CatalogPage />} />

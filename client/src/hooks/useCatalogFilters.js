@@ -73,7 +73,7 @@ export default function useCatalogFilters() {
   const [appliedFilters, setAppliedFilters] = useState(EMPTY_FILTERS)
   const [stagedFilters, setStagedFilters] = useState(EMPTY_FILTERS)
 
-  // --- staged-обработчики (вызываются из FilterSidebar) ---
+  // --- staged-обработчики (вызываются из панели фильтров FilterButton) ---
   const toggleStagedBrand = useCallback((brand) => {
     setStagedFilters((prev) => ({ ...prev, brands: toggleInArray(prev.brands, brand) }))
   }, [])
