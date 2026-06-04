@@ -2,7 +2,7 @@
 // activeSort === null — порядок по умолчанию (как в исходном PRODUCTS).
 import PropTypes from 'prop-types'
 
-import { Sort, ChevronDown, Check } from '@/components/ui/icons'
+import { Sort, ChevronDown, Check, Close } from '@/components/ui/icons'
 import { cn } from '@/utils/cn'
 
 import ToolbarMenu from './ToolbarMenu'
@@ -34,7 +34,7 @@ export default function SortDropdown({ value, onChange }) {
         <button
           type="button"
           onClick={toggle}
-          className="inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-full border border-divider bg-white pl-3.5 pr-3 text-[13px] font-medium text-navy/90 transition-colors hover:border-slateHover"
+          className="inline-flex h-12 items-center gap-2 whitespace-nowrap rounded-full border border-pillHover bg-white pl-3.5 pr-3 text-[13px] font-medium text-navy/90 transition-colors hover:bg-pillHover"
         >
           <Sort size={15} className="text-muted" />
           <span className="hidden font-normal text-muted sm:inline">Сортировка:</span>
@@ -48,10 +48,20 @@ export default function SortDropdown({ value, onChange }) {
     >
       {(close) => (
         <div className="overflow-hidden rounded-2xl bg-white shadow-[0_8px_28px_rgba(0,0,0,0.18)] ring-1 ring-black/5">
-          <div className="px-4 pb-2 pt-3 text-[11px] font-medium uppercase tracking-wider text-muted">
-            Сортировка
+          <div className="flex h-12 items-center justify-between gap-3 border-b border-divider px-4">
+            <span className="inline-flex items-center gap-2 text-[13.5px] font-medium text-navy">
+              <Sort size={16} className="text-muted" />
+            </span>
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Закрыть"
+              className="grid h-7 w-7 place-items-center rounded-full text-muted transition-colors hover:bg-light hover:text-navy"
+            >
+              <Close size={15} />
+            </button>
           </div>
-          <div className="px-1.5 pb-1.5">
+          <div className="px-1.5 pb-1.5 pt-1.5">
             {SORT_OPTIONS.map((opt) => {
               const isActive = opt.key === value
               return (

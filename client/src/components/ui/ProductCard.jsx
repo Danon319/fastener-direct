@@ -30,7 +30,7 @@ function stopNav(e) {
 
 function QuantitySelector({ quantity, onDecrement, onIncrement }) {
   return (
-    <div className="flex items-center gap-1" onClick={stopNav}>
+    <div className="flex shrink-0 items-center gap-1" onClick={stopNav}>
       <button
         type="button"
         onClick={onDecrement}
@@ -93,7 +93,10 @@ function CartButton({ productId, inStock, quantity }) {
       type="button"
       onClick={handleClick}
       className={cn(
-        'relative min-w-28 overflow-hidden rounded-lg px-3 py-2 font-sans text-sm font-medium',
+        // Узкая карточка (<224px) — строка стекается, кнопка во всю ширину; от 224px
+        // (container-query) кнопка flex-1 рядом со счётчиком (min-w-0 разрешает сжатие).
+        'relative w-full min-w-0 overflow-hidden rounded-lg px-3 py-2 font-sans text-sm font-medium',
+        '@[224px]:w-auto @[224px]:flex-1',
         'transition-colors duration-300',
         state === 'idle' && 'bg-red text-white hover:bg-redHover',
         state === 'added' && 'bg-green-600 text-white',
@@ -182,7 +185,7 @@ FavoriteButton.propTypes = {
  * Карточка товара: фото, цена, счётчик количества и кнопки «в корзину» / «в избранное».
  *
  * @param {Object} props
- * @param {Object} props.product - Данные товара (id, name, price, brand, image, inStock и т.д.).
+ * @param {Object} props.product - Данные товара (id, name, price, brand, article, image, inStock и т.д.).
  */
 export default function ProductCard({ product }) {
   const { formatted, kopecks } = formatPrice(product.price)
@@ -230,45 +233,49 @@ export default function ProductCard({ product }) {
     <Link
       to={`/product/${product.id}`}
       className={cn(
-        // h-[450px] фиксированная (не max-h) — единая высота для OOS и in-stock карточек.
-        // w-full — без явной ширины карточка ужималась по содержимому grid-ячейки.
-        'flex h-[450px] w-full max-w-[250px] flex-col overflow-hidden rounded-xl bg-white shadow-sm transition duration-200',
+        // Без фикс-высоты: h-full тянет карточку на высоту ряда сетки (align stretch),
+        // а mt-auto на нижней строке выравнивает низы OOS и in-stock карточек в линию.
+        // Без max-w: карточка заполняет ячейку сетки, ширину задаёт число колонок (CatalogPage).
+        // @container — внутренние отступы/типографика и раскладка нижней строки реагируют
+        // на ширину самой карточки (container-query, порог @[224px]).
+        '@container flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition duration-200',
         // Hover-эффект только на устройствах с курсором (canHover из useViewport)
         canHover && 'hover:-translate-y-1 hover:shadow-lg'
       )}
     >
-      {/* Фото — фиксированная высота, чтобы строго удерживать ≤40% от max-h карточки (180/450) */}
-      <div className="relative h-44 shrink-0 bg-white p-3">
-        {product.brandLogo && (
-          <img
-            src={product.brandLogo}
-            alt={product.brand}
-            className="absolute left-2.5 top-2.5 z-10 h-8 w-8 object-contain"
-          />
-        )}
+      {/* Фото — портрет 4:5: высота следует за шириной карточки, object-contain на белом фоне.
+          Картинка позиционирована absolute (не в потоке): иначе вытянутый исходник (напр. 124×400)
+          через flex-basis раздул бы shrink-0 фото-бокс выше aspect-ratio. p-3 перенесён на сам img. */}
+      <div className="relative aspect-[4/5] shrink-0 bg-white">
+        <span className="absolute left-2.5 top-2.5 z-10 font-sans text-[12px] font-medium text-navy">
+          {product.article}
+        </span>
         <FavoriteButton productId={product.id} />
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="h-full w-full object-contain"
+          className="absolute inset-0 h-full w-full object-contain p-3"
         />
       </div>
 
-      {/* Информация о товаре: цена → название → нижняя строка */}
-      <div className="flex flex-1 flex-col gap-2 px-4 pb-4 pt-3">
+      {/* Информация о товаре: цена → название → нижняя строка. Отступы и кегль
+          компактнее на узкой карточке, просторнее от @[224px] (container-query). */}
+      <div className="flex flex-1 flex-col gap-2.5 px-3 pb-3 pt-3 @[224px]:gap-3 @[224px]:px-4 @[224px]:pb-4 @[224px]:pt-3.5">
         <p className="font-sans text-navy">
-          <span className="text-3xl font-medium">{formatted}</span>
-          <span className="text-base text-muted">.{kopecks} &#8381;</span>
+          <span className="text-[28px] font-medium leading-none tracking-tight @[224px]:text-[34px]">
+            {formatted}
+          </span>
+          <span className="text-sm text-muted">.{kopecks} &#8381;</span>
         </p>
 
-        <h3 className="line-clamp-2 font-sans text-sm font-medium leading-snug text-navy">
+        <h3 className="line-clamp-2 font-sans text-[13px] font-medium leading-snug text-navy @[224px]:text-sm">
           {product.name}
         </h3>
 
         {/* Нижняя строка: либо счётчик+кнопка (в наличии), либо красное "Нет в наличии" (OOS) */}
         {product.inStock ? (
-          <div className="mt-auto flex items-center gap-2">
+          <div className="mt-auto flex flex-col gap-2 @[224px]:flex-row @[224px]:items-center">
             <QuantitySelector
               quantity={displayQty}
               onDecrement={handleDecrement}
@@ -293,7 +300,7 @@ ProductCard.propTypes = {
     parentCategory: PropTypes.string.isRequired,
     subcategory: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
-    brandLogo: PropTypes.string,
+    article: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     inStock: PropTypes.bool.isRequired,
     image: PropTypes.string.isRequired,

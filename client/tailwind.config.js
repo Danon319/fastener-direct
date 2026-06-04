@@ -27,6 +27,13 @@ export default {
       fontFamily: {
         sans: ['"Neue Montreal"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
+      // Интринзик-грид каталога: число колонок выводится из ширины контейнера, а не задаётся
+      // лесенкой брейкпоинтов. minmax(280px, 1fr) держит единый размер карточки на любом экране
+      // (меняется только количество колонок). auto-fill (не auto-fit) — неполный ряд не растягивает
+      // карточки. При max-w-[1800px] на 2560px выходит ровно 6 колонок по ~285px.
+      gridTemplateColumns: {
+        cards: 'repeat(auto-fill, minmax(280px, 1fr))',
+      },
       // Z-стек проекта (от низкого к высокому):
       // hero (1) — Hero на лендинге, Toolbar в каталоге
       // wrapper (10) — momentum-lift секции (Home wrapper, catalog dark section)

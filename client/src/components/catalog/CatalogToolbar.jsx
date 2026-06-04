@@ -28,7 +28,7 @@ function InlineMenuButton({ expanded, onClick }) {
         transform: expanded ? 'scale(1)' : 'scale(.55)',
         transition: `opacity ${ANIM_DUR} ${ANIM_EASE}, transform ${ANIM_DUR} ${ANIM_EASE}, background-color .2s ease`,
       }}
-      className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-navy text-light hover:bg-slate"
+      className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-navy text-light hover:bg-slate"
     >
       <svg
         width={18}

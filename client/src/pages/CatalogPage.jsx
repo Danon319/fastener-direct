@@ -35,11 +35,14 @@ const CARD_FADE_DURATION_S = 0.3
 const DESKTOP_COLUMNS = 15
 const MOBILE_COLUMNS = 6
 
-const GRID_STYLE = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(208px, 1fr))',
-  gap: '18px',
-}
+// Интринзик-грид (токен grid-cols-cards = repeat(auto-fill, minmax(280px, 1fr)) в конфиге):
+// все карточки одной ширины на любом экране, меняется только число колонок. На телефоне база
+// grid-cols-2 (иначе auto-fill дал бы одну гигантскую колонку); интринзик включается с md+.
+// max-w-[1800px] + mx-auto — потолок: на 2560px выходит ровно 6 колонок по ~285px, контейнер
+// по центру. Карточки заполняют ячейку; на узких ячейках телефона (< 224px) отступы и нижняя
+// строка реагируют по container-query (см. ProductCard).
+const GRID_CLASS =
+  'mx-auto grid max-w-[1800px] grid-cols-2 gap-[18px] md:grid-cols-cards'
 
 // Пустой результат — стилизован под тёмную секцию.
 function EmptyState({ onReset }) {
@@ -137,7 +140,7 @@ export default function CatalogPage() {
 
       {/* ── Тёмная секция каталога: скруглённый верх, поверх стыка с hero ── */}
       <section className="relative z-10 -mt-3 min-h-screen rounded-t-2xl bg-navy">
-        <div className="mx-auto max-w-[1500px] px-6 pb-16 pt-8 md:px-10">
+        <div className="px-6 pb-16 pt-8 md:px-10">
           <div className="mb-6">
             <ActiveFilterChips
               category={category}
@@ -156,17 +159,18 @@ export default function CatalogPage() {
 
           {/* Сетка: скелетоны на initial load, иначе stagger fade-in реальных карточек. */}
           {isInitialLoading ? (
-            <div className="justify-items-center" style={GRID_STYLE}>
+            <div className={GRID_CLASS}>
               {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
                 <ProductCardSkeleton key={i} />
               ))}
             </div>
           ) : filters.pagedProducts.length > 0 ? (
-            <div className="justify-items-center" style={GRID_STYLE}>
+            <div className={GRID_CLASS}>
               <AnimatePresence mode="popLayout">
                 {filters.pagedProducts.map((product, i) => (
                   <motion.div
                     key={product.id}
+                    className="w-full"
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}

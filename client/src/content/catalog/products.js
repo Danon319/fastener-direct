@@ -1,5 +1,5 @@
 // Массив товаров каталога. Схема объекта:
-// { id, name, parentCategory (slug), subcategory (categoryKey), material, brand, brandLogo, price, inStock, image }
+// { id, name, parentCategory (slug), subcategory (categoryKey), material, brand, article, price, inStock, image }
 
 export const PRODUCTS = [
   {
@@ -10,7 +10,7 @@ export const PRODUCTS = [
     subcategory: 'bolt',
     material: 'Медь',
     brand: 'TCS',
-    brandLogo: '/card/logo/tcs.svg',
+    article: '045-1290',
     price: 7.87,
     inStock: true,
     image: '/product_card/1.jpg',
@@ -23,7 +23,7 @@ export const PRODUCTS = [
     subcategory: 'screw',
     material: 'Медь',
     brand: 'CONTAINERD',
-    brandLogo: '/card/logo/containerd.svg',
+    article: '112-3380',
     price: 15.24,
     inStock: true,
     image: '/product_card/2.jpg',
@@ -36,7 +36,7 @@ export const PRODUCTS = [
     subcategory: 'screw',
     material: 'Алюминий',
     brand: 'SUPERMICRO',
-    brandLogo: '/card/logo/supermicro.svg',
+    article: '078-2240',
     price: 55.52,
     inStock: false,
     image: '/product_card/3.jpg',
@@ -49,7 +49,7 @@ export const PRODUCTS = [
     subcategory: 'bolt',
     material: 'Алюминий',
     brand: 'SUPERMICRO',
-    brandLogo: '/card/logo/supermicro.svg',
+    article: '203-1150',
     price: 77.12,
     inStock: true,
     image: '/product_card/4.jpg',
@@ -62,7 +62,7 @@ export const PRODUCTS = [
     subcategory: 'nut',
     material: 'Латунь',
     brand: 'ZABKA',
-    brandLogo: '/card/logo/zabka.svg',
+    article: '016-9070',
     price: 8.93,
     inStock: true,
     image: '/product_card/5.jpg',
@@ -75,7 +75,7 @@ export const PRODUCTS = [
     subcategory: 'nut',
     material: 'Цинк',
     brand: 'COMSOL',
-    brandLogo: '/card/logo/comsol.svg',
+    article: '134-5520',
     price: 13.54,
     inStock: true,
     image: '/product_card/6.jpg',
@@ -88,7 +88,7 @@ export const PRODUCTS = [
     subcategory: 'chemical-anchor',
     material: 'Полиэстер',
     brand: 'COMSOL',
-    brandLogo: '/card/logo/comsol.svg',
+    article: '091-6610',
     price: 2540.87,
     inStock: false,
     image: '/product_card/7.jpg',
@@ -101,7 +101,7 @@ export const PRODUCTS = [
     subcategory: 'chemical-anchor',
     material: 'Винилэстеровая смола',
     brand: 'COMSOL',
-    brandLogo: '/card/logo/comsol.svg',
+    article: '167-4830',
     price: 1560.87,
     inStock: true,
     image: '/product_card/8.jpg',

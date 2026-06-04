@@ -13,7 +13,7 @@ import { Search, Close } from '@/components/ui/icons'
  */
 export default function SearchBar({ value, onChange }) {
   return (
-    <div className="flex h-10 min-w-[180px] flex-1 items-center gap-2.5 rounded-full bg-light px-4 text-muted ring-1 ring-black/5 transition-shadow focus-within:ring-2 focus-within:ring-red">
+    <div className="flex h-12 min-w-[180px] flex-1 items-center gap-2.5 rounded-full bg-light px-4 text-muted ring-1 ring-black/5 transition-shadow focus-within:ring-2 focus-within:ring-red">
       <label htmlFor="catalog-search" className="sr-only">
         Поиск по каталогу
       </label>

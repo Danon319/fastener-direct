@@ -18,23 +18,6 @@ const PRICE_RANGES = [
   { label: 'от 200 ₽', min: '200', max: '' },
 ]
 
-// Бейдж-счётчик активных условий.
-function CountBadge({ count, size = 'md' }) {
-  if (!count) return null
-  return (
-    <span
-      className={cn(
-        'grid place-items-center rounded-full bg-red text-white',
-        size === 'sm' ? 'h-4 min-w-4 px-1 text-[10px]' : 'h-5 min-w-5 px-1 text-[11px]'
-      )}
-    >
-      {count}
-    </span>
-  )
-}
-
-CountBadge.propTypes = { count: PropTypes.number, size: PropTypes.oneOf(['sm', 'md']) }
-
 // Кастомный чекбокс в стиле дизайна.
 function CheckBox({ checked }) {
   return (
@@ -52,13 +35,12 @@ function CheckBox({ checked }) {
 CheckBox.propTypes = { checked: PropTypes.bool }
 
 // Секция панели фильтров.
-function FilterSection({ title, count = 0, last = false, children }) {
+function FilterSection({ title, last = false, children }) {
   return (
     <div className={cn('px-4 py-3.5', !last && 'border-b border-divider')}>
-      <div className="mb-2.5 flex items-center gap-2">
-        <span className="text-[12px] font-medium uppercase tracking-wider text-muted">{title}</span>
-        <CountBadge count={count} size="sm" />
-      </div>
+      <span className="mb-2.5 block text-[12px] font-medium uppercase tracking-wider text-muted">
+        {title}
+      </span>
       {children}
     </div>
   )
@@ -66,7 +48,6 @@ function FilterSection({ title, count = 0, last = false, children }) {
 
 FilterSection.propTypes = {
   title: PropTypes.string.isRequired,
-  count: PropTypes.number,
   last: PropTypes.bool,
   children: PropTypes.node,
 }
@@ -159,29 +140,24 @@ PriceFilter.propTypes = {
   onMax: PropTypes.func.isRequired,
 }
 
-// Тумблер «В наличии».
+// Тумблер «В наличии». Трек всегда белый; при включении краснеют только обводка и бегунок.
 function StockToggle({ checked, onToggle }) {
   return (
     <button
       type="button"
       onClick={onToggle}
-      className={cn(
-        'inline-flex h-10 items-center gap-2.5 whitespace-nowrap rounded-full border pl-2 pr-4 text-[13px] font-medium transition-colors',
-        checked
-          ? 'border-red bg-red/[0.08] text-navy'
-          : 'border-divider bg-white text-navy/80 hover:border-slateHover'
-      )}
+      className="inline-flex h-10 items-center gap-2.5 whitespace-nowrap rounded-full border border-divider bg-white pl-2 pr-4 text-[13px] font-medium text-navy/80 transition-colors hover:border-slateHover"
     >
       <span
         className={cn(
-          'relative h-6 w-10 rounded-full transition-colors',
-          checked ? 'bg-red' : 'bg-slateHover/40'
+          'relative h-6 w-10 rounded-full border bg-white transition-colors',
+          checked ? 'border-red' : 'border-slateHover/40'
         )}
       >
         <span
           className={cn(
-            'absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all',
-            checked ? 'left-[18px]' : 'left-0.5'
+            'absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full shadow transition-all',
+            checked ? 'left-[18px] bg-red' : 'left-0.5 bg-slateHover'
           )}
         />
       </span>
@@ -199,7 +175,6 @@ StockToggle.propTypes = {
  * Содержимое поповера. При монтировании (т.е. при открытии) копирует applied → staged.
  */
 function FilterPanel({
-  count,
   stagedBrands,
   stagedPriceMin,
   stagedPriceMax,
@@ -219,13 +194,11 @@ function FilterPanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const priceCount = stagedPriceMin !== '' || stagedPriceMax !== '' ? 1 : 0
-
   return (
     <div className="overflow-hidden rounded-2xl bg-white shadow-[0_8px_28px_rgba(0,0,0,0.18)] ring-1 ring-black/5">
       <div className="flex h-12 items-center justify-between gap-3 border-b border-divider px-4">
         <span className="inline-flex items-center gap-2 text-[13.5px] font-medium text-navy">
-          <Filter size={16} className="text-muted" /> Фильтры <CountBadge count={count} size="sm" />
+          <Filter size={16} className="text-muted" />
         </span>
         <button
           type="button"
@@ -238,10 +211,10 @@ function FilterPanel({
       </div>
 
       <div className="max-h-[60vh] overflow-y-auto">
-        <FilterSection title="Бренд" count={stagedBrands.length}>
+        <FilterSection title="Бренд">
           <BrandList selected={stagedBrands} onToggle={onToggleBrand} />
         </FilterSection>
-        <FilterSection title="Цена" count={priceCount}>
+        <FilterSection title="Цена">
           <PriceFilter
             min={stagedPriceMin}
             max={stagedPriceMax}
@@ -278,7 +251,6 @@ function FilterPanel({
 }
 
 FilterPanel.propTypes = {
-  count: PropTypes.number.isRequired,
   stagedBrands: PropTypes.arrayOf(PropTypes.string).isRequired,
   stagedPriceMin: PropTypes.string.isRequired,
   stagedPriceMax: PropTypes.string.isRequired,
@@ -297,7 +269,6 @@ FilterPanel.propTypes = {
  * Кнопка «Фильтры» в тулбаре с поповер-панелью фасетов.
  *
  * @param {Object} props
- * @param {number} props.count - Число применённых фасетов (бейдж на кнопке).
  * @param {string[]} props.stagedBrands
  * @param {string} props.stagedPriceMin
  * @param {string} props.stagedPriceMax
@@ -310,7 +281,7 @@ FilterPanel.propTypes = {
  * @param {() => void} props.onApply - applyStaged.
  * @param {() => void} props.onReset - resetStaged.
  */
-export default function FilterButton({ count, ...panelProps }) {
+export default function FilterButton(panelProps) {
   return (
     <ToolbarMenu
       align="left"
@@ -320,13 +291,12 @@ export default function FilterButton({ count, ...panelProps }) {
           type="button"
           onClick={toggle}
           className={cn(
-            'inline-flex h-10 items-center gap-2.5 rounded-full px-4 text-[13px] font-medium text-light transition-colors',
-            open ? 'bg-slate' : 'bg-navy hover:bg-slate'
+            'inline-flex h-12 items-center gap-2.5 rounded-full px-4 text-[13px] font-medium text-light transition-colors',
+            open ? 'bg-navy' : 'bg-slate hover:bg-navy'
           )}
         >
           <Filter size={16} />
           Фильтры
-          <CountBadge count={count} />
           <ChevronDown
             size={14}
             className={cn('transition-transform duration-200', open && 'rotate-180')}
@@ -334,13 +304,12 @@ export default function FilterButton({ count, ...panelProps }) {
         </button>
       )}
     >
-      {(close) => <FilterPanel count={count} close={close} {...panelProps} />}
+      {(close) => <FilterPanel close={close} {...panelProps} />}
     </ToolbarMenu>
   )
 }
 
 FilterButton.propTypes = {
-  count: PropTypes.number.isRequired,
   stagedBrands: PropTypes.arrayOf(PropTypes.string).isRequired,
   stagedPriceMin: PropTypes.string.isRequired,
   stagedPriceMax: PropTypes.string.isRequired,

@@ -18,7 +18,7 @@ export default function CategoryButton() {
         <button
           type="button"
           onClick={toggle}
-          className="inline-flex h-10 items-center gap-2.5 rounded-full bg-red px-4 text-[13px] font-medium text-white transition-colors hover:bg-redHover"
+          className="inline-flex h-12 items-center gap-2.5 rounded-full bg-red px-4 text-[13px] font-medium text-white transition-colors hover:bg-redHover"
         >
           <Grid size={16} />
           Категории

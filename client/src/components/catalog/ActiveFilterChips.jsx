@@ -1,5 +1,5 @@
 // Активные фильтры как чип-пилюли над сеткой. Источник — URL-параметры, applied-фильтры, поиск.
-// Тон чипа кодирует тип: раздел (красный), подраздел (тёмно-красный), поиск (серый), фасет (белый).
+// Тон чипа кодирует тип: раздел (красный), подраздел (тёмно-красный), поиск (серый), фасет (slate).
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'motion/react'
@@ -25,22 +25,22 @@ const CHIP_TONES = {
     group: 'text-muted',
     x: 'text-muted hover:bg-navy/10 hover:text-navy',
   },
-  white: {
-    box: 'bg-white text-navy',
-    group: 'text-muted',
-    x: 'text-muted hover:bg-navy/10 hover:text-navy',
+  slate: {
+    box: 'bg-slate text-white',
+    group: 'text-white/60',
+    x: 'text-white/70 hover:bg-white/20 hover:text-white',
   },
 }
 
 function Chip({ group, label, tone, onRemove }) {
-  const t = CHIP_TONES[tone] ?? CHIP_TONES.white
+  const t = CHIP_TONES[tone] ?? CHIP_TONES.slate
   return (
     <motion.span
       initial={{ opacity: 0, y: 4, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.18 }}
       className={cn(
-        'inline-flex h-8 items-center gap-2 rounded-full pl-3.5 pr-2 text-[12.5px] shadow-sm',
+        'inline-flex h-16 items-center gap-3 rounded-full pl-7 pr-4 text-[22px] shadow-sm',
         t.box
       )}
     >
@@ -49,9 +49,9 @@ function Chip({ group, label, tone, onRemove }) {
         type="button"
         onClick={onRemove}
         aria-label="Убрать фильтр"
-        className={cn('grid h-5 w-5 place-items-center rounded-full transition-colors', t.x)}
+        className={cn('grid h-10 w-10 place-items-center rounded-full transition-colors', t.x)}
       >
-        <Close size={12} />
+        <Close size={22} />
       </button>
     </motion.span>
   )
@@ -60,7 +60,7 @@ function Chip({ group, label, tone, onRemove }) {
 Chip.propTypes = {
   group: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  tone: PropTypes.oneOf(['red', 'darkred', 'grey', 'white']).isRequired,
+  tone: PropTypes.oneOf(['red', 'darkred', 'grey', 'slate']).isRequired,
   onRemove: PropTypes.func.isRequired,
 }
 
@@ -121,7 +121,7 @@ export default function ActiveFilterChips({
       key: `brand-${brand}`,
       group: 'Бренд',
       label: brand,
-      tone: 'white',
+      tone: 'slate',
       onRemove: () => onRemoveBrand(brand),
     })
   })
@@ -131,7 +131,7 @@ export default function ActiveFilterChips({
       key: 'price',
       group: 'Цена',
       label: `${priceMin || '0'} – ${priceMax || '∞'} ₽`,
-      tone: 'white',
+      tone: 'slate',
       onRemove: onClearPrice,
     })
   }
@@ -141,7 +141,7 @@ export default function ActiveFilterChips({
       key: 'stock',
       group: 'Наличие',
       label: 'В наличии',
-      tone: 'white',
+      tone: 'slate',
       onRemove: onClearInStock,
     })
   }
