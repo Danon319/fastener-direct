@@ -40,7 +40,7 @@ function Chip({ group, label, tone, onRemove }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.18 }}
       className={cn(
-        'inline-flex h-16 items-center gap-3 rounded-full pl-7 pr-4 text-[22px] shadow-sm',
+        'inline-flex h-11 items-center gap-2 rounded-full pl-5 pr-3 text-[15px] shadow-sm',
         t.box
       )}
     >
@@ -49,9 +49,9 @@ function Chip({ group, label, tone, onRemove }) {
         type="button"
         onClick={onRemove}
         aria-label="Убрать фильтр"
-        className={cn('grid h-10 w-10 place-items-center rounded-full transition-colors', t.x)}
+        className={cn('grid h-7 w-7 place-items-center rounded-full transition-colors', t.x)}
       >
-        <Close size={22} />
+        <Close size={15} />
       </button>
     </motion.span>
   )

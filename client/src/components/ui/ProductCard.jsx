@@ -5,13 +5,10 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { motion, AnimatePresence } from 'motion/react'
 
-import { Heart } from '@/components/ui/icons'
+import { Cart, Heart } from '@/components/ui/icons'
 import useViewport from '@/hooks/useViewport'
 import { useCartStore, useFavoritesStore } from '@/store'
 import { cn } from '@/utils/cn'
-
-// Длительность состояния "Добавлено" перед переходом в "В корзине"
-const ADDED_DURATION = 1500
 
 function formatPrice(price) {
   const integer = Math.floor(price)
@@ -28,22 +25,24 @@ function stopNav(e) {
   e.stopPropagation()
 }
 
-function QuantitySelector({ quantity, onDecrement, onIncrement }) {
+// Белая капсула счётчика: −/+ как кнопки-иконки с серым hover-кругом (tagDate).
+// Круг включается только при canHover, чтобы на тач-устройствах не залипал после тапа.
+function QuantitySelector({ quantity, onDecrement, onIncrement, canHover }) {
+  const stepClass = cn(
+    'flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-navy transition-colors',
+    canHover && 'hover:bg-tagDate'
+  )
+
   return (
-    <div className="flex shrink-0 items-center gap-1" onClick={stopNav}>
-      <button
-        type="button"
-        onClick={onDecrement}
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-light text-navy transition-colors hover:bg-light"
-      >
+    <div
+      className="flex shrink-0 items-center gap-0.5 rounded-full border border-divider bg-white p-1"
+      onClick={stopNav}
+    >
+      <button type="button" onClick={onDecrement} className={stepClass}>
         −
       </button>
       <span className="w-6 text-center font-sans text-sm font-medium text-navy">{quantity}</span>
-      <button
-        type="button"
-        onClick={onIncrement}
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-light text-navy transition-colors hover:bg-light"
-      >
+      <button type="button" onClick={onIncrement} className={stepClass}>
         +
       </button>
     </div>
@@ -54,39 +53,29 @@ QuantitySelector.propTypes = {
   quantity: PropTypes.number.isRequired,
   onDecrement: PropTypes.func.isRequired,
   onIncrement: PropTypes.func.isRequired,
+  canHover: PropTypes.bool.isRequired,
 }
 
-// Состояния кнопки корзины: "idle" | "added" | "in-cart"
+// Два состояния кнопки, производные от наличия товара в корзине: red «В корзину» ↔ navy «В корзине».
+// Без зелёного интерлюда и таймера — после добавления кнопка сразу переходит в navy.
 function CartButton({ productId, inStock, quantity }) {
   const addToCart = useCartStore((s) => s.addToCart)
   const removeFromCart = useCartStore((s) => s.removeFromCart)
   const inCart = useCartStore((s) => s.items.has(productId))
-  const [showAdded, setShowAdded] = useState(false)
-
-  // Авто-сброс состояния "added" через ADDED_DURATION мс
-  useEffect(() => {
-    if (!showAdded) return
-    const t = setTimeout(() => setShowAdded(false), ADDED_DURATION)
-    return () => clearTimeout(t)
-  }, [showAdded])
 
   const handleClick = (e) => {
     stopNav(e)
     if (!inStock) return
     if (!inCart) {
       addToCart(productId, quantity)
-      setShowAdded(true)
     } else {
       removeFromCart(productId)
-      setShowAdded(false)
     }
   }
 
   if (!inStock) {
     return <span className="font-sans text-sm font-medium text-muted">Нет в наличии</span>
   }
-
-  const state = showAdded ? 'added' : inCart ? 'in-cart' : 'idle'
 
   return (
     <button
@@ -95,33 +84,31 @@ function CartButton({ productId, inStock, quantity }) {
       className={cn(
         // Узкая карточка (<224px) — строка стекается, кнопка во всю ширину; от 224px
         // (container-query) кнопка flex-1 рядом со счётчиком (min-w-0 разрешает сжатие).
-        'relative w-full min-w-0 overflow-hidden rounded-lg px-3 py-2 font-sans text-sm font-medium',
+        // Ширина задаётся w-full/flex-1, а не контентом — смена подписи не дёргает ширину.
+        // h-[42px] = высота капсулы счётчика (h-8 + p-1 + border), чтобы низы строки совпадали.
+        'flex h-[42px] w-full min-w-0 items-center justify-center gap-1.5 rounded-full px-3',
+        'font-sans text-sm font-medium text-white',
         '@[224px]:w-auto @[224px]:flex-1',
+        // Crossfade фона red ↔ navy
         'transition-colors duration-300',
-        state === 'idle' && 'bg-red text-white hover:bg-redHover',
-        state === 'added' && 'bg-green-600 text-white',
-        state === 'in-cart' && 'border border-slate bg-transparent text-navy hover:bg-light'
+        inCart ? 'bg-navy hover:bg-navy/90' : 'bg-red hover:bg-redHover'
       )}
     >
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.span
-          key={state}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.2 }}
-          className="flex items-center justify-center gap-1.5"
-        >
-          {state === 'idle' && 'В корзину'}
-          {state === 'added' && (
-            <>
-              <CheckIcon />
-              Добавлено
-            </>
-          )}
-          {state === 'in-cart' && 'В корзине'}
-        </motion.span>
-      </AnimatePresence>
+      <Cart size={16} className="shrink-0" />
+      {/* Иконка статична, кроссфейд только подписи — кнопка не «пустеет» во время смены */}
+      <span className="relative inline-flex">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={inCart ? 'in-cart' : 'idle'}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {inCart ? 'В корзине' : 'В корзину'}
+          </motion.span>
+        </AnimatePresence>
+      </span>
     </button>
   )
 }
@@ -130,24 +117,6 @@ CartButton.propTypes = {
   productId: PropTypes.string.isRequired,
   inStock: PropTypes.bool.isRequired,
   quantity: PropTypes.number.isRequired,
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      width={16}
-      height={16}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  )
 }
 
 function FavoriteButton({ productId }) {
@@ -247,7 +216,7 @@ export default function ProductCard({ product }) {
           Картинка позиционирована absolute (не в потоке): иначе вытянутый исходник (напр. 124×400)
           через flex-basis раздул бы shrink-0 фото-бокс выше aspect-ratio. p-3 перенесён на сам img. */}
       <div className="relative aspect-[4/5] shrink-0 bg-white">
-        <span className="absolute left-2.5 top-2.5 z-10 font-sans text-[12px] font-medium text-navy">
+        <span className="absolute left-2.5 top-2.5 z-10 p-2 font-sans text-[12px] font-medium text-navy">
           {product.article}
         </span>
         <FavoriteButton productId={product.id} />
@@ -280,6 +249,7 @@ export default function ProductCard({ product }) {
               quantity={displayQty}
               onDecrement={handleDecrement}
               onIncrement={handleIncrement}
+              canHover={canHover}
             />
             <CartButton productId={product.id} inStock quantity={displayQty} />
           </div>
