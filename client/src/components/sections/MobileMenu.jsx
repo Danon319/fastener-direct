@@ -7,8 +7,12 @@ import { Logo, IconButton, Button } from '@/components/ui'
 import { Close } from '@/components/ui/icons'
 import { useUiStore } from '@/store'
 import { MENU_PRIMARY, MENU_SECONDARY, MENU_CTA } from '@/content/menu'
+import { NAV_LINKS, ACCOUNT_LINK, LANG_LABELS } from '@/content/header'
 
 import MenuItem from './_MenuItem'
+
+// Навигация меню — единый источник из контента шапки (NAV_LINKS + аккаунт).
+const NAV_ITEMS = [...NAV_LINKS, ACCOUNT_LINK]
 
 // Тайминги анимации-шторки (падающие колонки) и проявления контента после неё.
 const CURTAIN_STEP = 0.08
@@ -54,6 +58,10 @@ function MobileMenuContent({ onClose }) {
   const columns = useCurtainColumns()
   const logoSize = useMobileMenuLogoSize()
   const shouldReduceMotion = useReducedMotion()
+  // Переключатель языка (тот же контент, что в шапке). Клик не закрывает меню.
+  const [lang, setLang] = useState('ru')
+  const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
+  const langLabel = LANG_LABELS[lang] // TODO: i18n — реальные переводы после Phase 6
   // При reduced-motion пропускаем curtain — контент-слой виден сразу.
   const [curtainDone, setCurtainDone] = useState(() => shouldReduceMotion)
   const overlayRef = useRef(null)
@@ -197,34 +205,59 @@ function MobileMenuContent({ onClose }) {
           )}
         </header>
 
-        {/* Основные пункты меню */}
-        <div className="flex flex-1 flex-col items-start justify-center gap-1">
-          {curtainDone &&
-            MENU_PRIMARY.map((item, i) => (
-              <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (2 + i))}>
-                <MenuItem
-                  label={item.label}
-                  size="primary"
-                  color="white"
-                  to={item.to}
-                  onClick={onClose}
-                />
-              </motion.div>
-            ))}
+        {/* Центр меню: навигация по сайту + support-ссылки */}
+        <div className="flex flex-1 flex-col items-start justify-center gap-8">
+          {/* Навигация по сайту (компактная) — отдельной секцией перед support-ссылками */}
+          <nav className="flex flex-col items-start gap-1">
+            {curtainDone &&
+              NAV_ITEMS.map((item, i) => (
+                <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (2 + i))}>
+                  <MenuItem
+                    label={item.label}
+                    size="secondary"
+                    color="white"
+                    to={item.to}
+                    onClick={onClose}
+                  />
+                </motion.div>
+              ))}
+          </nav>
+
+          {/* Support-ссылки */}
+          <div className="flex flex-col items-start gap-1">
+            {curtainDone &&
+              MENU_PRIMARY.map((item, i) => (
+                <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (7 + i))}>
+                  <MenuItem
+                    label={item.label}
+                    size="primary"
+                    color="white"
+                    to={item.to}
+                    onClick={onClose}
+                  />
+                </motion.div>
+              ))}
+          </div>
         </div>
 
-        {/* Подвал: вторичные ссылки + CTA */}
+        {/* Подвал: вторичные переключатели (тема / город / язык) + CTA */}
         <footer className="flex flex-col items-stretch gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-12">
             {curtainDone &&
               MENU_SECONDARY.map((item, i) => (
-                <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (6 + i))}>
+                <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (10 + i))}>
                   <MenuItem label={item.label} size="secondary" color="navy" onClick={() => {}} />
                 </motion.div>
               ))}
+            {/* Переключатель языка — справа от «Тема»/«Город», тот же размер и цвет */}
+            {curtainDone && (
+              <motion.div {...fadeIn(CONTENT_STAGGER * 12)}>
+                <MenuItem label={langLabel} size="secondary" color="navy" onClick={toggleLang} />
+              </motion.div>
+            )}
           </div>
           {curtainDone && (
-            <motion.div {...fadeIn(CONTENT_STAGGER * 8)} className="self-stretch sm:self-auto">
+            <motion.div {...fadeIn(CONTENT_STAGGER * 13)} className="self-stretch sm:self-auto">
               <Button size="md" to={MENU_CTA.to} onClick={onClose}>
                 {MENU_CTA.label}
               </Button>

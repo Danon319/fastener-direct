@@ -9,7 +9,6 @@ import ProductCard from '@/components/ui/ProductCard'
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import { GridLines } from '@/components/ui'
 import { Search } from '@/components/ui/icons'
-import CatalogHeader from '@/components/catalog/CatalogHeader'
 import CatalogToolbar from '@/components/catalog/CatalogToolbar'
 import FilterButton from '@/components/catalog/FilterButton'
 import SearchBar from '@/components/catalog/SearchBar'
@@ -75,9 +74,9 @@ EmptyState.propTypes = {
 /**
  * Страница каталога товаров.
  *
- * Композиция: прозрачная CatalogHeader (уезжает вверх) → светлый hero-блок с
- * закрепляемым CatalogToolbar → тёмная секция (bg-navy) с сеткой товаров и пагинацией.
- * Фильтрация, сортировка, пагинация — useCatalogFilters.
+ * Композиция: сайтовый Header (fixed, светлая тема — рендерится в App) → светлый
+ * hero-блок с закрепляемым CatalogToolbar → тёмная секция (bg-navy) с сеткой
+ * товаров и пагинацией. Фильтрация, сортировка, пагинация — useCatalogFilters.
  */
 export default function CatalogPage() {
   const { category, subcategory } = useParams()
@@ -110,15 +109,12 @@ export default function CatalogPage() {
 
   return (
     <>
-      <CatalogHeader />
-
       {/* ── Светлый hero-блок с колоночными линиями + закрепляемый тулбар ── */}
       <div className="relative z-40 bg-light">
         <GridLines columns={columns} />
         <div className="relative mx-auto max-w-[1500px] px-6 pb-20 pt-24 md:px-10 md:pt-32 lg:pb-24 lg:pt-36">
           <CatalogToolbar onMenuOpen={() => setMenuOpen(true)}>
             <FilterButton
-              count={filters.activeFilterCount}
               stagedBrands={filters.stagedBrands}
               stagedPriceMin={filters.stagedPriceMin}
               stagedPriceMax={filters.stagedPriceMax}

@@ -4,6 +4,8 @@
 import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
+import { IconButton } from '@/components/ui'
+import { Plus } from '@/components/ui/icons'
 import { cn } from '@/utils/cn'
 
 // Закрепление на 48px от верхней границы; триггер — когда естественная позиция доходит до 48px.
@@ -17,32 +19,21 @@ const ANIM_MS = 550
 const REMEASURE_DELAY_MS = 350
 
 // Кнопка меню — последний элемент закреплённого бара. Появляется (scale+fade) вместе с раскрытием.
+// Та же кнопка, что в хедере: IconButton (slate) + Plus. Обёртка несёт reveal-анимацию.
 function InlineMenuButton({ expanded, onClick }) {
   return (
-    <button
-      type="button"
-      aria-label="Открыть меню"
-      onClick={onClick}
+    <span
+      className="inline-flex shrink-0"
       style={{
         opacity: expanded ? 1 : 0,
         transform: expanded ? 'scale(1)' : 'scale(.55)',
-        transition: `opacity ${ANIM_DUR} ${ANIM_EASE}, transform ${ANIM_DUR} ${ANIM_EASE}, background-color .2s ease`,
+        transition: `opacity ${ANIM_DUR} ${ANIM_EASE}, transform ${ANIM_DUR} ${ANIM_EASE}`,
       }}
-      className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-navy text-light hover:bg-slate"
     >
-      <svg
-        width={18}
-        height={18}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.9}
-        strokeLinecap="round"
-        aria-hidden="true"
-      >
-        <path d="M4 7h16M4 12h16M4 17h16" />
-      </svg>
-    </button>
+      <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={onClick}>
+        <Plus />
+      </IconButton>
+    </span>
   )
 }
 

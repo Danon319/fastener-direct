@@ -47,7 +47,7 @@ export default class ErrorBoundary extends Component {
           <button
             type="button"
             onClick={this.handleReload}
-            className="rounded-lg bg-red px-5 py-2.5 font-sans text-sm font-medium text-white transition-colors hover:bg-redHover"
+            className="rounded-full bg-red px-5 py-2.5 font-sans text-sm font-medium text-white transition-colors hover:bg-redHover"
           >
             Обновить страницу
           </button>

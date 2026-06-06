@@ -1,13 +1,16 @@
 // Fixed pill-хедер с opacity-fade. Виден после прокрутки Hero вниз; на остальных страницах — всегда.
-import { useState, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import { Logo, IconButton, NavPill } from '@/components/ui'
-import { Burger, Plus, User } from '@/components/ui/icons'
+import { Plus, User } from '@/components/ui/icons'
 import { useUiStore } from '@/store'
 import { useScrollDirection } from '@/hooks'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
+
+// «Каталог» закреплён как всегда-видимый быстрый доступ; остальные ссылки появляются с lg.
+const [CATALOG_LINK, ...SECONDARY_NAV_LINKS] = NAV_LINKS
 
 /**
  * Fixed pill-хедер с opacity-fade появлением.
@@ -16,11 +19,8 @@ function Header() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
   const location = useLocation()
   const isHome = location.pathname === '/'
-  // Состояние хедера: язык, открыт ли бургер-дропдаун, и ссылки на дропдаун/кнопку для закрытия по клику снаружи.
+  // Состояние хедера: только язык (бургер-дропдаун убран в пользу единого MobileMenu).
   const [lang, setLang] = useState('ru')
-  const [burgerOpen, setBurgerOpen] = useState(false)
-  const dropdownRef = useRef(null)
-  const triggerRef = useRef(null)
 
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
   const langLabel = LANG_LABELS[lang] // TODO: i18n — реальные переводы после Phase 6
@@ -35,26 +35,6 @@ function Header() {
   // На Home: visible = Hero пройден AND скролл вниз (freeze при overlay — неявный).
   // На не-Home: Header всегда виден.
   const visible = isHome ? isPastThreshold && direction === 'down' : true
-
-  // Закрытие dropdown: тот же механизм что в HeroHeader.
-  useEffect(() => {
-    if (!burgerOpen) return
-    const onKey = (e) => {
-      if (e.key === 'Escape') setBurgerOpen(false)
-    }
-    const onDown = (e) => {
-      if (triggerRef.current?.contains(e.target)) return
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setBurgerOpen(false)
-      }
-    }
-    window.addEventListener('keydown', onKey)
-    document.addEventListener('mousedown', onDown)
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.removeEventListener('mousedown', onDown)
-    }
-  }, [burgerOpen])
 
   return (
     <header
@@ -79,52 +59,27 @@ function Header() {
       </span>
 
       <nav className="relative flex items-center gap-2 md:gap-0">
-        {/* Мобильный (<md): Burger + выпадающее меню (светлая тема) */}
-        <div className="md:hidden">
-          <IconButton
-            ref={triggerRef}
-            variant="filled"
-            size={48}
-            ariaLabel="Меню навигации"
-            onClick={() => setBurgerOpen((v) => !v)}
-          >
-            <Burger />
-          </IconButton>
-          {burgerOpen && (
-            <div
-              ref={dropdownRef}
-              className={cn(
-                'absolute right-0 top-[calc(100%+10px)] z-[150] min-w-44',
-                'rounded-2xl bg-white text-navy shadow-[0_8px_28px_rgba(0,0,0,0.18)]',
-                'flex flex-col gap-0.5 p-2 font-sans'
-              )}
-            >
-              <DropdownItem
-                onClick={() => {
-                  toggleLang()
-                  setBurgerOpen(false)
-                }}
-              >
-                {langLabel}
-              </DropdownItem>
-              {NAV_LINKS.map((item) => (
-                <DropdownItem key={item.label} to={item.to} onClick={() => setBurgerOpen(false)}>
-                  {item.label}
-                </DropdownItem>
-              ))}
-              <DropdownItem to={ACCOUNT_LINK.to} onClick={() => setBurgerOpen(false)}>
-                {ACCOUNT_LINK.label}
-              </DropdownItem>
-            </div>
-          )}
-        </div>
+        {/* Язык (md+) — первым, как в исходном порядке */}
+        <NavPill
+          variant="default"
+          className="hidden md:inline-flex md:px-5 md:py-3 md:text-base"
+          onClick={toggleLang}
+        >
+          {langLabel}
+        </NavPill>
 
-        {/* Десктоп (md+): nav-pills */}
+        {/* «Каталог» — всегда виден (быстрый доступ); крупный размер (как на md+) на всех ширинах */}
+        <NavPill
+          variant="default"
+          className="px-5 py-3 text-base md:px-5 md:py-3 md:text-base"
+          to={CATALOG_LINK.to}
+        >
+          {CATALOG_LINK.label}
+        </NavPill>
+
+        {/* Десктоп (md+): остальные ссылки (lg+) + аккаунт */}
         <div className="hidden md:flex md:items-center">
-          <NavPill variant="default" className="md:px-5 md:py-3 md:text-base" onClick={toggleLang}>
-            {langLabel}
-          </NavPill>
-          {NAV_LINKS.map((item) => (
+          {SECONDARY_NAV_LINKS.map((item) => (
             <NavPill
               key={item.label}
               variant="default"
@@ -140,6 +95,7 @@ function Header() {
           </NavPill>
         </div>
 
+        {/* Кнопка меню — всегда видна, открывает единый MobileMenu */}
         <IconButton
           variant="slate"
           size={48}
@@ -150,27 +106,6 @@ function Header() {
         </IconButton>
       </nav>
     </header>
-  )
-}
-
-function DropdownItem({ children, onClick, to }) {
-  const classes = cn(
-    'w-full px-3.5 py-2.5 text-left bg-transparent rounded-xl',
-    'border-0 cursor-pointer font-sans text-sm font-medium leading-tight',
-    'transition-colors duration-150',
-    'text-navy hover:bg-black/5'
-  )
-  if (to) {
-    return (
-      <Link to={to} onClick={onClick} className={classes}>
-        {children}
-      </Link>
-    )
-  }
-  return (
-    <button type="button" onClick={onClick} className={classes}>
-      {children}
-    </button>
   )
 }
 
