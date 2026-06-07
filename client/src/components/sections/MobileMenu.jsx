@@ -1,18 +1,19 @@
 // Fullscreen overlay-меню (z-menu). Curtain-анимация колонками, грид-линии, staggered fade-in контента.
 // Esc/click-outside закрытие, scroll-lock, focus-trap.
 import { useState, useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 
 import { Logo, IconButton, Button } from '@/components/ui'
 import { Close } from '@/components/ui/icons'
 import { useUiStore } from '@/store'
 import { MENU_PRIMARY, MENU_SECONDARY, MENU_CTA } from '@/content/menu'
-import { NAV_LINKS, ACCOUNT_LINK, LANG_LABELS } from '@/content/header'
+import { NAV_LINKS, ACCOUNT_LINK, LANG_LABELS, HOME_LINK } from '@/content/header'
 
 import MenuItem from './_MenuItem'
 
-// Навигация меню — единый источник из контента шапки (NAV_LINKS + аккаунт).
-const NAV_ITEMS = [...NAV_LINKS, ACCOUNT_LINK]
+// Первый пункт NAV_LINKS — «Каталог», на catalog-роутах он подменяется на «Главная».
+const [CATALOG_LINK, ...SECONDARY_NAV_LINKS] = NAV_LINKS
 
 // Тайминги анимации-шторки (падающие колонки) и проявления контента после неё.
 const CURTAIN_STEP = 0.08
@@ -58,6 +59,10 @@ function MobileMenuContent({ onClose }) {
   const columns = useCurtainColumns()
   const logoSize = useMobileMenuLogoSize()
   const shouldReduceMotion = useReducedMotion()
+  // На catalog-роутах «Каталог» → «Главная» → / (как в закреплённом NavPill хедера).
+  const isCatalog = useLocation().pathname.startsWith('/catalog')
+  // Навигация меню — единый источник из контента шапки (NAV_LINKS + аккаунт).
+  const navItems = [isCatalog ? HOME_LINK : CATALOG_LINK, ...SECONDARY_NAV_LINKS, ACCOUNT_LINK]
   // Переключатель языка (тот же контент, что в шапке). Клик не закрывает меню.
   const [lang, setLang] = useState('ru')
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
@@ -207,21 +212,28 @@ function MobileMenuContent({ onClose }) {
 
         {/* Центр меню: навигация по сайту + support-ссылки */}
         <div className="flex flex-1 flex-col items-start justify-center gap-8">
-          {/* Навигация по сайту (компактная) — отдельной секцией перед support-ссылками */}
-          <nav className="flex flex-col items-start gap-1">
-            {curtainDone &&
-              NAV_ITEMS.map((item, i) => (
-                <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (2 + i))}>
-                  <MenuItem
-                    label={item.label}
-                    size="secondary"
-                    color="white"
-                    to={item.to}
-                    onClick={onClose}
-                  />
-                </motion.div>
-              ))}
-          </nav>
+          {/* Навигация по сайту (компактная) — отдельной секцией перед support-ссылками.
+              Обёртка ужимается по контенту, поэтому w-full разделителя = ширине списка nav-пунктов. */}
+          <div className="flex flex-col items-start gap-8">
+            <nav className="flex flex-col items-start gap-1">
+              {curtainDone &&
+                navItems.map((item, i) => (
+                  <motion.div key={item.label} {...fadeIn(CONTENT_STAGGER * (2 + i))}>
+                    <MenuItem
+                      label={item.label}
+                      size="secondary"
+                      color="white"
+                      to={item.to}
+                      onClick={onClose}
+                    />
+                  </motion.div>
+                ))}
+            </nav>
+
+            {/* Разделитель групп: навигация (из шапки) ↔ support-ссылки. Статичный 1px хайрлайн —
+                корректен при prefers-reduced-motion по определению; вертикальные отступы даёт gap-8. */}
+            {curtainDone && <div aria-hidden="true" className="h-px w-full bg-white/10" />}
+          </div>
 
           {/* Support-ссылки */}
           <div className="flex flex-col items-start gap-1">

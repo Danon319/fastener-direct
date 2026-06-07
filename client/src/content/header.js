@@ -15,3 +15,7 @@ export const NAV_LINKS = [
 ]
 
 export const ACCOUNT_LINK = { label: 'Аккаунт', to: '/account' }
+
+// Контекстная подмена «Каталог» на catalog-роутах: там ссылка на каталог бесполезна,
+// полезнее ссылка на лендинг. Те же поля, что у пункта «Каталог» из NAV_LINKS.
+export const HOME_LINK = { label: 'Главная', to: '/' }

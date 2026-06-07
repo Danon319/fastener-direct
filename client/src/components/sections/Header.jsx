@@ -7,7 +7,7 @@ import { Logo, IconButton, NavPill } from '@/components/ui'
 import { Plus, User } from '@/components/ui/icons'
 import { useUiStore } from '@/store'
 import { useScrollDirection } from '@/hooks'
-import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
+import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK, HOME_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
 
 // «Каталог» закреплён как всегда-видимый быстрый доступ; остальные ссылки появляются с lg.
@@ -21,6 +21,9 @@ function Header() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const isCatalog = location.pathname.startsWith('/catalog')
+  // На catalog-роутах закреплённая ссылка «Каталог» подменяется на «Главная» → / (бесполезно
+  // вести в каталог, уже находясь в нём). На остальных роутах — «Каталог».
+  const catalogNavLink = isCatalog ? HOME_LINK : CATALOG_LINK
   // Состояние хедера: только язык (бургер-дропдаун убран в пользу единого MobileMenu).
   const [lang, setLang] = useState('ru')
 
@@ -76,13 +79,14 @@ function Header() {
           {langLabel}
         </NavPill>
 
-        {/* «Каталог» — всегда виден (быстрый доступ); крупный размер (как на md+) на всех ширинах */}
+        {/* «Каталог» — всегда виден (быстрый доступ); на catalog-роутах → «Главная».
+            Крупный размер (как на md+) на всех ширинах */}
         <NavPill
           variant="default"
           className="px-5 py-3 text-base md:px-5 md:py-3 md:text-base"
-          to={CATALOG_LINK.to}
+          to={catalogNavLink.to}
         >
-          {CATALOG_LINK.label}
+          {catalogNavLink.label}
         </NavPill>
 
         {/* Десктоп (md+): остальные ссылки (lg+) + аккаунт */}
