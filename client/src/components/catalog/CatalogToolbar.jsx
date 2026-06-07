@@ -1,164 +1,141 @@
 // Тулбар каталога: пилюля с управляющими элементами (передаются как children).
-// При прокрутке тот же тулбар переходит в fixed и плавно раскрывается в «toolbar-header»
-// (CSS-transition по max-width — движение реверсивное), а справа проявляется кнопка меню.
-import { useState, useEffect, useRef } from 'react'
+// Тулбар всегда fixed; позиция и ширина — чистые функции от scrollY с clamp (паттерн HeroHeader),
+// поэтому докинг плавный и полностью обратимый, без таймеров и время-зависимых transition.
+// При прокрутке бар поднимается из позиции покоя в док (top хедер-пилюли) и расширяется на всю
+// ширину, а справа синхронно проявляется кнопка меню (≡).
+import { useLayoutEffect, useRef, useState } from 'react'
+import { motion, useScroll, useTransform } from 'motion/react'
 import PropTypes from 'prop-types'
 
 import { IconButton } from '@/components/ui'
 import { Plus } from '@/components/ui/icons'
-import { cn } from '@/utils/cn'
 
-// Закрепление на 48px от верхней границы; триггер — когда естественная позиция доходит до 48px.
-const PIN_TOP = 48
-const PIN_TRIGGER_OFFSET = 48
-// Раскрытие в toolbar-header (вариант «Плавно» из образца).
-const ANIM_EASE = 'cubic-bezier(.22,1,.36,1)'
-const ANIM_DUR = '.55s'
-const ANIM_MS = 550
-// Запас на отрисовку шрифтов перед повторным замером позиции.
-const REMEASURE_DELAY_MS = 350
+// Высота хедер-пилюли (Header.jsx, h-14). Док тулбара синхронизирован с уходом хедера: хедер уезжает
+// translateY = -scrollY и полностью покидает верх ровно на scrollY = DOCK_TOP + HEADER_HEIGHT.
+// Здесь же тулбар достигает DOCK_TOP — бесшовный свап без кадра наложения.
+const HEADER_HEIGHT = 56
+// Зазор пилюли (gap-2 = 0.5rem). Гасим его у reveal-обёртки ≡ в покое (её ширина 0), чтобы кнопка
+// не «съедала» место у flex-1 SearchBar и позиция покоя не менялась.
+const PILL_GAP = 8
 
-// Кнопка меню — последний элемент закреплённого бара. Появляется (scale+fade) вместе с раскрытием.
-// Та же кнопка, что в хедере: IconButton (slate) + Plus. Обёртка несёт reveal-анимацию.
-function InlineMenuButton({ expanded, onClick }) {
-  return (
-    <span
-      className="inline-flex shrink-0"
-      style={{
-        opacity: expanded ? 1 : 0,
-        transform: expanded ? 'scale(1)' : 'scale(.55)',
-        transition: `opacity ${ANIM_DUR} ${ANIM_EASE}, transform ${ANIM_DUR} ${ANIM_EASE}`,
-      }}
-    >
-      <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={onClick}>
-        <Plus />
-      </IconButton>
-    </span>
-  )
-}
-
-InlineMenuButton.propTypes = {
-  expanded: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
-}
+const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v)
 
 /**
  * Тулбар каталога. Управляющие элементы передаются как children и раскладываются в пилюле.
- * Самостоятельно отслеживает прокрутку и закрепляется в «toolbar-header».
+ * Всегда fixed; позиция (translateY) и ширина (max-width) — чистые функции от scrollY с clamp,
+ * поэтому возврат вверх — точная инверсия прямого хода (нет сжатия-по-времени и прыжка).
  *
  * @param {Object} props
  * @param {React.ReactNode} props.children - Контролы тулбара (фильтры, поиск, сортировка, категории).
- * @param {() => void} props.onMenuOpen - Открыть мобильное меню (кнопка в закреплённом баре).
+ * @param {() => void} props.onMenuOpen - Открыть мобильное меню (кнопка ≡ доканного бара).
  */
 export default function CatalogToolbar({ children, onMenuOpen }) {
-  const anchorRef = useRef(null) // нулевой якорь естественной позиции
-  const toolbarRef = useRef(null) // сам бар — для высоты спейсера
-  const pinPointRef = useRef(Infinity) // позиция закрепления (scrollY)
-  const pinnedRef = useRef(false) // текущее состояние закрепления (без ре-рендера)
-  const collapseTimer = useRef(null)
-  const expandTimer = useRef(null)
+  const anchorRef = useRef(null) // нулевой якорь естественной позиции (для restLift)
+  const wrapperRef = useRef(null) // fixed-обёртка: с неё читаем DOCK_TOP (computed top)
+  const spacerRef = useRef(null) // спейсер потока: его ширина = ширина покоя
+  const pillRef = useRef(null) // сама пилюля — для высоты спейсера
+  const revealRef = useRef(null) // естественная ширина группы «разделитель + ≡»
 
-  const [toolbarH, setToolbarH] = useState(64)
-  // renderPinned — бар физически в fixed; expanded — целевая (полная) ширина.
-  const [renderPinned, setRenderPinned] = useState(false)
-  const [expanded, setExpanded] = useState(false)
+  // Геометрия дока, резолвится из реального layout (без JS-таблицы брейкпоинтов):
+  // restLift — насколько ниже DOCK_TOP бар стоит в покое; swapEnd — scrollY, на котором бар встаёт
+  // в DOCK_TOP (= момент ухода хедера); restWidth/dockedWidth — ширины; revealW — ширина ≡-группы.
+  const [metrics, setMetrics] = useState({
+    toolbarH: 64,
+    restLift: 0,
+    swapEnd: 1,
+    restWidth: 0,
+    dockedWidth: 0,
+    revealW: 0,
+  })
 
-  // Замер позиции якоря и высоты бара (+ повтор после загрузки шрифтов).
-  useEffect(() => {
+  // Замер до отрисовки (useLayoutEffect — без мелькания позиции на маунте) и перемер на resize и
+  // изменении высоты пилюли (в т.ч. reflow после загрузки шрифтов) через ResizeObserver.
+  useLayoutEffect(() => {
     const measure = () => {
-      if (anchorRef.current) {
-        pinPointRef.current =
-          anchorRef.current.getBoundingClientRect().top + window.scrollY - PIN_TRIGGER_OFFSET
-      }
-      if (toolbarRef.current) setToolbarH(toolbarRef.current.offsetHeight)
+      const anchor = anchorRef.current
+      const wrapper = wrapperRef.current
+      const spacer = spacerRef.current
+      const pill = pillRef.current
+      const reveal = revealRef.current
+      if (!anchor || !wrapper || !spacer || !pill || !reveal) return
+
+      // DOCK_TOP — used-значение CSS top (Tailwind top-2.5/md:top-7/lg:top-12); transform на него не влияет.
+      const dockTop = parseFloat(getComputedStyle(wrapper).top) || 0
+      // Позиция покоя по вертикали = doc-координата якоря (scroll-инвариантна).
+      const anchorTopDoc = anchor.getBoundingClientRect().top + window.scrollY
+
+      setMetrics({
+        toolbarH: pill.offsetHeight,
+        restLift: anchorTopDoc - dockTop,
+        swapEnd: dockTop + HEADER_HEIGHT,
+        restWidth: spacer.offsetWidth,
+        // Доканный бар совпадает с инсетом хедер-пилюли (по dockTop с каждой стороны) — свап в ту же рамку.
+        dockedWidth: window.innerWidth - 2 * dockTop,
+        revealW: reveal.offsetWidth,
+      })
     }
+
     measure()
-    const id = setTimeout(measure, REMEASURE_DELAY_MS)
+    const ro = new ResizeObserver(measure)
+    if (pillRef.current) ro.observe(pillRef.current)
     window.addEventListener('resize', measure)
     return () => {
-      clearTimeout(id)
+      ro.disconnect()
       window.removeEventListener('resize', measure)
     }
   }, [])
 
-  // Закрепление по позиции прокрутки. Состояние меняем в обработчике скролла (не в теле эффекта).
-  // Реверсивное раскрытие/сворачивание: на сворачивании бар остаётся fixed до конца анимации,
-  // поэтому обратное движение такое же плавное, как прямое.
-  useEffect(() => {
-    const onScroll = () => {
-      const next = window.scrollY > pinPointRef.current
-      if (next === pinnedRef.current) return
-      pinnedRef.current = next
-      if (next) {
-        clearTimeout(collapseTimer.current)
-        setRenderPinned(true)
-        // setTimeout (не rAF — работает и в фоновой вкладке): следующим тиком бар растёт → transition.
-        expandTimer.current = setTimeout(() => setExpanded(true), 30)
-      } else {
-        clearTimeout(expandTimer.current)
-        setExpanded(false)
-        collapseTimer.current = setTimeout(() => setRenderPinned(false), ANIM_MS + 80)
-      }
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      clearTimeout(collapseTimer.current)
-      clearTimeout(expandTimer.current)
-    }
-  }, [])
+  // Единый прогресс докинга p ∈ [0,1] и производные — всё чистые функции scrollY (clamp).
+  const { scrollY } = useScroll()
+  const progress = useTransform(scrollY, (y) => clamp01(y / metrics.swapEnd))
+  const lift = useTransform(progress, (p) => metrics.restLift * (1 - p))
+  const maxWidth = useTransform(
+    progress,
+    (p) => metrics.restWidth + (metrics.dockedWidth - metrics.restWidth) * p
+  )
+  // ≡ проявляется синхронно с докингом: ширина 0→естественная (clip), marginLeft гасит pill gap-2 в покое.
+  const revealWidth = useTransform(progress, (p) => metrics.revealW * p)
+  const revealMargin = useTransform(progress, (p) => -PILL_GAP * (1 - p))
+  const boxShadow = useTransform(
+    progress,
+    [0, 1],
+    ['0 6px 24px -12px rgba(28,32,36,0.25)', '0 14px 36px -10px rgba(28,32,36,0.5)']
+  )
 
   return (
     <div className="relative">
-      {/* Якорь естественной позиции + спейсер потока при закреплении */}
+      {/* Якорь позиции покоя + спейсер потока (бар всегда fixed, поэтому место резервирует спейсер). */}
       <div ref={anchorRef} aria-hidden="true" className="h-0" />
-      <div aria-hidden="true" style={{ height: renderPinned ? toolbarH : 0 }} />
+      <div ref={spacerRef} aria-hidden="true" style={{ height: metrics.toolbarH }} />
 
-      <div
-        className={renderPinned ? 'fixed inset-x-0 z-[60]' : 'relative'}
-        style={renderPinned ? { top: PIN_TOP } : undefined}
+      <motion.div
+        ref={wrapperRef}
+        className="fixed inset-x-0 top-2.5 z-[60] md:top-7 lg:top-12"
+        style={{ y: lift }}
       >
-        <div
-          className="mx-auto"
-          style={
-            renderPinned
-              ? {
-                  maxWidth: expanded ? 'calc(100vw - 96px)' : 'min(1420px, calc(100vw - 80px))',
-                  transitionProperty: 'max-width',
-                  transitionDuration: ANIM_DUR,
-                  transitionTimingFunction: ANIM_EASE,
-                  willChange: 'max-width',
-                }
-              : undefined
-          }
-        >
-          <div
-            ref={toolbarRef}
-            className={cn(
-              'flex items-center gap-2 rounded-full bg-white p-1.5 ring-1 ring-black/5 transition-shadow duration-300',
-              renderPinned
-                ? 'shadow-[0_14px_36px_-10px_rgba(28,32,36,0.5)]'
-                : 'shadow-[0_6px_24px_-12px_rgba(28,32,36,0.25)]'
-            )}
+        <motion.div className="mx-auto" style={{ maxWidth }}>
+          <motion.div
+            ref={pillRef}
+            className="flex items-center gap-2 rounded-full bg-white p-1.5 ring-1 ring-black/5"
+            style={{ boxShadow }}
           >
             {children}
-            {renderPinned && (
-              <>
-                <span
-                  aria-hidden="true"
-                  className="mx-0.5 h-6 w-px shrink-0 bg-divider"
-                  style={{
-                    opacity: expanded ? 1 : 0,
-                    transition: `opacity ${ANIM_DUR} ${ANIM_EASE}`,
-                  }}
-                />
-                <InlineMenuButton expanded={expanded} onClick={onMenuOpen} />
-              </>
-            )}
-          </div>
-        </div>
-      </div>
+            {/* Коллапсирующая обёртка ≡: в покое width 0 (overflow-hidden клиппит кнопку — она не видна
+                и не кликабельна, не влияет на flex-1 SearchBar). Раскрывается синхронно с докингом. */}
+            <motion.div
+              className="flex shrink-0 items-center overflow-hidden"
+              style={{ width: revealWidth, marginLeft: revealMargin, opacity: progress }}
+            >
+              <div ref={revealRef} className="flex shrink-0 items-center gap-2">
+                <span aria-hidden="true" className="h-6 w-px bg-divider" />
+                <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={onMenuOpen}>
+                  <Plus />
+                </IconButton>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }

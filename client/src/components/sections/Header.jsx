@@ -1,6 +1,7 @@
 // Fixed pill-хедер с opacity-fade. Виден после прокрутки Hero вниз; на остальных страницах — всегда.
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { motion, useScroll, useTransform } from 'motion/react'
 
 import { Logo, IconButton, NavPill } from '@/components/ui'
 import { Plus, User } from '@/components/ui/icons'
@@ -19,6 +20,7 @@ function Header() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
   const location = useLocation()
   const isHome = location.pathname === '/'
+  const isCatalog = location.pathname.startsWith('/catalog')
   // Состояние хедера: только язык (бургер-дропдаун убран в пользу единого MobileMenu).
   const [lang, setLang] = useState('ru')
 
@@ -36,8 +38,14 @@ function Header() {
   // На не-Home: Header всегда виден.
   const visible = isHome ? isPastThreshold && direction === 'down' : true
 
+  // На /catalog хедер уезжает вверх по позиции (паттерн HeroHeader), синхронно отдавая верх
+  // доканному тулбару; opacity не трогаем. На остальных роутах transform нейтрален (y = 0).
+  const { scrollY } = useScroll()
+  const catalogLift = useTransform(scrollY, (v) => -v)
+
   return (
-    <header
+    <motion.header
+      style={{ y: isCatalog ? catalogLift : 0 }}
       className={cn(
         'fixed z-header flex h-14 items-center justify-between',
         'left-2.5 right-2.5 top-2.5 md:left-7 md:right-7 md:top-7 lg:left-12 lg:right-12 lg:top-12',
@@ -105,7 +113,7 @@ function Header() {
           <Plus />
         </IconButton>
       </nav>
-    </header>
+    </motion.header>
   )
 }
 
