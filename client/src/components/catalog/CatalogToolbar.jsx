@@ -2,7 +2,7 @@
 // Тулбар всегда fixed; позиция и ширина — чистые функции от scrollY с clamp (паттерн HeroHeader),
 // поэтому докинг плавный и полностью обратимый, без таймеров и время-зависимых transition.
 // При прокрутке бар поднимается из позиции покоя в док (top хедер-пилюли) и расширяется на всю
-// ширину, а справа синхронно проявляется кнопка меню (≡).
+// ширину, а справа по завершении докинга кнопка меню (≡) появляется целиком (шаговый reveal).
 import { useLayoutEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import PropTypes from 'prop-types'
@@ -93,9 +93,14 @@ export default function CatalogToolbar({ children, onMenuOpen }) {
     progress,
     (p) => metrics.restWidth + (metrics.dockedWidth - metrics.restWidth) * p
   )
-  // ≡ проявляется синхронно с докингом: ширина 0→естественная (clip), marginLeft гасит pill gap-2 в покое.
-  const revealWidth = useTransform(progress, (p) => metrics.revealW * p)
-  const revealMargin = useTransform(progress, (p) => -PILL_GAP * (1 - p))
+  // ≡ появляется целиком в момент завершения докинга (progress = 1), а не пропорционально:
+  // шаговый reveal (0 до завершения, 1 после) вместо линейного. Порог — конец диапазона докинга
+  // (progress достигает 1 ровно на DOCK_TOP). Ширина 0→естественная (clip), marginLeft гасит pill
+  // gap-2 в покое, pointer-events отключены, пока кнопка скрыта.
+  const revealStep = useTransform(progress, (p) => (p < 1 ? 0 : 1))
+  const revealWidth = useTransform(revealStep, (s) => metrics.revealW * s)
+  const revealMargin = useTransform(revealStep, (s) => -PILL_GAP * (1 - s))
+  const revealPointer = useTransform(revealStep, (s) => (s ? 'auto' : 'none'))
   const boxShadow = useTransform(
     progress,
     [0, 1],
@@ -121,10 +126,15 @@ export default function CatalogToolbar({ children, onMenuOpen }) {
           >
             {children}
             {/* Коллапсирующая обёртка ≡: в покое width 0 (overflow-hidden клиппит кнопку — она не видна
-                и не кликабельна, не влияет на flex-1 SearchBar). Раскрывается синхронно с докингом. */}
+                и не кликабельна, не влияет на flex-1 SearchBar). Раскрывается целиком по завершении докинга. */}
             <motion.div
               className="flex shrink-0 items-center overflow-hidden"
-              style={{ width: revealWidth, marginLeft: revealMargin, opacity: progress }}
+              style={{
+                width: revealWidth,
+                marginLeft: revealMargin,
+                opacity: revealStep,
+                pointerEvents: revealPointer,
+              }}
             >
               <div ref={revealRef} className="flex shrink-0 items-center gap-2">
                 <span aria-hidden="true" className="h-6 w-px bg-divider" />

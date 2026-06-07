@@ -54,7 +54,9 @@ function Header() {
         'left-2.5 right-2.5 top-2.5 md:left-7 md:right-7 md:top-7 lg:left-12 lg:right-12 lg:top-12',
         'pl-3 pr-1.5 md:pl-5 md:pr-1.5',
         'py-1',
-        'bg-white/95 backdrop-blur-md',
+        // На /catalog хедер прозрачный (без белой пилюли-подложки) — контент остаётся тёмным (navy)
+        // и читается на светлом каталоге. На остальных роутах — обычная белая пилюля.
+        isCatalog ? 'bg-transparent' : 'bg-white/95 backdrop-blur-md',
         'rounded-full',
         'transition-opacity duration-300',
         visible ? 'opacity-100' : 'pointer-events-none opacity-0'
