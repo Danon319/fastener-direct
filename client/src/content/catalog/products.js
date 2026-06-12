@@ -1,5 +1,5 @@
 // Массив товаров каталога. Схема объекта:
-// { id, name, parentCategory (slug), subcategory (categoryKey), material, brand, article, price, inStock, image }
+// { id, name, parentCategory (slug), subcategory (categoryKey), material, brand, article, price, priceUnit (опц., единица цены — по умолчанию 'шт.'), inStock, image }
 
 export const PRODUCTS = [
   {
@@ -12,6 +12,7 @@ export const PRODUCTS = [
     brand: 'TCS',
     article: '045-1290',
     price: 7.87,
+    priceUnit: 'шт.',
     inStock: true,
     image: '/product_card/1.jpg',
   },
@@ -25,6 +26,7 @@ export const PRODUCTS = [
     brand: 'CONTAINERD',
     article: '112-3380',
     price: 15.24,
+    priceUnit: 'шт.',
     inStock: true,
     image: '/product_card/2.jpg',
   },
@@ -38,6 +40,7 @@ export const PRODUCTS = [
     brand: 'SUPERMICRO',
     article: '078-2240',
     price: 55.52,
+    priceUnit: 'шт.',
     inStock: false,
     image: '/product_card/3.jpg',
   },
@@ -51,6 +54,7 @@ export const PRODUCTS = [
     brand: 'SUPERMICRO',
     article: '203-1150',
     price: 77.12,
+    priceUnit: 'шт.',
     inStock: true,
     image: '/product_card/4.jpg',
   },
@@ -64,6 +68,7 @@ export const PRODUCTS = [
     brand: 'ZABKA',
     article: '016-9070',
     price: 8.93,
+    priceUnit: 'шт.',
     inStock: true,
     image: '/product_card/5.jpg',
   },
@@ -77,6 +82,7 @@ export const PRODUCTS = [
     brand: 'COMSOL',
     article: '134-5520',
     price: 13.54,
+    priceUnit: 'шт.',
     inStock: true,
     image: '/product_card/6.jpg',
   },
@@ -90,6 +96,7 @@ export const PRODUCTS = [
     brand: 'COMSOL',
     article: '091-6610',
     price: 2540.87,
+    priceUnit: 'шт.',
     inStock: false,
     image: '/product_card/7.jpg',
   },
@@ -103,6 +110,7 @@ export const PRODUCTS = [
     brand: 'COMSOL',
     article: '167-4830',
     price: 1560.87,
+    priceUnit: 'шт.',
     inStock: true,
     image: '/product_card/8.jpg',
   },

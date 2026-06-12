@@ -158,6 +158,7 @@ FavoriteButton.propTypes = {
  */
 export default function ProductCard({ product }) {
   const { formatted, kopecks } = formatPrice(product.price)
+  const unit = product.priceUnit ?? 'шт.'
   const { canHover } = useViewport()
 
   // Состояние корзины для этого товара: лежит ли он там, сколько штук и функция смены количества.
@@ -212,10 +213,10 @@ export default function ProductCard({ product }) {
         canHover && 'hover:-translate-y-1 hover:shadow-lg'
       )}
     >
-      {/* Фото — портрет 4:5: высота следует за шириной карточки, object-contain на белом фоне.
+      {/* Фото — квадрат 1:1: высота следует за шириной карточки, object-contain на белом фоне.
           Картинка позиционирована absolute (не в потоке): иначе вытянутый исходник (напр. 124×400)
           через flex-basis раздул бы shrink-0 фото-бокс выше aspect-ratio. p-3 перенесён на сам img. */}
-      <div className="relative aspect-[4/5] shrink-0 bg-white">
+      <div className="relative aspect-square shrink-0 bg-white">
         <span className="absolute left-2.5 top-2.5 z-10 p-2 font-sans text-[12px] font-medium text-navy">
           {product.article}
         </span>
@@ -231,12 +232,18 @@ export default function ProductCard({ product }) {
       {/* Информация о товаре: цена → название → нижняя строка. Отступы и кегль
           компактнее на узкой карточке, просторнее от @[224px] (container-query). */}
       <div className="flex flex-1 flex-col gap-2.5 px-3 pb-3 pt-3 @[224px]:gap-3 @[224px]:px-4 @[224px]:pb-4 @[224px]:pt-3.5">
-        <p className="font-sans text-navy">
-          <span className="text-[28px] font-medium leading-none tracking-tight @[224px]:text-[34px]">
-            {formatted}
-          </span>
-          <span className="text-sm text-muted">.{kopecks} &#8381;</span>
-        </p>
+        {/* Цена + разделитель + единица сгруппированы в w-fit-контейнер: divider (w-full)
+            и подпись наследуют ширину цены, а gap контент-блока не растягивает линию. */}
+        <div className="flex w-fit flex-col gap-1.5">
+          <p className="font-sans text-navy">
+            <span className="text-[28px] font-medium leading-none tracking-tight @[224px]:text-[34px]">
+              {formatted}
+            </span>
+            <span className="text-sm text-muted">.{kopecks} &#8381;</span>
+          </p>
+          <div className="h-px w-full bg-black/10" />
+          <p className="font-sans text-xs text-muted">за {unit}</p>
+        </div>
 
         <h3 className="line-clamp-2 font-sans text-[13px] font-medium leading-snug text-navy @[224px]:text-sm">
           {product.name}
@@ -272,6 +279,7 @@ ProductCard.propTypes = {
     brand: PropTypes.string.isRequired,
     article: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    priceUnit: PropTypes.string,
     inStock: PropTypes.bool.isRequired,
     image: PropTypes.string.isRequired,
   }).isRequired,
