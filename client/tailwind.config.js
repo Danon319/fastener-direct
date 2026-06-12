@@ -24,6 +24,12 @@ export default {
         pillHover: '#cccccc',
         gridLine: '#d1d1d1',
       },
+      // Тени-токены — единый источник правды вместо дублей arbitrary shadow-[...].
+      // popover — поповеры тулбара (фильтры/сортировка/категории); btn — CTA-кнопка.
+      boxShadow: {
+        popover: '0 8px 28px rgba(0,0,0,0.18)',
+        btn: '0 2px 14px rgba(0,0,0,0.12)',
+      },
       fontFamily: {
         sans: ['"Neue Montreal"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },

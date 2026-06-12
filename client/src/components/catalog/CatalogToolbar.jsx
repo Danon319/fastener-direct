@@ -18,6 +18,11 @@ const HEADER_HEIGHT = 56
 // не «съедала» место у flex-1 SearchBar и позиция покоя не менялась.
 const PILL_GAP = 8
 
+// Тени пилюли для motion-интерполяции по прогрессу докинга. Строки обязательны (useTransform
+// интерполирует строки), токен-класс неприменим. rgba(28,32,36) = navy (#1c2024).
+const TOOLBAR_SHADOW_REST = '0 6px 24px -12px rgba(28,32,36,0.25)'
+const TOOLBAR_SHADOW_DOCKED = '0 14px 36px -10px rgba(28,32,36,0.5)'
+
 const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v)
 
 /**
@@ -101,11 +106,7 @@ export default function CatalogToolbar({ children, onMenuOpen }) {
   const revealWidth = useTransform(revealStep, (s) => metrics.revealW * s)
   const revealMargin = useTransform(revealStep, (s) => -PILL_GAP * (1 - s))
   const revealPointer = useTransform(revealStep, (s) => (s ? 'auto' : 'none'))
-  const boxShadow = useTransform(
-    progress,
-    [0, 1],
-    ['0 6px 24px -12px rgba(28,32,36,0.25)', '0 14px 36px -10px rgba(28,32,36,0.5)']
-  )
+  const boxShadow = useTransform(progress, [0, 1], [TOOLBAR_SHADOW_REST, TOOLBAR_SHADOW_DOCKED])
 
   return (
     <div className="relative">

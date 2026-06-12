@@ -73,7 +73,7 @@ const IconButton = React.forwardRef(function IconButton(
         'group/iconbtn',
         // Базовые стили варианта
         variant === 'light' && [
-          'border-[1.5px] border-[#ddd] bg-transparent',
+          'border-[1.5px] border-divider bg-transparent',
           interactive && 'hover:border-transparent hover:bg-redHover',
         ],
         variant === 'dark' && [

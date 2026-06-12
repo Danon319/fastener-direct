@@ -22,6 +22,11 @@ const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
 const ENTRANCE_Y = 40
 const ENTRANCE_STAGGER = 0.1
 
+// Цвета перекраски заголовка по scroll-progress: из белого в slate (#2E3F51 = токен slate).
+// Строки обязательны — это интерполяция Motion (useTransform), токен-класс неприменим.
+const SCROLL_COLOR_FROM = '#ffffff'
+const SCROLL_COLOR_TO = '#2E3F51'
+
 // Готовит настройки анимации появления для блока по его номеру: блоки всплывают один за другим (или сразу, если анимации отключены).
 function useEntranceProps() {
   const shouldReduceMotion = useReducedMotion()
@@ -86,12 +91,12 @@ function ScrollColorWord({ word, index, total, scrollYProgress, isStatic, isLast
   const color = useTransform(
     scrollYProgress,
     [index / total, (index + 1) / total],
-    ['#ffffff', '#2E3F51']
+    [SCROLL_COLOR_FROM, SCROLL_COLOR_TO]
   )
   const suffix = isLast ? '' : ' '
   if (isStatic) {
     return (
-      <span style={{ color: '#2E3F51' }}>
+      <span className="text-slate">
         {word}
         {suffix}
       </span>
@@ -135,7 +140,7 @@ function TopBlockDesktop() {
       <div
         className="flex flex-col"
         // -0.52vw — slope «отрицательного» сдвига колонки заголовка, чтобы текст оптически
-        // выравнивался с маркой по референсу Atout (карточки уезжают левее на широких экранах).
+        // выравнивался с маркой.
         style={{ gridColumn: '7 / 16', marginLeft: 'clamp(-12px, -0.25rem + -0.52vw, -20px)' }}
       >
         <h2

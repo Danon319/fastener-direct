@@ -56,7 +56,7 @@ export default function Button({
 
   const baseCn = cn(
     'inline-flex cursor-pointer select-none items-center justify-between rounded-full border-0 bg-white font-sans font-medium text-navy',
-    '[box-shadow:0_2px_14px_rgba(0,0,0,0.12)]',
+    'shadow-btn',
     'group/btn',
     buttonSize,
     className

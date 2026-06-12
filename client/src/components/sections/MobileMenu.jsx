@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 
 import { Logo, IconButton, Button } from '@/components/ui'
 import { Close } from '@/components/ui/icons'
+import { cn } from '@/utils/cn'
 import { useUiStore } from '@/store'
 import { MENU_PRIMARY, MENU_SECONDARY, MENU_CTA } from '@/content/menu'
 import { NAV_LINKS, ACCOUNT_LINK, LANG_LABELS, HOME_LINK } from '@/content/header'
@@ -143,9 +144,11 @@ function MobileMenuContent({ onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label="Главное меню"
-      className="fixed inset-0 z-menu overflow-hidden font-sans text-white"
+      className={cn(
+        'fixed inset-0 z-menu overflow-hidden font-sans text-white',
+        curtainDone && 'bg-red'
+      )}
       style={{
-        backgroundColor: curtainDone ? '#d03328' : 'transparent',
         boxShadow: curtainDone
           ? 'inset 1px 0 0 rgba(255,255,255,0.1), inset -1px 0 0 rgba(255,255,255,0.1)'
           : 'none',

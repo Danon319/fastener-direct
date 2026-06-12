@@ -195,7 +195,7 @@ function FilterPanel({
   }, [])
 
   return (
-    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_8px_28px_rgba(0,0,0,0.18)] ring-1 ring-black/5">
+    <div className="overflow-hidden rounded-2xl bg-white shadow-popover ring-1 ring-black/5">
       <div className="flex h-12 items-center justify-between gap-3 border-b border-divider px-4">
         <span className="inline-flex items-center gap-2 text-[13.5px] font-medium text-navy">
           <Filter size={16} className="text-muted" />
