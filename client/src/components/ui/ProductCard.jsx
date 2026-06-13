@@ -277,9 +277,9 @@ export default function ProductCard({ product }) {
             <CartButton productId={product.id} inStock quantity={displayQty} />
           </div>
         ) : (
-          <p className="mt-auto text-center font-sans text-sm font-medium text-red">
+          <div className="mt-auto flex h-[42px] w-full items-center justify-center rounded-full bg-tagDate font-sans text-sm font-medium text-red">
             Нет в наличии
-          </p>
+          </div>
         )}
       </div>
     </Link>
