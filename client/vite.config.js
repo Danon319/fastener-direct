@@ -5,6 +5,8 @@ import react from '@vitejs/plugin-react'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+process.env.BROWSER = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -13,6 +15,7 @@ export default defineConfig({
     },
   },
   server: {
+    open: true,
     proxy: {
       '/api': 'http://localhost:3000',
     },
