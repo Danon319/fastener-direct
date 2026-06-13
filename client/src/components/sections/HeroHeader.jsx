@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 
-import { Logo, IconButton, NavPill } from '@/components/ui'
-import { Plus, User } from '@/components/ui/icons'
+import { Logo, MenuOpenButton, NavPill } from '@/components/ui'
+import { User } from '@/components/ui/icons'
 import { useUiStore } from '@/store'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
@@ -117,14 +117,7 @@ function HeroHeader() {
 
         {/* MenuBtn — серый круг с +, всегда виден, открывает MobileMenu (index 7) */}
         <motion.div {...entranceProps(7)}>
-          <IconButton
-            variant="slate"
-            size={48}
-            ariaLabel="Открыть меню"
-            onClick={() => setMenuOpen(true)}
-          >
-            <Plus />
-          </IconButton>
+          <MenuOpenButton onClick={() => setMenuOpen(true)} />
         </motion.div>
       </nav>
     </motion.header>

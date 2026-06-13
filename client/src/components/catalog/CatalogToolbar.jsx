@@ -7,8 +7,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import PropTypes from 'prop-types'
 
-import { IconButton } from '@/components/ui'
-import { Plus } from '@/components/ui/icons'
+import { MenuOpenButton } from '@/components/ui'
 
 // Высота хедер-пилюли (Header.jsx, h-14). Док тулбара синхронизирован с уходом хедера: хедер уезжает
 // translateY = -scrollY и полностью покидает верх ровно на scrollY = DOCK_TOP + HEADER_HEIGHT.
@@ -139,9 +138,7 @@ export default function CatalogToolbar({ children, onMenuOpen }) {
             >
               <div ref={revealRef} className="flex shrink-0 items-center gap-2">
                 <span aria-hidden="true" className="h-6 w-px bg-divider" />
-                <IconButton variant="slate" size={48} ariaLabel="Открыть меню" onClick={onMenuOpen}>
-                  <Plus />
-                </IconButton>
+                <MenuOpenButton onClick={onMenuOpen} />
               </div>
             </motion.div>
           </motion.div>

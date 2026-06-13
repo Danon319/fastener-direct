@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'motion/react'
 
-import { Logo, IconButton, NavPill } from '@/components/ui'
-import { Plus, User } from '@/components/ui/icons'
+import { Logo, MenuOpenButton, NavPill } from '@/components/ui'
+import { User } from '@/components/ui/icons'
 import { useUiStore } from '@/store'
 import { useScrollDirection } from '@/hooks'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK, HOME_LINK } from '@/content/header'
@@ -110,14 +110,7 @@ function Header() {
         </div>
 
         {/* Кнопка меню — всегда видна, открывает единый MobileMenu */}
-        <IconButton
-          variant="slate"
-          size={48}
-          ariaLabel="Открыть меню"
-          onClick={() => setMenuOpen(true)}
-        >
-          <Plus />
-        </IconButton>
+        <MenuOpenButton onClick={() => setMenuOpen(true)} />
       </nav>
     </motion.header>
   )
