@@ -2,7 +2,7 @@
 // + тёмная (navy) секция с сеткой товаров. Логика фильтрации/сортировки/подгрузки — useCatalogFilters.
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import PropTypes from 'prop-types'
 
 import ProductCard from '@/components/ui/ProductCard'
@@ -17,17 +17,20 @@ import CategoryButton from '@/components/catalog/CategoryButton'
 import ActiveFilterChips from '@/components/catalog/ActiveFilterChips'
 import ProductCardSkeleton from '@/components/catalog/ProductCardSkeleton'
 import { useBreakpoint, useCatalogFilters, useInfiniteScroll } from '@/hooks'
+import { ENTRANCE_EASE, ENTRANCE_Y } from '@/config/entrance'
 import { useUiStore } from '@/store'
 
 // Длительность «фейковой» первичной загрузки (мс) — пока показываются скелетоны.
 const INITIAL_LOAD_MS = 300
 // Сколько скелетон-карточек рендерить на начальной фазе.
-const SKELETON_COUNT = 8
+const SKELETON_COUNT = 16
 // Шаг задержки между появлением соседних карточек в stagger fade-in.
 const CARD_STAGGER_S = 0.04
 // Верхний потолок задержки — иначе последняя карточка ждёт слишком долго.
 const MAX_STAGGER_DELAY_S = 0.25
-const CARD_FADE_DURATION_S = 0.3
+// Длительность появления карточки. Канон лендинга — 0.9с, но для плотной сетки из десятков
+// карточек 0.9с ощущается вялым; 0.6с сохраняет канон-ease и масштаб сдвига, оставаясь бодрым.
+const CARD_FADE_DURATION_S = 0.6
 
 // Колоночные линии фона hero-блока.
 const DESKTOP_COLUMNS = 15
@@ -39,8 +42,7 @@ const MOBILE_COLUMNS = 6
 // max-w-[1800px] + mx-auto — потолок: на 2560px выходит ровно 6 колонок по ~285px, контейнер
 // по центру. Карточки заполняют ячейку; на узких ячейках телефона (< 224px) отступы и нижняя
 // строка реагируют по container-query (см. ProductCard).
-const GRID_CLASS =
-  'mx-auto grid max-w-[1800px] grid-cols-2 gap-[18px] md:grid-cols-cards'
+const GRID_CLASS = 'mx-auto grid max-w-[1800px] grid-cols-2 gap-[18px] md:grid-cols-cards'
 
 // Пустой результат — стилизован под тёмную секцию.
 function EmptyState({ onReset }) {
@@ -85,6 +87,7 @@ export default function CatalogPage() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
   const isDesktop = useBreakpoint('lg', true)
   const columns = isDesktop ? DESKTOP_COLUMNS : MOBILE_COLUMNS
+  const shouldReduceMotion = useReducedMotion()
 
   const [isInitialLoading, setIsInitialLoading] = useState(true)
   useEffect(() => {
@@ -171,24 +174,33 @@ export default function CatalogPage() {
           ) : filters.visibleProducts.length > 0 ? (
             <div className={GRID_CLASS}>
               <AnimatePresence mode="popLayout">
-                {filters.visibleProducts.map((product, i) => (
-                  <motion.div
-                    key={product.id}
-                    className="w-full"
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{
-                      duration: CARD_FADE_DURATION_S,
-                      // Stagger по позиции ВНУТРИ текущей порции (i % BATCH_SIZE): новая
-                      // порция появляется волной заново, а уже показанные карточки
-                      // (стабильный key) не перезапускают анимацию при догрузке.
-                      delay: Math.min((i % filters.BATCH_SIZE) * CARD_STAGGER_S, MAX_STAGGER_DELAY_S),
-                    }}
-                  >
-                    <ProductCard product={product} />
-                  </motion.div>
-                ))}
+                {filters.visibleProducts.map((product, i) => {
+                  // Канон лендинга (fade + сдвиг снизу) с reduced-motion guard. Stagger и
+                  // popLayout/стабильный key сохранены — инвариант infinite-scroll не меняется.
+                  const cardMotion = shouldReduceMotion
+                    ? { initial: false }
+                    : {
+                        initial: { opacity: 0, y: ENTRANCE_Y },
+                        animate: { opacity: 1, y: 0 },
+                        exit: { opacity: 0 },
+                        transition: {
+                          duration: CARD_FADE_DURATION_S,
+                          // Stagger по позиции ВНУТРИ текущей порции (i % BATCH_SIZE): новая
+                          // порция появляется волной заново, а уже показанные карточки
+                          // (стабильный key) не перезапускают анимацию при догрузке.
+                          delay: Math.min(
+                            (i % filters.BATCH_SIZE) * CARD_STAGGER_S,
+                            MAX_STAGGER_DELAY_S
+                          ),
+                          ease: ENTRANCE_EASE,
+                        },
+                      }
+                  return (
+                    <motion.div key={product.id} className="w-full" {...cardMotion}>
+                      <ProductCard product={product} />
+                    </motion.div>
+                  )
+                })}
               </AnimatePresence>
             </div>
           ) : (

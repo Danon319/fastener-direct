@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 
 import Button from '@/components/ui/Button'
 import { GridLines } from '@/components/ui'
-import { useBreakpoint } from '@/hooks'
+import { useBreakpoint, useEntranceProps } from '@/hooks'
 import {
   LABEL,
   HEADING,
@@ -16,36 +16,10 @@ import {
   SECTION_TAIL_HEIGHT_PX,
 } from '@/content/ourValues'
 
-// Настройки анимации появления блоков: длительность, плавность, сдвиг в начале и задержка между блоками.
-const ENTRANCE_DURATION = 0.9
-const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
-const ENTRANCE_Y = 40
-const ENTRANCE_STAGGER = 0.1
-
 // Цвета перекраски заголовка по scroll-progress: из белого в slate (#2E3F51 = токен slate).
 // Строки обязательны — это интерполяция Motion (useTransform), токен-класс неприменим.
 const SCROLL_COLOR_FROM = '#ffffff'
 const SCROLL_COLOR_TO = '#2E3F51'
-
-// Готовит настройки анимации появления для блока по его номеру: блоки всплывают один за другим (или сразу, если анимации отключены).
-function useEntranceProps() {
-  const shouldReduceMotion = useReducedMotion()
-  return (index) => {
-    if (shouldReduceMotion) {
-      return { initial: false }
-    }
-    return {
-      initial: { opacity: 0, y: ENTRANCE_Y },
-      whileInView: { opacity: 1, y: 0 },
-      viewport: { once: true, amount: 0.3 },
-      transition: {
-        duration: ENTRANCE_DURATION,
-        delay: index * ENTRANCE_STAGGER,
-        ease: ENTRANCE_EASE,
-      },
-    }
-  }
-}
 
 function useViewportWidth() {
   const [width, setWidth] = useState(() =>
@@ -111,7 +85,7 @@ function ScrollColorWord({ word, index, total, scrollYProgress, isStatic, isLast
 }
 
 function TopBlockDesktop() {
-  const entrance = useEntranceProps()
+  const entrance = useEntranceProps({ trigger: 'inView' })
   const shouldReduceMotion = useReducedMotion()
   const headingRef = useRef(null)
   // Зона анимации: start 0.90 — заголовок входит снизу, end 0.75 — ещё виден.
@@ -171,7 +145,7 @@ function TopBlockDesktop() {
 }
 
 function TopBlockMobile() {
-  const entrance = useEntranceProps()
+  const entrance = useEntranceProps({ trigger: 'inView' })
   return (
     <div className="flex flex-col gap-6 pl-2">
       <motion.p {...entrance(0)} className="text-xl font-medium leading-tight text-slateHover">

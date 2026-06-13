@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 
 import { useBreakpoint } from '@/hooks'
+import { ENTRANCE_DURATION, ENTRANCE_EASE, ENTRANCE_Y } from '@/config/entrance'
 import { BIG_LEFT, BIG_RIGHT, TAGLINES } from '@/content/hero'
 
 import TaglineLine from './_TaglineLine'
@@ -16,10 +17,7 @@ const SWAP_GAP_MS = 10
 const LINE_STAGGER_MS = 150
 const FIRST_FADE_MS = 700
 
-// Entrance: Faste/Direct в t=0, tagline в t=100ms. Мягкий ease — элементы «выплывают» снизу.
-const ENTRANCE_DURATION = 0.9
-const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
-const ENTRANCE_Y = 40
+// Entrance: Faste/Direct в t=0, tagline стартует через эту задержку (канон-значения — в @/config/entrance).
 const TAGLINE_ENTRANCE_DELAY_S = 0.1
 
 /**

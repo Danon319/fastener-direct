@@ -8,11 +8,16 @@ import { motion, useScroll, useTransform } from 'motion/react'
 import PropTypes from 'prop-types'
 
 import { MenuOpenButton } from '@/components/ui'
+import { useEntranceProps } from '@/hooks'
+import { ENTRANCE_STAGGER } from '@/config/entrance'
 
 // Высота хедер-пилюли (Header.jsx, h-14). Док тулбара синхронизирован с уходом хедера: хедер уезжает
 // translateY = -scrollY и полностью покидает верх ровно на scrollY = DOCK_TOP + HEADER_HEIGHT.
 // Здесь же тулбар достигает DOCK_TOP — бесшовный свап без кадра наложения.
 const HEADER_HEIGHT = 56
+// Тулбар проявляется (opacity) после entrance шапки: Header показывает 8 пилюль (индексы 0–7)
+// с канон-stagger, поэтому тулбар стартует на 8 * stagger.
+const ENTRANCE_DELAY_S = 8 * ENTRANCE_STAGGER
 // Зазор пилюли (gap-2 = 0.5rem). Гасим его у reveal-обёртки ≡ в покое (её ширина 0), чтобы кнопка
 // не «съедала» место у flex-1 SearchBar и позиция покоя не менялась.
 const PILL_GAP = 8
@@ -107,6 +112,11 @@ export default function CatalogToolbar({ children, onMenuOpen }) {
   const revealPointer = useTransform(revealStep, (s) => (s ? 'auto' : 'none'))
   const boxShadow = useTransform(progress, [0, 1], [TOOLBAR_SHADOW_REST, TOOLBAR_SHADOW_DOCKED])
 
+  // Весь тулбар (пилюля-фон + тень + контролы) проявляется одним opacity 0→1 после шапки.
+  // Живёт на пилюле, а не на dock-узлах (wrapperRef y / maxWidth), поэтому докинг не задет;
+  // opacity не влияет на замеры геометрии. reduced-motion guard внутри хука.
+  const entranceProps = useEntranceProps({ shift: false, baseDelay: ENTRANCE_DELAY_S })
+
   return (
     <div className="relative">
       {/* Якорь позиции покоя + спейсер потока (бар всегда fixed, поэтому место резервирует спейсер). */}
@@ -123,6 +133,7 @@ export default function CatalogToolbar({ children, onMenuOpen }) {
             ref={pillRef}
             className="flex items-center gap-2 rounded-full bg-white p-1.5 ring-1 ring-black/5"
             style={{ boxShadow }}
+            {...entranceProps()}
           >
             {children}
             {/* Коллапсирующая обёртка ≡: в покое width 0 (overflow-hidden клиппит кнопку — она не видна

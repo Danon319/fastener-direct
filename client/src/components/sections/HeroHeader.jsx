@@ -1,10 +1,11 @@
 // Fixed хедер поверх Hero (прозрачный фон, белый текст). Рендерится в Home.jsx параллельно Hero.
 // Уезжает вверх со скроллом через useScroll/useTransform; к scrollY = innerHeight/2 полностью скрыт.
 import { useState } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
+import { motion, useScroll, useTransform } from 'motion/react'
 
 import { Logo, MenuOpenButton, NavPill } from '@/components/ui'
 import { User } from '@/components/ui/icons'
+import { useEntranceProps } from '@/hooks'
 import { useUiStore } from '@/store'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
@@ -12,11 +13,7 @@ import { cn } from '@/utils/cn'
 // «Каталог» закреплён как всегда-видимый быстрый доступ; остальные ссылки появляются с lg.
 const [CATALOG_LINK, ...SECONDARY_NAV_LINKS] = NAV_LINKS
 
-// Mount-entrance координирован с tagline (~100ms задержка). Мягкий ease — элементы «выплывают» снизу.
-const ENTRANCE_DURATION = 0.9
-const ENTRANCE_EASE = [0.22, 1, 0.36, 1]
-const ENTRANCE_Y = 40
-const ENTRANCE_STAGGER = 0.1
+// Mount-entrance координирован с tagline (~100ms задержка): базовая задержка перед канон-stagger.
 const ENTRANCE_BASE_DELAY = 0.2
 
 /**
@@ -25,26 +22,12 @@ const ENTRANCE_BASE_DELAY = 0.2
  */
 function HeroHeader() {
   const setMenuOpen = useUiStore((s) => s.setMenuOpen)
-  const shouldReduceMotion = useReducedMotion()
   // Состояние хедера: только язык (бургер-дропдаун убран в пользу единого MobileMenu).
   const [lang, setLang] = useState('ru')
 
-  // Index-based delay для последовательного entrance. Невидимые на текущем breakpoint
-  // элементы сохраняют свой индекс — это допустимый компромисс ради простоты.
-  const entranceProps = (index) => {
-    if (shouldReduceMotion) {
-      return { initial: false }
-    }
-    return {
-      initial: { opacity: 0, y: ENTRANCE_Y },
-      animate: { opacity: 1, y: 0 },
-      transition: {
-        duration: ENTRANCE_DURATION,
-        delay: ENTRANCE_BASE_DELAY + index * ENTRANCE_STAGGER,
-        ease: ENTRANCE_EASE,
-      },
-    }
-  }
+  // Index-based delay для последовательного entrance (канон + reduced-motion guard внутри хука).
+  // Невидимые на текущем breakpoint элементы сохраняют свой индекс — допустимый компромисс ради простоты.
+  const entranceProps = useEntranceProps({ baseDelay: ENTRANCE_BASE_DELAY })
 
   // HeroHeader уезжает вверх вместе с потоком страницы: translateY = -scrollY.
   // Lenis обновляет window.scrollY интерполированно, поэтому движение плавное.

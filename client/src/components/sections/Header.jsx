@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from 'motion/react'
 import { Logo, MenuOpenButton, NavPill } from '@/components/ui'
 import { User } from '@/components/ui/icons'
 import { useUiStore } from '@/store'
-import { useScrollDirection } from '@/hooks'
+import { useScrollDirection, useEntranceProps } from '@/hooks'
 import { LANG_LABELS, NAV_LINKS, ACCOUNT_LINK, HOME_LINK } from '@/content/header'
 import { cn } from '@/utils/cn'
 
@@ -26,6 +26,12 @@ function Header() {
   const catalogNavLink = isCatalog ? HOME_LINK : CATALOG_LINK
   // Состояние хедера: только язык (бургер-дропдаун убран в пользу единого MobileMenu).
   const [lang, setLang] = useState('ru')
+
+  // Поэлементный mount-entrance (канон HeroHeader). Индексы: 0 лого, 1 язык, 2 каталог/главная,
+  // 3–5 вторичные ссылки, 6 аккаунт, 7 меню — пилюли «выплывают» по очереди. Каждая — свой
+  // <motion.div>; внешний <motion.header> владеет scroll-driven translateY (dock на /catalog) и
+  // opacity-fade, поэтому entrance на отдельных узлах с dock-трансформом не конфликтует.
+  const entranceProps = useEntranceProps()
 
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
   const langLabel = LANG_LABELS[lang] // TODO: i18n — реальные переводы после Phase 6
@@ -62,55 +68,60 @@ function Header() {
         visible ? 'opacity-100' : 'pointer-events-none opacity-0'
       )}
     >
-      {/* mobile: только марка */}
-      <span className="md:hidden">
-        <Logo variant="mark" theme="dark" to="/" />
-      </span>
-      {/* desktop: full в уменьшенном пресете */}
-      <span className="hidden md:block">
-        <Logo variant="full" theme="dark" scale="sm" to="/" />
-      </span>
+      {/* Лого (index 0): mobile-марка / desktop-full внутри одной entrance-обёртки */}
+      <motion.div {...entranceProps(0)}>
+        <span className="md:hidden">
+          <Logo variant="mark" theme="dark" to="/" />
+        </span>
+        <span className="hidden md:block">
+          <Logo variant="full" theme="dark" scale="sm" to="/" />
+        </span>
+      </motion.div>
 
       <nav className="relative flex items-center gap-2 md:gap-0">
-        {/* Язык (md+) — первым, как в исходном порядке */}
-        <NavPill
-          variant="default"
-          className="hidden md:inline-flex md:px-5 md:py-3 md:text-base"
-          onClick={toggleLang}
-        >
-          {langLabel}
-        </NavPill>
-
-        {/* «Каталог» — всегда виден (быстрый доступ); на catalog-роутах → «Главная».
-            Крупный размер (как на md+) на всех ширинах */}
-        <NavPill
-          variant="default"
-          className="px-5 py-3 text-base md:px-5 md:py-3 md:text-base"
-          to={catalogNavLink.to}
-        >
-          {catalogNavLink.label}
-        </NavPill>
-
-        {/* Десктоп (md+): остальные ссылки (lg+) + аккаунт */}
-        <div className="hidden md:flex md:items-center">
-          {SECONDARY_NAV_LINKS.map((item) => (
-            <NavPill
-              key={item.label}
-              variant="default"
-              className="hidden lg:inline-flex lg:px-5 lg:py-3 lg:text-base"
-              to={item.to}
-            >
-              {item.label}
-            </NavPill>
-          ))}
-          <NavPill variant="red" className="md:px-5 md:py-3 md:text-base" to={ACCOUNT_LINK.to}>
-            <User size={18} className="text-white" />
-            {ACCOUNT_LINK.label}
+        {/* Язык (md+) — index 1 */}
+        <motion.div className="hidden md:block" {...entranceProps(1)}>
+          <NavPill variant="default" className="md:px-5 md:py-3 md:text-base" onClick={toggleLang}>
+            {langLabel}
           </NavPill>
+        </motion.div>
+
+        {/* «Каталог»/«Главная» — всегда виден (index 2); крупный размер на всех ширинах */}
+        <motion.div {...entranceProps(2)}>
+          <NavPill
+            variant="default"
+            className="px-5 py-3 text-base md:px-5 md:py-3 md:text-base"
+            to={catalogNavLink.to}
+          >
+            {catalogNavLink.label}
+          </NavPill>
+        </motion.div>
+
+        {/* Десктоп (md+): остальные ссылки (lg+, i=3..5) + аккаунт (i=6) */}
+        <div className="hidden md:flex md:items-center">
+          {SECONDARY_NAV_LINKS.map((item, i) => (
+            <motion.div
+              key={item.label}
+              className="hidden lg:inline-flex"
+              {...entranceProps(3 + i)}
+            >
+              <NavPill variant="default" className="lg:px-5 lg:py-3 lg:text-base" to={item.to}>
+                {item.label}
+              </NavPill>
+            </motion.div>
+          ))}
+          <motion.div {...entranceProps(6)}>
+            <NavPill variant="red" className="md:px-5 md:py-3 md:text-base" to={ACCOUNT_LINK.to}>
+              <User size={18} className="text-white" />
+              {ACCOUNT_LINK.label}
+            </NavPill>
+          </motion.div>
         </div>
 
-        {/* Кнопка меню — всегда видна, открывает единый MobileMenu */}
-        <MenuOpenButton onClick={() => setMenuOpen(true)} />
+        {/* Кнопка меню — всегда видна, открывает единый MobileMenu (index 7) */}
+        <motion.div {...entranceProps(7)}>
+          <MenuOpenButton onClick={() => setMenuOpen(true)} />
+        </motion.div>
       </nav>
     </motion.header>
   )
