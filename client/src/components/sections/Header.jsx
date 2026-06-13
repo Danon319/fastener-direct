@@ -33,6 +33,13 @@ function Header() {
   // opacity-fade, поэтому entrance на отдельных узлах с dock-трансформом не конфликтует.
   const entranceProps = useEntranceProps()
 
+  // Ключ перезапуска entrance персистентного Header. Пока пользователь в каталоге — стабильный
+  // 'catalog': entrance НЕ переигрывает при навигации внутри (/catalog → /catalog/bolts). Вне
+  // каталога — location.key (уникален на каждую навигацию). При входе в каталог ключ меняется
+  // (router-key → 'catalog') → 8 entrance-узлов перемонтируются и entrance играет заново — так
+  // персистентный Header синхронизируется с тулбаром, который маунтится при каждом входе в каталог.
+  const entranceKey = isCatalog ? 'catalog' : location.key
+
   const toggleLang = () => setLang((l) => (l === 'ru' ? 'en' : 'ru'))
   const langLabel = LANG_LABELS[lang] // TODO: i18n — реальные переводы после Phase 6
 
@@ -69,7 +76,7 @@ function Header() {
       )}
     >
       {/* Лого (index 0): mobile-марка / desktop-full внутри одной entrance-обёртки */}
-      <motion.div {...entranceProps(0)}>
+      <motion.div key={`${entranceKey}-0`} {...entranceProps(0)}>
         <span className="md:hidden">
           <Logo variant="mark" theme="dark" to="/" />
         </span>
@@ -80,14 +87,14 @@ function Header() {
 
       <nav className="relative flex items-center gap-2 md:gap-0">
         {/* Язык (md+) — index 1 */}
-        <motion.div className="hidden md:block" {...entranceProps(1)}>
+        <motion.div key={`${entranceKey}-1`} className="hidden md:block" {...entranceProps(1)}>
           <NavPill variant="default" className="md:px-5 md:py-3 md:text-base" onClick={toggleLang}>
             {langLabel}
           </NavPill>
         </motion.div>
 
         {/* «Каталог»/«Главная» — всегда виден (index 2); крупный размер на всех ширинах */}
-        <motion.div {...entranceProps(2)}>
+        <motion.div key={`${entranceKey}-2`} {...entranceProps(2)}>
           <NavPill
             variant="default"
             className="px-5 py-3 text-base md:px-5 md:py-3 md:text-base"
@@ -101,7 +108,7 @@ function Header() {
         <div className="hidden md:flex md:items-center">
           {SECONDARY_NAV_LINKS.map((item, i) => (
             <motion.div
-              key={item.label}
+              key={`${entranceKey}-${item.label}`}
               className="hidden lg:inline-flex"
               {...entranceProps(3 + i)}
             >
@@ -110,7 +117,7 @@ function Header() {
               </NavPill>
             </motion.div>
           ))}
-          <motion.div {...entranceProps(6)}>
+          <motion.div key={`${entranceKey}-6`} {...entranceProps(6)}>
             <NavPill variant="red" className="md:px-5 md:py-3 md:text-base" to={ACCOUNT_LINK.to}>
               <User size={18} className="text-white" />
               {ACCOUNT_LINK.label}
@@ -119,7 +126,7 @@ function Header() {
         </div>
 
         {/* Кнопка меню — всегда видна, открывает единый MobileMenu (index 7) */}
-        <motion.div {...entranceProps(7)}>
+        <motion.div key={`${entranceKey}-7`} {...entranceProps(7)}>
           <MenuOpenButton onClick={() => setMenuOpen(true)} />
         </motion.div>
       </nav>
