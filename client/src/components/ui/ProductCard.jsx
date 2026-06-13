@@ -131,7 +131,7 @@ function FavoriteButton({ productId }) {
         toggleItem(productId)
       }}
       aria-label={isFav ? 'Убрать из избранного' : 'Добавить в избранное'}
-      className="absolute right-2.5 top-2.5 z-10 flex items-center justify-center rounded-full bg-white/80 p-2 backdrop-blur-sm transition-colors hover:bg-white"
+      className="absolute right-2.5 top-2.5 z-10 flex items-center justify-center p-2"
     >
       <motion.span
         key={isFav ? 'filled' : 'outline'}
@@ -209,6 +209,8 @@ export default function ProductCard({ product }) {
         // @container — внутренние отступы/типографика и раскладка нижней строки реагируют
         // на ширину самой карточки (container-query, порог @[224px]).
         '@container flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition duration-200',
+        // OOS: relative — контекст позиционирования для единой вуали поверх карточки (см. ниже).
+        !product.inStock && 'relative',
         // Hover-эффект только на устройствах с курсором (canHover из useViewport)
         canHover && 'hover:-translate-y-1 hover:shadow-lg'
       )}
@@ -225,13 +227,27 @@ export default function ProductCard({ product }) {
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-contain p-3"
+          className={cn('absolute inset-0 h-full w-full object-contain p-3', !product.inStock && 'grayscale')}
         />
       </div>
 
+      {/* OOS: единая вуаль цвета tagDate поверх ВСЕЙ карточки на белой базе — фон тела и
+          незаменяемый белый фон PNG получают один тон, карточка однотонна. Вуаль —
+          позиционированный слой, поэтому контент держится поверх неё явным z-10 (контент-блок,
+          артикул, сердечко), а фото остаётся под ней. pointer-events-none — клики в <Link>. */}
+      {!product.inStock && (
+        <div className="pointer-events-none absolute inset-0 bg-tagDate/60" />
+      )}
+
       {/* Информация о товаре: цена → название → нижняя строка. Отступы и кегль
           компактнее на узкой карточке, просторнее от @[224px] (container-query). */}
-      <div className="flex flex-1 flex-col gap-2.5 px-3 pb-3 pt-3 @[224px]:gap-3 @[224px]:px-4 @[224px]:pb-4 @[224px]:pt-3.5">
+      <div
+        className={cn(
+          'flex flex-1 flex-col gap-2.5 px-3 pb-3 pt-3 @[224px]:gap-3 @[224px]:px-4 @[224px]:pb-4 @[224px]:pt-3.5',
+          // OOS: поднимаем контент-блок (цена, название, «Нет в наличии») над вуалью.
+          !product.inStock && 'relative z-10'
+        )}
+      >
         {/* Цена + разделитель + единица сгруппированы в w-fit-контейнер: divider (w-full)
             и подпись наследуют ширину цены, а gap контент-блока не растягивает линию. */}
         <div className="flex w-fit flex-col gap-1.5">
@@ -242,7 +258,7 @@ export default function ProductCard({ product }) {
             <span className="text-sm text-muted">.{kopecks} &#8381;</span>
           </p>
           <div className="h-px w-full bg-black/10" />
-          <p className="font-sans text-xs text-muted">за {unit}</p>
+          <p className="text-center font-sans text-xs text-muted">за {unit}</p>
         </div>
 
         <h3 className="line-clamp-2 font-sans text-[13px] font-medium leading-snug text-navy @[224px]:text-sm">
