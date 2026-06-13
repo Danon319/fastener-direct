@@ -86,19 +86,25 @@ export default function CatalogPage() {
   const isDesktop = useBreakpoint('lg', true)
   const columns = isDesktop ? DESKTOP_COLUMNS : MOBILE_COLUMNS
 
-  const sentinelRef = useInfiniteScroll(filters.loadMore, filters.hasMore)
+  const [isInitialLoading, setIsInitialLoading] = useState(true)
+  useEffect(() => {
+    const t = setTimeout(() => setIsInitialLoading(false), INITIAL_LOAD_MS)
+    return () => clearTimeout(t)
+  }, [])
+
+  // Подгрузку включаем только когда sentinel реально в DOM (после фазы скелетонов).
+  // Иначе observer создаётся раньше, чем появляется sentinel, и не цепляется за него,
+  // а смена isInitialLoading сама по себе эффект хука не перезапускает. canLoadMore
+  // переходит в true одновременно с рендером sentinel — эффект тогда же перезапускается
+  // (refs привязываются в commit до запуска эффектов) и наблюдатель цепляется корректно.
+  const canLoadMore = !isInitialLoading && filters.hasMore
+  const sentinelRef = useInfiniteScroll(filters.loadMore, canLoadMore)
 
   // При смене любого входа фильтрации (раздел, поиск, сортировка, фильтры) — наверх:
   // лента подгрузки тогда же сбрасывается к первой порции, как новый вход в ветку.
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [category, subcategory, filters.searchQuery, filters.activeSort, filters.appliedFilters])
-
-  const [isInitialLoading, setIsInitialLoading] = useState(true)
-  useEffect(() => {
-    const t = setTimeout(() => setIsInitialLoading(false), INITIAL_LOAD_MS)
-    return () => clearTimeout(t)
-  }, [])
 
   // Снять все применённые фильтры (для пустого состояния).
   const resetAllFilters = () => {
@@ -190,7 +196,7 @@ export default function CatalogPage() {
           )}
 
           {/* Sentinel infinite scroll — в нормальном потоке, наблюдается пока есть что догружать. */}
-          {!isInitialLoading && filters.hasMore && <div ref={sentinelRef} aria-hidden="true" />}
+          {canLoadMore && <div ref={sentinelRef} aria-hidden="true" />}
         </div>
       </section>
 
