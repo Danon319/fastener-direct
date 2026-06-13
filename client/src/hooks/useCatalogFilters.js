@@ -18,7 +18,7 @@ const EMPTY_FILTERS = {
 }
 
 // Размер порции догрузки при infinite scroll (фикс, без адаптива).
-const BATCH_SIZE = 16
+const BATCH_SIZE = 24
 
 // Подсчёт активных условий в объекте фильтров (для бейджа и подвала сайдбара).
 function countFilters(f) {
