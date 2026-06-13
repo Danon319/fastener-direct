@@ -8,6 +8,12 @@ import prettierConfig from 'eslint-config-prettier'
 export default [
   { ignores: ['dist', 'node_modules'] },
   {
+    files: ['vite.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
+  {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
