@@ -201,7 +201,7 @@ function MobileMenuContent({ onClose }) {
         <header className="flex items-center justify-between">
           {curtainDone && (
             <motion.div {...fadeIn(0)}>
-              <Logo variant="full" theme="light" size={logoSize} />
+              <Logo variant="full" theme="light" size={logoSize} to="/" onClick={onClose} />
             </motion.div>
           )}
           {curtainDone && (
