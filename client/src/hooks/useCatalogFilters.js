@@ -1,4 +1,4 @@
-// Хук состояния и pipeline фильтрации каталога: фильтры, сортировка, пагинация.
+// Хук состояния и pipeline фильтрации каталога: фильтры, сортировка, подгрузка по скроллу.
 // Используется в CatalogPage — вся логика фильтрации сосредоточена здесь.
 import { useState, useCallback, useMemo } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -17,7 +17,8 @@ const EMPTY_FILTERS = {
   inStockOnly: false,
 }
 
-const ITEMS_PER_PAGE = 16
+// Размер порции догрузки при infinite scroll (фикс, без адаптива).
+const BATCH_SIZE = 16
 
 // Подсчёт активных условий в объекте фильтров (для бейджа и подвала сайдбара).
 function countFilters(f) {
@@ -30,16 +31,15 @@ function countFilters(f) {
 
 /**
  * Состояние и pipeline фильтров каталога. Возвращает значения для контролируемых
- * инпутов (поиск, страница, сортировка), staged-черновик фильтров, applied-фильтры,
+ * инпутов (поиск, сортировка), staged-черновик фильтров, applied-фильтры,
  * экшены (apply / reset / removeFilter / syncStagedFromApplied) и производные данные
- * (страница товаров, всего страниц, счётчики). URL-параметры :category и :subcategory
- * читаются изнутри через useParams, navigate — для снятия категорийных чипов.
+ * (видимая порция товаров, подгрузка следующей порции, счётчики). URL-параметры
+ * :category и :subcategory читаются изнутри через useParams, navigate — для снятия
+ * категорийных чипов.
  *
  * @returns {{
  *   searchQuery: string,
  *   setSearchQuery: (v: string) => void,
- *   currentPage: number,
- *   setCurrentPage: (p: number) => void,
  *   activeSort: string | null,
  *   setActiveSort: (s: string | null) => void,
  *   stagedBrands: string[],
@@ -55,8 +55,10 @@ function countFilters(f) {
  *   applyStaged: () => void,
  *   resetStaged: () => void,
  *   removeFilter: (type: 'category'|'subcategory'|'search'|'brand'|'price'|'inStock', value?: string) => void,
- *   pagedProducts: Array<object>,
- *   totalPages: number,
+ *   visibleProducts: Array<object>,
+ *   loadMore: () => void,
+ *   hasMore: boolean,
+ *   BATCH_SIZE: number,
  *   activeFilterCount: number,
  *   stagedFilterCount: number,
  * }}
@@ -67,7 +69,7 @@ export default function useCatalogFilters() {
 
   const [searchQuery, setSearchQuery] = useState('')
   const [activeSort, setActiveSort] = useState(null)
-  const [currentPage, setCurrentPage] = useState(1)
+  const [visibleCount, setVisibleCount] = useState(BATCH_SIZE)
 
   // applied — реально влияет на сетку; staged — черновик в сайдбаре до «Применить».
   const [appliedFilters, setAppliedFilters] = useState(EMPTY_FILTERS)
@@ -213,20 +215,23 @@ export default function useCatalogFilters() {
     return result
   }, [category, subcategory, appliedFilters, searchQuery, activeSort])
 
-  // При смене входов фильтрации сбрасываем страницу на 1.
+  // При смене входов фильтрации сбрасываем подгрузку к первой порции.
   // «Adjust state while rendering» — корректный способ синхронизации двух состояний без useEffect.
   const [prevFiltered, setPrevFiltered] = useState(filtered)
   if (prevFiltered !== filtered) {
     setPrevFiltered(filtered)
-    setCurrentPage(1)
+    setVisibleCount(BATCH_SIZE)
   }
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE))
+  const visibleProducts = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount])
 
-  const pagedProducts = useMemo(
-    () => filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE),
-    [filtered, currentPage]
-  )
+  // Догрузить следующую порцию (не выходя за длину отфильтрованного списка).
+  const loadMore = useCallback(() => {
+    setVisibleCount((c) => Math.min(c + BATCH_SIZE, filtered.length))
+  }, [filtered.length])
+
+  // Есть ли ещё что показывать — флаг для рендера sentinel в CatalogPage.
+  const hasMore = visibleCount < filtered.length
 
   const activeFilterCount = countFilters(appliedFilters)
   const stagedFilterCount = countFilters(stagedFilters)
@@ -234,8 +239,6 @@ export default function useCatalogFilters() {
   return {
     searchQuery,
     setSearchQuery,
-    currentPage,
-    setCurrentPage,
     activeSort,
     setActiveSort,
 
@@ -255,8 +258,10 @@ export default function useCatalogFilters() {
     resetStaged,
     removeFilter,
 
-    pagedProducts,
-    totalPages,
+    visibleProducts,
+    loadMore,
+    hasMore,
+    BATCH_SIZE,
     activeFilterCount,
     stagedFilterCount,
   }

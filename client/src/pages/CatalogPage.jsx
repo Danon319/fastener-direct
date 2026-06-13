@@ -1,5 +1,5 @@
 // UI-оркестратор каталога: прозрачная шапка + светлый hero-блок с закрепляемым тулбаром
-// + тёмная (navy) секция с сеткой товаров. Логика фильтрации/сортировки/пагинации — useCatalogFilters.
+// + тёмная (navy) секция с сеткой товаров. Логика фильтрации/сортировки/подгрузки — useCatalogFilters.
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
@@ -16,8 +16,7 @@ import SortDropdown from '@/components/catalog/SortDropdown'
 import CategoryButton from '@/components/catalog/CategoryButton'
 import ActiveFilterChips from '@/components/catalog/ActiveFilterChips'
 import ProductCardSkeleton from '@/components/catalog/ProductCardSkeleton'
-import Pagination from '@/components/catalog/Pagination'
-import { useBreakpoint, useCatalogFilters } from '@/hooks'
+import { useBreakpoint, useCatalogFilters, useInfiniteScroll } from '@/hooks'
 import { useUiStore } from '@/store'
 
 // Длительность «фейковой» первичной загрузки (мс) — пока показываются скелетоны.
@@ -76,7 +75,7 @@ EmptyState.propTypes = {
  *
  * Композиция: сайтовый Header (fixed, светлая тема — рендерится в App) → светлый
  * hero-блок с закрепляемым CatalogToolbar → тёмная секция (bg-navy) с сеткой
- * товаров и пагинацией. Фильтрация, сортировка, пагинация — useCatalogFilters.
+ * товаров и подгрузкой по скроллу. Фильтрация, сортировка, подгрузка — useCatalogFilters.
  */
 export default function CatalogPage() {
   const { category, subcategory } = useParams()
@@ -87,10 +86,13 @@ export default function CatalogPage() {
   const isDesktop = useBreakpoint('lg', true)
   const columns = isDesktop ? DESKTOP_COLUMNS : MOBILE_COLUMNS
 
-  // При смене раздела каталога в URL — показать страницу с начала (как новый вход в ветку).
+  const sentinelRef = useInfiniteScroll(filters.loadMore, filters.hasMore)
+
+  // При смене любого входа фильтрации (раздел, поиск, сортировка, фильтры) — наверх:
+  // лента подгрузки тогда же сбрасывается к первой порции, как новый вход в ветку.
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [category, subcategory])
+  }, [category, subcategory, filters.searchQuery, filters.activeSort, filters.appliedFilters])
 
   const [isInitialLoading, setIsInitialLoading] = useState(true)
   useEffect(() => {
@@ -160,10 +162,10 @@ export default function CatalogPage() {
                 <ProductCardSkeleton key={i} />
               ))}
             </div>
-          ) : filters.pagedProducts.length > 0 ? (
+          ) : filters.visibleProducts.length > 0 ? (
             <div className={GRID_CLASS}>
               <AnimatePresence mode="popLayout">
-                {filters.pagedProducts.map((product, i) => (
+                {filters.visibleProducts.map((product, i) => (
                   <motion.div
                     key={product.id}
                     className="w-full"
@@ -172,7 +174,10 @@ export default function CatalogPage() {
                     exit={{ opacity: 0 }}
                     transition={{
                       duration: CARD_FADE_DURATION_S,
-                      delay: Math.min(i * CARD_STAGGER_S, MAX_STAGGER_DELAY_S),
+                      // Stagger по позиции ВНУТРИ текущей порции (i % BATCH_SIZE): новая
+                      // порция появляется волной заново, а уже показанные карточки
+                      // (стабильный key) не перезапускают анимацию при догрузке.
+                      delay: Math.min((i % filters.BATCH_SIZE) * CARD_STAGGER_S, MAX_STAGGER_DELAY_S),
                     }}
                   >
                     <ProductCard product={product} />
@@ -183,17 +188,10 @@ export default function CatalogPage() {
           ) : (
             <EmptyState onReset={resetAllFilters} />
           )}
-        </div>
 
-        {/* Пагинация — только если страниц больше одной. */}
-        {filters.totalPages > 1 && (
-          <Pagination
-            currentPage={filters.currentPage}
-            totalPages={filters.totalPages}
-            onPageChange={filters.setCurrentPage}
-            className="pb-14"
-          />
-        )}
+          {/* Sentinel infinite scroll — в нормальном потоке, наблюдается пока есть что догружать. */}
+          {!isInitialLoading && filters.hasMore && <div ref={sentinelRef} aria-hidden="true" />}
+        </div>
       </section>
 
       {/* Плавающая FAB «наверх» — появляется после прокрутки. */}
