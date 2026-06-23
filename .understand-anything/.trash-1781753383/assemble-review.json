@@ -1,0 +1,15 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Граф консистентен: 187 узлов, 291 ребро, 0 узлов без id, 0 висячих рёбер, все complexity валидны (simple/moderate/complex).",
+    "Единственное дропнутое ребро (Arrow.jsx contains function:...:Arrow) — benign. Все 15 файлов-иконок в client/src/components/ui/icons/ представлены только file-узлами без function-подузлов; ребро contains ссылалось на несуществующий function-узел и корректно удалено. Системного пробела нет.",
+    "Проверены все 113 записей importMap: каждая пара file->file, где оба узла существуют, уже представлена ребром imports (совпадает с 'Recovered 0' скрипта). Узлов importMap, отсутствующих в графе, нет. Кросс-батчевых пробелов не обнаружено; @/-алиасы и barrel index.js покрыты file-analyzer'ами.",
+    "Тип 'service' (узел service:docker-compose.yml) — валиден в схеме (скрипт не пометил его как unknown), оставлен без изменений.",
+    "'Fixed' секция: 170 × func:->function: при 75 финальных function-узлах — это счётчик правок по всем батчам до дедупликации, включая перезапись endpoint'ов рёбер contains/imports. Системная особенность вывода LLM (префикс func:), ожидаемо, не указывает на проблему данных. Доля исправлений id не превышает порог тревоги (>30%) применительно к качеству итогового набора."
+  ]
+}

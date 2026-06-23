@@ -1,0 +1,95 @@
+[
+  {
+    "order": 1,
+    "title": "Точка входа клиента",
+    "description": "Тур начинается там же, где стартует приложение в браузере. index.html содержит контейнер #root и подключает ES-модуль main.jsx, который монтирует React-дерево, оборачивая его в StrictMode, ErrorBoundary и BrowserRouter. Это даёт первое представление о том, как Vite поднимает SPA и где включается клиентский роутинг.",
+    "nodeIds": ["file:client/index.html", "file:client/src/main.jsx", "file:client/src/components/ui/ErrorBoundary.jsx"],
+    "languageLesson": "ErrorBoundary — единственный классовый компонент в проекте: только классы умеют ловить ошибки рендера через componentDidCatch/getDerivedStateFromError. BrowserRouter из react-router v7 оборачивает App, поэтому хуки маршрутизации доступны во всём дереве."
+  },
+  {
+    "order": 2,
+    "title": "Корневой компонент App",
+    "description": "App.jsx — это оболочка всего интерфейса (depth 0 в графе зависимостей). Он задаёт постоянную раскладку — TopStrip, Header, MobileMenu, Footer — и описывает маршруты React Router: / (Home), /catalog (CatalogPage) и /product/:id (ProductPage). Здесь же через useLenis инициализируется глобальный плавный скролл, поэтому App — лучшая отправная точка, чтобы увидеть скелет приложения целиком.",
+    "nodeIds": ["file:client/src/App.jsx"],
+    "languageLesson": "В React Router v7 маршруты описываются декларативно через <Routes>/<Route>, а постоянный shell (Header/Footer) живёт вне <Routes> — он рендерится один раз и переживает смену страниц."
+  },
+  {
+    "order": 3,
+    "title": "Постоянный каркас страницы",
+    "description": "Опираясь на раскладку из App (шаг 2), разберём компоненты, видимые на каждой странице. Header — фиксированный pill-хедер с opacity-fade, Footer меняет поведение в зависимости от useLocation, TopStrip — декоративная красная полоса с анимацией входа, а MobileMenu — полноэкранная шторка навигации. Эти компоненты задают фирменный визуальный язык всего сайта.",
+    "nodeIds": ["file:client/src/components/sections/Header.jsx", "file:client/src/components/sections/Footer.jsx", "file:client/src/components/sections/TopStrip.jsx", "file:client/src/components/sections/MobileMenu.jsx"]
+  },
+  {
+    "order": 4,
+    "title": "Страницы-маршруты",
+    "description": "Три страницы, на которые ведут маршруты из App. Home компонует Hero и набор лендинг-секций (depth 1, fan-out 10), CatalogPage оркестрирует каталог и делегирует всю логику хуку useCatalogFilters (fan-out 15 — самый «широкий» файл проекта), а ProductPage пока заглушка, читающая id из URL. Страницы — это оркестраторы: они почти не содержат логики, а собирают компоненты и хуки воедино.",
+    "nodeIds": ["file:client/src/pages/Home.jsx", "file:client/src/pages/CatalogPage.jsx", "file:client/src/pages/ProductPage.jsx"]
+  },
+  {
+    "order": 5,
+    "title": "Лендинг: Hero и секции",
+    "description": "Главная страница (шаг 4) собрана из Hero с видео-фоном и шести анимированных секций. Hero задаёт фазовую анимацию слоганов, OurValues и ServiceProgram используют scroll-driven и hover-эффекты, NumbersSection анимирует счётчики, а FastenerDiagram рисует интерактивную SVG-диаграмму ассортимента. Это витрина проекта — здесь сосредоточена основная работа с анимацией через motion/react.",
+    "nodeIds": ["file:client/src/components/sections/Hero.jsx", "file:client/src/components/sections/OurValuesSection.jsx", "file:client/src/components/sections/ServiceProgramSection.jsx", "file:client/src/components/sections/NumbersSection.jsx", "file:client/src/components/sections/FastenerDiagramSection.jsx"]
+  },
+  {
+    "order": 6,
+    "title": "Каталог: тулбар и фильтры",
+    "description": "CatalogPage (шаг 4) строится вокруг тулбара с scroll-driven докингом. CatalogToolbar измеряет геометрию и трансформируется при прокрутке, FilterButton открывает поповер фасетов (бренд/цена/наличие) с черновиком staged→applied, SortDropdown и CategoryButton переиспользуют общую обвязку ToolbarMenu, а ActiveFilterChips показывает и сбрасывает активные фильтры. Здесь UI-слой стыкуется с бизнес-логикой каталога.",
+    "nodeIds": ["file:client/src/components/catalog/CatalogToolbar.jsx", "file:client/src/components/catalog/FilterButton.jsx", "file:client/src/components/catalog/SortDropdown.jsx", "file:client/src/components/catalog/ToolbarMenu.jsx", "file:client/src/components/catalog/ActiveFilterChips.jsx"]
+  },
+  {
+    "order": 7,
+    "title": "UI-примитивы и иконки",
+    "description": "Низлежащий строительный материал интерфейса, который переиспользуют все секции и каталог. ui/index.js — barrel с fan-in 9, через него импортируются Button, IconButton, NavPill и др. ProductCard интегрирована с Zustand-сторами корзины и избранного, а icons/index.js (fan-in 15) — единая точка для всех 15 SVG-иконок. Понимание этого слоя объясняет, как устроена визуальная консистентность проекта.",
+    "nodeIds": ["file:client/src/components/ui/index.js", "file:client/src/components/ui/Button.jsx", "file:client/src/components/ui/ProductCard.jsx", "file:client/src/components/ui/icons/index.js"],
+    "languageLesson": "Barrel-файл (index.js с реэкспортами) даёт единую точку импорта через alias @/components/ui — отсюда высокий fan-in. Это упрощает импорты, но связывает модули: изменение barrel затрагивает всех потребителей."
+  },
+  {
+    "order": 8,
+    "title": "Сервисный слой: hooks",
+    "description": "Переиспользуемая логика состояния, к которой обращается весь UI. hooks/index.js — barrel с fan-in 14; за ним стоят useCatalogFilters (сердце каталога: staged/applied фильтры, сортировка, синхронизация с URL и пагинация), useLenis (плавный скролл из шага 2), а также базовые useMediaQuery/useBreakpoint для адаптива. Здесь живёт логика, вынесенная из компонентов-оркестраторов.",
+    "nodeIds": ["file:client/src/hooks/index.js", "file:client/src/hooks/useCatalogFilters.js", "file:client/src/hooks/useLenis.js", "file:client/src/hooks/useMediaQuery.js"],
+    "languageLesson": "useMediaQuery построен на useSyncExternalStore — это рекомендованный React-способ подписки на внешние источники (matchMedia) без рассинхронизации при конкурентном рендере."
+  },
+  {
+    "order": 9,
+    "title": "Глобальный стейт: Zustand store",
+    "description": "Состояние, общее для всего приложения, вынесено в Zustand-слайсы и собрано в store/index.js (fan-in 5). uiSlice хранит флаг открытия мобильного меню, cartSlice — корзину как Map<id, qty>, favoritesSlice — набор id избранного. Именно эти сторы потребляет ProductCard из шага 7 и Header/MobileMenu из шага 3.",
+    "nodeIds": ["file:client/src/store/index.js", "file:client/src/store/slices/cartSlice.js", "file:client/src/store/slices/favoritesSlice.js", "file:client/src/store/slices/uiSlice.js"],
+    "languageLesson": "Zustand разбивает store на слайсы и собирает их в barrel — компоненты подписываются на конкретные срезы состояния через селекторы, что минимизирует лишние перерендеры."
+  },
+  {
+    "order": 10,
+    "title": "Контент-слой и данные каталога",
+    "description": "Весь отображаемый текст и данные вынесены в статические content-модули — единый источник правды. Секции лендинга читают тексты из hero.js, ourValues.js и т.п., а каталог опирается на CATEGORY_TREE (categories.js), список товаров (products.js) и хелперы навигации по дереву категорий. Это разделение позволяет менять контент, не трогая компоненты.",
+    "nodeIds": ["file:client/src/content/catalog/index.js", "file:client/src/content/catalog/categories.js", "file:client/src/content/catalog/products.js", "file:client/src/content/catalog/helpers.js", "file:client/src/content/hero.js"]
+  },
+  {
+    "order": 11,
+    "title": "Утилитарный слой",
+    "description": "Сквозные хелперы и константы без обратных зависимостей, импортируемые повсеместно. cn.js — абсолютный лидер по fan-in (28): объединяет clsx и tailwind-merge для безопасного слияния Tailwind-классов. breakpoints.js задаёт контрольные точки адаптива (используется useBreakpoint из шага 8), а entrance.js (fan-in 4) — единый канон анимаций появления секций.",
+    "nodeIds": ["file:client/src/utils/cn.js", "file:client/src/config/breakpoints.js", "file:client/src/config/entrance.js"],
+    "languageLesson": "cn = clsx + tailwind-merge: clsx собирает классы по условиям, а tailwind-merge снимает конфликты (например, последний из px-2 px-4 побеждает). Высокий fan-in оправдан — это базовый кирпич стилизации."
+  },
+  {
+    "order": 12,
+    "title": "Backend: Fastify-сервер",
+    "description": "Переходим из браузера на сервер. app.js поднимает инстанс Fastify на порту 3000, регистрирует CORS-plugin (разрешает origin dev-сервера Vite :5173) и плагин маршрутов с единственным пока endpoint GET /api/health. Backend находится в Phase 0 — это минимальный каркас, к которому клиент обращается через dev-proxy /api.",
+    "nodeIds": ["file:server/src/app.js", "file:server/src/plugins/cors.js", "file:server/src/routes/index.js", "endpoint:server/src/routes/index.js:GET /api/health"],
+    "languageLesson": "Fastify строится на плагинах: каждый плагин (cors, routes) инкапсулирует часть функциональности и регистрируется через fastify.register — это и middleware, и модульность одновременно."
+  },
+  {
+    "order": 13,
+    "title": "Слой данных: Drizzle и PostgreSQL",
+    "description": "Хранилище данных проекта. db/index.js создаёт postgres.js-клиент по DATABASE_URL и экспортирует инстанс Drizzle ORM, schema/index.js — пока пустая заготовка под таблицы, а docker-compose.yml поднимает сервис postgres:16 с именованным volume для персистентности. Схемы ещё не определены, поэтому этот слой показывает фундамент будущей работы с БД.",
+    "nodeIds": ["file:server/src/db/index.js", "file:server/src/db/schema/index.js", "service:docker-compose.yml"],
+    "languageLesson": "docker-compose: именованный volume (pg_data) сохраняет данные между перезапусками контейнера, иначе база обнулялась бы. Drizzle config указывает на путь схемы и каталог миграций, а connectionString берётся из .env."
+  },
+  {
+    "order": 14,
+    "title": "Сборка и конфигурация",
+    "description": "Завершаем тур инструментарием, который связывает всё воедино. vite.config.js задаёт alias @/ → client/src и dev-proxy /api → :3000 (мост клиента и backend из шага 12), tailwind.config.js хранит design token'ы (цвета, шрифт Neue Montreal, грид каталога), client/package.json объявляет стек (React 19, react-router 7, zustand, motion, lenis), а корневой package.json и drizzle.config.js управляют монорепозиторием.",
+    "nodeIds": ["config:client/vite.config.js", "config:client/tailwind.config.js", "config:client/package.json", "config:package.json", "config:server/drizzle.config.js"],
+    "languageLesson": "Vite dev-proxy перенаправляет запросы /api на backend :3000 в обход CORS на этапе разработки, а alias @/ убирает относительные ../../ из импортов. Это объясняет, почему по всему коду встречается @/."
+  }
+]

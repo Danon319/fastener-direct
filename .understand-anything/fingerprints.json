@@ -1,0 +1,4066 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "a1c7d0fc44f3331d9bd746d8ec01579fb7a8d960",
+  "generatedAt": "2026-06-18T03:29:32.589Z",
+  "files": {
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "f88ce587ae477e3089af567465f8f3668d996348c4e0824c64dfae28c9661f50",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/config.json": {
+      "filePath": ".understand-anything/config.json",
+      "contentHash": "92a57d40119389447c9d824b1710815556af58055f633e0b4d7d84e96a63e9da",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "client/.prettierignore": {
+      "filePath": "client/.prettierignore",
+      "contentHash": "57c4b9310796a0468829b284ae990d8b077fccbbd187c5c0ebd35e0b70de2421",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": false
+    },
+    "client/.prettierrc.json": {
+      "filePath": "client/.prettierrc.json",
+      "contentHash": "f24f6f05d58c6644b33b519c01d8476b4f740f89925d44953976c03df022633e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "client/eslint.config.js": {
+      "filePath": "client/eslint.config.js",
+      "contentHash": "57136affa033edbe7a427235877ec2b7a5560647cb3976a0f4bec8dbef9eee3a",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@eslint/js",
+          "specifiers": [
+            "js"
+          ]
+        },
+        {
+          "source": "globals",
+          "specifiers": [
+            "globals"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-hooks",
+          "specifiers": [
+            "reactHooks"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-refresh",
+          "specifiers": [
+            "reactRefresh"
+          ]
+        },
+        {
+          "source": "eslint-config-prettier",
+          "specifiers": [
+            "prettierConfig"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 61,
+      "hasStructuralAnalysis": true
+    },
+    "client/index.html": {
+      "filePath": "client/index.html",
+      "contentHash": "3d35106a957615f975837c0d0ef9cc03a2d923923b683284f74389b8ef1c2419",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": false
+    },
+    "client/package.json": {
+      "filePath": "client/package.json",
+      "contentHash": "0a424a1ecd4f84832c3f1611d4190867d297076107acbc4035c7eb4636c0a01c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "client/postcss.config.js": {
+      "filePath": "client/postcss.config.js",
+      "contentHash": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "client/README.md": {
+      "filePath": "client/README.md",
+      "contentHash": "a460b4dc7e6392e76aa54d844c9261b8db0adb7f967ba8300526456f1dcf5fb4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/App.css": {
+      "filePath": "client/src/App.css",
+      "contentHash": "d097818d72b7d35aab2ee53fbb4017d5f47556a9e1ad6e0f2a395bd6c495e2b8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 183,
+      "hasStructuralAnalysis": false
+    },
+    "client/src/App.jsx": {
+      "filePath": "client/src/App.jsx",
+      "contentHash": "7afe14cda1eb6b1abd3f077c445f6a377b71a1c173509a21cc306f0222388a5c",
+      "functions": [
+        {
+          "name": "App",
+          "params": [],
+          "exported": false,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Routes",
+            "Route"
+          ]
+        },
+        {
+          "source": "./pages/Home",
+          "specifiers": [
+            "Home"
+          ]
+        },
+        {
+          "source": "./pages/CatalogPage",
+          "specifiers": [
+            "CatalogPage"
+          ]
+        },
+        {
+          "source": "./pages/ProductPage",
+          "specifiers": [
+            "ProductPage"
+          ]
+        },
+        {
+          "source": "./components/sections/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "./components/sections/Header",
+          "specifiers": [
+            "Header"
+          ]
+        },
+        {
+          "source": "./components/sections/TopStrip",
+          "specifiers": [
+            "TopStrip"
+          ]
+        },
+        {
+          "source": "./components/sections/MobileMenu",
+          "specifiers": [
+            "MobileMenu"
+          ]
+        },
+        {
+          "source": "./hooks",
+          "specifiers": [
+            "useLenis"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/ActiveFilterChips.jsx": {
+      "filePath": "client/src/components/catalog/ActiveFilterChips.jsx",
+      "contentHash": "5cd892e7445ad65888e058fb2c05eac6711b14bed31390048b46c3fffff0149a",
+      "functions": [
+        {
+          "name": "Chip",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "ActiveFilterChips",
+          "params": [],
+          "exported": true,
+          "lineCount": 105
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Close"
+          ]
+        },
+        {
+          "source": "@/content/catalog",
+          "specifiers": [
+            "getCategoryLabel"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "ActiveFilterChips"
+      ],
+      "totalLines": 189,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/CatalogToolbar.jsx": {
+      "filePath": "client/src/components/catalog/CatalogToolbar.jsx",
+      "contentHash": "4dee57f437f70d30b4d956e0773cd2fb79ee9a2f0ccb4715d6fb16a70671e7ea",
+      "functions": [
+        {
+          "name": "clamp01",
+          "params": [
+            "v"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "CatalogToolbar",
+          "params": [],
+          "exported": true,
+          "lineCount": 120
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useLayoutEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useScroll",
+            "useTransform"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "MenuOpenButton"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useEntranceProps"
+          ]
+        },
+        {
+          "source": "@/config/entrance",
+          "specifiers": [
+            "ENTRANCE_STAGGER"
+          ]
+        }
+      ],
+      "exports": [
+        "CatalogToolbar"
+      ],
+      "totalLines": 166,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/CategoryButton.jsx": {
+      "filePath": "client/src/components/catalog/CategoryButton.jsx",
+      "contentHash": "5cece5100484775fcaaf4cb02e9f927e1014415ed8635a5f9c9295155ba0f3e5",
+      "functions": [
+        {
+          "name": "CategoryButton",
+          "params": [],
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Grid",
+            "ChevronDown"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./ToolbarMenu",
+          "specifiers": [
+            "ToolbarMenu"
+          ]
+        },
+        {
+          "source": "./CategoryDropdown",
+          "specifiers": [
+            "CategoryDropdown"
+          ]
+        }
+      ],
+      "exports": [
+        "CategoryButton"
+      ],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/CategoryDropdown.jsx": {
+      "filePath": "client/src/components/catalog/CategoryDropdown.jsx",
+      "contentHash": "004bc2fbaf386605d63bf7b3c30b5c562636172b389b2ae3dec1d2db231ad3be",
+      "functions": [
+        {
+          "name": "BackArrow",
+          "params": [],
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "CategoryDropdown",
+          "params": [],
+          "exported": true,
+          "lineCount": 103
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Grid",
+            "Close"
+          ]
+        },
+        {
+          "source": "@/content/catalog",
+          "specifiers": [
+            "CATEGORY_TREE"
+          ]
+        }
+      ],
+      "exports": [
+        "CategoryDropdown"
+      ],
+      "totalLines": 143,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/FilterButton.jsx": {
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "contentHash": "98e42d9851d86177813323a2428860d407f33a5d2cfd6d689b45c357738cd09c",
+      "functions": [
+        {
+          "name": "CheckBox",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "FilterSection",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "BrandList",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "PriceFilter",
+          "params": [],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "StockToggle",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "FilterPanel",
+          "params": [],
+          "exported": false,
+          "lineCount": 75
+        },
+        {
+          "name": "FilterButton",
+          "params": [
+            "panelProps"
+          ],
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Filter",
+            "ChevronDown",
+            "Close",
+            "Check"
+          ]
+        },
+        {
+          "source": "@/content/catalog",
+          "specifiers": [
+            "BRANDS"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./ToolbarMenu",
+          "specifiers": [
+            "ToolbarMenu"
+          ]
+        }
+      ],
+      "exports": [
+        "FilterButton"
+      ],
+      "totalLines": 325,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/Pagination.jsx": {
+      "filePath": "client/src/components/catalog/Pagination.jsx",
+      "contentHash": "4820bf44115a6ba8f05451e69a732dbe88095015e29ff5c91fa99897a2f24e41",
+      "functions": [
+        {
+          "name": "getPageItems",
+          "params": [
+            "currentPage",
+            "totalPages"
+          ],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "Pagination",
+          "params": [],
+          "exported": true,
+          "lineCount": 76
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "ChevronDown"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Pagination"
+      ],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/ProductCardSkeleton.jsx": {
+      "filePath": "client/src/components/catalog/ProductCardSkeleton.jsx",
+      "contentHash": "27a1cdbab7f12d5a4713cc9489ab0b4e59ac5555ef0f94a7e6e347b17c290fcc",
+      "functions": [
+        {
+          "name": "ProductCardSkeleton",
+          "params": [],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "ProductCardSkeleton"
+      ],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/SearchBar.jsx": {
+      "filePath": "client/src/components/catalog/SearchBar.jsx",
+      "contentHash": "65881789fef4b701d9fc4371ca2e6ec695c70cff0a30b5db9466f47b1a973e53",
+      "functions": [
+        {
+          "name": "SearchBar",
+          "params": [],
+          "exported": true,
+          "lineCount": 30
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Search",
+            "Close"
+          ]
+        }
+      ],
+      "exports": [
+        "SearchBar"
+      ],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/SortDropdown.jsx": {
+      "filePath": "client/src/components/catalog/SortDropdown.jsx",
+      "contentHash": "690a3fe1fdecb9021dc979b6f83cd675a0341f458cb7f2e529cb4ef11f246791",
+      "functions": [
+        {
+          "name": "SortDropdown",
+          "params": [],
+          "exported": true,
+          "lineCount": 65
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Sort",
+            "ChevronDown",
+            "Check",
+            "Close"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./ToolbarMenu",
+          "specifiers": [
+            "ToolbarMenu"
+          ]
+        }
+      ],
+      "exports": [
+        "SortDropdown"
+      ],
+      "totalLines": 96,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/catalog/ToolbarMenu.jsx": {
+      "filePath": "client/src/components/catalog/ToolbarMenu.jsx",
+      "contentHash": "e86bc9c319013127d9a54af4c027d715425a32cd01dd2932ba3620f08eacf3fc",
+      "functions": [
+        {
+          "name": "ToolbarMenu",
+          "params": [],
+          "exported": true,
+          "lineCount": 45
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useRef",
+            "useEffect",
+            "useCallback"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "AnimatePresence",
+            "motion"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "ToolbarMenu"
+      ],
+      "totalLines": 74,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/_MenuItem.jsx": {
+      "filePath": "client/src/components/sections/_MenuItem.jsx",
+      "contentHash": "f2a1df16ddc0fdc3033850fb8d7ee0b5d6d528ea1e6b8ffd418ea746edac3c97",
+      "functions": [
+        {
+          "name": "MenuItem",
+          "params": [],
+          "exported": false,
+          "lineCount": 86
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 118,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/_TaglineLine.jsx": {
+      "filePath": "client/src/components/sections/_TaglineLine.jsx",
+      "contentHash": "d494b9fa0591bc70f2ab395e08bf14ecb3ebf0139b44c13abad0ce8dddcd7b07",
+      "functions": [
+        {
+          "name": "TaglineLine",
+          "params": [],
+          "exported": false,
+          "lineCount": 94
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 137,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/CtaBannerSection.jsx": {
+      "filePath": "client/src/components/sections/CtaBannerSection.jsx",
+      "contentHash": "50e5c6fa1865c478e8d4effe4a575f8cd1ebe4358a9a3e2fc676b35c17d4dbc8",
+      "functions": [
+        {
+          "name": "CtaBannerSection",
+          "params": [],
+          "exported": true,
+          "lineCount": 63
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useRef"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useInView",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "@/components/ui/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/content/ctaBanner",
+          "specifiers": [
+            "CTA_BANNER"
+          ]
+        }
+      ],
+      "exports": [
+        "CtaBannerSection"
+      ],
+      "totalLines": 80,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/FastenerDiagramSection.jsx": {
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "contentHash": "8da6693180221baa94afab27ebd6d51b874d38b9cc732648513758c0a45e4b80",
+      "functions": [
+        {
+          "name": "easeOut",
+          "params": [
+            "t"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "computeSegmentAt",
+          "params": [
+            "t",
+            "i"
+          ],
+          "exported": false,
+          "lineCount": 26
+        },
+        {
+          "name": "arcPath",
+          "params": [
+            "trailDeg",
+            "leadDeg"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "computeLabelPos",
+          "params": [
+            "i"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "SegmentPath",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "DecoRing",
+          "params": [],
+          "exported": false,
+          "lineCount": 28
+        },
+        {
+          "name": "DonutLabel",
+          "params": [],
+          "exported": false,
+          "lineCount": 49
+        },
+        {
+          "name": "LegendItem",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "Legend",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "DonutChart",
+          "params": [],
+          "exported": false,
+          "lineCount": 81
+        },
+        {
+          "name": "FastenerDiagramSection",
+          "params": [],
+          "exported": true,
+          "lineCount": 53
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useRef",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useInView",
+            "useMotionValue",
+            "useMotionValueEvent",
+            "useReducedMotion",
+            "animate"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useBreakpoint",
+            "useMediaQuery"
+          ]
+        },
+        {
+          "source": "@/content/fastenerDiagram",
+          "specifiers": [
+            "TITLE",
+            "sectors",
+            "OR",
+            "R_STROKE",
+            "STROKE_WIDTH",
+            "CX",
+            "CY",
+            "SIZE",
+            "DECO_RINGS",
+            "INTRO_DURATION",
+            "RING_STAGGER",
+            "POLOS_WIDTH",
+            "OMEGA_SKATE",
+            "OMEGA_GROW",
+            "OVERLAP",
+            "RING_COLOR"
+          ]
+        }
+      ],
+      "exports": [
+        "FastenerDiagramSection"
+      ],
+      "totalLines": 390,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/Footer.jsx": {
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "contentHash": "d47eecf1b394b98d41fc8b7117c88c113cc3c1fb07cf0fcfbcee0081d39b9f42",
+      "functions": [
+        {
+          "name": "FooterLink",
+          "params": [],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "FooterAnchor",
+          "params": [],
+          "exported": false,
+          "lineCount": 15
+        },
+        {
+          "name": "Footer",
+          "params": [],
+          "exported": false,
+          "lineCount": 104
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "Logo",
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "YouTube",
+            "VK"
+          ]
+        },
+        {
+          "source": "@/content/footer",
+          "specifiers": [
+            "CATALOG_LINKS",
+            "NAV_LINKS",
+            "CONTACT_INFO",
+            "SOCIAL_LINKS",
+            "FOOTER_CTA",
+            "FOOTER_LEGAL"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 169,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/Header.jsx": {
+      "filePath": "client/src/components/sections/Header.jsx",
+      "contentHash": "e526029fcab21da88a3cd7254cbbc8b58f7ecefb9f18ab3379012ceceaf5dc1d",
+      "functions": [
+        {
+          "name": "Header",
+          "params": [],
+          "exported": false,
+          "lineCount": 117
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useLocation"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useScroll",
+            "useTransform"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "Logo",
+            "MenuOpenButton",
+            "NavPill"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "User"
+          ]
+        },
+        {
+          "source": "@/store",
+          "specifiers": [
+            "useUiStore"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useScrollDirection",
+            "useEntranceProps"
+          ]
+        },
+        {
+          "source": "@/content/header",
+          "specifiers": [
+            "LANG_LABELS",
+            "NAV_LINKS",
+            "ACCOUNT_LINK",
+            "HOME_LINK"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 138,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/Hero.jsx": {
+      "filePath": "client/src/components/sections/Hero.jsx",
+      "contentHash": "d74d63be8dfac430cc36802bd51043826706ec899be320bbf6db6a42e3ef85b8",
+      "functions": [
+        {
+          "name": "Hero",
+          "params": [],
+          "exported": true,
+          "lineCount": 276
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useBreakpoint"
+          ]
+        },
+        {
+          "source": "@/config/entrance",
+          "specifiers": [
+            "ENTRANCE_DURATION",
+            "ENTRANCE_EASE",
+            "ENTRANCE_Y"
+          ]
+        },
+        {
+          "source": "@/content/hero",
+          "specifiers": [
+            "BIG_LEFT",
+            "BIG_RIGHT",
+            "TAGLINES"
+          ]
+        },
+        {
+          "source": "./_TaglineLine",
+          "specifiers": [
+            "TaglineLine"
+          ]
+        }
+      ],
+      "exports": [
+        "Hero"
+      ],
+      "totalLines": 305,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/HeroHeader.jsx": {
+      "filePath": "client/src/components/sections/HeroHeader.jsx",
+      "contentHash": "424afce7739d7ae4a6d3c2c03b27d1c78c7b8d1dc7110e8fc5322c19196da561",
+      "functions": [
+        {
+          "name": "HeroHeader",
+          "params": [],
+          "exported": false,
+          "lineCount": 86
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useScroll",
+            "useTransform"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "Logo",
+            "MenuOpenButton",
+            "NavPill"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "User"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useEntranceProps"
+          ]
+        },
+        {
+          "source": "@/store",
+          "specifiers": [
+            "useUiStore"
+          ]
+        },
+        {
+          "source": "@/content/header",
+          "specifiers": [
+            "LANG_LABELS",
+            "NAV_LINKS",
+            "ACCOUNT_LINK"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 111,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/MobileMenu.jsx": {
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "contentHash": "3c97cc98cf1aa9518722373f9f7115f038ed29c6d1b607317f00b935b34dd1be",
+      "functions": [
+        {
+          "name": "useCurtainColumns",
+          "params": [],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "useMobileMenuLogoSize",
+          "params": [],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "MobileMenuContent",
+          "params": [],
+          "exported": false,
+          "lineCount": 227
+        },
+        {
+          "name": "MobileMenu",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useLocation"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "AnimatePresence",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "Logo",
+            "IconButton",
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Close"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "@/store",
+          "specifiers": [
+            "useUiStore"
+          ]
+        },
+        {
+          "source": "@/content/menu",
+          "specifiers": [
+            "MENU_PRIMARY",
+            "MENU_SECONDARY",
+            "MENU_CTA"
+          ]
+        },
+        {
+          "source": "@/content/header",
+          "specifiers": [
+            "NAV_LINKS",
+            "ACCOUNT_LINK",
+            "LANG_LABELS",
+            "HOME_LINK"
+          ]
+        },
+        {
+          "source": "./_MenuItem",
+          "specifiers": [
+            "MenuItem"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 302,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/NumbersSection.jsx": {
+      "filePath": "client/src/components/sections/NumbersSection.jsx",
+      "contentHash": "ba08543fd8928ed4ae8868a6f8a41d32e71298e1335a77f07e9c5f68b2d6f580",
+      "functions": [
+        {
+          "name": "StatItem",
+          "params": [],
+          "exported": false,
+          "lineCount": 45
+        },
+        {
+          "name": "NumbersSection",
+          "params": [],
+          "exported": true,
+          "lineCount": 46
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useInView",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useViewport",
+            "useCountUp"
+          ]
+        },
+        {
+          "source": "@/content/numbers",
+          "specifiers": [
+            "COUNT_DURATION",
+            "LINE_DURATION",
+            "STATS_ROW1",
+            "STATS_ROW2"
+          ]
+        }
+      ],
+      "exports": [
+        "NumbersSection"
+      ],
+      "totalLines": 131,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/OurValuesSection.jsx": {
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "contentHash": "fe1bccc4270422f1ec53991fbaf31e485c5b2a4e39f4466780f1809601a72002",
+      "functions": [
+        {
+          "name": "useViewportWidth",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "ValueCard",
+          "params": [],
+          "exported": false,
+          "lineCount": 25
+        },
+        {
+          "name": "ScrollColorWord",
+          "params": [],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "TopBlockDesktop",
+          "params": [],
+          "exported": false,
+          "lineCount": 59
+        },
+        {
+          "name": "TopBlockMobile",
+          "params": [],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "MobileCardsStack",
+          "params": [],
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "DesktopCardsAnimated",
+          "params": [],
+          "exported": false,
+          "lineCount": 33
+        },
+        {
+          "name": "CardsRow",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "OurValuesSection",
+          "params": [],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useRef",
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useScroll",
+            "useTransform",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "@/components/ui/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "GridLines"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useBreakpoint",
+            "useEntranceProps"
+          ]
+        },
+        {
+          "source": "@/content/ourValues",
+          "specifiers": [
+            "LABEL",
+            "HEADING",
+            "BUTTON_TEXT",
+            "CARDS",
+            "ANIMATION_DELTA_X_VW",
+            "ANIMATION_DELTA_Y_PX",
+            "SCROLL_SPACER_HEIGHT_PX",
+            "SECTION_TAIL_HEIGHT_PX"
+          ]
+        }
+      ],
+      "exports": [
+        "OurValuesSection"
+      ],
+      "totalLines": 257,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/PartnersSection.jsx": {
+      "filePath": "client/src/components/sections/PartnersSection.jsx",
+      "contentHash": "b65d146b44af9bd38d29371710293ad7778397614c8cf6b32da27ee44ac441a7",
+      "functions": [
+        {
+          "name": "PartnerCard",
+          "params": [],
+          "exported": false,
+          "lineCount": 59
+        },
+        {
+          "name": "PartnersSection",
+          "params": [],
+          "exported": true,
+          "lineCount": 56
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useRef"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useInView",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useMediaQuery"
+          ]
+        },
+        {
+          "source": "@/content/partners",
+          "specifiers": [
+            "partners",
+            "SECTION_TITLE",
+            "GRID_MIN_CARD",
+            "GRID_GAP",
+            "GRID_MAX_WIDTH"
+          ]
+        }
+      ],
+      "exports": [
+        "PartnersSection"
+      ],
+      "totalLines": 148,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/ServiceProgramSection.jsx": {
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "contentHash": "30cc260833e9167fd0e4c957ab40b2c0b64c79f217542f54a06f9fc75671e0d9",
+      "functions": [
+        {
+          "name": "DualArrow",
+          "params": [],
+          "exported": false,
+          "lineCount": 27
+        },
+        {
+          "name": "DesktopRow",
+          "params": [],
+          "exported": false,
+          "lineCount": 72
+        },
+        {
+          "name": "MobileRow",
+          "params": [],
+          "exported": false,
+          "lineCount": 28
+        },
+        {
+          "name": "ServiceProgramSection",
+          "params": [],
+          "exported": true,
+          "lineCount": 61
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useInView",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "IconButton",
+            "Arrow"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useViewport",
+            "useBreakpoint"
+          ]
+        },
+        {
+          "source": "@/config/entrance",
+          "specifiers": [
+            "ENTRANCE_DURATION",
+            "ENTRANCE_EASE",
+            "ENTRANCE_STAGGER",
+            "ENTRANCE_Y"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "@/content/serviceProgram",
+          "specifiers": [
+            "SECTION_LABEL",
+            "SERVICES"
+          ]
+        }
+      ],
+      "exports": [
+        "ServiceProgramSection"
+      ],
+      "totalLines": 215,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/sections/TopStrip.jsx": {
+      "filePath": "client/src/components/sections/TopStrip.jsx",
+      "contentHash": "b1e35fedb6c5254ee1bb105f393cad646c27b00a6d332514eb7d2f29c1db429f",
+      "functions": [
+        {
+          "name": "TopStrip",
+          "params": [],
+          "exported": false,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "useReducedMotion"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/Button.jsx": {
+      "filePath": "client/src/components/ui/Button.jsx",
+      "contentHash": "08531f29d3df19e88702c262f1099575390cf7fc21c5ba6e0524f78cf3de2027",
+      "functions": [
+        {
+          "name": "Button",
+          "params": [],
+          "exported": true,
+          "lineCount": 95
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./icons",
+          "specifiers": [
+            "Arrow"
+          ]
+        }
+      ],
+      "exports": [
+        "Button"
+      ],
+      "totalLines": 150,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/Checkbox.jsx": {
+      "filePath": "client/src/components/ui/Checkbox.jsx",
+      "contentHash": "8ed2156fc69fdf87e5bd626b62525ee4db201113af7baa756441c4dbc6f499c7",
+      "functions": [
+        {
+          "name": "Checkbox",
+          "params": [],
+          "exported": true,
+          "lineCount": 41
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Checkbox"
+      ],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/ErrorBoundary.jsx": {
+      "filePath": "client/src/components/ui/ErrorBoundary.jsx",
+      "contentHash": "ef658a2052dc197763b8e897cc7849b10099ae2fa036d6d03e0e3ebf26a8eb44",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ErrorBoundary",
+          "methods": [
+            "getDerivedStateFromError",
+            "componentDidCatch",
+            "render"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 40
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Component"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        }
+      ],
+      "exports": [
+        "default"
+      ],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/GridLines.jsx": {
+      "filePath": "client/src/components/ui/GridLines.jsx",
+      "contentHash": "1ae85fd4cefa97f19bced79c8b9bc7312f0f1a4e8c7e1f5e027471b87a03dee1",
+      "functions": [
+        {
+          "name": "GridLines",
+          "params": [],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "GridLines"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/IconButton.jsx": {
+      "filePath": "client/src/components/ui/IconButton.jsx",
+      "contentHash": "263c20a2c1aafc83e82fb989b11f97875229469cef708fcac68f4296aae5cf81",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 114,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Arrow.jsx": {
+      "filePath": "client/src/components/ui/icons/Arrow.jsx",
+      "contentHash": "139f9e1fbb339f323e1b774eb50d5099acd0b249fbcc8bef15e0cb3034b997c0",
+      "functions": [
+        {
+          "name": "Arrow",
+          "params": [],
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Arrow"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/BrandMark.jsx": {
+      "filePath": "client/src/components/ui/icons/BrandMark.jsx",
+      "contentHash": "44eb7198b409920733f02cb271ef073802c8c773a306f6d31a4a130762f1c223",
+      "functions": [
+        {
+          "name": "BrandMark",
+          "params": [],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "BrandMark"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Cart.jsx": {
+      "filePath": "client/src/components/ui/icons/Cart.jsx",
+      "contentHash": "14588d04d0beaf97ca86832eba4132954361ff9028e1b09ba51bdb5a3cad3c1f",
+      "functions": [
+        {
+          "name": "Cart",
+          "params": [],
+          "exported": true,
+          "lineCount": 25
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Cart"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Check.jsx": {
+      "filePath": "client/src/components/ui/icons/Check.jsx",
+      "contentHash": "6469645c87c2acde9980be704177b747933ca4b9a52b4a9e74394882a571fe71",
+      "functions": [
+        {
+          "name": "Check",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Check"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/ChevronDown.jsx": {
+      "filePath": "client/src/components/ui/icons/ChevronDown.jsx",
+      "contentHash": "00d9a31f0681df3382d40b0da360678b7da3b1ec30a298d7e793ec5a3e4c2b84",
+      "functions": [
+        {
+          "name": "ChevronDown",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "ChevronDown"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Close.jsx": {
+      "filePath": "client/src/components/ui/icons/Close.jsx",
+      "contentHash": "e2d161f4234ba32cdcf1ad50f1b541361f0e1671203a75300ad479a60233578a",
+      "functions": [
+        {
+          "name": "Close",
+          "params": [],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Close"
+      ],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Filter.jsx": {
+      "filePath": "client/src/components/ui/icons/Filter.jsx",
+      "contentHash": "6adb8b3e2f9e475efb7a358f78484b549b6c389758235ac5d570f70a24c91130",
+      "functions": [
+        {
+          "name": "Filter",
+          "params": [],
+          "exported": true,
+          "lineCount": 25
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Filter"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Grid.jsx": {
+      "filePath": "client/src/components/ui/icons/Grid.jsx",
+      "contentHash": "670dc3331e5caa8c0c47a61e7982a68211b5fcca8d59f3b6d95a2e11102b1775",
+      "functions": [
+        {
+          "name": "Grid",
+          "params": [],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Grid"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Heart.jsx": {
+      "filePath": "client/src/components/ui/icons/Heart.jsx",
+      "contentHash": "6dd6b2691025e9fdbc402c0a57bff5580b6c2a5f194340c6a1cf58a3329b1803",
+      "functions": [
+        {
+          "name": "Heart",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Heart"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/index.js": {
+      "filePath": "client/src/components/ui/icons/index.js",
+      "contentHash": "89d93718ca44a0a4f20d1b4608823fc591d82fc127ad24f4bc50309651dbeb21",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "BrandMark",
+        "User",
+        "YouTube",
+        "VK",
+        "Plus",
+        "Close",
+        "Arrow",
+        "Heart",
+        "Search",
+        "Filter",
+        "ChevronDown",
+        "Sort",
+        "Grid",
+        "Check",
+        "Cart"
+      ],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Plus.jsx": {
+      "filePath": "client/src/components/ui/icons/Plus.jsx",
+      "contentHash": "a1d5d2366f600dd00b5fc07b96c58a8553e58f3696fc756feeed75a7a7e744f2",
+      "functions": [
+        {
+          "name": "Plus",
+          "params": [],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Plus"
+      ],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Search.jsx": {
+      "filePath": "client/src/components/ui/icons/Search.jsx",
+      "contentHash": "7c22a55905a06d054446b8a95ee7e70e381669cd09310795b8966c5c3a4e8c91",
+      "functions": [
+        {
+          "name": "Search",
+          "params": [],
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Search"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/Sort.jsx": {
+      "filePath": "client/src/components/ui/icons/Sort.jsx",
+      "contentHash": "02b8f8dd862d141a26bb3ed3173217c8d6cb68dd389acdcf1db926c16826c0d1",
+      "functions": [
+        {
+          "name": "Sort",
+          "params": [],
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Sort"
+      ],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/User.jsx": {
+      "filePath": "client/src/components/ui/icons/User.jsx",
+      "contentHash": "0ca9e150f7c78a63491ff55f45858743f4cd223bd892cbfca34c0f0ec3785117",
+      "functions": [
+        {
+          "name": "User",
+          "params": [],
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "User"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/VK.jsx": {
+      "filePath": "client/src/components/ui/icons/VK.jsx",
+      "contentHash": "c2f8dbb88d1cdc7d19f087f4bbcc073a37b1ee36432b106cabceb7a0d8b94a36",
+      "functions": [
+        {
+          "name": "VK",
+          "params": [],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "VK"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/icons/YouTube.jsx": {
+      "filePath": "client/src/components/ui/icons/YouTube.jsx",
+      "contentHash": "58d44d31b2516fcb19ad246d3c5bb7dbfe397196c10172a5d747abd18643b78b",
+      "functions": [
+        {
+          "name": "YouTube",
+          "params": [],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "YouTube"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/index.js": {
+      "filePath": "client/src/components/ui/index.js",
+      "contentHash": "33924649938903bd83529a69268bca5fafc1f9e065918f685b0837940a9dbe04",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "Button",
+        "IconButton",
+        "MenuOpenButton",
+        "Logo",
+        "NavPill",
+        "GridLines",
+        "Checkbox",
+        "SupportButton"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/Logo.jsx": {
+      "filePath": "client/src/components/ui/Logo.jsx",
+      "contentHash": "31974735762cfafbc41438a904fa8944137167aad626e658020dbecc3e985d4a",
+      "functions": [
+        {
+          "name": "Logo",
+          "params": [],
+          "exported": true,
+          "lineCount": 69
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./icons",
+          "specifiers": [
+            "BrandMark"
+          ]
+        }
+      ],
+      "exports": [
+        "Logo"
+      ],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/MenuOpenButton.jsx": {
+      "filePath": "client/src/components/ui/MenuOpenButton.jsx",
+      "contentHash": "b29249b3ef47d29f5e8ead0be4dd240761a13312b41e4e902f63fcbc92597cf5",
+      "functions": [
+        {
+          "name": "MenuOpenButton",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "./IconButton",
+          "specifiers": [
+            "IconButton"
+          ]
+        },
+        {
+          "source": "./icons",
+          "specifiers": [
+            "Plus"
+          ]
+        }
+      ],
+      "exports": [
+        "MenuOpenButton"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/NavPill.jsx": {
+      "filePath": "client/src/components/ui/NavPill.jsx",
+      "contentHash": "dc9baabb685a49eccc45c658575eb7efd445f474e0f95abcd954d14c5f18f783",
+      "functions": [
+        {
+          "name": "NavPill",
+          "params": [],
+          "exported": false,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/ProductCard.jsx": {
+      "filePath": "client/src/components/ui/ProductCard.jsx",
+      "contentHash": "a5bb09e61b18befbf35c24e80c7ff5526419170a9f643aad50af91e2a5e0d240",
+      "functions": [
+        {
+          "name": "formatPrice",
+          "params": [
+            "price"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "stopNav",
+          "params": [
+            "e"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "QuantitySelector",
+          "params": [],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "CartButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 54
+        },
+        {
+          "name": "FavoriteButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 26
+        },
+        {
+          "name": "ProductCard",
+          "params": [],
+          "exported": true,
+          "lineCount": 129
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Cart",
+            "Heart"
+          ]
+        },
+        {
+          "source": "@/hooks/useViewport",
+          "specifiers": [
+            "useViewport"
+          ]
+        },
+        {
+          "source": "@/store",
+          "specifiers": [
+            "useCartStore",
+            "useFavoritesStore"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "ProductCard"
+      ],
+      "totalLines": 303,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/ScrollToTopButton.jsx": {
+      "filePath": "client/src/components/ui/ScrollToTopButton.jsx",
+      "contentHash": "17ad3df9ba244d829a8999ecace43a14e41df558cf8c04d7a85d853ed332d305",
+      "functions": [
+        {
+          "name": "ScrollToTopButton",
+          "params": [],
+          "exported": true,
+          "lineCount": 40
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "AnimatePresence",
+            "motion"
+          ]
+        },
+        {
+          "source": "@/components/ui/IconButton",
+          "specifiers": [
+            "IconButton"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Arrow"
+          ]
+        }
+      ],
+      "exports": [
+        "ScrollToTopButton"
+      ],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/components/ui/SupportButton.jsx": {
+      "filePath": "client/src/components/ui/SupportButton.jsx",
+      "contentHash": "649ed924ff7461c3918f7405733c9cd2a52ecc39734e84f34fdaf0a72b315850",
+      "functions": [
+        {
+          "name": "SupportButton",
+          "params": [],
+          "exported": true,
+          "lineCount": 75
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Arrow"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useScrollDirection"
+          ]
+        },
+        {
+          "source": "@/utils/cn",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "SupportButton"
+      ],
+      "totalLines": 93,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/config/breakpoints.js": {
+      "filePath": "client/src/config/breakpoints.js",
+      "contentHash": "17b4dd7acd9288b9fa5dd0cad791d9594b7c33db76337ef67d618745fd2fa048",
+      "functions": [
+        {
+          "name": "mediaQuery",
+          "params": [
+            "name"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "BREAKPOINTS",
+        "mediaQuery"
+      ],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/config/entrance.js": {
+      "filePath": "client/src/config/entrance.js",
+      "contentHash": "a0b9bc562d6182ec7f9db23965d758b11a1032f56623968ccea11c160b9da6ca",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "ENTRANCE_DURATION",
+        "ENTRANCE_EASE",
+        "ENTRANCE_Y",
+        "ENTRANCE_STAGGER"
+      ],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/catalog/brands.js": {
+      "filePath": "client/src/content/catalog/brands.js",
+      "contentHash": "c3339be65fa27b3a7ae0485627007c4fe2c7497a863d7d920ffffe0f3880ac18",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "BRANDS"
+      ],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/catalog/categories.js": {
+      "filePath": "client/src/content/catalog/categories.js",
+      "contentHash": "5a4f850675137f4861823e757948f67078b74f8db50778c23b301f8bd13d1e68",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "CATEGORY_TREE"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/catalog/helpers.js": {
+      "filePath": "client/src/content/catalog/helpers.js",
+      "contentHash": "408d60688b93f2f54087326fcf701eaae639b8742403b8f733d3155e0c58e207",
+      "functions": [
+        {
+          "name": "findCategoryBySlug",
+          "params": [
+            "slug"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "findSubcategoryBySlug",
+          "params": [
+            "slug"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "getCategoryLabel",
+          "params": [
+            "slug"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "getCategoryBreadcrumbPath",
+          "params": [
+            "categorySlug",
+            "subcategorySlug"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./categories",
+          "specifiers": [
+            "CATEGORY_TREE"
+          ]
+        }
+      ],
+      "exports": [
+        "findCategoryBySlug",
+        "findSubcategoryBySlug",
+        "getCategoryLabel",
+        "getCategoryBreadcrumbPath"
+      ],
+      "totalLines": 66,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/catalog/index.js": {
+      "filePath": "client/src/content/catalog/index.js",
+      "contentHash": "bfba8ffa823863206f9367a7e48177fb96e54847e8ee0cd5f8141cf37e998ac5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "CATEGORY_TREE",
+        "BRANDS",
+        "PRODUCTS"
+      ],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/catalog/products.js": {
+      "filePath": "client/src/content/catalog/products.js",
+      "contentHash": "ea177bb7cb07924128896bf3ade1fdf9ec283a07f55c703f8677087e91bc86b0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "PRODUCTS"
+      ],
+      "totalLines": 694,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/ctaBanner.js": {
+      "filePath": "client/src/content/ctaBanner.js",
+      "contentHash": "654cc85507252891e3542e5ef3bc83bfcf521dd12df1b5d080c77b72c610c32b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "CTA_BANNER"
+      ],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/fastenerDiagram.js": {
+      "filePath": "client/src/content/fastenerDiagram.js",
+      "contentHash": "710f0e651f8c72d70a1c7364e9ce32dcb35fbaae3bea96f5d434db682a66f6a4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "TITLE",
+        "sectors",
+        "IR",
+        "OR",
+        "R_STROKE",
+        "STROKE_WIDTH",
+        "CX",
+        "CY",
+        "SIZE",
+        "DECO_RINGS",
+        "INTRO_DURATION",
+        "RING_STAGGER",
+        "POLOS_WIDTH",
+        "OMEGA_SKATE",
+        "OMEGA_GROW",
+        "OVERLAP",
+        "RING_COLOR"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/footer.js": {
+      "filePath": "client/src/content/footer.js",
+      "contentHash": "53f3e58221d63108af00f2bc7c20d587c309cdba4348cf02c2ba508af9ab4b4a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "CATALOG_LINKS",
+        "NAV_LINKS",
+        "CONTACT_INFO",
+        "SOCIAL_LINKS",
+        "FOOTER_CTA",
+        "FOOTER_LEGAL"
+      ],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/header.js": {
+      "filePath": "client/src/content/header.js",
+      "contentHash": "ee24adce525b8a68a805f0ae5924d51005671f2b4795ad6f7fdf8b4f0c671bb7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "LANG_LABELS",
+        "NAV_LINKS",
+        "ACCOUNT_LINK",
+        "HOME_LINK"
+      ],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/hero.js": {
+      "filePath": "client/src/content/hero.js",
+      "contentHash": "fe1608a8acc02abbc15859e5a2fd72630300ee49a181358236b6f4a0529d328f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "BIG_LEFT",
+        "BIG_RIGHT",
+        "TAGLINES"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/menu.js": {
+      "filePath": "client/src/content/menu.js",
+      "contentHash": "c68e2c5a89eadd3adc9c14ce4a324f35b5354a48d47975a9e45e638a034048d6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "MENU_PRIMARY",
+        "MENU_SECONDARY",
+        "MENU_CTA"
+      ],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/numbers.js": {
+      "filePath": "client/src/content/numbers.js",
+      "contentHash": "19da8df3893244bd6b042282b66d5cb09a59525c22823f35bb23ecfea2c81894",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "COUNT_DURATION",
+        "LINE_DURATION",
+        "STATS_ROW1",
+        "STATS_ROW2"
+      ],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/ourValues.js": {
+      "filePath": "client/src/content/ourValues.js",
+      "contentHash": "f4100e05c8ec160655a273cdd31b092d2a2b57a6db1cbf14009b87a27b93a261",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "LABEL",
+        "HEADING",
+        "BUTTON_TEXT",
+        "CARDS",
+        "ANIMATION_DELTA_X_VW",
+        "ANIMATION_DELTA_Y_PX",
+        "SCROLL_SPACER_HEIGHT_PX",
+        "SECTION_TAIL_HEIGHT_PX",
+        "SPRING_CONFIG"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/partners.js": {
+      "filePath": "client/src/content/partners.js",
+      "contentHash": "890eae0d2965782441f16cc84397d498f17e819efd59f287836602d96d5d9aa2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "SECTION_TITLE",
+        "GRID_MIN_CARD",
+        "GRID_GAP",
+        "GRID_MAX_COLS",
+        "GRID_MAX_WIDTH",
+        "partners"
+      ],
+      "totalLines": 72,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/content/serviceProgram.js": {
+      "filePath": "client/src/content/serviceProgram.js",
+      "contentHash": "63ce61c8e43a9d10cb039ae8b15087460540e5ff554a04692c58cb72bcc49f58",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "SECTION_LABEL",
+        "SERVICES"
+      ],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/index.js": {
+      "filePath": "client/src/hooks/index.js",
+      "contentHash": "475999d1ac489d8b919b5b2959737269483fb5b78257d9488a272db366679bd7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "useViewport",
+        "useCountUp",
+        "useScrollDirection",
+        "useLenis",
+        "useElementHeight",
+        "useMediaQuery",
+        "useBreakpoint",
+        "useCatalogFilters",
+        "useInfiniteScroll",
+        "useEntranceProps"
+      ],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useBreakpoint.js": {
+      "filePath": "client/src/hooks/useBreakpoint.js",
+      "contentHash": "23481a45d1372c2a3b8bb01086702fa626dc962929e27cea5f415918a9629beb",
+      "functions": [
+        {
+          "name": "useBreakpoint",
+          "params": [
+            "name"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/config/breakpoints",
+          "specifiers": [
+            "mediaQuery"
+          ]
+        },
+        {
+          "source": "./useMediaQuery",
+          "specifiers": [
+            "useMediaQuery"
+          ]
+        }
+      ],
+      "exports": [
+        "useBreakpoint"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useCatalogFilters.js": {
+      "filePath": "client/src/hooks/useCatalogFilters.js",
+      "contentHash": "a61a7afc3457fc410ee1325814dc912784acdba842754cd04bd0e8cf29639223",
+      "functions": [
+        {
+          "name": "toggleInArray",
+          "params": [
+            "arr",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "countFilters",
+          "params": [
+            "f"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "useCatalogFilters",
+          "params": [],
+          "exported": true,
+          "lineCount": 203
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useCallback",
+            "useMemo"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useParams"
+          ]
+        },
+        {
+          "source": "@/content/catalog",
+          "specifiers": [
+            "PRODUCTS",
+            "findCategoryBySlug",
+            "findSubcategoryBySlug"
+          ]
+        }
+      ],
+      "exports": [
+        "useCatalogFilters"
+      ],
+      "totalLines": 269,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useCountUp.js": {
+      "filePath": "client/src/hooks/useCountUp.js",
+      "contentHash": "56e9f284c0290c5e6e7a5d130710e98d1cce6a42b99235c5ad37cefa322aba6c",
+      "functions": [
+        {
+          "name": "useCountUp",
+          "params": [
+            "end",
+            "duration",
+            "start"
+          ],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "useCountUp"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useElementHeight.js": {
+      "filePath": "client/src/hooks/useElementHeight.js",
+      "contentHash": "43ce274ae4dd40f7825af77ad672cb88e51f0949d622a919820a5233a8107e1e",
+      "functions": [
+        {
+          "name": "useElementHeight",
+          "params": [
+            "selector"
+          ],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "useElementHeight"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useEntranceProps.js": {
+      "filePath": "client/src/hooks/useEntranceProps.js",
+      "contentHash": "4cc829a27484426e099f990e8150d6c975a0d97b0818a2250525ec8985650c7a",
+      "functions": [
+        {
+          "name": "useEntranceProps",
+          "params": [],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "@/config/entrance",
+          "specifiers": [
+            "ENTRANCE_DURATION",
+            "ENTRANCE_EASE",
+            "ENTRANCE_STAGGER",
+            "ENTRANCE_Y"
+          ]
+        }
+      ],
+      "exports": [
+        "useEntranceProps"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useInfiniteScroll.js": {
+      "filePath": "client/src/hooks/useInfiniteScroll.js",
+      "contentHash": "35cbf99f0a86870bd3a219fbfad57f7953fc974ff5c316d43c37cb9abd2fb72e",
+      "functions": [
+        {
+          "name": "useInfiniteScroll",
+          "params": [
+            "onLoadMore",
+            "enabled"
+          ],
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef"
+          ]
+        }
+      ],
+      "exports": [
+        "useInfiniteScroll"
+      ],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useLenis.js": {
+      "filePath": "client/src/hooks/useLenis.js",
+      "contentHash": "7e46d7de5fe381b8b54f0bc13deb4455fbeb6c1ecee538bcab583c0e112597db",
+      "functions": [
+        {
+          "name": "useLenis",
+          "params": [],
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect"
+          ]
+        },
+        {
+          "source": "lenis",
+          "specifiers": [
+            "Lenis"
+          ]
+        }
+      ],
+      "exports": [
+        "useLenis"
+      ],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useMediaQuery.js": {
+      "filePath": "client/src/hooks/useMediaQuery.js",
+      "contentHash": "2ab8ae177d3479ce3bf56f56486f55d6e4ecbd39c60184ab90f6dceeb953bfcf",
+      "functions": [
+        {
+          "name": "useMediaQuery",
+          "params": [
+            "query"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useSyncExternalStore"
+          ]
+        }
+      ],
+      "exports": [
+        "useMediaQuery"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useScrollDirection.js": {
+      "filePath": "client/src/hooks/useScrollDirection.js",
+      "contentHash": "c9fddb56bee4cb3692681df31f2fb416baeb5faee1fd4e01ccfb57579fceb92a",
+      "functions": [
+        {
+          "name": "useScrollDirection",
+          "params": [],
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "useScrollDirection"
+      ],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/hooks/useViewport.js": {
+      "filePath": "client/src/hooks/useViewport.js",
+      "contentHash": "093a2760b3c3d71ba80ea72da0c6cdfa8bf2ce907ff9aab1d1a35d92e38365dd",
+      "functions": [
+        {
+          "name": "useViewport",
+          "params": [],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "useViewport"
+      ],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/main.jsx": {
+      "filePath": "client/src/main.jsx",
+      "contentHash": "21a5dfd136dc0177a57587bbda2993491f371ee4f9b9c729d42467ce8754cabf",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "StrictMode"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "createRoot"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "BrowserRouter"
+          ]
+        },
+        {
+          "source": "lenis/dist/lenis.css",
+          "specifiers": []
+        },
+        {
+          "source": "./styles/index.css",
+          "specifiers": []
+        },
+        {
+          "source": "./App.jsx",
+          "specifiers": [
+            "App"
+          ]
+        },
+        {
+          "source": "./components/ui/ErrorBoundary.jsx",
+          "specifiers": [
+            "ErrorBoundary"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/pages/CatalogPage.jsx": {
+      "filePath": "client/src/pages/CatalogPage.jsx",
+      "contentHash": "b1a3ffd876aa18c485d3a327779fcc329785d40173d903e24d88640e129d8f16",
+      "functions": [
+        {
+          "name": "EmptyState",
+          "params": [],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "CatalogPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 138
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useParams",
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "motion/react",
+          "specifiers": [
+            "AnimatePresence",
+            "motion",
+            "useReducedMotion"
+          ]
+        },
+        {
+          "source": "prop-types",
+          "specifiers": [
+            "PropTypes"
+          ]
+        },
+        {
+          "source": "@/components/ui/ProductCard",
+          "specifiers": [
+            "ProductCard"
+          ]
+        },
+        {
+          "source": "@/components/ui/ScrollToTopButton",
+          "specifiers": [
+            "ScrollToTopButton"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "GridLines"
+          ]
+        },
+        {
+          "source": "@/components/ui/icons",
+          "specifiers": [
+            "Search"
+          ]
+        },
+        {
+          "source": "@/components/catalog/CatalogToolbar",
+          "specifiers": [
+            "CatalogToolbar"
+          ]
+        },
+        {
+          "source": "@/components/catalog/FilterButton",
+          "specifiers": [
+            "FilterButton"
+          ]
+        },
+        {
+          "source": "@/components/catalog/SearchBar",
+          "specifiers": [
+            "SearchBar"
+          ]
+        },
+        {
+          "source": "@/components/catalog/SortDropdown",
+          "specifiers": [
+            "SortDropdown"
+          ]
+        },
+        {
+          "source": "@/components/catalog/CategoryButton",
+          "specifiers": [
+            "CategoryButton"
+          ]
+        },
+        {
+          "source": "@/components/catalog/ActiveFilterChips",
+          "specifiers": [
+            "ActiveFilterChips"
+          ]
+        },
+        {
+          "source": "@/components/catalog/ProductCardSkeleton",
+          "specifiers": [
+            "ProductCardSkeleton"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useBreakpoint",
+            "useCatalogFilters",
+            "useInfiniteScroll"
+          ]
+        },
+        {
+          "source": "@/config/entrance",
+          "specifiers": [
+            "ENTRANCE_EASE",
+            "ENTRANCE_Y"
+          ]
+        },
+        {
+          "source": "@/store",
+          "specifiers": [
+            "useUiStore"
+          ]
+        }
+      ],
+      "exports": [
+        "CatalogPage"
+      ],
+      "totalLines": 220,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/pages/Home.jsx": {
+      "filePath": "client/src/pages/Home.jsx",
+      "contentHash": "d46a0a6118d4dfe789b90a203f2cb1ce05885e1c5f92aa654ccb6bc8ded3a3a2",
+      "functions": [
+        {
+          "name": "Home",
+          "params": [],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect"
+          ]
+        },
+        {
+          "source": "@/components/sections/CtaBannerSection",
+          "specifiers": [
+            "CtaBannerSection"
+          ]
+        },
+        {
+          "source": "@/components/sections/FastenerDiagramSection",
+          "specifiers": [
+            "FastenerDiagramSection"
+          ]
+        },
+        {
+          "source": "@/components/sections/Hero",
+          "specifiers": [
+            "Hero"
+          ]
+        },
+        {
+          "source": "@/components/sections/HeroHeader",
+          "specifiers": [
+            "HeroHeader"
+          ]
+        },
+        {
+          "source": "@/components/sections/NumbersSection",
+          "specifiers": [
+            "NumbersSection"
+          ]
+        },
+        {
+          "source": "@/components/sections/OurValuesSection",
+          "specifiers": [
+            "OurValuesSection"
+          ]
+        },
+        {
+          "source": "@/components/sections/PartnersSection",
+          "specifiers": [
+            "PartnersSection"
+          ]
+        },
+        {
+          "source": "@/components/sections/ServiceProgramSection",
+          "specifiers": [
+            "ServiceProgramSection"
+          ]
+        },
+        {
+          "source": "@/components/ui",
+          "specifiers": [
+            "SupportButton"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useElementHeight"
+          ]
+        }
+      ],
+      "exports": [
+        "Home"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/pages/ProductPage.jsx": {
+      "filePath": "client/src/pages/ProductPage.jsx",
+      "contentHash": "707cd0b0f9c30fea6639f7932efa7f0f9f5ca82c9d3ff9f3961ed06d5205bfdc",
+      "functions": [
+        {
+          "name": "ProductPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useParams",
+            "Link"
+          ]
+        },
+        {
+          "source": "@/hooks",
+          "specifiers": [
+            "useElementHeight"
+          ]
+        }
+      ],
+      "exports": [
+        "ProductPage"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/store/index.js": {
+      "filePath": "client/src/store/index.js",
+      "contentHash": "56a3dcf36aaf0261077ac36b10a86ecdd3955538c4c927b07aabbcf4f33af91c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "useUiStore",
+        "useCartStore",
+        "useFavoritesStore"
+      ],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/store/slices/cartSlice.js": {
+      "filePath": "client/src/store/slices/cartSlice.js",
+      "contentHash": "21b443ef69e94d369003b44057a0544aebf02d936bccfe04c1d5b25c5c2f57fb",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zustand",
+          "specifiers": [
+            "create"
+          ]
+        }
+      ],
+      "exports": [
+        "useCartStore"
+      ],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/store/slices/favoritesSlice.js": {
+      "filePath": "client/src/store/slices/favoritesSlice.js",
+      "contentHash": "14c162d030acd3d3682d7bd7f77f17a2fddd944014118c8a552e9cf60d99beab",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zustand",
+          "specifiers": [
+            "create"
+          ]
+        }
+      ],
+      "exports": [
+        "useFavoritesStore"
+      ],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/store/slices/uiSlice.js": {
+      "filePath": "client/src/store/slices/uiSlice.js",
+      "contentHash": "05dd2373cc72297a47140c8a842f36ea5a928f6d4d305de2ec5d94afdad88e61",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zustand",
+          "specifiers": [
+            "create"
+          ]
+        }
+      ],
+      "exports": [
+        "useUiStore"
+      ],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "client/src/styles/index.css": {
+      "filePath": "client/src/styles/index.css",
+      "contentHash": "77117bdc1d0eb9e93067d6f4dd3e07a6bf778ddc05e8a14043e1e4f82b4c361e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 36,
+      "hasStructuralAnalysis": false
+    },
+    "client/src/utils/cn.js": {
+      "filePath": "client/src/utils/cn.js",
+      "contentHash": "6132fa865a1bccab5a0d0772e1b31fcbf0048e7578d5a4e63036e2bb50ddd403",
+      "functions": [
+        {
+          "name": "cn",
+          "params": [
+            "...inputs"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "clsx",
+          "specifiers": [
+            "clsx"
+          ]
+        },
+        {
+          "source": "tailwind-merge",
+          "specifiers": [
+            "twMerge"
+          ]
+        }
+      ],
+      "exports": [
+        "cn"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "client/tailwind.config.js": {
+      "filePath": "client/tailwind.config.js",
+      "contentHash": "e42f8eabfaebbcb16833f2fa12da03ce41aa27cc8972bf8a0fd9fe81b5fd1f7b",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@tailwindcss/container-queries",
+          "specifiers": [
+            "containerQueries"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "client/vite.config.js": {
+      "filePath": "client/vite.config.js",
+      "contentHash": "3c4477465a816c060df68fee1c41f85d7901742714aee9a6defbe85b18c0a82e",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "node:path",
+          "specifiers": [
+            "path"
+          ]
+        },
+        {
+          "source": "node:url",
+          "specifiers": [
+            "fileURLToPath"
+          ]
+        },
+        {
+          "source": "vite",
+          "specifiers": [
+            "defineConfig"
+          ]
+        },
+        {
+          "source": "@vitejs/plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "docker-compose.yml": {
+      "filePath": "docker-compose.yml",
+      "contentHash": "73a0b6ab9b4db8134e98b487132eafec9334e90523093c7d5496d13b06588b02",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "22175302c2cd117dcb490ac7153100cccbc9353bba5331a3da15892c49e7bd43",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "server/.env.example": {
+      "filePath": "server/.env.example",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "server/drizzle.config.js": {
+      "filePath": "server/drizzle.config.js",
+      "contentHash": "ed4dde1db343a6d7d02859b7e41bd6b5dfd3dcf6c5e40f38438214c2bb61ea18",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "server/package.json": {
+      "filePath": "server/package.json",
+      "contentHash": "7fbb718e230b803d4fdde124b01fb5313ff00e8d859a877f3ab550017b0765ab",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "server/src/app.js": {
+      "filePath": "server/src/app.js",
+      "contentHash": "501e7f364b9bf4278e7894d29910ef885ae4f8fb7a796fba42ee4be6790c7bae",
+      "functions": [
+        {
+          "name": "start",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastify",
+          "specifiers": [
+            "Fastify"
+          ]
+        },
+        {
+          "source": "./plugins/cors.js",
+          "specifiers": [
+            "cors"
+          ]
+        },
+        {
+          "source": "./routes/index.js",
+          "specifiers": [
+            "routes"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "server/src/db/index.js": {
+      "filePath": "server/src/db/index.js",
+      "contentHash": "6b08433d12181d9077f5c20dad643669be229f8ea3bd5e679566bc56841e4a4b",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "drizzle-orm/postgres-js",
+          "specifiers": [
+            "drizzle"
+          ]
+        },
+        {
+          "source": "postgres",
+          "specifiers": [
+            "postgres"
+          ]
+        }
+      ],
+      "exports": [
+        "db"
+      ],
+      "totalLines": 5,
+      "hasStructuralAnalysis": true
+    },
+    "server/src/db/schema/index.js": {
+      "filePath": "server/src/db/schema/index.js",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "server/src/plugins/cors.js": {
+      "filePath": "server/src/plugins/cors.js",
+      "contentHash": "62b91802c91212bf503b296580bdc17a2621feb59b0a2c5fe36021378a68dff8",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@fastify/cors",
+          "specifiers": [
+            "fp"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "server/src/routes/index.js": {
+      "filePath": "server/src/routes/index.js",
+      "contentHash": "e4951cef9f519e36826b9e7ae074f87564aa2e24b93f8db34c2cddf08726782c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

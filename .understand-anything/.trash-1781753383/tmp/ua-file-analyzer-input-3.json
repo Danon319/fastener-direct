@@ -1,0 +1,17 @@
+{
+  "projectRoot": "D:/College/projects/Course 1/Project 'Metiz-O'/fastener-direct",
+  "batchFiles": [
+    {"path": "client/src/components/ui/Button.jsx", "language": "javascript", "sizeLines": 149, "fileCategory": "code"},
+    {"path": "client/src/components/ui/IconButton.jsx", "language": "javascript", "sizeLines": 113, "fileCategory": "code"},
+    {"path": "client/src/components/ui/Logo.jsx", "language": "javascript", "sizeLines": 106, "fileCategory": "code"},
+    {"path": "client/src/components/ui/MenuOpenButton.jsx", "language": "javascript", "sizeLines": 27, "fileCategory": "code"},
+    {"path": "client/src/components/ui/icons/index.js", "language": "javascript", "sizeLines": 17, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "client/src/components/ui/Button.jsx": ["client/src/components/ui/icons/index.js"],
+    "client/src/components/ui/IconButton.jsx": [],
+    "client/src/components/ui/Logo.jsx": ["client/src/components/ui/icons/index.js"],
+    "client/src/components/ui/MenuOpenButton.jsx": ["client/src/components/ui/IconButton.jsx", "client/src/components/ui/icons/index.js"],
+    "client/src/components/ui/icons/index.js": []
+  }
+}

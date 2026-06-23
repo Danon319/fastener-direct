@@ -1,0 +1,947 @@
+{
+  "scriptCompleted": true,
+  "commonPrefix": "",
+  "topLevelGroups": {
+    "client": [
+      "file:client/src/App.jsx",
+      "file:client/src/components/sections/Footer.jsx",
+      "file:client/src/components/sections/Header.jsx",
+      "file:client/src/components/sections/TopStrip.jsx",
+      "file:client/src/hooks/index.js",
+      "file:client/src/pages/CatalogPage.jsx",
+      "file:client/src/pages/Home.jsx",
+      "file:client/src/pages/ProductPage.jsx",
+      "file:client/src/components/catalog/CategoryButton.jsx",
+      "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "file:client/src/components/catalog/FilterButton.jsx",
+      "file:client/src/components/catalog/SortDropdown.jsx",
+      "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "file:client/src/components/ui/Button.jsx",
+      "file:client/src/components/ui/IconButton.jsx",
+      "file:client/src/components/ui/Logo.jsx",
+      "file:client/src/components/ui/MenuOpenButton.jsx",
+      "file:client/src/components/ui/icons/index.js",
+      "config:client/.prettierrc.json",
+      "document:client/README.md",
+      "file:client/index.html",
+      "config:client/package.json",
+      "config:client/eslint.config.js",
+      "config:client/postcss.config.js",
+      "file:client/src/App.css",
+      "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "file:client/src/components/catalog/Pagination.jsx",
+      "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+      "file:client/src/components/catalog/SearchBar.jsx",
+      "file:client/src/components/sections/_MenuItem.jsx",
+      "file:client/src/components/sections/_TaglineLine.jsx",
+      "file:client/src/components/sections/CtaBannerSection.jsx",
+      "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "file:client/src/components/sections/Hero.jsx",
+      "file:client/src/components/sections/HeroHeader.jsx",
+      "file:client/src/components/sections/MobileMenu.jsx",
+      "file:client/src/components/sections/NumbersSection.jsx",
+      "file:client/src/components/sections/OurValuesSection.jsx",
+      "file:client/src/components/sections/PartnersSection.jsx",
+      "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "file:client/src/components/ui/Checkbox.jsx",
+      "file:client/src/components/ui/ErrorBoundary.jsx",
+      "file:client/src/components/ui/GridLines.jsx",
+      "file:client/src/components/ui/icons/Arrow.jsx",
+      "file:client/src/components/ui/icons/BrandMark.jsx",
+      "file:client/src/components/ui/icons/Cart.jsx",
+      "file:client/src/components/ui/icons/Check.jsx",
+      "file:client/src/components/ui/icons/ChevronDown.jsx",
+      "file:client/src/components/ui/icons/Close.jsx",
+      "file:client/src/components/ui/icons/Filter.jsx",
+      "file:client/src/components/ui/icons/Grid.jsx",
+      "file:client/src/components/ui/icons/Heart.jsx",
+      "file:client/src/components/ui/icons/Plus.jsx",
+      "file:client/src/components/ui/icons/Search.jsx",
+      "file:client/src/components/ui/icons/Sort.jsx",
+      "file:client/src/components/ui/icons/User.jsx",
+      "file:client/src/components/ui/icons/VK.jsx",
+      "file:client/src/components/ui/icons/YouTube.jsx",
+      "file:client/src/components/ui/index.js",
+      "file:client/src/components/ui/NavPill.jsx",
+      "file:client/src/components/ui/ProductCard.jsx",
+      "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "file:client/src/components/ui/SupportButton.jsx",
+      "file:client/src/config/breakpoints.js",
+      "file:client/src/config/entrance.js",
+      "file:client/src/content/catalog/brands.js",
+      "file:client/src/content/catalog/categories.js",
+      "file:client/src/content/catalog/helpers.js",
+      "file:client/src/content/catalog/index.js",
+      "file:client/src/content/catalog/products.js",
+      "file:client/src/content/ctaBanner.js",
+      "file:client/src/content/fastenerDiagram.js",
+      "file:client/src/content/footer.js",
+      "file:client/src/content/header.js",
+      "file:client/src/content/hero.js",
+      "file:client/src/content/menu.js",
+      "file:client/src/content/numbers.js",
+      "file:client/src/content/ourValues.js",
+      "file:client/src/content/partners.js",
+      "file:client/src/content/serviceProgram.js",
+      "file:client/src/hooks/useBreakpoint.js",
+      "file:client/src/hooks/useCatalogFilters.js",
+      "file:client/src/hooks/useCountUp.js",
+      "file:client/src/hooks/useElementHeight.js",
+      "file:client/src/hooks/useEntranceProps.js",
+      "file:client/src/hooks/useInfiniteScroll.js",
+      "file:client/src/hooks/useLenis.js",
+      "file:client/src/hooks/useMediaQuery.js",
+      "file:client/src/hooks/useScrollDirection.js",
+      "file:client/src/hooks/useViewport.js",
+      "file:client/src/main.jsx",
+      "file:client/src/store/index.js",
+      "file:client/src/store/slices/cartSlice.js",
+      "file:client/src/store/slices/favoritesSlice.js",
+      "file:client/src/store/slices/uiSlice.js",
+      "file:client/src/styles/index.css",
+      "file:client/src/utils/cn.js",
+      "config:client/tailwind.config.js",
+      "config:client/vite.config.js"
+    ],
+    "server": [
+      "file:server/src/app.js",
+      "file:server/src/plugins/cors.js",
+      "file:server/src/routes/index.js",
+      "endpoint:server/src/routes/index.js:GET /api/health",
+      "config:server/.env.example",
+      "config:server/drizzle.config.js",
+      "config:server/package.json",
+      "file:server/src/db/index.js",
+      "file:server/src/db/schema/index.js"
+    ],
+    "(root)": [
+      "service:docker-compose.yml",
+      "config:package.json"
+    ]
+  },
+  "semanticGroups": {
+    "client/(src-root)": [
+      "file:client/src/App.jsx",
+      "file:client/src/App.css",
+      "file:client/src/main.jsx"
+    ],
+    "client/components/sections": [
+      "file:client/src/components/sections/Footer.jsx",
+      "file:client/src/components/sections/Header.jsx",
+      "file:client/src/components/sections/TopStrip.jsx",
+      "file:client/src/components/sections/_MenuItem.jsx",
+      "file:client/src/components/sections/_TaglineLine.jsx",
+      "file:client/src/components/sections/CtaBannerSection.jsx",
+      "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "file:client/src/components/sections/Hero.jsx",
+      "file:client/src/components/sections/HeroHeader.jsx",
+      "file:client/src/components/sections/MobileMenu.jsx",
+      "file:client/src/components/sections/NumbersSection.jsx",
+      "file:client/src/components/sections/OurValuesSection.jsx",
+      "file:client/src/components/sections/PartnersSection.jsx",
+      "file:client/src/components/sections/ServiceProgramSection.jsx"
+    ],
+    "client/hooks": [
+      "file:client/src/hooks/index.js",
+      "file:client/src/hooks/useBreakpoint.js",
+      "file:client/src/hooks/useCatalogFilters.js",
+      "file:client/src/hooks/useCountUp.js",
+      "file:client/src/hooks/useElementHeight.js",
+      "file:client/src/hooks/useEntranceProps.js",
+      "file:client/src/hooks/useInfiniteScroll.js",
+      "file:client/src/hooks/useLenis.js",
+      "file:client/src/hooks/useMediaQuery.js",
+      "file:client/src/hooks/useScrollDirection.js",
+      "file:client/src/hooks/useViewport.js"
+    ],
+    "client/pages": [
+      "file:client/src/pages/CatalogPage.jsx",
+      "file:client/src/pages/Home.jsx",
+      "file:client/src/pages/ProductPage.jsx"
+    ],
+    "client/components/catalog": [
+      "file:client/src/components/catalog/CategoryButton.jsx",
+      "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "file:client/src/components/catalog/FilterButton.jsx",
+      "file:client/src/components/catalog/SortDropdown.jsx",
+      "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "file:client/src/components/catalog/Pagination.jsx",
+      "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+      "file:client/src/components/catalog/SearchBar.jsx"
+    ],
+    "client/components/ui": [
+      "file:client/src/components/ui/Button.jsx",
+      "file:client/src/components/ui/IconButton.jsx",
+      "file:client/src/components/ui/Logo.jsx",
+      "file:client/src/components/ui/MenuOpenButton.jsx",
+      "file:client/src/components/ui/icons/index.js",
+      "file:client/src/components/ui/Checkbox.jsx",
+      "file:client/src/components/ui/ErrorBoundary.jsx",
+      "file:client/src/components/ui/GridLines.jsx",
+      "file:client/src/components/ui/icons/Arrow.jsx",
+      "file:client/src/components/ui/icons/BrandMark.jsx",
+      "file:client/src/components/ui/icons/Cart.jsx",
+      "file:client/src/components/ui/icons/Check.jsx",
+      "file:client/src/components/ui/icons/ChevronDown.jsx",
+      "file:client/src/components/ui/icons/Close.jsx",
+      "file:client/src/components/ui/icons/Filter.jsx",
+      "file:client/src/components/ui/icons/Grid.jsx",
+      "file:client/src/components/ui/icons/Heart.jsx",
+      "file:client/src/components/ui/icons/Plus.jsx",
+      "file:client/src/components/ui/icons/Search.jsx",
+      "file:client/src/components/ui/icons/Sort.jsx",
+      "file:client/src/components/ui/icons/User.jsx",
+      "file:client/src/components/ui/icons/VK.jsx",
+      "file:client/src/components/ui/icons/YouTube.jsx",
+      "file:client/src/components/ui/index.js",
+      "file:client/src/components/ui/NavPill.jsx",
+      "file:client/src/components/ui/ProductCard.jsx",
+      "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "file:client/src/components/ui/SupportButton.jsx"
+    ],
+    "server/(src-root)": [
+      "file:server/src/app.js"
+    ],
+    "server/plugins": [
+      "file:server/src/plugins/cors.js"
+    ],
+    "server/routes": [
+      "file:server/src/routes/index.js",
+      "endpoint:server/src/routes/index.js:GET /api/health"
+    ],
+    "client/(root)": [
+      "config:client/.prettierrc.json",
+      "document:client/README.md",
+      "file:client/index.html",
+      "config:client/package.json",
+      "config:client/eslint.config.js",
+      "config:client/postcss.config.js",
+      "config:client/tailwind.config.js",
+      "config:client/vite.config.js"
+    ],
+    "client/config": [
+      "file:client/src/config/breakpoints.js",
+      "file:client/src/config/entrance.js"
+    ],
+    "client/content": [
+      "file:client/src/content/catalog/brands.js",
+      "file:client/src/content/catalog/categories.js",
+      "file:client/src/content/catalog/helpers.js",
+      "file:client/src/content/catalog/index.js",
+      "file:client/src/content/catalog/products.js",
+      "file:client/src/content/ctaBanner.js",
+      "file:client/src/content/fastenerDiagram.js",
+      "file:client/src/content/footer.js",
+      "file:client/src/content/header.js",
+      "file:client/src/content/hero.js",
+      "file:client/src/content/menu.js",
+      "file:client/src/content/numbers.js",
+      "file:client/src/content/ourValues.js",
+      "file:client/src/content/partners.js",
+      "file:client/src/content/serviceProgram.js"
+    ],
+    "client/store": [
+      "file:client/src/store/index.js",
+      "file:client/src/store/slices/cartSlice.js",
+      "file:client/src/store/slices/favoritesSlice.js",
+      "file:client/src/store/slices/uiSlice.js"
+    ],
+    "client/styles": [
+      "file:client/src/styles/index.css"
+    ],
+    "client/utils": [
+      "file:client/src/utils/cn.js"
+    ],
+    "(repo-root)": [
+      "service:docker-compose.yml",
+      "config:package.json"
+    ],
+    "server/(root)": [
+      "config:server/.env.example",
+      "config:server/drizzle.config.js",
+      "config:server/package.json"
+    ],
+    "server/db": [
+      "file:server/src/db/index.js",
+      "file:server/src/db/schema/index.js"
+    ]
+  },
+  "nodeTypeGroups": {
+    "file": [
+      "file:client/src/App.jsx",
+      "file:client/src/components/sections/Footer.jsx",
+      "file:client/src/components/sections/Header.jsx",
+      "file:client/src/components/sections/TopStrip.jsx",
+      "file:client/src/hooks/index.js",
+      "file:client/src/pages/CatalogPage.jsx",
+      "file:client/src/pages/Home.jsx",
+      "file:client/src/pages/ProductPage.jsx",
+      "file:client/src/components/catalog/CategoryButton.jsx",
+      "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "file:client/src/components/catalog/FilterButton.jsx",
+      "file:client/src/components/catalog/SortDropdown.jsx",
+      "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "file:client/src/components/ui/Button.jsx",
+      "file:client/src/components/ui/IconButton.jsx",
+      "file:client/src/components/ui/Logo.jsx",
+      "file:client/src/components/ui/MenuOpenButton.jsx",
+      "file:client/src/components/ui/icons/index.js",
+      "file:server/src/app.js",
+      "file:server/src/plugins/cors.js",
+      "file:server/src/routes/index.js",
+      "file:client/index.html",
+      "file:client/src/App.css",
+      "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "file:client/src/components/catalog/Pagination.jsx",
+      "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+      "file:client/src/components/catalog/SearchBar.jsx",
+      "file:client/src/components/sections/_MenuItem.jsx",
+      "file:client/src/components/sections/_TaglineLine.jsx",
+      "file:client/src/components/sections/CtaBannerSection.jsx",
+      "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "file:client/src/components/sections/Hero.jsx",
+      "file:client/src/components/sections/HeroHeader.jsx",
+      "file:client/src/components/sections/MobileMenu.jsx",
+      "file:client/src/components/sections/NumbersSection.jsx",
+      "file:client/src/components/sections/OurValuesSection.jsx",
+      "file:client/src/components/sections/PartnersSection.jsx",
+      "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "file:client/src/components/ui/Checkbox.jsx",
+      "file:client/src/components/ui/ErrorBoundary.jsx",
+      "file:client/src/components/ui/GridLines.jsx",
+      "file:client/src/components/ui/icons/Arrow.jsx",
+      "file:client/src/components/ui/icons/BrandMark.jsx",
+      "file:client/src/components/ui/icons/Cart.jsx",
+      "file:client/src/components/ui/icons/Check.jsx",
+      "file:client/src/components/ui/icons/ChevronDown.jsx",
+      "file:client/src/components/ui/icons/Close.jsx",
+      "file:client/src/components/ui/icons/Filter.jsx",
+      "file:client/src/components/ui/icons/Grid.jsx",
+      "file:client/src/components/ui/icons/Heart.jsx",
+      "file:client/src/components/ui/icons/Plus.jsx",
+      "file:client/src/components/ui/icons/Search.jsx",
+      "file:client/src/components/ui/icons/Sort.jsx",
+      "file:client/src/components/ui/icons/User.jsx",
+      "file:client/src/components/ui/icons/VK.jsx",
+      "file:client/src/components/ui/icons/YouTube.jsx",
+      "file:client/src/components/ui/index.js",
+      "file:client/src/components/ui/NavPill.jsx",
+      "file:client/src/components/ui/ProductCard.jsx",
+      "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "file:client/src/components/ui/SupportButton.jsx",
+      "file:client/src/config/breakpoints.js",
+      "file:client/src/config/entrance.js",
+      "file:client/src/content/catalog/brands.js",
+      "file:client/src/content/catalog/categories.js",
+      "file:client/src/content/catalog/helpers.js",
+      "file:client/src/content/catalog/index.js",
+      "file:client/src/content/catalog/products.js",
+      "file:client/src/content/ctaBanner.js",
+      "file:client/src/content/fastenerDiagram.js",
+      "file:client/src/content/footer.js",
+      "file:client/src/content/header.js",
+      "file:client/src/content/hero.js",
+      "file:client/src/content/menu.js",
+      "file:client/src/content/numbers.js",
+      "file:client/src/content/ourValues.js",
+      "file:client/src/content/partners.js",
+      "file:client/src/content/serviceProgram.js",
+      "file:client/src/hooks/useBreakpoint.js",
+      "file:client/src/hooks/useCatalogFilters.js",
+      "file:client/src/hooks/useCountUp.js",
+      "file:client/src/hooks/useElementHeight.js",
+      "file:client/src/hooks/useEntranceProps.js",
+      "file:client/src/hooks/useInfiniteScroll.js",
+      "file:client/src/hooks/useLenis.js",
+      "file:client/src/hooks/useMediaQuery.js",
+      "file:client/src/hooks/useScrollDirection.js",
+      "file:client/src/hooks/useViewport.js",
+      "file:client/src/main.jsx",
+      "file:client/src/store/index.js",
+      "file:client/src/store/slices/cartSlice.js",
+      "file:client/src/store/slices/favoritesSlice.js",
+      "file:client/src/store/slices/uiSlice.js",
+      "file:client/src/styles/index.css",
+      "file:client/src/utils/cn.js",
+      "file:server/src/db/index.js",
+      "file:server/src/db/schema/index.js"
+    ],
+    "endpoint": [
+      "endpoint:server/src/routes/index.js:GET /api/health"
+    ],
+    "config": [
+      "config:client/.prettierrc.json",
+      "config:client/package.json",
+      "config:client/eslint.config.js",
+      "config:client/postcss.config.js",
+      "config:client/tailwind.config.js",
+      "config:client/vite.config.js",
+      "config:package.json",
+      "config:server/.env.example",
+      "config:server/drizzle.config.js",
+      "config:server/package.json"
+    ],
+    "document": [
+      "document:client/README.md"
+    ],
+    "service": [
+      "service:docker-compose.yml"
+    ]
+  },
+  "crossCategoryEdges": [
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "depends_on",
+      "count": 4
+    },
+    {
+      "fromType": "config",
+      "toType": "file",
+      "edgeType": "configures",
+      "count": 7
+    },
+    {
+      "fromType": "document",
+      "toType": "file",
+      "edgeType": "documents",
+      "count": 1
+    },
+    {
+      "fromType": "config",
+      "toType": "config",
+      "edgeType": "depends_on",
+      "count": 1
+    },
+    {
+      "fromType": "file",
+      "toType": "config",
+      "edgeType": "depends_on",
+      "count": 1
+    },
+    {
+      "fromType": "service",
+      "toType": "file",
+      "edgeType": "serves",
+      "count": 1
+    }
+  ],
+  "interGroupImports": [
+    {
+      "from": "client/components/ui",
+      "to": "client/utils",
+      "count": 18
+    },
+    {
+      "from": "client/components/sections",
+      "to": "client/components/ui",
+      "count": 12
+    },
+    {
+      "from": "client/components/sections",
+      "to": "client/content",
+      "count": 12
+    },
+    {
+      "from": "client/components/sections",
+      "to": "client/hooks",
+      "count": 8
+    },
+    {
+      "from": "client/pages",
+      "to": "client/components/sections",
+      "count": 8
+    },
+    {
+      "from": "client/components/sections",
+      "to": "client/utils",
+      "count": 7
+    },
+    {
+      "from": "client/pages",
+      "to": "client/components/catalog",
+      "count": 7
+    },
+    {
+      "from": "client/pages",
+      "to": "client/components/ui",
+      "count": 5
+    },
+    {
+      "from": "client/(src-root)",
+      "to": "client/components/sections",
+      "count": 4
+    },
+    {
+      "from": "client/components/catalog",
+      "to": "client/components/ui",
+      "count": 4
+    },
+    {
+      "from": "client/(src-root)",
+      "to": "client/pages",
+      "count": 3
+    },
+    {
+      "from": "client/components/sections",
+      "to": "client/store",
+      "count": 3
+    },
+    {
+      "from": "client/pages",
+      "to": "client/hooks",
+      "count": 3
+    },
+    {
+      "from": "client/components/catalog",
+      "to": "client/utils",
+      "count": 2
+    },
+    {
+      "from": "client/components/sections",
+      "to": "client/config",
+      "count": 2
+    },
+    {
+      "from": "client/components/ui",
+      "to": "client/hooks",
+      "count": 2
+    },
+    {
+      "from": "client/(src-root)",
+      "to": "client/hooks",
+      "count": 1
+    },
+    {
+      "from": "client/pages",
+      "to": "client/config",
+      "count": 1
+    },
+    {
+      "from": "client/pages",
+      "to": "client/store",
+      "count": 1
+    },
+    {
+      "from": "server/(src-root)",
+      "to": "server/plugins",
+      "count": 1
+    },
+    {
+      "from": "server/(src-root)",
+      "to": "server/routes",
+      "count": 1
+    },
+    {
+      "from": "client/components/catalog",
+      "to": "client/content",
+      "count": 1
+    },
+    {
+      "from": "client/components/catalog",
+      "to": "client/hooks",
+      "count": 1
+    },
+    {
+      "from": "client/components/catalog",
+      "to": "client/config",
+      "count": 1
+    },
+    {
+      "from": "client/components/ui",
+      "to": "client/store",
+      "count": 1
+    },
+    {
+      "from": "client/(src-root)",
+      "to": "client/components/ui",
+      "count": 1
+    },
+    {
+      "from": "client/(src-root)",
+      "to": "client/styles",
+      "count": 1
+    }
+  ],
+  "intraGroupDensity": {
+    "client/(src-root)": {
+      "internalEdges": 1,
+      "totalEdges": 11,
+      "density": 0.09
+    },
+    "client/components/sections": {
+      "internalEdges": 2,
+      "totalEdges": 58,
+      "density": 0.03
+    },
+    "client/hooks": {
+      "internalEdges": 11,
+      "totalEdges": 26,
+      "density": 0.42
+    },
+    "client/pages": {
+      "internalEdges": 0,
+      "totalEdges": 28,
+      "density": 0
+    },
+    "client/components/catalog": {
+      "internalEdges": 4,
+      "totalEdges": 20,
+      "density": 0.2
+    },
+    "client/components/ui": {
+      "internalEdges": 8,
+      "totalEdges": 51,
+      "density": 0.16
+    },
+    "server/(src-root)": {
+      "internalEdges": 0,
+      "totalEdges": 2,
+      "density": 0
+    },
+    "server/plugins": {
+      "internalEdges": 0,
+      "totalEdges": 1,
+      "density": 0
+    },
+    "server/routes": {
+      "internalEdges": 0,
+      "totalEdges": 1,
+      "density": 0
+    },
+    "client/(root)": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "client/config": {
+      "internalEdges": 0,
+      "totalEdges": 4,
+      "density": 0
+    },
+    "client/content": {
+      "internalEdges": 1,
+      "totalEdges": 14,
+      "density": 0.07
+    },
+    "client/store": {
+      "internalEdges": 0,
+      "totalEdges": 5,
+      "density": 0
+    },
+    "client/styles": {
+      "internalEdges": 0,
+      "totalEdges": 1,
+      "density": 0
+    },
+    "client/utils": {
+      "internalEdges": 0,
+      "totalEdges": 27,
+      "density": 0
+    },
+    "(repo-root)": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "server/(root)": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "server/db": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    }
+  },
+  "dependencyDirection": [
+    {
+      "dependent": "client/components/ui",
+      "dependsOn": "client/utils",
+      "count": 18
+    },
+    {
+      "dependent": "client/components/sections",
+      "dependsOn": "client/components/ui",
+      "count": 12
+    },
+    {
+      "dependent": "client/components/sections",
+      "dependsOn": "client/content",
+      "count": 12
+    },
+    {
+      "dependent": "client/components/sections",
+      "dependsOn": "client/hooks",
+      "count": 8
+    },
+    {
+      "dependent": "client/pages",
+      "dependsOn": "client/components/sections",
+      "count": 8
+    },
+    {
+      "dependent": "client/components/sections",
+      "dependsOn": "client/utils",
+      "count": 7
+    },
+    {
+      "dependent": "client/pages",
+      "dependsOn": "client/components/catalog",
+      "count": 7
+    },
+    {
+      "dependent": "client/pages",
+      "dependsOn": "client/components/ui",
+      "count": 5
+    },
+    {
+      "dependent": "client/(src-root)",
+      "dependsOn": "client/components/sections",
+      "count": 4
+    },
+    {
+      "dependent": "client/components/catalog",
+      "dependsOn": "client/components/ui",
+      "count": 4
+    },
+    {
+      "dependent": "client/(src-root)",
+      "dependsOn": "client/pages",
+      "count": 3
+    },
+    {
+      "dependent": "client/components/sections",
+      "dependsOn": "client/store",
+      "count": 3
+    },
+    {
+      "dependent": "client/pages",
+      "dependsOn": "client/hooks",
+      "count": 3
+    },
+    {
+      "dependent": "client/components/catalog",
+      "dependsOn": "client/utils",
+      "count": 2
+    },
+    {
+      "dependent": "client/components/sections",
+      "dependsOn": "client/config",
+      "count": 2
+    },
+    {
+      "dependent": "client/components/ui",
+      "dependsOn": "client/hooks",
+      "count": 2
+    },
+    {
+      "dependent": "client/(src-root)",
+      "dependsOn": "client/hooks",
+      "count": 1
+    },
+    {
+      "dependent": "client/pages",
+      "dependsOn": "client/config",
+      "count": 1
+    },
+    {
+      "dependent": "client/pages",
+      "dependsOn": "client/store",
+      "count": 1
+    },
+    {
+      "dependent": "server/(src-root)",
+      "dependsOn": "server/plugins",
+      "count": 1
+    },
+    {
+      "dependent": "server/(src-root)",
+      "dependsOn": "server/routes",
+      "count": 1
+    },
+    {
+      "dependent": "client/components/catalog",
+      "dependsOn": "client/content",
+      "count": 1
+    },
+    {
+      "dependent": "client/components/catalog",
+      "dependsOn": "client/hooks",
+      "count": 1
+    },
+    {
+      "dependent": "client/components/catalog",
+      "dependsOn": "client/config",
+      "count": 1
+    },
+    {
+      "dependent": "client/components/ui",
+      "dependsOn": "client/store",
+      "count": 1
+    },
+    {
+      "dependent": "client/(src-root)",
+      "dependsOn": "client/components/ui",
+      "count": 1
+    },
+    {
+      "dependent": "client/(src-root)",
+      "dependsOn": "client/styles",
+      "count": 1
+    }
+  ],
+  "fileStats": {
+    "totalFileNodes": 111,
+    "filesPerGroup": {
+      "client/(src-root)": 3,
+      "client/components/sections": 14,
+      "client/hooks": 11,
+      "client/pages": 3,
+      "client/components/catalog": 10,
+      "client/components/ui": 28,
+      "server/(src-root)": 1,
+      "server/plugins": 1,
+      "server/routes": 2,
+      "client/(root)": 8,
+      "client/config": 2,
+      "client/content": 15,
+      "client/store": 4,
+      "client/styles": 1,
+      "client/utils": 1,
+      "(repo-root)": 2,
+      "server/(root)": 3,
+      "server/db": 2
+    },
+    "nodeTypeCounts": {
+      "file": 98,
+      "endpoint": 1,
+      "config": 10,
+      "document": 1,
+      "service": 1
+    }
+  },
+  "fileFanIn": {
+    "file:client/src/pages/Home.jsx": 1,
+    "file:client/src/pages/CatalogPage.jsx": 1,
+    "file:client/src/pages/ProductPage.jsx": 1,
+    "file:client/src/components/sections/Footer.jsx": 1,
+    "file:client/src/components/sections/Header.jsx": 1,
+    "file:client/src/components/sections/TopStrip.jsx": 1,
+    "file:client/src/components/sections/MobileMenu.jsx": 1,
+    "file:client/src/hooks/index.js": 14,
+    "file:client/src/components/ui/index.js": 9,
+    "file:client/src/components/ui/icons/index.js": 14,
+    "file:client/src/content/footer.js": 1,
+    "file:client/src/utils/cn.js": 27,
+    "file:client/src/store/index.js": 5,
+    "file:client/src/content/header.js": 3,
+    "file:client/src/hooks/useViewport.js": 2,
+    "file:client/src/hooks/useCountUp.js": 1,
+    "file:client/src/hooks/useScrollDirection.js": 1,
+    "file:client/src/hooks/useLenis.js": 1,
+    "file:client/src/hooks/useElementHeight.js": 1,
+    "file:client/src/hooks/useMediaQuery.js": 2,
+    "file:client/src/hooks/useBreakpoint.js": 1,
+    "file:client/src/hooks/useCatalogFilters.js": 1,
+    "file:client/src/hooks/useInfiniteScroll.js": 1,
+    "file:client/src/hooks/useEntranceProps.js": 1,
+    "file:client/src/components/ui/ProductCard.jsx": 1,
+    "file:client/src/components/ui/ScrollToTopButton.jsx": 1,
+    "file:client/src/components/catalog/CatalogToolbar.jsx": 1,
+    "file:client/src/components/catalog/FilterButton.jsx": 1,
+    "file:client/src/components/catalog/SearchBar.jsx": 1,
+    "file:client/src/components/catalog/SortDropdown.jsx": 1,
+    "file:client/src/components/catalog/CategoryButton.jsx": 1,
+    "file:client/src/components/catalog/ActiveFilterChips.jsx": 1,
+    "file:client/src/components/catalog/ProductCardSkeleton.jsx": 1,
+    "file:client/src/config/entrance.js": 4,
+    "file:client/src/components/sections/CtaBannerSection.jsx": 1,
+    "file:client/src/components/sections/FastenerDiagramSection.jsx": 1,
+    "file:client/src/components/sections/Hero.jsx": 1,
+    "file:client/src/components/sections/HeroHeader.jsx": 1,
+    "file:client/src/components/sections/NumbersSection.jsx": 1,
+    "file:client/src/components/sections/OurValuesSection.jsx": 1,
+    "file:client/src/components/sections/PartnersSection.jsx": 1,
+    "file:client/src/components/sections/ServiceProgramSection.jsx": 1,
+    "file:client/src/components/catalog/CategoryDropdown.jsx": 1,
+    "file:client/src/components/catalog/ToolbarMenu.jsx": 3,
+    "file:client/src/components/ui/IconButton.jsx": 2,
+    "file:server/src/plugins/cors.js": 1,
+    "file:server/src/routes/index.js": 1,
+    "file:client/src/content/catalog/index.js": 1,
+    "file:client/src/components/ui/Button.jsx": 2,
+    "file:client/src/content/ctaBanner.js": 1,
+    "file:client/src/content/fastenerDiagram.js": 1,
+    "file:client/src/components/sections/_TaglineLine.jsx": 1,
+    "file:client/src/content/hero.js": 1,
+    "file:client/src/components/sections/_MenuItem.jsx": 1,
+    "file:client/src/content/menu.js": 1,
+    "file:client/src/content/numbers.js": 1,
+    "file:client/src/content/ourValues.js": 1,
+    "file:client/src/content/partners.js": 1,
+    "file:client/src/content/serviceProgram.js": 1,
+    "file:client/src/content/catalog/categories.js": 1,
+    "file:client/src/App.jsx": 1,
+    "file:client/src/components/ui/ErrorBoundary.jsx": 1,
+    "file:client/src/styles/index.css": 1
+  },
+  "fileFanOut": {
+    "file:client/src/App.jsx": 8,
+    "file:client/src/components/sections/Footer.jsx": 4,
+    "file:client/src/components/sections/Header.jsx": 6,
+    "file:client/src/hooks/index.js": 10,
+    "file:client/src/pages/CatalogPage.jsx": 14,
+    "file:client/src/pages/Home.jsx": 10,
+    "file:client/src/pages/ProductPage.jsx": 1,
+    "file:client/src/components/catalog/CategoryButton.jsx": 2,
+    "file:client/src/components/catalog/FilterButton.jsx": 1,
+    "file:client/src/components/catalog/SortDropdown.jsx": 1,
+    "file:client/src/components/ui/Button.jsx": 1,
+    "file:client/src/components/ui/Logo.jsx": 1,
+    "file:client/src/components/ui/MenuOpenButton.jsx": 2,
+    "file:server/src/app.js": 2,
+    "file:client/src/components/catalog/ActiveFilterChips.jsx": 3,
+    "file:client/src/components/catalog/CatalogToolbar.jsx": 3,
+    "file:client/src/components/catalog/Pagination.jsx": 2,
+    "file:client/src/components/catalog/SearchBar.jsx": 1,
+    "file:client/src/components/sections/_MenuItem.jsx": 1,
+    "file:client/src/components/sections/_TaglineLine.jsx": 1,
+    "file:client/src/components/sections/CtaBannerSection.jsx": 2,
+    "file:client/src/components/sections/FastenerDiagramSection.jsx": 2,
+    "file:client/src/components/sections/Hero.jsx": 4,
+    "file:client/src/components/sections/HeroHeader.jsx": 6,
+    "file:client/src/components/sections/MobileMenu.jsx": 7,
+    "file:client/src/components/sections/NumbersSection.jsx": 2,
+    "file:client/src/components/sections/OurValuesSection.jsx": 4,
+    "file:client/src/components/sections/PartnersSection.jsx": 2,
+    "file:client/src/components/sections/ServiceProgramSection.jsx": 5,
+    "file:client/src/components/ui/Checkbox.jsx": 1,
+    "file:client/src/components/ui/GridLines.jsx": 1,
+    "file:client/src/components/ui/icons/Arrow.jsx": 1,
+    "file:client/src/components/ui/icons/BrandMark.jsx": 1,
+    "file:client/src/components/ui/icons/Cart.jsx": 1,
+    "file:client/src/components/ui/icons/Check.jsx": 1,
+    "file:client/src/components/ui/icons/ChevronDown.jsx": 1,
+    "file:client/src/components/ui/icons/Close.jsx": 1,
+    "file:client/src/components/ui/icons/Filter.jsx": 1,
+    "file:client/src/components/ui/icons/Grid.jsx": 1,
+    "file:client/src/components/ui/icons/Heart.jsx": 1,
+    "file:client/src/components/ui/icons/Plus.jsx": 1,
+    "file:client/src/components/ui/icons/Search.jsx": 1,
+    "file:client/src/components/ui/icons/Sort.jsx": 1,
+    "file:client/src/components/ui/icons/User.jsx": 1,
+    "file:client/src/components/ui/NavPill.jsx": 1,
+    "file:client/src/components/ui/ProductCard.jsx": 4,
+    "file:client/src/components/ui/ScrollToTopButton.jsx": 2,
+    "file:client/src/components/ui/SupportButton.jsx": 3,
+    "file:client/src/content/catalog/helpers.js": 1,
+    "file:client/src/hooks/useBreakpoint.js": 1,
+    "file:client/src/main.jsx": 3
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "projectRoot": "D:/College/projects/Course 1/Project 'Metiz-O'/fastener-direct",
+  "batchFiles": [
+    {"path": "client/src/App.jsx", "language": "javascript", "sizeLines": 32, "fileCategory": "code"},
+    {"path": "client/src/components/sections/Footer.jsx", "language": "javascript", "sizeLines": 168, "fileCategory": "code"},
+    {"path": "client/src/components/sections/Header.jsx", "language": "javascript", "sizeLines": 137, "fileCategory": "code"},
+    {"path": "client/src/components/sections/TopStrip.jsx", "language": "javascript", "sizeLines": 28, "fileCategory": "code"},
+    {"path": "client/src/hooks/index.js", "language": "javascript", "sizeLines": 10, "fileCategory": "code"},
+    {"path": "client/src/pages/CatalogPage.jsx", "language": "javascript", "sizeLines": 219, "fileCategory": "code"},
+    {"path": "client/src/pages/Home.jsx", "language": "javascript", "sizeLines": 46, "fileCategory": "code"},
+    {"path": "client/src/pages/ProductPage.jsx", "language": "javascript", "sizeLines": 32, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "client/src/App.jsx": [
+      "client/src/components/sections/Footer.jsx",
+      "client/src/components/sections/Header.jsx",
+      "client/src/components/sections/MobileMenu.jsx",
+      "client/src/components/sections/TopStrip.jsx",
+      "client/src/hooks/index.js",
+      "client/src/pages/CatalogPage.jsx",
+      "client/src/pages/Home.jsx",
+      "client/src/pages/ProductPage.jsx"
+    ],
+    "client/src/components/sections/Footer.jsx": [],
+    "client/src/components/sections/Header.jsx": [],
+    "client/src/components/sections/TopStrip.jsx": [],
+    "client/src/hooks/index.js": [],
+    "client/src/pages/CatalogPage.jsx": [],
+    "client/src/pages/Home.jsx": [],
+    "client/src/pages/ProductPage.jsx": []
+  }
+}

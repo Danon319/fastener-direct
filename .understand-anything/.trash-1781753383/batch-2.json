@@ -1,0 +1,328 @@
+{
+  "nodes": [
+    {
+      "id": "file:client/src/components/catalog/CategoryButton.jsx",
+      "type": "file",
+      "name": "CategoryButton.jsx",
+      "filePath": "client/src/components/catalog/CategoryButton.jsx",
+      "summary": "Кнопка «Категории» в тулбаре каталога: красный триггер, оборачивающий ToolbarMenu с двухшаговым CategoryDropdown в поповере. Сама навигация по /catalog/... делегирована вложенному дропдауну.",
+      "tags": ["component", "catalog", "toolbar", "dropdown-trigger"],
+      "complexity": "simple",
+      "languageNotes": "React-компонент через render-prop ToolbarMenu: триггер передаётся как функция renderTrigger, содержимое поповера — как function-as-child."
+    },
+    {
+      "id": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "type": "function",
+      "name": "CategoryButton",
+      "filePath": "client/src/components/catalog/CategoryButton.jsx",
+      "lineRange": [12, 35],
+      "summary": "Рендерит триггер-кнопку «Категории» (иконка Grid + ChevronDown с поворотом при open) и подставляет CategoryDropdown в поповер ToolbarMenu.",
+      "tags": ["component", "catalog", "dropdown-trigger"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "type": "file",
+      "name": "CategoryDropdown.jsx",
+      "filePath": "client/src/components/catalog/CategoryDropdown.jsx",
+      "summary": "Содержимое поповера выбора раздела: двухшаговая навигация — карточки категорий верхнего уровня, затем подкатегории — с переходом на маршруты /catalog/... через react-router.",
+      "tags": ["component", "catalog", "navigation", "dropdown"],
+      "complexity": "moderate",
+      "languageNotes": "Локальное состояние parent (useState) переключает шаг 1/шаг 2; навигация через useNavigate из react-router-dom, источник данных — CATEGORY_TREE."
+    },
+    {
+      "id": "function:client/src/components/catalog/CategoryDropdown.jsx:CategoryDropdown",
+      "type": "function",
+      "name": "CategoryDropdown",
+      "filePath": "client/src/components/catalog/CategoryDropdown.jsx",
+      "lineRange": [36, 138],
+      "summary": "Двухшаговый выбор раздела: рендерит карточки CATEGORY_TREE, при выборе категории с children показывает её подкатегории, иначе сразу переходит на ветку каталога и вызывает onClose.",
+      "tags": ["component", "catalog", "navigation", "stateful"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/FilterButton.jsx",
+      "type": "file",
+      "name": "FilterButton.jsx",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "summary": "Кнопка «Фильтры» с поповер-панелью всех фасетов (Бренд / Цена / Наличие). Значения редактируются как черновик (staged), синхронизируются с applied при открытии, применяются по «Показать» и сбрасываются по «Сбросить».",
+      "tags": ["component", "catalog", "filter", "toolbar", "validation"],
+      "complexity": "complex",
+      "languageNotes": "Файл содержит несколько внутренних под-компонентов (CheckBox, FilterSection, BrandList, PriceFilter, StockToggle, FilterPanel); FilterPanel синхронизирует staged ← applied через useEffect на mount."
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "type": "function",
+      "name": "FilterButton",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [284, 310],
+      "summary": "Экспортируемый триггер «Фильтры»: рендерит кнопку с иконкой и ChevronDown в ToolbarMenu и подставляет FilterPanel с переданными panelProps.",
+      "tags": ["component", "catalog", "filter", "dropdown-trigger"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "type": "function",
+      "name": "FilterPanel",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [177, 251],
+      "summary": "Панель фильтров внутри поповера: собирает секции бренда, цены и наличия, синхронизирует staged-значения при монтировании и вызывает onApply/close по кнопке «Показать».",
+      "tags": ["component", "catalog", "filter", "stateful"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:PriceFilter",
+      "type": "function",
+      "name": "PriceFilter",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [87, 134],
+      "summary": "Фасет цены: поля «от/до» с колбэками onMin/onMax и быстрые диапазоны PRICE_RANGES, заполняющие оба поля.",
+      "tags": ["component", "catalog", "filter", "price"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:BrandList",
+      "type": "function",
+      "name": "BrandList",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [56, 79],
+      "summary": "Прокручиваемый список чекбоксов брендов из BRANDS; отмечает выбранные и переключает их через onToggle.",
+      "tags": ["component", "catalog", "filter", "brand"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:StockToggle",
+      "type": "function",
+      "name": "StockToggle",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [144, 167],
+      "summary": "Переключатель фасета наличия («только в наличии») в виде двух взаимоисключающих опций.",
+      "tags": ["component", "catalog", "filter", "toggle"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/catalog/SortDropdown.jsx",
+      "type": "file",
+      "name": "SortDropdown.jsx",
+      "filePath": "client/src/components/catalog/SortDropdown.jsx",
+      "summary": "Дропдаун выбора сортировки каталога в тулбаре. Опции (по умолчанию, цена, название, наличие) совпадают со switch в useCatalogFilters; value=null означает порядок по умолчанию.",
+      "tags": ["component", "catalog", "toolbar", "sort", "dropdown"],
+      "complexity": "moderate",
+      "languageNotes": "Контролируемый компонент (value/onChange); опция с key=null маппится на activeSort=null в хуке useCatalogFilters."
+    },
+    {
+      "id": "function:client/src/components/catalog/SortDropdown.jsx:SortDropdown",
+      "type": "function",
+      "name": "SortDropdown",
+      "filePath": "client/src/components/catalog/SortDropdown.jsx",
+      "lineRange": [26, 90],
+      "summary": "Рендерит триггер с текущей опцией сортировки и список SORT_OPTIONS в поповере ToolbarMenu; при выборе вызывает onChange и закрывает поповер.",
+      "tags": ["component", "catalog", "sort", "dropdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "type": "file",
+      "name": "ToolbarMenu.jsx",
+      "filePath": "client/src/components/catalog/ToolbarMenu.jsx",
+      "summary": "Переиспользуемая обвязка дропдаунов тулбара: render-prop триггер + анимированный поповер с всплытием (motion), закрытием по клику снаружи и Escape. Базовый примитив для кнопок «Фильтры», «Сортировка», «Категории».",
+      "tags": ["component", "catalog", "toolbar", "popover", "utility"],
+      "complexity": "moderate",
+      "languageNotes": "Использует render-prop (renderTrigger) и function-as-child для содержимого; AnimatePresence/motion из motion/react для анимации; слушатели mousedown/keydown навешиваются только когда open."
+    },
+    {
+      "id": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "function",
+      "name": "ToolbarMenu",
+      "filePath": "client/src/components/catalog/ToolbarMenu.jsx",
+      "lineRange": [22, 66],
+      "summary": "Управляет открытием/закрытием поповера (useState, useRef, useEffect), рендерит триггер через renderTrigger и анимированный контейнер с содержимым, закрываясь по клику снаружи и Escape.",
+      "tags": ["component", "popover", "stateful", "utility"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:client/src/components/catalog/CategoryButton.jsx",
+      "target": "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryButton.jsx",
+      "target": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/SortDropdown.jsx",
+      "target": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryButton.jsx",
+      "target": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryButton.jsx",
+      "target": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "target": "function:client/src/components/catalog/CategoryDropdown.jsx:CategoryDropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "target": "function:client/src/components/catalog/CategoryDropdown.jsx:CategoryDropdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:PriceFilter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:BrandList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:StockToggle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:BrandList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:PriceFilter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:StockToggle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/SortDropdown.jsx",
+      "target": "function:client/src/components/catalog/SortDropdown.jsx:SortDropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/SortDropdown.jsx",
+      "target": "function:client/src/components/catalog/SortDropdown.jsx:SortDropdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "target": "function:client/src/components/catalog/CategoryDropdown.jsx:CategoryDropdown",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:client/src/components/catalog/SortDropdown.jsx:SortDropdown",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

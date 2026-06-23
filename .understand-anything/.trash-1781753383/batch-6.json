@@ -1,0 +1,631 @@
+{
+  "nodes": [
+    {
+      "id": "config:client/eslint.config.js",
+      "type": "config",
+      "name": "eslint.config.js",
+      "filePath": "client/eslint.config.js",
+      "summary": "Flat-config ESLint для клиента: правила для JS/JSX, плагины React Hooks и React Refresh, глобалы браузера.",
+      "tags": ["configuration", "linting", "build-system", "eslint"],
+      "complexity": "moderate",
+      "languageNotes": "Использует новый flat-config формат ESLint (массив конфигов вместо .eslintrc)."
+    },
+    {
+      "id": "config:client/postcss.config.js",
+      "type": "config",
+      "name": "postcss.config.js",
+      "filePath": "client/postcss.config.js",
+      "summary": "Конфигурация PostCSS, подключающая плагины Tailwind CSS и Autoprefixer для сборки стилей.",
+      "tags": ["configuration", "build-system", "css", "tailwind"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/App.css",
+      "type": "file",
+      "name": "App.css",
+      "filePath": "client/src/App.css",
+      "summary": "Глобальные стили приложения: базовые правила, утилиты и кастомные классы для лендинга и каталога.",
+      "tags": ["css", "styling", "global-styles", "markup"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "type": "file",
+      "name": "ActiveFilterChips.jsx",
+      "filePath": "client/src/components/catalog/ActiveFilterChips.jsx",
+      "summary": "Компонент каталога, отрисовывающий чипы активных фильтров (категория, поиск, бренды, цена, наличие) с возможностью их сброса.",
+      "tags": ["component", "catalog", "filters", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/catalog/ActiveFilterChips.jsx:Chip",
+      "type": "function",
+      "name": "Chip",
+      "filePath": "client/src/components/catalog/ActiveFilterChips.jsx",
+      "lineRange": [35, 58],
+      "summary": "Презентационный подкомпонент: одиночный чип фильтра с меткой и кнопкой удаления.",
+      "tags": ["component", "presentational", "catalog"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/catalog/ActiveFilterChips.jsx:ActiveFilterChips",
+      "type": "function",
+      "name": "ActiveFilterChips",
+      "filePath": "client/src/components/catalog/ActiveFilterChips.jsx",
+      "lineRange": [70, 174],
+      "summary": "Собирает список чипов из активных фильтров и навигации, обрабатывает удаление отдельных фильтров и полный сброс.",
+      "tags": ["component", "catalog", "filters", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "type": "file",
+      "name": "CatalogToolbar.jsx",
+      "filePath": "client/src/components/catalog/CatalogToolbar.jsx",
+      "summary": "Панель инструментов каталога с scroll-driven докингом: измеряет геометрию, трансформирует тулбар через motion при прокрутке.",
+      "tags": ["component", "catalog", "toolbar", "motion"],
+      "complexity": "moderate",
+      "languageNotes": "Использует useScroll/useTransform из motion и useLayoutEffect с ResizeObserver для измерения геометрии."
+    },
+    {
+      "id": "function:client/src/components/catalog/CatalogToolbar.jsx:CatalogToolbar",
+      "type": "function",
+      "name": "CatalogToolbar",
+      "filePath": "client/src/components/catalog/CatalogToolbar.jsx",
+      "lineRange": [41, 160],
+      "summary": "Главный компонент тулбара: измеряет якоря, привязывает трансформации к прогрессу прокрутки и рендерит докируемую панель.",
+      "tags": ["component", "catalog", "motion", "scroll"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:client/src/components/catalog/Pagination.jsx",
+      "type": "file",
+      "name": "Pagination.jsx",
+      "filePath": "client/src/components/catalog/Pagination.jsx",
+      "summary": "Компонент постраничной навигации каталога с вычислением видимых страниц и многоточий вокруг текущей.",
+      "tags": ["component", "catalog", "pagination", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/catalog/Pagination.jsx:getPageItems",
+      "type": "function",
+      "name": "getPageItems",
+      "filePath": "client/src/components/catalog/Pagination.jsx",
+      "lineRange": [13, 25],
+      "summary": "Чистая функция, формирующая список номеров страниц и разделителей-многоточий вокруг текущей страницы.",
+      "tags": ["utility", "pagination", "pure-function"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/catalog/Pagination.jsx:Pagination",
+      "type": "function",
+      "name": "Pagination",
+      "filePath": "client/src/components/catalog/Pagination.jsx",
+      "lineRange": [36, 111],
+      "summary": "Рендерит кнопки страниц и навигацию назад/вперёд, вызывая onPageChange при выборе страницы.",
+      "tags": ["component", "catalog", "pagination", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+      "type": "file",
+      "name": "ProductCardSkeleton.jsx",
+      "filePath": "client/src/components/catalog/ProductCardSkeleton.jsx",
+      "summary": "Скелетон-заглушка карточки товара, отображаемая во время загрузки данных каталога.",
+      "tags": ["component", "catalog", "skeleton", "loading-state"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/catalog/SearchBar.jsx",
+      "type": "file",
+      "name": "SearchBar.jsx",
+      "filePath": "client/src/components/catalog/SearchBar.jsx",
+      "summary": "Поле поиска каталога с иконкой поиска и кнопкой очистки, управляемое через проп onChange.",
+      "tags": ["component", "catalog", "search", "controlled-input"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/sections/_MenuItem.jsx",
+      "type": "file",
+      "name": "_MenuItem.jsx",
+      "filePath": "client/src/components/sections/_MenuItem.jsx",
+      "summary": "Приватный подкомпонент пункта мобильного меню с hover-состоянием и навигацией через react-router Link.",
+      "tags": ["component", "menu", "navigation", "private"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/_MenuItem.jsx:MenuItem",
+      "type": "function",
+      "name": "MenuItem",
+      "filePath": "client/src/components/sections/_MenuItem.jsx",
+      "lineRange": [22, 107],
+      "summary": "Рендерит пункт меню с анимированным hover-эффектом и ссылкой-маршрутом.",
+      "tags": ["component", "menu", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/_TaglineLine.jsx",
+      "type": "file",
+      "name": "_TaglineLine.jsx",
+      "filePath": "client/src/components/sections/_TaglineLine.jsx",
+      "summary": "Приватный подкомпонент Hero: анимированная строка слогана с учётом prefers-reduced-motion.",
+      "tags": ["component", "hero", "motion", "private"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/_TaglineLine.jsx:TaglineLine",
+      "type": "function",
+      "name": "TaglineLine",
+      "filePath": "client/src/components/sections/_TaglineLine.jsx",
+      "lineRange": [28, 121],
+      "summary": "Анимирует появление и смену строк слогана с использованием motion и useReducedMotion.",
+      "tags": ["component", "hero", "motion", "animation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/CtaBannerSection.jsx",
+      "type": "file",
+      "name": "CtaBannerSection.jsx",
+      "filePath": "client/src/components/sections/CtaBannerSection.jsx",
+      "summary": "Секция лендинга с CTA-баннером, появляющимся при попадании во вьюпорт (useInView).",
+      "tags": ["component", "section", "landing", "motion"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/CtaBannerSection.jsx:CtaBannerSection",
+      "type": "function",
+      "name": "CtaBannerSection",
+      "filePath": "client/src/components/sections/CtaBannerSection.jsx",
+      "lineRange": [17, 79],
+      "summary": "Рендерит CTA-баннер с анимацией входа, использует контент из @/content/ctaBanner.",
+      "tags": ["component", "section", "landing", "motion"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "type": "file",
+      "name": "FastenerDiagramSection.jsx",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "summary": "Секция лендинга с интерактивной SVG-диаграммой-донатом ассортимента крепежа: вычисляет дуги, анимирует сегменты и подписи.",
+      "tags": ["component", "section", "data-visualization", "svg", "motion"],
+      "complexity": "complex",
+      "languageNotes": "Содержит чистые геометрические функции (arcPath, computeSegmentAt) и motion-анимацию прогресса через useMotionValue."
+    },
+    {
+      "id": "function:client/src/components/sections/FastenerDiagramSection.jsx:computeSegmentAt",
+      "type": "function",
+      "name": "computeSegmentAt",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "lineRange": [72, 97],
+      "summary": "Вычисляет угловые границы и прогресс отрисовки сегмента донат-диаграммы в момент времени t.",
+      "tags": ["utility", "geometry", "pure-function", "data-visualization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/FastenerDiagramSection.jsx:DonutLabel",
+      "type": "function",
+      "name": "DonutLabel",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "lineRange": [165, 213],
+      "summary": "Подкомпонент: анимированная подпись сегмента донат-диаграммы с вычислением позиции.",
+      "tags": ["component", "data-visualization", "motion", "svg"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/FastenerDiagramSection.jsx:DonutChart",
+      "type": "function",
+      "name": "DonutChart",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "lineRange": [251, 331],
+      "summary": "Основной SVG-чарт: управляет прогрессом анимации, рисует декоративные кольца, сегменты и подписи.",
+      "tags": ["component", "data-visualization", "svg", "motion"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/components/sections/FastenerDiagramSection.jsx:FastenerDiagramSection",
+      "type": "function",
+      "name": "FastenerDiagramSection",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "lineRange": [337, 389],
+      "summary": "Корневой компонент секции: адаптирует диаграмму под брейкпоинты и запускает анимацию при попадании во вьюпорт.",
+      "tags": ["component", "section", "data-visualization", "responsive"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/Hero.jsx",
+      "type": "file",
+      "name": "Hero.jsx",
+      "filePath": "client/src/components/sections/Hero.jsx",
+      "summary": "Главная hero-секция лендинга: фоновое видео, фазовая анимация слоганов и реакция на видимость/прокрутку.",
+      "tags": ["component", "section", "hero", "entry-point", "motion"],
+      "complexity": "complex",
+      "languageNotes": "Сложная оркестрация таймеров (pushTimer/clearTimers) и фазовых состояний с очисткой эффектов при размонтировании."
+    },
+    {
+      "id": "function:client/src/components/sections/Hero.jsx:Hero",
+      "type": "function",
+      "name": "Hero",
+      "filePath": "client/src/components/sections/Hero.jsx",
+      "lineRange": [29, 304],
+      "summary": "Управляет циклом смены слоганов, воспроизведением видео и сменой фаз появления, реагируя на видимость вкладки и прокрутку.",
+      "tags": ["component", "hero", "motion", "lifecycle"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:client/src/components/sections/HeroHeader.jsx",
+      "type": "file",
+      "name": "HeroHeader.jsx",
+      "filePath": "client/src/components/sections/HeroHeader.jsx",
+      "summary": "Шапка hero-секции: логотип, навигация, переключатель языка и кнопка открытия мобильного меню с анимацией входа.",
+      "tags": ["component", "section", "header", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/HeroHeader.jsx:HeroHeader",
+      "type": "function",
+      "name": "HeroHeader",
+      "filePath": "client/src/components/sections/HeroHeader.jsx",
+      "lineRange": [23, 108],
+      "summary": "Рендерит навигационную шапку с entrance-анимацией, привязывает открытие меню к ui-store.",
+      "tags": ["component", "header", "navigation", "motion"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/MobileMenu.jsx",
+      "type": "file",
+      "name": "MobileMenu.jsx",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "summary": "Полноэкранное мобильное меню-шторка с анимацией колонок, ловушкой фокуса, навигацией и переключателем языка.",
+      "tags": ["component", "section", "menu", "overlay", "motion"],
+      "complexity": "complex",
+      "languageNotes": "Реализует focus-trap вручную, использует AnimatePresence и кастомные хуки разметки (useCurtainColumns, useMobileMenuLogoSize)."
+    },
+    {
+      "id": "function:client/src/components/sections/MobileMenu.jsx:MobileMenuContent",
+      "type": "function",
+      "name": "MobileMenuContent",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "lineRange": [59, 285],
+      "summary": "Содержимое меню: рендерит колонки-шторки, навигацию, primary/secondary меню и CTA, управляет фокусом и Escape.",
+      "tags": ["component", "menu", "overlay", "accessibility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/components/sections/MobileMenu.jsx:MobileMenu",
+      "type": "function",
+      "name": "MobileMenu",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "lineRange": [290, 299],
+      "summary": "Обёртка: читает состояние открытия из ui-store и монтирует MobileMenuContent через AnimatePresence.",
+      "tags": ["component", "menu", "overlay"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/sections/MobileMenu.jsx:useCurtainColumns",
+      "type": "function",
+      "name": "useCurtainColumns",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "lineRange": [27, 39],
+      "summary": "Кастомный хук, вычисляющий число колонок анимации-шторки по ширине окна.",
+      "tags": ["hook", "menu", "responsive"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/sections/MobileMenu.jsx:useMobileMenuLogoSize",
+      "type": "function",
+      "name": "useMobileMenuLogoSize",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "lineRange": [42, 54],
+      "summary": "Кастомный хук, вычисляющий размер логотипа меню в зависимости от ширины окна.",
+      "tags": ["hook", "menu", "responsive"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/sections/NumbersSection.jsx",
+      "type": "file",
+      "name": "NumbersSection.jsx",
+      "filePath": "client/src/components/sections/NumbersSection.jsx",
+      "summary": "Секция статистики лендинга: ряды чисел с анимацией счётчика (useCountUp), запускаемой при попадании во вьюпорт.",
+      "tags": ["component", "section", "landing", "motion"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/NumbersSection.jsx:StatItem",
+      "type": "function",
+      "name": "StatItem",
+      "filePath": "client/src/components/sections/NumbersSection.jsx",
+      "lineRange": [27, 71],
+      "summary": "Подкомпонент одной цифры статистики с отложенным запуском анимации счётчика через useCountUp.",
+      "tags": ["component", "landing", "animation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/NumbersSection.jsx:NumbersSection",
+      "type": "function",
+      "name": "NumbersSection",
+      "filePath": "client/src/components/sections/NumbersSection.jsx",
+      "lineRange": [85, 130],
+      "summary": "Рендерит два ряда статистики, отслеживая видимость каждого ряда для запуска анимации.",
+      "tags": ["component", "section", "landing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/OurValuesSection.jsx",
+      "type": "file",
+      "name": "OurValuesSection.jsx",
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "summary": "Секция ценностей лендинга: scroll-driven анимация заголовка и карточек с раздельными десктоп/мобильными вариантами.",
+      "tags": ["component", "section", "landing", "motion", "responsive"],
+      "complexity": "complex",
+      "languageNotes": "Содержит несколько подкомпонентов и кастомный хук useViewportWidth; десктоп использует useScroll/useTransform-анимацию карточек."
+    },
+    {
+      "id": "function:client/src/components/sections/OurValuesSection.jsx:TopBlockDesktop",
+      "type": "function",
+      "name": "TopBlockDesktop",
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "lineRange": [87, 145],
+      "summary": "Десктопный верхний блок секции: пословная scroll-анимация заголовка с цветовым переходом.",
+      "tags": ["component", "landing", "motion", "scroll"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/OurValuesSection.jsx:DesktopCardsAnimated",
+      "type": "function",
+      "name": "DesktopCardsAnimated",
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "lineRange": [187, 219],
+      "summary": "Анимирует разъезд карточек ценностей по горизонтали/вертикали в зависимости от прогресса прокрутки.",
+      "tags": ["component", "landing", "motion", "scroll"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/OurValuesSection.jsx:OurValuesSection",
+      "type": "function",
+      "name": "OurValuesSection",
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "lineRange": [231, 256],
+      "summary": "Корневой компонент секции: выбирает десктопный или мобильный вариант по брейкпоинту.",
+      "tags": ["component", "section", "responsive"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/PartnersSection.jsx",
+      "type": "file",
+      "name": "PartnersSection.jsx",
+      "filePath": "client/src/components/sections/PartnersSection.jsx",
+      "summary": "Секция партнёров лендинга: адаптивная сетка карточек партнёров с анимацией появления при скролле.",
+      "tags": ["component", "section", "landing", "motion"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/PartnersSection.jsx:PartnerCard",
+      "type": "function",
+      "name": "PartnerCard",
+      "filePath": "client/src/components/sections/PartnersSection.jsx",
+      "lineRange": [29, 87],
+      "summary": "Карточка одного партнёра с анимацией и обработкой клика.",
+      "tags": ["component", "landing", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/PartnersSection.jsx:PartnersSection",
+      "type": "function",
+      "name": "PartnersSection",
+      "filePath": "client/src/components/sections/PartnersSection.jsx",
+      "lineRange": [92, 147],
+      "summary": "Рендерит адаптивную сетку партнёров, рассчитывая колонки и задержки анимации.",
+      "tags": ["component", "section", "responsive"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "type": "file",
+      "name": "ServiceProgramSection.jsx",
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "summary": "Секция сервисной программы лендинга: список услуг с раскрытием по hover (десктоп) и стопкой строк (мобайл).",
+      "tags": ["component", "section", "landing", "motion", "responsive"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/components/sections/ServiceProgramSection.jsx:DesktopRow",
+      "type": "function",
+      "name": "DesktopRow",
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "lineRange": [43, 114],
+      "summary": "Десктопная строка услуги с раскрытием описания по hover и двусторонней стрелкой.",
+      "tags": ["component", "landing", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/ServiceProgramSection.jsx:MobileRow",
+      "type": "function",
+      "name": "MobileRow",
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "lineRange": [118, 145],
+      "summary": "Мобильная строка услуги с упрощённой раскладкой.",
+      "tags": ["component", "landing", "responsive"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/ServiceProgramSection.jsx:ServiceProgramSection",
+      "type": "function",
+      "name": "ServiceProgramSection",
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "lineRange": [154, 214],
+      "summary": "Корневой компонент секции: управляет hover-состоянием активной услуги и выбирает раскладку по брейкпоинту.",
+      "tags": ["component", "section", "responsive", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/ui/Checkbox.jsx",
+      "type": "file",
+      "name": "Checkbox.jsx",
+      "filePath": "client/src/components/ui/Checkbox.jsx",
+      "summary": "UI-примитив чекбокса с кастомным оформлением, используемый в фильтрах каталога.",
+      "tags": ["component", "ui", "form", "controlled-input"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/Checkbox.jsx:Checkbox",
+      "type": "function",
+      "name": "Checkbox",
+      "filePath": "client/src/components/ui/Checkbox.jsx",
+      "lineRange": [21, 61],
+      "summary": "Рендерит стилизованный чекбокс с меткой, объединяя классы через cn.",
+      "tags": ["component", "ui", "form"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/ui/ErrorBoundary.jsx",
+      "type": "file",
+      "name": "ErrorBoundary.jsx",
+      "filePath": "client/src/components/ui/ErrorBoundary.jsx",
+      "summary": "Классовый компонент-границы ошибок React, перехватывающий исключения рендера и показывающий запасной UI.",
+      "tags": ["component", "ui", "error-handling", "class-component"],
+      "complexity": "moderate",
+      "languageNotes": "Один из немногих классовых компонентов: error boundary требует getDerivedStateFromError/componentDidCatch."
+    },
+    {
+      "id": "class:client/src/components/ui/ErrorBoundary.jsx:ErrorBoundary",
+      "type": "class",
+      "name": "ErrorBoundary",
+      "filePath": "client/src/components/ui/ErrorBoundary.jsx",
+      "lineRange": [21, 60],
+      "summary": "React error boundary: ловит ошибки дочернего дерева и рендерит fallback вместо упавшего поддерева.",
+      "tags": ["component", "error-handling", "class-component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/ui/GridLines.jsx",
+      "type": "file",
+      "name": "GridLines.jsx",
+      "filePath": "client/src/components/ui/GridLines.jsx",
+      "summary": "UI-примитив декоративных вертикальных направляющих сетки, используемый в фоне секций.",
+      "tags": ["component", "ui", "decorative", "layout"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/ui/GridLines.jsx:GridLines",
+      "type": "function",
+      "name": "GridLines",
+      "filePath": "client/src/components/ui/GridLines.jsx",
+      "lineRange": [18, 35],
+      "summary": "Генерирует набор вертикальных линий сетки и рендерит их как декоративный фон.",
+      "tags": ["component", "ui", "decorative"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "config:client/postcss.config.js", "target": "file:client/src/App.css", "type": "configures", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:client/src/components/catalog/ActiveFilterChips.jsx", "target": "function:client/src/components/catalog/ActiveFilterChips.jsx:Chip", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/catalog/ActiveFilterChips.jsx", "target": "function:client/src/components/catalog/ActiveFilterChips.jsx:ActiveFilterChips", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/catalog/ActiveFilterChips.jsx", "target": "function:client/src/components/catalog/ActiveFilterChips.jsx:ActiveFilterChips", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/catalog/ActiveFilterChips.jsx", "target": "file:client/src/components/ui/icons/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/catalog/ActiveFilterChips.jsx", "target": "file:client/src/content/catalog/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/catalog/ActiveFilterChips.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/catalog/CatalogToolbar.jsx", "target": "function:client/src/components/catalog/CatalogToolbar.jsx:CatalogToolbar", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/catalog/CatalogToolbar.jsx", "target": "function:client/src/components/catalog/CatalogToolbar.jsx:CatalogToolbar", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/catalog/CatalogToolbar.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/catalog/CatalogToolbar.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/catalog/CatalogToolbar.jsx", "target": "file:client/src/config/entrance.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/catalog/Pagination.jsx", "target": "function:client/src/components/catalog/Pagination.jsx:getPageItems", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/catalog/Pagination.jsx", "target": "function:client/src/components/catalog/Pagination.jsx:Pagination", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/catalog/Pagination.jsx", "target": "function:client/src/components/catalog/Pagination.jsx:Pagination", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/catalog/Pagination.jsx", "target": "file:client/src/components/ui/icons/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/catalog/Pagination.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/catalog/SearchBar.jsx", "target": "file:client/src/components/ui/icons/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/_MenuItem.jsx", "target": "function:client/src/components/sections/_MenuItem.jsx:MenuItem", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/_MenuItem.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/_TaglineLine.jsx", "target": "function:client/src/components/sections/_TaglineLine.jsx:TaglineLine", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/_TaglineLine.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/CtaBannerSection.jsx", "target": "function:client/src/components/sections/CtaBannerSection.jsx:CtaBannerSection", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/CtaBannerSection.jsx", "target": "function:client/src/components/sections/CtaBannerSection.jsx:CtaBannerSection", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/sections/CtaBannerSection.jsx", "target": "file:client/src/components/ui/Button.jsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/CtaBannerSection.jsx", "target": "file:client/src/content/ctaBanner.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/FastenerDiagramSection.jsx", "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:computeSegmentAt", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/FastenerDiagramSection.jsx", "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:DonutLabel", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/FastenerDiagramSection.jsx", "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:DonutChart", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/FastenerDiagramSection.jsx", "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:FastenerDiagramSection", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/FastenerDiagramSection.jsx", "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:FastenerDiagramSection", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/sections/FastenerDiagramSection.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/FastenerDiagramSection.jsx", "target": "file:client/src/content/fastenerDiagram.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/Hero.jsx", "target": "function:client/src/components/sections/Hero.jsx:Hero", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/Hero.jsx", "target": "function:client/src/components/sections/Hero.jsx:Hero", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/sections/Hero.jsx", "target": "file:client/src/components/sections/_TaglineLine.jsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/Hero.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/Hero.jsx", "target": "file:client/src/config/entrance.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/Hero.jsx", "target": "file:client/src/content/hero.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/HeroHeader.jsx", "target": "function:client/src/components/sections/HeroHeader.jsx:HeroHeader", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/HeroHeader.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/HeroHeader.jsx", "target": "file:client/src/components/ui/icons/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/HeroHeader.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/HeroHeader.jsx", "target": "file:client/src/store/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/HeroHeader.jsx", "target": "file:client/src/content/header.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/HeroHeader.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "function:client/src/components/sections/MobileMenu.jsx:MobileMenuContent", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "function:client/src/components/sections/MobileMenu.jsx:MobileMenu", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "function:client/src/components/sections/MobileMenu.jsx:useCurtainColumns", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "function:client/src/components/sections/MobileMenu.jsx:useMobileMenuLogoSize", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "file:client/src/components/sections/_MenuItem.jsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "file:client/src/components/ui/icons/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "file:client/src/store/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "file:client/src/content/menu.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/MobileMenu.jsx", "target": "file:client/src/content/header.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/NumbersSection.jsx", "target": "function:client/src/components/sections/NumbersSection.jsx:StatItem", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/NumbersSection.jsx", "target": "function:client/src/components/sections/NumbersSection.jsx:NumbersSection", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/NumbersSection.jsx", "target": "function:client/src/components/sections/NumbersSection.jsx:NumbersSection", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/sections/NumbersSection.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/NumbersSection.jsx", "target": "file:client/src/content/numbers.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/OurValuesSection.jsx", "target": "function:client/src/components/sections/OurValuesSection.jsx:TopBlockDesktop", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/OurValuesSection.jsx", "target": "function:client/src/components/sections/OurValuesSection.jsx:DesktopCardsAnimated", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/OurValuesSection.jsx", "target": "function:client/src/components/sections/OurValuesSection.jsx:OurValuesSection", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/OurValuesSection.jsx", "target": "function:client/src/components/sections/OurValuesSection.jsx:OurValuesSection", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/sections/OurValuesSection.jsx", "target": "file:client/src/components/ui/Button.jsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/OurValuesSection.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/OurValuesSection.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/OurValuesSection.jsx", "target": "file:client/src/content/ourValues.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/PartnersSection.jsx", "target": "function:client/src/components/sections/PartnersSection.jsx:PartnerCard", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/PartnersSection.jsx", "target": "function:client/src/components/sections/PartnersSection.jsx:PartnersSection", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/PartnersSection.jsx", "target": "function:client/src/components/sections/PartnersSection.jsx:PartnersSection", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/sections/PartnersSection.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/PartnersSection.jsx", "target": "file:client/src/content/partners.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "function:client/src/components/sections/ServiceProgramSection.jsx:DesktopRow", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "function:client/src/components/sections/ServiceProgramSection.jsx:MobileRow", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "function:client/src/components/sections/ServiceProgramSection.jsx:ServiceProgramSection", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "function:client/src/components/sections/ServiceProgramSection.jsx:ServiceProgramSection", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "file:client/src/config/entrance.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/components/sections/ServiceProgramSection.jsx", "target": "file:client/src/content/serviceProgram.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/ui/Checkbox.jsx", "target": "function:client/src/components/ui/Checkbox.jsx:Checkbox", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/ui/Checkbox.jsx", "target": "function:client/src/components/ui/Checkbox.jsx:Checkbox", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/ui/Checkbox.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/components/ui/ErrorBoundary.jsx", "target": "class:client/src/components/ui/ErrorBoundary.jsx:ErrorBoundary", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/ui/ErrorBoundary.jsx", "target": "class:client/src/components/ui/ErrorBoundary.jsx:ErrorBoundary", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/src/components/ui/GridLines.jsx", "target": "function:client/src/components/ui/GridLines.jsx:GridLines", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/components/ui/GridLines.jsx", "target": "function:client/src/components/ui/GridLines.jsx:GridLines", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/components/ui/GridLines.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7}
+  ]
+}

@@ -1,0 +1,169 @@
+[
+  {
+    "id": "layer:ui-layer",
+    "name": "UI-слой",
+    "description": "Страницы-маршруты, лэндинг- и каталог-секции, UI-примитивы, иконки и глобальные стили клиента — весь визуальный слой и точки входа React-приложения.",
+    "nodeIds": [
+      "file:client/src/App.jsx",
+      "file:client/src/main.jsx",
+      "file:client/index.html",
+      "file:client/src/App.css",
+      "file:client/src/styles/index.css",
+      "file:client/src/pages/Home.jsx",
+      "file:client/src/pages/CatalogPage.jsx",
+      "file:client/src/pages/ProductPage.jsx",
+      "file:client/src/components/sections/Footer.jsx",
+      "file:client/src/components/sections/Header.jsx",
+      "file:client/src/components/sections/TopStrip.jsx",
+      "file:client/src/components/sections/_MenuItem.jsx",
+      "file:client/src/components/sections/_TaglineLine.jsx",
+      "file:client/src/components/sections/CtaBannerSection.jsx",
+      "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "file:client/src/components/sections/Hero.jsx",
+      "file:client/src/components/sections/HeroHeader.jsx",
+      "file:client/src/components/sections/MobileMenu.jsx",
+      "file:client/src/components/sections/NumbersSection.jsx",
+      "file:client/src/components/sections/OurValuesSection.jsx",
+      "file:client/src/components/sections/PartnersSection.jsx",
+      "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "file:client/src/components/catalog/CategoryButton.jsx",
+      "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "file:client/src/components/catalog/FilterButton.jsx",
+      "file:client/src/components/catalog/SortDropdown.jsx",
+      "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "file:client/src/components/catalog/Pagination.jsx",
+      "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+      "file:client/src/components/catalog/SearchBar.jsx",
+      "file:client/src/components/ui/Button.jsx",
+      "file:client/src/components/ui/IconButton.jsx",
+      "file:client/src/components/ui/Logo.jsx",
+      "file:client/src/components/ui/MenuOpenButton.jsx",
+      "file:client/src/components/ui/NavPill.jsx",
+      "file:client/src/components/ui/Checkbox.jsx",
+      "file:client/src/components/ui/ErrorBoundary.jsx",
+      "file:client/src/components/ui/GridLines.jsx",
+      "file:client/src/components/ui/ProductCard.jsx",
+      "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "file:client/src/components/ui/SupportButton.jsx",
+      "file:client/src/components/ui/index.js",
+      "file:client/src/components/ui/icons/index.js",
+      "file:client/src/components/ui/icons/Arrow.jsx",
+      "file:client/src/components/ui/icons/BrandMark.jsx",
+      "file:client/src/components/ui/icons/Cart.jsx",
+      "file:client/src/components/ui/icons/Check.jsx",
+      "file:client/src/components/ui/icons/ChevronDown.jsx",
+      "file:client/src/components/ui/icons/Close.jsx",
+      "file:client/src/components/ui/icons/Filter.jsx",
+      "file:client/src/components/ui/icons/Grid.jsx",
+      "file:client/src/components/ui/icons/Heart.jsx",
+      "file:client/src/components/ui/icons/Plus.jsx",
+      "file:client/src/components/ui/icons/Search.jsx",
+      "file:client/src/components/ui/icons/Sort.jsx",
+      "file:client/src/components/ui/icons/User.jsx",
+      "file:client/src/components/ui/icons/VK.jsx",
+      "file:client/src/components/ui/icons/YouTube.jsx"
+    ]
+  },
+  {
+    "id": "layer:service-layer",
+    "name": "Сервисный слой",
+    "description": "Кастомные hooks (фильтрация каталога, скролл, viewport, анимации) и Zustand-store со slice'ами корзины, избранного и UI — переиспользуемая логика состояния, к которой обращается весь UI.",
+    "nodeIds": [
+      "file:client/src/hooks/index.js",
+      "file:client/src/hooks/useBreakpoint.js",
+      "file:client/src/hooks/useCatalogFilters.js",
+      "file:client/src/hooks/useCountUp.js",
+      "file:client/src/hooks/useElementHeight.js",
+      "file:client/src/hooks/useEntranceProps.js",
+      "file:client/src/hooks/useInfiniteScroll.js",
+      "file:client/src/hooks/useLenis.js",
+      "file:client/src/hooks/useMediaQuery.js",
+      "file:client/src/hooks/useScrollDirection.js",
+      "file:client/src/hooks/useViewport.js",
+      "file:client/src/store/index.js",
+      "file:client/src/store/slices/cartSlice.js",
+      "file:client/src/store/slices/favoritesSlice.js",
+      "file:client/src/store/slices/uiSlice.js"
+    ]
+  },
+  {
+    "id": "layer:content-layer",
+    "name": "Контент-слой",
+    "description": "Статические content-модули: тексты секций лэндинга, навигация, а также данные каталога (категории, бренды, товары) и хелперы по дереву категорий — единый источник правды для отображаемого контента.",
+    "nodeIds": [
+      "file:client/src/content/ctaBanner.js",
+      "file:client/src/content/fastenerDiagram.js",
+      "file:client/src/content/footer.js",
+      "file:client/src/content/header.js",
+      "file:client/src/content/hero.js",
+      "file:client/src/content/menu.js",
+      "file:client/src/content/numbers.js",
+      "file:client/src/content/ourValues.js",
+      "file:client/src/content/partners.js",
+      "file:client/src/content/serviceProgram.js",
+      "file:client/src/content/catalog/index.js",
+      "file:client/src/content/catalog/brands.js",
+      "file:client/src/content/catalog/categories.js",
+      "file:client/src/content/catalog/products.js",
+      "file:client/src/content/catalog/helpers.js"
+    ]
+  },
+  {
+    "id": "layer:utility-layer",
+    "name": "Утилитарный слой",
+    "description": "Сквозные хелперы и константы: слияние Tailwind-классов (cn) и source-level конфиг адаптивных breakpoint'ов и канона entrance-анимаций, импортируемые повсеместно без обратных зависимостей.",
+    "nodeIds": [
+      "file:client/src/utils/cn.js",
+      "file:client/src/config/breakpoints.js",
+      "file:client/src/config/entrance.js"
+    ]
+  },
+  {
+    "id": "layer:api-layer",
+    "name": "Backend/API-слой",
+    "description": "Fastify-сервер: точка входа app.js, CORS-plugin (middleware) и маршруты с health-check endpoint GET /api/health.",
+    "nodeIds": [
+      "file:server/src/app.js",
+      "file:server/src/plugins/cors.js",
+      "file:server/src/routes/index.js",
+      "endpoint:server/src/routes/index.js:GET /api/health"
+    ]
+  },
+  {
+    "id": "layer:data-layer",
+    "name": "Слой данных",
+    "description": "Подключение к PostgreSQL через Drizzle ORM, заготовка схем БД и сервис postgres:16 из docker-compose — слой хранения и доступа к данным.",
+    "nodeIds": [
+      "file:server/src/db/index.js",
+      "file:server/src/db/schema/index.js",
+      "service:docker-compose.yml"
+    ]
+  },
+  {
+    "id": "layer:config-layer",
+    "name": "Конфигурация",
+    "description": "Конфиги сборки, линтинга и форматирования (Vite, Tailwind, PostCSS, ESLint, Prettier), манифесты пакетов монорепозитория и шаблон окружения сервера с настройкой Drizzle.",
+    "nodeIds": [
+      "config:package.json",
+      "config:client/package.json",
+      "config:client/vite.config.js",
+      "config:client/tailwind.config.js",
+      "config:client/postcss.config.js",
+      "config:client/eslint.config.js",
+      "config:client/.prettierrc.json",
+      "config:server/package.json",
+      "config:server/drizzle.config.js",
+      "config:server/.env.example"
+    ]
+  },
+  {
+    "id": "layer:documentation-layer",
+    "name": "Документация",
+    "description": "Документация проекта: README клиентского пакета с описанием стека Vite + React.",
+    "nodeIds": [
+      "document:client/README.md"
+    ]
+  }
+]

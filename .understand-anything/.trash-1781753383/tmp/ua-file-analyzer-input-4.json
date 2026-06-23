@@ -1,0 +1,13 @@
+{
+  "projectRoot": "D:/College/projects/Course 1/Project 'Metiz-O'/fastener-direct",
+  "batchFiles": [
+    {"path": "server/src/app.js", "language": "javascript", "sizeLines": 12, "fileCategory": "code"},
+    {"path": "server/src/plugins/cors.js", "language": "javascript", "sizeLines": 3, "fileCategory": "code"},
+    {"path": "server/src/routes/index.js", "language": "javascript", "sizeLines": 2, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "server/src/app.js": ["server/src/plugins/cors.js", "server/src/routes/index.js"],
+    "server/src/plugins/cors.js": [],
+    "server/src/routes/index.js": []
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "nodes": [
+    {
+      "id": "file:client/src/store/slices/favoritesSlice.js",
+      "type": "file",
+      "name": "favoritesSlice.js",
+      "filePath": "client/src/store/slices/favoritesSlice.js",
+      "summary": "Zustand store slice для избранного: хранит набор id товаров и предоставляет действия добавить/убрать/проверить наличие в избранном.",
+      "tags": ["store", "state-management", "zustand", "favorites"],
+      "complexity": "simple",
+      "languageNotes": "Zustand slice, экспортирующий хук useFavoritesStore."
+    },
+    {
+      "id": "file:client/src/store/slices/uiSlice.js",
+      "type": "file",
+      "name": "uiSlice.js",
+      "filePath": "client/src/store/slices/uiSlice.js",
+      "summary": "Zustand store slice для глобального UI-состояния (например, открытие мобильного меню) через хук useUiStore.",
+      "tags": ["store", "state-management", "zustand", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/styles/index.css",
+      "type": "file",
+      "name": "index.css",
+      "filePath": "client/src/styles/index.css",
+      "summary": "Глобальные стили клиента: подключение шрифта Neue Montreal через @font-face, директивы Tailwind (base/components/utilities) и базовый layer со скрытием скроллбара.",
+      "tags": ["styles", "tailwind", "global-css", "fonts"],
+      "complexity": "simple",
+      "languageNotes": "@font-face с font-display: swap и @tailwind-директивы как точка входа стилей."
+    },
+    {
+      "id": "file:client/src/utils/cn.js",
+      "type": "file",
+      "name": "cn.js",
+      "filePath": "client/src/utils/cn.js",
+      "summary": "Утилита cn для объединения классов: comбинирует clsx и tailwind-merge для безопасного слияния Tailwind-классов.",
+      "tags": ["utility", "tailwind", "class-names", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/utils/cn.js:cn",
+      "type": "function",
+      "name": "cn",
+      "filePath": "client/src/utils/cn.js",
+      "lineRange": [10, 12],
+      "summary": "Объединяет условные классы через clsx и разрешает конфликты Tailwind через twMerge, возвращая итоговую строку классов.",
+      "tags": ["utility", "tailwind", "class-names"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:client/tailwind.config.js",
+      "type": "config",
+      "name": "tailwind.config.js",
+      "filePath": "client/tailwind.config.js",
+      "summary": "Конфигурация Tailwind с design token'ами проекта: фирменные цвета, тени (popover/btn), шрифт Neue Montreal, грид каталога и слоистый z-index стек.",
+      "tags": ["configuration", "tailwind", "design-tokens", "build-system"],
+      "complexity": "moderate",
+      "languageNotes": "Единый источник правды для цветов, z-index и теней; safelist страхует динамический класс bg-gridLine."
+    },
+    {
+      "id": "config:client/vite.config.js",
+      "type": "config",
+      "name": "vite.config.js",
+      "filePath": "client/vite.config.js",
+      "summary": "Конфигурация Vite: плагин React, alias @/ → client/src и dev-proxy /api → http://localhost:3000, связывающий клиент с backend.",
+      "tags": ["configuration", "vite", "build-system", "alias"],
+      "complexity": "simple",
+      "languageNotes": "Alias @ резолвится через fileURLToPath; proxy /api проксирует запросы на Fastify-сервер :3000."
+    },
+    {
+      "id": "service:docker-compose.yml",
+      "type": "service",
+      "name": "docker-compose.yml",
+      "filePath": "docker-compose.yml",
+      "summary": "Docker Compose с single-service postgres:16 (БД fastener_direct, порт 5432) и именованным volume pg_data для персистентности данных.",
+      "tags": ["infrastructure", "orchestration", "database", "containerization"],
+      "complexity": "simple",
+      "languageNotes": "Named volume pg_data сохраняет данные PostgreSQL между перезапусками контейнера."
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Корневой package.json монорепозитория с npm-скриптами и общими зависимостями для запуска client и server.",
+      "tags": ["configuration", "build-system", "npm", "monorepo"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:server/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "server/.env.example",
+      "summary": "Шаблон переменных окружения сервера (например, DATABASE_URL) для подключения к PostgreSQL.",
+      "tags": ["configuration", "environment", "security", "database"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:server/drizzle.config.js",
+      "type": "config",
+      "name": "drizzle.config.js",
+      "filePath": "server/drizzle.config.js",
+      "summary": "Конфигурация Drizzle ORM: путь к схеме (src/db/schema/index.js), каталог миграций drizzle, драйвер pg и connectionString из DATABASE_URL.",
+      "tags": ["configuration", "drizzle", "database", "orm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:server/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "server/package.json",
+      "summary": "Манифест backend-пакета (Fastify/Drizzle): npm-скрипты, зависимости и метаданные сервера.",
+      "tags": ["configuration", "build-system", "npm", "backend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/db/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "server/src/db/index.js",
+      "summary": "Точка подключения к БД: создаёт postgres.js client по DATABASE_URL и экспортирует инстанс drizzle() как db.",
+      "tags": ["database", "drizzle", "driver", "data-access"],
+      "complexity": "simple",
+      "languageNotes": "Использует драйвер postgres-js (drizzle-orm/postgres-js)."
+    },
+    {
+      "id": "file:server/src/db/schema/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "server/src/db/schema/index.js",
+      "summary": "Барель-файл Drizzle-схем БД (пока пустой/заготовка) — место для определения таблиц проекта.",
+      "tags": ["database", "schema", "drizzle", "stub"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:client/src/utils/cn.js",
+      "target": "function:client/src/utils/cn.js:cn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/utils/cn.js",
+      "target": "function:client/src/utils/cn.js:cn",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:client/tailwind.config.js",
+      "target": "file:client/src/styles/index.css",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:client/tailwind.config.js",
+      "target": "file:client/src/utils/cn.js",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:client/vite.config.js",
+      "target": "file:client/src/styles/index.css",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:server/drizzle.config.js",
+      "target": "file:server/src/db/schema/index.js",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:server/drizzle.config.js",
+      "target": "config:server/.env.example",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/db/index.js",
+      "target": "file:server/src/db/schema/index.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/db/index.js",
+      "target": "config:server/.env.example",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "service:docker-compose.yml",
+      "target": "file:server/src/db/index.js",
+      "type": "serves",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

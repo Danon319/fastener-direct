@@ -1,0 +1,186 @@
+{
+  "nodes": [
+    {
+      "id": "file:client/src/components/ui/Button.jsx",
+      "type": "file",
+      "name": "Button.jsx",
+      "filePath": "client/src/components/ui/Button.jsx",
+      "summary": "CTA-кнопка в форме таблетки с анимированным красным кругом и стрелкой; рендерит либо <button>, либо react-router Link при наличии prop `to`.",
+      "tags": ["component", "ui-primitive", "button", "cta"],
+      "complexity": "moderate",
+      "languageNotes": "Поддерживает полиморфный рендеринг (button/Link) и три size-пресета через SIZE_MAP."
+    },
+    {
+      "id": "file:client/src/components/ui/IconButton.jsx",
+      "type": "file",
+      "name": "IconButton.jsx",
+      "filePath": "client/src/components/ui/IconButton.jsx",
+      "summary": "Круглая кнопка-иконка с вариантами оформления (light/dark/filled/slate); пробрасывает forwardRef на корневой <button> для click-outside detection.",
+      "tags": ["component", "ui-primitive", "icon-button", "forward-ref"],
+      "complexity": "moderate",
+      "languageNotes": "Использует React.forwardRef + React.cloneElement для инъекции size/className в дочернюю иконку."
+    },
+    {
+      "id": "file:client/src/components/ui/Logo.jsx",
+      "type": "file",
+      "name": "Logo.jsx",
+      "filePath": "client/src/components/ui/Logo.jsx",
+      "summary": "Логотип Fastener Direct с маркой и текстовым блоком; поддерживает варианты full/mark, темы и масштабирование с пропорциональным расчётом размеров шрифта.",
+      "tags": ["component", "ui-primitive", "logo", "branding"],
+      "complexity": "moderate",
+      "languageNotes": "Полиморфный тег (Link/button/div) выбирается по prop `to`/`onClick`; размеры шрифта вычисляются коэффициентами от размера марки."
+    },
+    {
+      "id": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "type": "file",
+      "name": "MenuOpenButton.jsx",
+      "filePath": "client/src/components/ui/MenuOpenButton.jsx",
+      "summary": "Кнопка открытия мобильного меню — серый slate-круг 48px с иконкой «+»; единый источник для Header, HeroHeader и CatalogToolbar.",
+      "tags": ["component", "ui-primitive", "button", "menu"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/components/ui/icons/index.js",
+      "summary": "Barrel-файл, реэкспортирующий все 15 SVG-иконок проекта одним именованным набором для удобного импорта.",
+      "tags": ["barrel", "icons", "entry-point", "re-export"],
+      "complexity": "simple",
+      "languageNotes": "Чистый barrel: 15 named re-export по умолчанию из отдельных файлов иконок."
+    },
+    {
+      "id": "function:client/src/components/ui/Button.jsx:Button",
+      "type": "function",
+      "name": "Button",
+      "filePath": "client/src/components/ui/Button.jsx",
+      "lineRange": [43, 137],
+      "summary": "Компонент CTA-кнопки: собирает Tailwind-классы через cn, рендерит вложенный анимированный круг со стрелкой и выбирает Link или button по prop `to`.",
+      "tags": ["component", "button", "render", "cta"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/IconButton.jsx:IconButton",
+      "type": "function",
+      "name": "IconButton",
+      "filePath": "client/src/components/ui/IconButton.jsx",
+      "lineRange": [27, 99],
+      "summary": "forwardRef-компонент круглой кнопки-иконки: вычисляет цвет иконки по варианту/pressed/interactive и клонирует дочернюю иконку с нужным размером.",
+      "tags": ["component", "icon-button", "forward-ref", "render"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/Logo.jsx:Logo",
+      "type": "function",
+      "name": "Logo",
+      "filePath": "client/src/components/ui/Logo.jsx",
+      "lineRange": [28, 96],
+      "summary": "Компонент логотипа: вычисляет размеры шрифта/трекинга от размера марки и рендерит марку с опциональным текстовым блоком в выбранном теге.",
+      "tags": ["component", "logo", "render", "branding"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/MenuOpenButton.jsx:MenuOpenButton",
+      "type": "function",
+      "name": "MenuOpenButton",
+      "filePath": "client/src/components/ui/MenuOpenButton.jsx",
+      "lineRange": [17, 23],
+      "summary": "Обёртка над IconButton с фиксированными variant=slate, size=48 и иконкой Plus; наружу выставляет только onClick.",
+      "tags": ["component", "button", "wrapper", "menu"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:client/src/components/ui/Button.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/Logo.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "target": "file:client/src/components/ui/IconButton.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/Button.jsx",
+      "target": "function:client/src/components/ui/Button.jsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/ui/Button.jsx",
+      "target": "function:client/src/components/ui/Button.jsx:Button",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/IconButton.jsx",
+      "target": "function:client/src/components/ui/IconButton.jsx:IconButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/ui/IconButton.jsx",
+      "target": "function:client/src/components/ui/IconButton.jsx:IconButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/Logo.jsx",
+      "target": "function:client/src/components/ui/Logo.jsx:Logo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/ui/Logo.jsx",
+      "target": "function:client/src/components/ui/Logo.jsx:Logo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "target": "function:client/src/components/ui/MenuOpenButton.jsx:MenuOpenButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "target": "function:client/src/components/ui/MenuOpenButton.jsx:MenuOpenButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:client/src/components/ui/MenuOpenButton.jsx:MenuOpenButton",
+      "target": "function:client/src/components/ui/IconButton.jsx:IconButton",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

@@ -1,0 +1,1251 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "client/src/components/ui/icons/Arrow.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "Arrow",
+          "startLine": 15,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Arrow",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Arrow",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/BrandMark.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "functions": [
+        {
+          "name": "BrandMark",
+          "startLine": 15,
+          "endLine": 35,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "BrandMark",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "BrandMark",
+          "callee": "cn",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Cart.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 40,
+      "functions": [
+        {
+          "name": "Cart",
+          "startLine": 15,
+          "endLine": 39,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Cart",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Cart",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Check.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "Check",
+          "startLine": 15,
+          "endLine": 37,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Check",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Check",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/ChevronDown.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "ChevronDown",
+          "startLine": 15,
+          "endLine": 37,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ChevronDown",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ChevronDown",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Close.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "Close",
+          "startLine": 18,
+          "endLine": 32,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Close",
+          "line": 18,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Close",
+          "callee": "cn",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Filter.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 40,
+      "functions": [
+        {
+          "name": "Filter",
+          "startLine": 15,
+          "endLine": 39,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Filter",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Filter",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Grid.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 41,
+      "functions": [
+        {
+          "name": "Grid",
+          "startLine": 15,
+          "endLine": 40,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Grid",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Grid",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Heart.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 40,
+      "functions": [
+        {
+          "name": "Heart",
+          "startLine": 16,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Heart",
+          "line": 16,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Heart",
+          "callee": "cn",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Plus.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 35,
+      "functions": [
+        {
+          "name": "Plus",
+          "startLine": 20,
+          "endLine": 34,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Plus",
+          "line": 20,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Plus",
+          "callee": "cn",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Search.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "Search",
+          "startLine": 15,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Search",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Search",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/Sort.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "Sort",
+          "startLine": 15,
+          "endLine": 41,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Sort",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Sort",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/User.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "User",
+          "startLine": 15,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "User",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "User",
+          "callee": "cn",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/VK.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "VK",
+          "startLine": 15,
+          "endLine": 33,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "VK",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "VK",
+          "callee": "cn",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/YouTube.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "YouTube",
+          "startLine": 15,
+          "endLine": 33,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "YouTube",
+          "line": 15,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "YouTube",
+          "callee": "cn",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/index.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 10,
+      "exports": [
+        {
+          "name": "Button",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "IconButton",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "MenuOpenButton",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "Logo",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "NavPill",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "GridLines",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "Checkbox",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "SupportButton",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/NavPill.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "NavPill",
+          "startLine": 26,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NavPill",
+          "callee": "cn",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/ProductCard.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 302,
+      "nonEmptyLines": 274,
+      "functions": [
+        {
+          "name": "formatPrice",
+          "startLine": 13,
+          "endLine": 20,
+          "params": [
+            "price"
+          ]
+        },
+        {
+          "name": "stopNav",
+          "startLine": 23,
+          "endLine": 26,
+          "params": [
+            "e"
+          ]
+        },
+        {
+          "name": "QuantitySelector",
+          "startLine": 30,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "CartButton",
+          "startLine": 61,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "FavoriteButton",
+          "startLine": 122,
+          "endLine": 147,
+          "params": []
+        },
+        {
+          "name": "ProductCard",
+          "startLine": 159,
+          "endLine": 287,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProductCard",
+          "line": 159,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatPrice",
+          "callee": "Math.floor",
+          "lineNumber": 14
+        },
+        {
+          "caller": "formatPrice",
+          "callee": "Math.round((price - integer) * 100)\n    .toString()\n    .padStart",
+          "lineNumber": 15
+        },
+        {
+          "caller": "formatPrice",
+          "callee": "Math.round((price - integer) * 100)\n    .toString",
+          "lineNumber": 15
+        },
+        {
+          "caller": "formatPrice",
+          "callee": "Math.round",
+          "lineNumber": 15
+        },
+        {
+          "caller": "formatPrice",
+          "callee": "integer.toLocaleString",
+          "lineNumber": 18
+        },
+        {
+          "caller": "stopNav",
+          "callee": "e.preventDefault",
+          "lineNumber": 24
+        },
+        {
+          "caller": "stopNav",
+          "callee": "e.stopPropagation",
+          "lineNumber": 25
+        },
+        {
+          "caller": "QuantitySelector",
+          "callee": "cn",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CartButton",
+          "callee": "useCartStore",
+          "lineNumber": 62
+        },
+        {
+          "caller": "CartButton",
+          "callee": "useCartStore",
+          "lineNumber": 63
+        },
+        {
+          "caller": "CartButton",
+          "callee": "useCartStore",
+          "lineNumber": 64
+        },
+        {
+          "caller": "CartButton",
+          "callee": "s.items.has",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handleClick",
+          "callee": "stopNav",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handleClick",
+          "callee": "addToCart",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handleClick",
+          "callee": "removeFromCart",
+          "lineNumber": 72
+        },
+        {
+          "caller": "CartButton",
+          "callee": "cn",
+          "lineNumber": 84
+        },
+        {
+          "caller": "FavoriteButton",
+          "callee": "useFavoritesStore",
+          "lineNumber": 123
+        },
+        {
+          "caller": "FavoriteButton",
+          "callee": "useFavoritesStore",
+          "lineNumber": 124
+        },
+        {
+          "caller": "FavoriteButton",
+          "callee": "s.items.has",
+          "lineNumber": 124
+        },
+        {
+          "caller": "FavoriteButton",
+          "callee": "stopNav",
+          "lineNumber": 130
+        },
+        {
+          "caller": "FavoriteButton",
+          "callee": "toggleItem",
+          "lineNumber": 131
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "formatPrice",
+          "lineNumber": 160
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "useViewport",
+          "lineNumber": 162
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "useCartStore",
+          "lineNumber": 165
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "s.items.has",
+          "lineNumber": 165
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "useCartStore",
+          "lineNumber": 166
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "s.items.get",
+          "lineNumber": 166
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "useCartStore",
+          "lineNumber": 167
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "useState",
+          "lineNumber": 169
+        },
+        {
+          "caller": "handleDecrement",
+          "callee": "updateQuantity",
+          "lineNumber": 176
+        },
+        {
+          "caller": "handleDecrement",
+          "callee": "setLocalQty",
+          "lineNumber": 178
+        },
+        {
+          "caller": "handleDecrement",
+          "callee": "Math.max",
+          "lineNumber": 178
+        },
+        {
+          "caller": "handleIncrement",
+          "callee": "updateQuantity",
+          "lineNumber": 184
+        },
+        {
+          "caller": "handleIncrement",
+          "callee": "setLocalQty",
+          "lineNumber": 186
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "useRef",
+          "lineNumber": 192
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "useEffect",
+          "lineNumber": 193
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "setLocalQty",
+          "lineNumber": 197
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "cn",
+          "lineNumber": 205
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "cn",
+          "lineNumber": 230
+        },
+        {
+          "caller": "ProductCard",
+          "callee": "cn",
+          "lineNumber": 245
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/ScrollToTopButton.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "ScrollToTopButton",
+          "startLine": 17,
+          "endLine": 56,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ScrollToTopButton",
+          "line": 17,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ScrollToTopButton",
+          "callee": "useState",
+          "lineNumber": 18
+        },
+        {
+          "caller": "ScrollToTopButton",
+          "callee": "useEffect",
+          "lineNumber": 20
+        },
+        {
+          "caller": "onScroll",
+          "callee": "setVisible",
+          "lineNumber": 21
+        },
+        {
+          "caller": "ScrollToTopButton",
+          "callee": "onScroll",
+          "lineNumber": 22
+        },
+        {
+          "caller": "ScrollToTopButton",
+          "callee": "window.addEventListener",
+          "lineNumber": 23
+        },
+        {
+          "caller": "ScrollToTopButton",
+          "callee": "window.removeEventListener",
+          "lineNumber": 24
+        },
+        {
+          "caller": "handleClick",
+          "callee": "window.scrollTo",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/SupportButton.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "SupportButton",
+          "startLine": 18,
+          "endLine": 92,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SupportButton",
+          "line": 18,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SupportButton",
+          "callee": "useScrollDirection",
+          "lineNumber": 20
+        },
+        {
+          "caller": "SupportButton",
+          "callee": "useState",
+          "lineNumber": 22
+        },
+        {
+          "caller": "SupportButton",
+          "callee": "useEffect",
+          "lineNumber": 24
+        },
+        {
+          "caller": "onScroll",
+          "callee": "document.querySelector",
+          "lineNumber": 26
+        },
+        {
+          "caller": "onScroll",
+          "callee": "setIsFooterZone",
+          "lineNumber": 30
+        },
+        {
+          "caller": "SupportButton",
+          "callee": "window.addEventListener",
+          "lineNumber": 33
+        },
+        {
+          "caller": "SupportButton",
+          "callee": "window.removeEventListener",
+          "lineNumber": 34
+        },
+        {
+          "caller": "SupportButton",
+          "callee": "cn",
+          "lineNumber": 42
+        },
+        {
+          "caller": "SupportButton",
+          "callee": "cn",
+          "lineNumber": 59
+        },
+        {
+          "caller": "SupportButton",
+          "callee": "cn",
+          "lineNumber": 69
+        },
+        {
+          "caller": "SupportButton",
+          "callee": "cn",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/config/breakpoints.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "mediaQuery",
+          "startLine": 24,
+          "endLine": 30,
+          "params": [
+            "name"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BREAKPOINTS",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "mediaQuery",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/config/entrance.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 15,
+      "exports": [
+        {
+          "name": "ENTRANCE_DURATION",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "ENTRANCE_EASE",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "ENTRANCE_Y",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "ENTRANCE_STAGGER",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/content/catalog/brands.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "exports": [
+        {
+          "name": "BRANDS",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/content/catalog/categories.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 31,
+      "exports": [
+        {
+          "name": "CATEGORY_TREE",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/content/catalog/helpers.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 61,
+      "functions": [
+        {
+          "name": "findCategoryBySlug",
+          "startLine": 11,
+          "endLine": 14,
+          "params": [
+            "slug"
+          ]
+        },
+        {
+          "name": "findSubcategoryBySlug",
+          "startLine": 22,
+          "endLine": 29,
+          "params": [
+            "slug"
+          ]
+        },
+        {
+          "name": "getCategoryLabel",
+          "startLine": 38,
+          "endLine": 44,
+          "params": [
+            "slug"
+          ]
+        },
+        {
+          "name": "getCategoryBreadcrumbPath",
+          "startLine": 54,
+          "endLine": 65,
+          "params": [
+            "categorySlug",
+            "subcategorySlug"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "findCategoryBySlug",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "findSubcategoryBySlug",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "getCategoryLabel",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "getCategoryBreadcrumbPath",
+          "line": 54,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "findCategoryBySlug",
+          "callee": "CATEGORY_TREE.find",
+          "lineNumber": 13
+        },
+        {
+          "caller": "findSubcategoryBySlug",
+          "callee": "parent.children.find",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getCategoryLabel",
+          "callee": "findCategoryBySlug",
+          "lineNumber": 39
+        },
+        {
+          "caller": "getCategoryLabel",
+          "callee": "findSubcategoryBySlug",
+          "lineNumber": 41
+        },
+        {
+          "caller": "getCategoryBreadcrumbPath",
+          "callee": "findCategoryBySlug",
+          "lineNumber": 56
+        },
+        {
+          "caller": "getCategoryBreadcrumbPath",
+          "callee": "path.push",
+          "lineNumber": 58
+        },
+        {
+          "caller": "getCategoryBreadcrumbPath",
+          "callee": "top.children.find",
+          "lineNumber": 60
+        },
+        {
+          "caller": "getCategoryBreadcrumbPath",
+          "callee": "path.push",
+          "lineNumber": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    }
+  ]
+}

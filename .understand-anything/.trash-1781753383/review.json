@@ -1,0 +1,40 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'config:client/eslint.config.js' has no edges (orphan)",
+    "Node 'file:client/src/components/ui/icons/VK.jsx' has no edges (orphan)",
+    "Node 'file:client/src/components/ui/icons/YouTube.jsx' has no edges (orphan)",
+    "Node 'file:client/src/content/catalog/brands.js' has no edges (orphan)",
+    "Node 'file:client/src/content/catalog/products.js' has no edges (orphan)",
+    "Node 'file:client/src/store/slices/cartSlice.js' has no edges (orphan)",
+    "Node 'file:client/src/store/slices/favoritesSlice.js' has no edges (orphan)",
+    "Node 'file:client/src/store/slices/uiSlice.js' has no edges (orphan)",
+    "Node 'config:package.json' has no edges (orphan)",
+    "Node 'config:server/package.json' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 187,
+    "totalEdges": 291,
+    "totalLayers": 8,
+    "tourSteps": 14,
+    "nodeTypes": {
+      "file": 98,
+      "function": 75,
+      "endpoint": 1,
+      "config": 10,
+      "document": 1,
+      "class": 1,
+      "service": 1
+    },
+    "edgeTypes": {
+      "imports": 138,
+      "contains": 81,
+      "depends_on": 11,
+      "exports": 51,
+      "configures": 7,
+      "documents": 1,
+      "calls": 1,
+      "serves": 1
+    }
+  }
+}

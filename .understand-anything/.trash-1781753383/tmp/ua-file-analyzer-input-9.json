@@ -1,0 +1,33 @@
+{
+  "projectRoot": "D:/College/projects/Course 1/Project 'Metiz-O'/fastener-direct",
+  "batchFiles": [
+    {"path": "client/src/store/slices/favoritesSlice.js", "language": "javascript", "sizeLines": 19, "fileCategory": "code"},
+    {"path": "client/src/store/slices/uiSlice.js", "language": "javascript", "sizeLines": 8, "fileCategory": "code"},
+    {"path": "client/src/styles/index.css", "language": "css", "sizeLines": 35, "fileCategory": "markup"},
+    {"path": "client/src/utils/cn.js", "language": "javascript", "sizeLines": 12, "fileCategory": "code"},
+    {"path": "client/tailwind.config.js", "language": "javascript", "sizeLines": 62, "fileCategory": "code"},
+    {"path": "client/vite.config.js", "language": "javascript", "sizeLines": 22, "fileCategory": "code"},
+    {"path": "docker-compose.yml", "language": "yaml", "sizeLines": 13, "fileCategory": "infra"},
+    {"path": "package.json", "language": "json", "sizeLines": 11, "fileCategory": "config"},
+    {"path": "server/.env.example", "language": "config", "sizeLines": 0, "fileCategory": "config"},
+    {"path": "server/drizzle.config.js", "language": "javascript", "sizeLines": 5, "fileCategory": "code"},
+    {"path": "server/package.json", "language": "json", "sizeLines": 23, "fileCategory": "config"},
+    {"path": "server/src/db/index.js", "language": "javascript", "sizeLines": 4, "fileCategory": "code"},
+    {"path": "server/src/db/schema/index.js", "language": "javascript", "sizeLines": 0, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "client/src/store/slices/favoritesSlice.js": [],
+    "client/src/store/slices/uiSlice.js": [],
+    "client/src/styles/index.css": [],
+    "client/src/utils/cn.js": [],
+    "client/tailwind.config.js": [],
+    "client/vite.config.js": [],
+    "docker-compose.yml": [],
+    "package.json": [],
+    "server/.env.example": [],
+    "server/drizzle.config.js": [],
+    "server/package.json": [],
+    "server/src/db/index.js": [],
+    "server/src/db/schema/index.js": []
+  }
+}

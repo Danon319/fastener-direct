@@ -1,0 +1,308 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "client/src/components/ui/Button.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 149,
+      "nonEmptyLines": 138,
+      "functions": [
+        {
+          "name": "Button",
+          "startLine": 43,
+          "endLine": 137,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Button",
+          "line": 43,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Button",
+          "callee": "e.stopPropagation",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Button",
+          "callee": "onClick",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Button",
+          "callee": "e.stopPropagation",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Button",
+          "callee": "onClick",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 130
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/IconButton.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 105,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/Logo.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 97,
+      "functions": [
+        {
+          "name": "Logo",
+          "startLine": 28,
+          "endLine": 96,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Logo",
+          "line": 28,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Logo",
+          "callee": "Math.round",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Logo",
+          "callee": "Math.max",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Logo",
+          "callee": "Math.round",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Logo",
+          "callee": "Math.max",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Logo",
+          "callee": "Math.max",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Logo",
+          "callee": "Math.round",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Logo",
+          "callee": "Math.max",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Logo",
+          "callee": "Math.round",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Logo",
+          "callee": "cn",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Logo",
+          "callee": "cn",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Logo",
+          "callee": "cn",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Logo",
+          "callee": "cn",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/MenuOpenButton.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 23,
+      "functions": [
+        {
+          "name": "MenuOpenButton",
+          "startLine": 17,
+          "endLine": 23,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MenuOpenButton",
+          "line": 17,
+          "isDefault": true
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/ui/icons/index.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 16,
+      "exports": [
+        {
+          "name": "BrandMark",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "User",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "YouTube",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "VK",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "Plus",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "Close",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "Arrow",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "Heart",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "Search",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "Filter",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "ChevronDown",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "Sort",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "Grid",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "Check",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "Cart",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 15,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

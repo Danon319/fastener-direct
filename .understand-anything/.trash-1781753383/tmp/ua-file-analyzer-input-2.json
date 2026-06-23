@@ -1,0 +1,17 @@
+{
+  "projectRoot": "D:/College/projects/Course 1/Project 'Metiz-O'/fastener-direct",
+  "batchFiles": [
+    {"path": "client/src/components/catalog/CategoryButton.jsx", "language": "javascript", "sizeLines": 35, "fileCategory": "code"},
+    {"path": "client/src/components/catalog/CategoryDropdown.jsx", "language": "javascript", "sizeLines": 142, "fileCategory": "code"},
+    {"path": "client/src/components/catalog/FilterButton.jsx", "language": "javascript", "sizeLines": 324, "fileCategory": "code"},
+    {"path": "client/src/components/catalog/SortDropdown.jsx", "language": "javascript", "sizeLines": 95, "fileCategory": "code"},
+    {"path": "client/src/components/catalog/ToolbarMenu.jsx", "language": "javascript", "sizeLines": 73, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "client/src/components/catalog/CategoryButton.jsx": ["client/src/components/catalog/CategoryDropdown.jsx", "client/src/components/catalog/ToolbarMenu.jsx"],
+    "client/src/components/catalog/CategoryDropdown.jsx": [],
+    "client/src/components/catalog/FilterButton.jsx": ["client/src/components/catalog/ToolbarMenu.jsx"],
+    "client/src/components/catalog/SortDropdown.jsx": ["client/src/components/catalog/ToolbarMenu.jsx"],
+    "client/src/components/catalog/ToolbarMenu.jsx": []
+  }
+}

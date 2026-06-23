@@ -1,0 +1,258 @@
+{
+  "nodes": [
+    {
+      "id": "file:client/src/App.jsx",
+      "type": "file",
+      "name": "App.jsx",
+      "filePath": "client/src/App.jsx",
+      "summary": "Корневой компонент приложения: задаёт глобальную раскладку (TopStrip, Header, MobileMenu, Footer), маршруты React Router (Home, CatalogPage, ProductPage) и инициализирует плавный скролл через useLenis.",
+      "tags": ["entry-point", "routing", "layout", "component"],
+      "complexity": "simple",
+      "languageNotes": "SPA-оркестратор на react-router-dom: App не пересоздаётся при SPA-навигации, что используется для одноразовых mount-анимаций."
+    },
+    {
+      "id": "function:client/src/App.jsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "client/src/App.jsx",
+      "lineRange": [12, 30],
+      "summary": "Главный layout-компонент: монтирует постоянные секции и объявляет дерево маршрутов Routes/Route, вызывает хук useLenis для инерционного скролла.",
+      "tags": ["component", "routing", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/sections/Footer.jsx",
+      "type": "file",
+      "name": "Footer.jsx",
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "summary": "Подвал сайта с навигацией, контактами, соцсетями и юридическим блоком; фиксированный на главной и относительный на остальных страницах (поведение зависит от useLocation).",
+      "tags": ["component", "section", "navigation", "layout"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/Footer.jsx:Footer",
+      "type": "function",
+      "name": "Footer",
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "lineRange": [63, 166],
+      "summary": "Основной компонент подвала: рендерит колонки ссылок каталога и навигации, контактную информацию, соцсети и CTA; меняет позиционирование в зависимости от текущего маршрута.",
+      "tags": ["component", "section", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/Footer.jsx:FooterLink",
+      "type": "function",
+      "name": "FooterLink",
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "lineRange": [19, 31],
+      "summary": "Внутренний хелпер-компонент для внутренних ссылок подвала (react-router Link) с hover-переходом цвета.",
+      "tags": ["component", "navigation", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/sections/Footer.jsx:FooterAnchor",
+      "type": "function",
+      "name": "FooterAnchor",
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "lineRange": [38, 52],
+      "summary": "Внутренний хелпер-компонент для внешних ссылок подвала (нативный anchor) с hover-переходом цвета.",
+      "tags": ["component", "navigation", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/sections/Header.jsx",
+      "type": "file",
+      "name": "Header.jsx",
+      "filePath": "client/src/components/sections/Header.jsx",
+      "summary": "Фиксированный pill-хедер с opacity-fade: на главной появляется после прокрутки Hero, на остальных страницах виден всегда; содержит логотип, навигацию, переключатель языка и кнопку открытия меню.",
+      "tags": ["component", "section", "navigation", "header"],
+      "complexity": "moderate",
+      "languageNotes": "Использует motion/react (useScroll, useTransform) для скролл-зависимой прозрачности и хук useEntranceProps для канонической entrance-анимации."
+    },
+    {
+      "id": "function:client/src/components/sections/Header.jsx:Header",
+      "type": "function",
+      "name": "Header",
+      "filePath": "client/src/components/sections/Header.jsx",
+      "lineRange": [19, 135],
+      "summary": "Компонент фиксированного хедера: вычисляет видимость по скроллу и маршруту, управляет состоянием языка и открытием мобильного меню через useUiStore.",
+      "tags": ["component", "navigation", "header", "state"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/TopStrip.jsx",
+      "type": "file",
+      "name": "TopStrip.jsx",
+      "filePath": "client/src/components/sections/TopStrip.jsx",
+      "summary": "Декоративная красная полоса 3px, зафиксированная вверху страницы; при первом mount проигрывает slide-in анимацию scaleX слева направо.",
+      "tags": ["component", "section", "decoration", "animation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/sections/TopStrip.jsx:TopStrip",
+      "type": "function",
+      "name": "TopStrip",
+      "filePath": "client/src/components/sections/TopStrip.jsx",
+      "lineRange": [14, 26],
+      "summary": "Рендерит фиксированную декоративную полосу с motion slide-in анимацией, уважающей prefers-reduced-motion через useReducedMotion.",
+      "tags": ["component", "decoration", "animation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/hooks/index.js",
+      "summary": "Barrel-файл хуков: реэкспортирует все кастомные хуки (useViewport, useCountUp, useScrollDirection, useLenis, useCatalogFilters и др.) для единой точки импорта через @/hooks.",
+      "tags": ["barrel", "entry-point", "hook"],
+      "complexity": "simple",
+      "languageNotes": "Чистый barrel re-export без собственной логики — упрощает импорты по всему клиенту."
+    },
+    {
+      "id": "file:client/src/pages/CatalogPage.jsx",
+      "type": "file",
+      "name": "CatalogPage.jsx",
+      "filePath": "client/src/pages/CatalogPage.jsx",
+      "summary": "UI-оркестратор страницы каталога: прозрачная шапка, светлый hero-блок с закрепляемым тулбаром и тёмная секция с сеткой товаров; вся логика фильтрации/сортировки/подгрузки делегирована хуку useCatalogFilters.",
+      "tags": ["component", "page", "catalog", "orchestrator"],
+      "complexity": "complex",
+      "languageNotes": "Композирует множество catalog-компонентов и хуки useInfiniteScroll/useBreakpoint; скелетон-загрузка и stagger fade-in через motion/react."
+    },
+    {
+      "id": "function:client/src/pages/CatalogPage.jsx:CatalogPage",
+      "type": "function",
+      "name": "CatalogPage",
+      "filePath": "client/src/pages/CatalogPage.jsx",
+      "lineRange": [82, 219],
+      "summary": "Компонент страницы каталога: читает параметры маршрута, подключает фильтры через useCatalogFilters, управляет первичной скелетон-загрузкой и бесконечной подгрузкой, рендерит сетку карточек товаров.",
+      "tags": ["component", "page", "catalog", "state"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/pages/CatalogPage.jsx:EmptyState",
+      "type": "function",
+      "name": "EmptyState",
+      "filePath": "client/src/pages/CatalogPage.jsx",
+      "lineRange": [48, 69],
+      "summary": "Внутренний компонент пустого состояния каталога: показывается, когда под текущие фильтры не нашлось товаров.",
+      "tags": ["component", "catalog", "empty-state"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/pages/Home.jsx",
+      "type": "file",
+      "name": "Home.jsx",
+      "filePath": "client/src/pages/Home.jsx",
+      "summary": "Главная страница: компонует Hero, HeroHeader и набор лэндинг-секций в скруглённой обёртке плюс плавающую кнопку поддержки; внизу спейсер высотой с подвал через useElementHeight.",
+      "tags": ["component", "page", "landing", "orchestrator"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/pages/Home.jsx:Home",
+      "type": "function",
+      "name": "Home",
+      "filePath": "client/src/pages/Home.jsx",
+      "lineRange": [19, 46],
+      "summary": "Компонент главной страницы: рендерит последовательность лэндинг-секций, сбрасывает скролл наверх при mount и резервирует место под фиксированный подвал.",
+      "tags": ["component", "page", "landing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/pages/ProductPage.jsx",
+      "type": "file",
+      "name": "ProductPage.jsx",
+      "filePath": "client/src/pages/ProductPage.jsx",
+      "summary": "Страница товара-заглушка: показывает id товара из URL и ссылку обратно в каталог; резервирует место под подвал через useElementHeight.",
+      "tags": ["component", "page", "placeholder"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/pages/ProductPage.jsx:ProductPage",
+      "type": "function",
+      "name": "ProductPage",
+      "filePath": "client/src/pages/ProductPage.jsx",
+      "lineRange": [10, 32],
+      "summary": "Компонент-заглушка страницы товара: читает id через useParams, сбрасывает скролл наверх и рендерит ссылку возврата в каталог.",
+      "tags": ["component", "page", "placeholder"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/pages/Home.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/pages/CatalogPage.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/pages/ProductPage.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/components/sections/Footer.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/components/sections/Header.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/components/sections/TopStrip.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/components/sections/MobileMenu.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+
+    { "source": "file:client/src/App.jsx", "target": "function:client/src/App.jsx:App", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:client/src/App.jsx", "target": "file:client/src/hooks/useLenis.js", "type": "depends_on", "direction": "forward", "weight": 0.6 },
+
+    { "source": "file:client/src/components/sections/Footer.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Footer.jsx", "target": "file:client/src/components/ui/icons/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Footer.jsx", "target": "file:client/src/content/footer.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Footer.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Footer.jsx", "target": "function:client/src/components/sections/Footer.jsx:Footer", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:client/src/components/sections/Footer.jsx", "target": "function:client/src/components/sections/Footer.jsx:FooterLink", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:client/src/components/sections/Footer.jsx", "target": "function:client/src/components/sections/Footer.jsx:FooterAnchor", "type": "contains", "direction": "forward", "weight": 1.0 },
+
+    { "source": "file:client/src/components/sections/Header.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Header.jsx", "target": "file:client/src/components/ui/icons/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Header.jsx", "target": "file:client/src/store/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Header.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Header.jsx", "target": "file:client/src/content/header.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Header.jsx", "target": "file:client/src/utils/cn.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/components/sections/Header.jsx", "target": "function:client/src/components/sections/Header.jsx:Header", "type": "contains", "direction": "forward", "weight": 1.0 },
+
+    { "source": "file:client/src/components/sections/TopStrip.jsx", "target": "function:client/src/components/sections/TopStrip.jsx:TopStrip", "type": "contains", "direction": "forward", "weight": 1.0 },
+
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useViewport.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useCountUp.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useScrollDirection.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useLenis.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useElementHeight.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useMediaQuery.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useBreakpoint.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useCatalogFilters.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useInfiniteScroll.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/hooks/index.js", "target": "file:client/src/hooks/useEntranceProps.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/ui/ProductCard.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/ui/ScrollToTopButton.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/ui/icons/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/catalog/CatalogToolbar.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/catalog/FilterButton.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/catalog/SearchBar.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/catalog/SortDropdown.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/catalog/CategoryButton.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/catalog/ActiveFilterChips.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/components/catalog/ProductCardSkeleton.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/config/entrance.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/store/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "function:client/src/pages/CatalogPage.jsx:CatalogPage", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "function:client/src/pages/CatalogPage.jsx:EmptyState", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "function:client/src/pages/CatalogPage.jsx:CatalogPage", "type": "exports", "direction": "forward", "weight": 0.8 },
+    { "source": "file:client/src/pages/CatalogPage.jsx", "target": "file:client/src/hooks/useCatalogFilters.js", "type": "depends_on", "direction": "forward", "weight": 0.6 },
+
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/sections/CtaBannerSection.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/sections/FastenerDiagramSection.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/sections/Hero.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/sections/HeroHeader.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/sections/NumbersSection.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/sections/OurValuesSection.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/sections/PartnersSection.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/sections/ServiceProgramSection.jsx", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/components/ui/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "function:client/src/pages/Home.jsx:Home", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:client/src/pages/Home.jsx", "target": "function:client/src/pages/Home.jsx:Home", "type": "exports", "direction": "forward", "weight": 0.8 },
+
+    { "source": "file:client/src/pages/ProductPage.jsx", "target": "file:client/src/hooks/index.js", "type": "imports", "direction": "forward", "weight": 0.7 },
+    { "source": "file:client/src/pages/ProductPage.jsx", "target": "function:client/src/pages/ProductPage.jsx:ProductPage", "type": "contains", "direction": "forward", "weight": 1.0 },
+    { "source": "file:client/src/pages/ProductPage.jsx", "target": "function:client/src/pages/ProductPage.jsx:ProductPage", "type": "exports", "direction": "forward", "weight": 0.8 }
+  ]
+}

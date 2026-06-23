@@ -1,0 +1,491 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "client/src/components/catalog/CategoryButton.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "CategoryButton",
+          "startLine": 12,
+          "endLine": 35,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CategoryButton",
+          "line": 12,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CategoryButton",
+          "callee": "cn",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/catalog/CategoryDropdown.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 133,
+      "functions": [
+        {
+          "name": "BackArrow",
+          "startLine": 11,
+          "endLine": 27,
+          "params": []
+        },
+        {
+          "name": "CategoryDropdown",
+          "startLine": 36,
+          "endLine": 138,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CategoryDropdown",
+          "line": 36,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CategoryDropdown",
+          "callee": "useNavigate",
+          "lineNumber": 37
+        },
+        {
+          "caller": "CategoryDropdown",
+          "callee": "useState",
+          "lineNumber": 39
+        },
+        {
+          "caller": "handleCategoryClick",
+          "callee": "setParent",
+          "lineNumber": 44
+        },
+        {
+          "caller": "handleCategoryClick",
+          "callee": "navigate",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handleCategoryClick",
+          "callee": "onClose",
+          "lineNumber": 47
+        },
+        {
+          "caller": "handleAll",
+          "callee": "navigate",
+          "lineNumber": 52
+        },
+        {
+          "caller": "handleAll",
+          "callee": "onClose",
+          "lineNumber": 53
+        },
+        {
+          "caller": "handleSubcategoryClick",
+          "callee": "navigate",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleSubcategoryClick",
+          "callee": "onClose",
+          "lineNumber": 58
+        },
+        {
+          "caller": "CategoryDropdown",
+          "callee": "setParent",
+          "lineNumber": 68
+        },
+        {
+          "caller": "CategoryDropdown",
+          "callee": "CATEGORY_TREE.map",
+          "lineNumber": 92
+        },
+        {
+          "caller": "CategoryDropdown",
+          "callee": "handleCategoryClick",
+          "lineNumber": 96
+        },
+        {
+          "caller": "CategoryDropdown",
+          "callee": "handleAll",
+          "lineNumber": 117
+        },
+        {
+          "caller": "CategoryDropdown",
+          "callee": "parent.label.toLowerCase",
+          "lineNumber": 120
+        },
+        {
+          "caller": "CategoryDropdown",
+          "callee": "parent.children.map",
+          "lineNumber": 122
+        },
+        {
+          "caller": "CategoryDropdown",
+          "callee": "handleSubcategoryClick",
+          "lineNumber": 126
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/catalog/FilterButton.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 324,
+      "nonEmptyLines": 304,
+      "functions": [
+        {
+          "name": "CheckBox",
+          "startLine": 22,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "FilterSection",
+          "startLine": 38,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "BrandList",
+          "startLine": 56,
+          "endLine": 79,
+          "params": []
+        },
+        {
+          "name": "PriceFilter",
+          "startLine": 87,
+          "endLine": 134,
+          "params": []
+        },
+        {
+          "name": "StockToggle",
+          "startLine": 144,
+          "endLine": 167,
+          "params": []
+        },
+        {
+          "name": "FilterPanel",
+          "startLine": 177,
+          "endLine": 251,
+          "params": []
+        },
+        {
+          "name": "FilterButton",
+          "startLine": 284,
+          "endLine": 310,
+          "params": [
+            "panelProps"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FilterButton",
+          "line": 284,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CheckBox",
+          "callee": "cn",
+          "lineNumber": 25
+        },
+        {
+          "caller": "FilterSection",
+          "callee": "cn",
+          "lineNumber": 40
+        },
+        {
+          "caller": "BrandList",
+          "callee": "BRANDS.map",
+          "lineNumber": 59
+        },
+        {
+          "caller": "BrandList",
+          "callee": "selected.includes",
+          "lineNumber": 60
+        },
+        {
+          "caller": "BrandList",
+          "callee": "onToggle",
+          "lineNumber": 71
+        },
+        {
+          "caller": "PriceFilter",
+          "callee": "onMin",
+          "lineNumber": 98
+        },
+        {
+          "caller": "PriceFilter",
+          "callee": "onMax",
+          "lineNumber": 107
+        },
+        {
+          "caller": "PriceFilter",
+          "callee": "PRICE_RANGES.map",
+          "lineNumber": 112
+        },
+        {
+          "caller": "PriceFilter",
+          "callee": "onMin",
+          "lineNumber": 119
+        },
+        {
+          "caller": "PriceFilter",
+          "callee": "onMax",
+          "lineNumber": 120
+        },
+        {
+          "caller": "PriceFilter",
+          "callee": "cn",
+          "lineNumber": 122
+        },
+        {
+          "caller": "StockToggle",
+          "callee": "cn",
+          "lineNumber": 152
+        },
+        {
+          "caller": "StockToggle",
+          "callee": "cn",
+          "lineNumber": 158
+        },
+        {
+          "caller": "FilterPanel",
+          "callee": "useEffect",
+          "lineNumber": 192
+        },
+        {
+          "caller": "FilterPanel",
+          "callee": "onSyncStaged",
+          "lineNumber": 193
+        },
+        {
+          "caller": "FilterPanel",
+          "callee": "onApply",
+          "lineNumber": 241
+        },
+        {
+          "caller": "FilterPanel",
+          "callee": "close",
+          "lineNumber": 242
+        },
+        {
+          "caller": "FilterButton",
+          "callee": "cn",
+          "lineNumber": 293
+        },
+        {
+          "caller": "FilterButton",
+          "callee": "cn",
+          "lineNumber": 302
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/catalog/SortDropdown.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 89,
+      "functions": [
+        {
+          "name": "SortDropdown",
+          "startLine": 26,
+          "endLine": 90,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SortDropdown",
+          "line": 26,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SortDropdown",
+          "callee": "SORT_OPTIONS.find",
+          "lineNumber": 27
+        },
+        {
+          "caller": "SortDropdown",
+          "callee": "cn",
+          "lineNumber": 44
+        },
+        {
+          "caller": "SortDropdown",
+          "callee": "SORT_OPTIONS.map",
+          "lineNumber": 65
+        },
+        {
+          "caller": "SortDropdown",
+          "callee": "onChange",
+          "lineNumber": 72
+        },
+        {
+          "caller": "SortDropdown",
+          "callee": "close",
+          "lineNumber": 73
+        },
+        {
+          "caller": "SortDropdown",
+          "callee": "cn",
+          "lineNumber": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/catalog/ToolbarMenu.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "ToolbarMenu",
+          "startLine": 22,
+          "endLine": 66,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ToolbarMenu",
+          "line": 22,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ToolbarMenu",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "useRef",
+          "lineNumber": 24
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "useCallback",
+          "lineNumber": 25
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "setOpen",
+          "lineNumber": 25
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "useEffect",
+          "lineNumber": 27
+        },
+        {
+          "caller": "onDown",
+          "callee": "ref.current.contains",
+          "lineNumber": 30
+        },
+        {
+          "caller": "onDown",
+          "callee": "setOpen",
+          "lineNumber": 30
+        },
+        {
+          "caller": "onKey",
+          "callee": "setOpen",
+          "lineNumber": 33
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "document.addEventListener",
+          "lineNumber": 35
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "document.addEventListener",
+          "lineNumber": 36
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "document.removeEventListener",
+          "lineNumber": 38
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "document.removeEventListener",
+          "lineNumber": 39
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "renderTrigger",
+          "lineNumber": 45
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "setOpen",
+          "lineNumber": 45
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "cn",
+          "lineNumber": 54
+        },
+        {
+          "caller": "ToolbarMenu",
+          "callee": "children",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,1315 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 113,
+  "totalBatches": 9,
+  "exportsByPath": {
+    ".understand-anything/.understandignore": [],
+    "client/.prettierignore": [],
+    "client/eslint.config.js": [],
+    "client/postcss.config.js": [],
+    "client/src/App.jsx": [],
+    "client/src/components/catalog/ActiveFilterChips.jsx": [
+      "ActiveFilterChips"
+    ],
+    "client/src/components/catalog/CatalogToolbar.jsx": [
+      "CatalogToolbar"
+    ],
+    "client/src/components/catalog/CategoryButton.jsx": [
+      "CategoryButton"
+    ],
+    "client/src/components/catalog/CategoryDropdown.jsx": [
+      "CategoryDropdown"
+    ],
+    "client/src/components/catalog/FilterButton.jsx": [
+      "FilterButton"
+    ],
+    "client/src/components/catalog/Pagination.jsx": [
+      "Pagination"
+    ],
+    "client/src/components/catalog/ProductCardSkeleton.jsx": [
+      "ProductCardSkeleton"
+    ],
+    "client/src/components/catalog/SearchBar.jsx": [
+      "SearchBar"
+    ],
+    "client/src/components/catalog/SortDropdown.jsx": [
+      "SortDropdown"
+    ],
+    "client/src/components/catalog/ToolbarMenu.jsx": [
+      "ToolbarMenu"
+    ],
+    "client/src/components/sections/_MenuItem.jsx": [],
+    "client/src/components/sections/_TaglineLine.jsx": [],
+    "client/src/components/sections/CtaBannerSection.jsx": [
+      "CtaBannerSection"
+    ],
+    "client/src/components/sections/FastenerDiagramSection.jsx": [
+      "FastenerDiagramSection"
+    ],
+    "client/src/components/sections/Footer.jsx": [],
+    "client/src/components/sections/Header.jsx": [],
+    "client/src/components/sections/Hero.jsx": [
+      "Hero"
+    ],
+    "client/src/components/sections/HeroHeader.jsx": [],
+    "client/src/components/sections/MobileMenu.jsx": [],
+    "client/src/components/sections/NumbersSection.jsx": [
+      "NumbersSection"
+    ],
+    "client/src/components/sections/OurValuesSection.jsx": [
+      "OurValuesSection"
+    ],
+    "client/src/components/sections/PartnersSection.jsx": [
+      "PartnersSection"
+    ],
+    "client/src/components/sections/ServiceProgramSection.jsx": [
+      "ServiceProgramSection"
+    ],
+    "client/src/components/sections/TopStrip.jsx": [],
+    "client/src/components/ui/Button.jsx": [
+      "Button"
+    ],
+    "client/src/components/ui/Checkbox.jsx": [
+      "Checkbox"
+    ],
+    "client/src/components/ui/ErrorBoundary.jsx": [
+      "default"
+    ],
+    "client/src/components/ui/GridLines.jsx": [
+      "GridLines"
+    ],
+    "client/src/components/ui/IconButton.jsx": [],
+    "client/src/components/ui/icons/Arrow.jsx": [
+      "Arrow"
+    ],
+    "client/src/components/ui/icons/BrandMark.jsx": [
+      "BrandMark"
+    ],
+    "client/src/components/ui/icons/Cart.jsx": [
+      "Cart"
+    ],
+    "client/src/components/ui/icons/Check.jsx": [
+      "Check"
+    ],
+    "client/src/components/ui/icons/ChevronDown.jsx": [
+      "ChevronDown"
+    ],
+    "client/src/components/ui/icons/Close.jsx": [
+      "Close"
+    ],
+    "client/src/components/ui/icons/Filter.jsx": [
+      "Filter"
+    ],
+    "client/src/components/ui/icons/Grid.jsx": [
+      "Grid"
+    ],
+    "client/src/components/ui/icons/Heart.jsx": [
+      "Heart"
+    ],
+    "client/src/components/ui/icons/index.js": [
+      "BrandMark",
+      "User",
+      "YouTube",
+      "VK",
+      "Plus",
+      "Close",
+      "Arrow",
+      "Heart",
+      "Search",
+      "Filter",
+      "ChevronDown",
+      "Sort",
+      "Grid",
+      "Check",
+      "Cart"
+    ],
+    "client/src/components/ui/icons/Plus.jsx": [
+      "Plus"
+    ],
+    "client/src/components/ui/icons/Search.jsx": [
+      "Search"
+    ],
+    "client/src/components/ui/icons/Sort.jsx": [
+      "Sort"
+    ],
+    "client/src/components/ui/icons/User.jsx": [
+      "User"
+    ],
+    "client/src/components/ui/icons/VK.jsx": [
+      "VK"
+    ],
+    "client/src/components/ui/icons/YouTube.jsx": [
+      "YouTube"
+    ],
+    "client/src/components/ui/index.js": [
+      "Button",
+      "IconButton",
+      "MenuOpenButton",
+      "Logo",
+      "NavPill",
+      "GridLines",
+      "Checkbox",
+      "SupportButton"
+    ],
+    "client/src/components/ui/Logo.jsx": [
+      "Logo"
+    ],
+    "client/src/components/ui/MenuOpenButton.jsx": [
+      "MenuOpenButton"
+    ],
+    "client/src/components/ui/NavPill.jsx": [],
+    "client/src/components/ui/ProductCard.jsx": [
+      "ProductCard"
+    ],
+    "client/src/components/ui/ScrollToTopButton.jsx": [
+      "ScrollToTopButton"
+    ],
+    "client/src/components/ui/SupportButton.jsx": [
+      "SupportButton"
+    ],
+    "client/src/config/breakpoints.js": [
+      "BREAKPOINTS",
+      "mediaQuery"
+    ],
+    "client/src/config/entrance.js": [
+      "ENTRANCE_DURATION",
+      "ENTRANCE_EASE",
+      "ENTRANCE_Y",
+      "ENTRANCE_STAGGER"
+    ],
+    "client/src/content/catalog/brands.js": [
+      "BRANDS"
+    ],
+    "client/src/content/catalog/categories.js": [
+      "CATEGORY_TREE"
+    ],
+    "client/src/content/catalog/helpers.js": [
+      "findCategoryBySlug",
+      "findSubcategoryBySlug",
+      "getCategoryLabel",
+      "getCategoryBreadcrumbPath"
+    ],
+    "client/src/content/catalog/index.js": [
+      "CATEGORY_TREE",
+      "BRANDS",
+      "PRODUCTS"
+    ],
+    "client/src/content/catalog/products.js": [
+      "PRODUCTS"
+    ],
+    "client/src/content/ctaBanner.js": [
+      "CTA_BANNER"
+    ],
+    "client/src/content/fastenerDiagram.js": [
+      "TITLE",
+      "sectors",
+      "IR",
+      "OR",
+      "R_STROKE",
+      "STROKE_WIDTH",
+      "CX",
+      "CY",
+      "SIZE",
+      "DECO_RINGS",
+      "INTRO_DURATION",
+      "RING_STAGGER",
+      "POLOS_WIDTH",
+      "OMEGA_SKATE",
+      "OMEGA_GROW",
+      "OVERLAP",
+      "RING_COLOR"
+    ],
+    "client/src/content/footer.js": [
+      "CATALOG_LINKS",
+      "NAV_LINKS",
+      "CONTACT_INFO",
+      "SOCIAL_LINKS",
+      "FOOTER_CTA",
+      "FOOTER_LEGAL"
+    ],
+    "client/src/content/header.js": [
+      "LANG_LABELS",
+      "NAV_LINKS",
+      "ACCOUNT_LINK",
+      "HOME_LINK"
+    ],
+    "client/src/content/hero.js": [
+      "BIG_LEFT",
+      "BIG_RIGHT",
+      "TAGLINES"
+    ],
+    "client/src/content/menu.js": [
+      "MENU_PRIMARY",
+      "MENU_SECONDARY",
+      "MENU_CTA"
+    ],
+    "client/src/content/numbers.js": [
+      "COUNT_DURATION",
+      "LINE_DURATION",
+      "STATS_ROW1",
+      "STATS_ROW2"
+    ],
+    "client/src/content/ourValues.js": [
+      "LABEL",
+      "HEADING",
+      "BUTTON_TEXT",
+      "CARDS",
+      "ANIMATION_DELTA_X_VW",
+      "ANIMATION_DELTA_Y_PX",
+      "SCROLL_SPACER_HEIGHT_PX",
+      "SECTION_TAIL_HEIGHT_PX",
+      "SPRING_CONFIG"
+    ],
+    "client/src/content/partners.js": [
+      "SECTION_TITLE",
+      "GRID_MIN_CARD",
+      "GRID_GAP",
+      "GRID_MAX_COLS",
+      "GRID_MAX_WIDTH",
+      "partners"
+    ],
+    "client/src/content/serviceProgram.js": [
+      "SECTION_LABEL",
+      "SERVICES"
+    ],
+    "client/src/hooks/index.js": [
+      "useViewport",
+      "useCountUp",
+      "useScrollDirection",
+      "useLenis",
+      "useElementHeight",
+      "useMediaQuery",
+      "useBreakpoint",
+      "useCatalogFilters",
+      "useInfiniteScroll",
+      "useEntranceProps"
+    ],
+    "client/src/hooks/useBreakpoint.js": [
+      "useBreakpoint"
+    ],
+    "client/src/hooks/useCatalogFilters.js": [
+      "useCatalogFilters"
+    ],
+    "client/src/hooks/useCountUp.js": [
+      "useCountUp"
+    ],
+    "client/src/hooks/useElementHeight.js": [
+      "useElementHeight"
+    ],
+    "client/src/hooks/useEntranceProps.js": [
+      "useEntranceProps"
+    ],
+    "client/src/hooks/useInfiniteScroll.js": [
+      "useInfiniteScroll"
+    ],
+    "client/src/hooks/useLenis.js": [
+      "useLenis"
+    ],
+    "client/src/hooks/useMediaQuery.js": [
+      "useMediaQuery"
+    ],
+    "client/src/hooks/useScrollDirection.js": [
+      "useScrollDirection"
+    ],
+    "client/src/hooks/useViewport.js": [
+      "useViewport"
+    ],
+    "client/src/main.jsx": [],
+    "client/src/pages/CatalogPage.jsx": [
+      "CatalogPage"
+    ],
+    "client/src/pages/Home.jsx": [
+      "Home"
+    ],
+    "client/src/pages/ProductPage.jsx": [
+      "ProductPage"
+    ],
+    "client/src/store/index.js": [
+      "useUiStore",
+      "useCartStore",
+      "useFavoritesStore"
+    ],
+    "client/src/store/slices/cartSlice.js": [
+      "useCartStore"
+    ],
+    "client/src/store/slices/favoritesSlice.js": [
+      "useFavoritesStore"
+    ],
+    "client/src/store/slices/uiSlice.js": [
+      "useUiStore"
+    ],
+    "client/src/utils/cn.js": [
+      "cn"
+    ],
+    "client/tailwind.config.js": [],
+    "client/vite.config.js": [],
+    "server/drizzle.config.js": [],
+    "server/src/app.js": [],
+    "server/src/db/index.js": [
+      "db"
+    ],
+    "server/src/db/schema/index.js": [],
+    "server/src/plugins/cors.js": [],
+    "server/src/routes/index.js": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "client/src/App.jsx",
+          "language": "javascript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/Footer.jsx",
+          "language": "javascript",
+          "sizeLines": 168,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/Header.jsx",
+          "language": "javascript",
+          "sizeLines": 137,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/TopStrip.jsx",
+          "language": "javascript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/index.js",
+          "language": "javascript",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/pages/CatalogPage.jsx",
+          "language": "javascript",
+          "sizeLines": 219,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/pages/Home.jsx",
+          "language": "javascript",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/pages/ProductPage.jsx",
+          "language": "javascript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "client/src/App.jsx": [
+          "client/src/components/sections/Footer.jsx",
+          "client/src/components/sections/Header.jsx",
+          "client/src/components/sections/MobileMenu.jsx",
+          "client/src/components/sections/TopStrip.jsx",
+          "client/src/hooks/index.js",
+          "client/src/pages/CatalogPage.jsx",
+          "client/src/pages/Home.jsx",
+          "client/src/pages/ProductPage.jsx"
+        ],
+        "client/src/components/sections/Footer.jsx": [],
+        "client/src/components/sections/Header.jsx": [],
+        "client/src/components/sections/TopStrip.jsx": [],
+        "client/src/hooks/index.js": [],
+        "client/src/pages/CatalogPage.jsx": [],
+        "client/src/pages/Home.jsx": [],
+        "client/src/pages/ProductPage.jsx": []
+      },
+      "neighborMap": {
+        "client/src/App.jsx": [
+          {
+            "path": "client/src/components/sections/MobileMenu.jsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "client/src/main.jsx",
+            "batchIndex": 8,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "client/src/components/catalog/CategoryButton.jsx",
+          "language": "javascript",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/catalog/CategoryDropdown.jsx",
+          "language": "javascript",
+          "sizeLines": 142,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/catalog/FilterButton.jsx",
+          "language": "javascript",
+          "sizeLines": 324,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/catalog/SortDropdown.jsx",
+          "language": "javascript",
+          "sizeLines": 95,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/catalog/ToolbarMenu.jsx",
+          "language": "javascript",
+          "sizeLines": 73,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "client/src/components/catalog/CategoryButton.jsx": [
+          "client/src/components/catalog/CategoryDropdown.jsx",
+          "client/src/components/catalog/ToolbarMenu.jsx"
+        ],
+        "client/src/components/catalog/CategoryDropdown.jsx": [],
+        "client/src/components/catalog/FilterButton.jsx": [
+          "client/src/components/catalog/ToolbarMenu.jsx"
+        ],
+        "client/src/components/catalog/SortDropdown.jsx": [
+          "client/src/components/catalog/ToolbarMenu.jsx"
+        ],
+        "client/src/components/catalog/ToolbarMenu.jsx": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "client/src/components/ui/Button.jsx",
+          "language": "javascript",
+          "sizeLines": 149,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/IconButton.jsx",
+          "language": "javascript",
+          "sizeLines": 113,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/Logo.jsx",
+          "language": "javascript",
+          "sizeLines": 106,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/MenuOpenButton.jsx",
+          "language": "javascript",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/index.js",
+          "language": "javascript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "client/src/components/ui/Button.jsx": [
+          "client/src/components/ui/icons/index.js"
+        ],
+        "client/src/components/ui/IconButton.jsx": [],
+        "client/src/components/ui/Logo.jsx": [
+          "client/src/components/ui/icons/index.js"
+        ],
+        "client/src/components/ui/MenuOpenButton.jsx": [
+          "client/src/components/ui/IconButton.jsx",
+          "client/src/components/ui/icons/index.js"
+        ],
+        "client/src/components/ui/icons/index.js": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "server/src/app.js",
+          "language": "javascript",
+          "sizeLines": 12,
+          "fileCategory": "code"
+        },
+        {
+          "path": "server/src/plugins/cors.js",
+          "language": "javascript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "server/src/routes/index.js",
+          "language": "javascript",
+          "sizeLines": 2,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "server/src/app.js": [
+          "server/src/plugins/cors.js",
+          "server/src/routes/index.js"
+        ],
+        "server/src/plugins/cors.js": [],
+        "server/src/routes/index.js": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "client/.prettierrc.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "client/README.md",
+          "language": "markdown",
+          "sizeLines": 16,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "client/index.html",
+          "language": "html",
+          "sizeLines": 13,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "client/package.json",
+          "language": "json",
+          "sizeLines": 47,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "client/.prettierrc.json": [],
+        "client/README.md": [],
+        "client/index.html": [],
+        "client/package.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": ".understand-anything/.understandignore",
+          "language": "unknown",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".understand-anything/config.json",
+          "language": "json",
+          "sizeLines": 1,
+          "fileCategory": "config"
+        },
+        {
+          "path": "client/.prettierignore",
+          "language": "unknown",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/eslint.config.js",
+          "language": "javascript",
+          "sizeLines": 60,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/postcss.config.js",
+          "language": "javascript",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/App.css",
+          "language": "css",
+          "sizeLines": 182,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "client/src/components/catalog/ActiveFilterChips.jsx",
+          "language": "javascript",
+          "sizeLines": 188,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/catalog/CatalogToolbar.jsx",
+          "language": "javascript",
+          "sizeLines": 165,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/catalog/Pagination.jsx",
+          "language": "javascript",
+          "sizeLines": 118,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/catalog/ProductCardSkeleton.jsx",
+          "language": "javascript",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/catalog/SearchBar.jsx",
+          "language": "javascript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/_MenuItem.jsx",
+          "language": "javascript",
+          "sizeLines": 117,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/_TaglineLine.jsx",
+          "language": "javascript",
+          "sizeLines": 136,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/CtaBannerSection.jsx",
+          "language": "javascript",
+          "sizeLines": 79,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/FastenerDiagramSection.jsx",
+          "language": "javascript",
+          "sizeLines": 389,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/Hero.jsx",
+          "language": "javascript",
+          "sizeLines": 304,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/HeroHeader.jsx",
+          "language": "javascript",
+          "sizeLines": 110,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/MobileMenu.jsx",
+          "language": "javascript",
+          "sizeLines": 301,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/NumbersSection.jsx",
+          "language": "javascript",
+          "sizeLines": 130,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/OurValuesSection.jsx",
+          "language": "javascript",
+          "sizeLines": 256,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/PartnersSection.jsx",
+          "language": "javascript",
+          "sizeLines": 147,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/sections/ServiceProgramSection.jsx",
+          "language": "javascript",
+          "sizeLines": 214,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/Checkbox.jsx",
+          "language": "javascript",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/ErrorBoundary.jsx",
+          "language": "javascript",
+          "sizeLines": 64,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/GridLines.jsx",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".understand-anything/.understandignore": [],
+        ".understand-anything/config.json": [],
+        "client/.prettierignore": [],
+        "client/eslint.config.js": [],
+        "client/postcss.config.js": [],
+        "client/src/App.css": [],
+        "client/src/components/catalog/ActiveFilterChips.jsx": [],
+        "client/src/components/catalog/CatalogToolbar.jsx": [],
+        "client/src/components/catalog/Pagination.jsx": [],
+        "client/src/components/catalog/ProductCardSkeleton.jsx": [],
+        "client/src/components/catalog/SearchBar.jsx": [],
+        "client/src/components/sections/_MenuItem.jsx": [],
+        "client/src/components/sections/_TaglineLine.jsx": [],
+        "client/src/components/sections/CtaBannerSection.jsx": [],
+        "client/src/components/sections/FastenerDiagramSection.jsx": [],
+        "client/src/components/sections/Hero.jsx": [
+          "client/src/components/sections/_TaglineLine.jsx"
+        ],
+        "client/src/components/sections/HeroHeader.jsx": [],
+        "client/src/components/sections/MobileMenu.jsx": [
+          "client/src/components/sections/_MenuItem.jsx"
+        ],
+        "client/src/components/sections/NumbersSection.jsx": [],
+        "client/src/components/sections/OurValuesSection.jsx": [],
+        "client/src/components/sections/PartnersSection.jsx": [],
+        "client/src/components/sections/ServiceProgramSection.jsx": [],
+        "client/src/components/ui/Checkbox.jsx": [],
+        "client/src/components/ui/ErrorBoundary.jsx": [],
+        "client/src/components/ui/GridLines.jsx": []
+      },
+      "neighborMap": {
+        "client/src/components/sections/MobileMenu.jsx": [
+          {
+            "path": "client/src/App.jsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "client/src/components/ui/ErrorBoundary.jsx": [
+          {
+            "path": "client/src/main.jsx",
+            "batchIndex": 8,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "client/src/components/ui/icons/Arrow.jsx",
+          "language": "javascript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/BrandMark.jsx",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Cart.jsx",
+          "language": "javascript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Check.jsx",
+          "language": "javascript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/ChevronDown.jsx",
+          "language": "javascript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Close.jsx",
+          "language": "javascript",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Filter.jsx",
+          "language": "javascript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Grid.jsx",
+          "language": "javascript",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Heart.jsx",
+          "language": "javascript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Plus.jsx",
+          "language": "javascript",
+          "sizeLines": 40,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Search.jsx",
+          "language": "javascript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/Sort.jsx",
+          "language": "javascript",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/User.jsx",
+          "language": "javascript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/VK.jsx",
+          "language": "javascript",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/icons/YouTube.jsx",
+          "language": "javascript",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/index.js",
+          "language": "javascript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/NavPill.jsx",
+          "language": "javascript",
+          "sizeLines": 58,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/ProductCard.jsx",
+          "language": "javascript",
+          "sizeLines": 302,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/ScrollToTopButton.jsx",
+          "language": "javascript",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/components/ui/SupportButton.jsx",
+          "language": "javascript",
+          "sizeLines": 92,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/config/breakpoints.js",
+          "language": "javascript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/config/entrance.js",
+          "language": "javascript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/catalog/brands.js",
+          "language": "javascript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/catalog/categories.js",
+          "language": "javascript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/catalog/helpers.js",
+          "language": "javascript",
+          "sizeLines": 65,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "client/src/components/ui/icons/Arrow.jsx": [],
+        "client/src/components/ui/icons/BrandMark.jsx": [],
+        "client/src/components/ui/icons/Cart.jsx": [],
+        "client/src/components/ui/icons/Check.jsx": [],
+        "client/src/components/ui/icons/ChevronDown.jsx": [],
+        "client/src/components/ui/icons/Close.jsx": [],
+        "client/src/components/ui/icons/Filter.jsx": [],
+        "client/src/components/ui/icons/Grid.jsx": [],
+        "client/src/components/ui/icons/Heart.jsx": [],
+        "client/src/components/ui/icons/Plus.jsx": [],
+        "client/src/components/ui/icons/Search.jsx": [],
+        "client/src/components/ui/icons/Sort.jsx": [],
+        "client/src/components/ui/icons/User.jsx": [],
+        "client/src/components/ui/icons/VK.jsx": [],
+        "client/src/components/ui/icons/YouTube.jsx": [],
+        "client/src/components/ui/index.js": [],
+        "client/src/components/ui/NavPill.jsx": [],
+        "client/src/components/ui/ProductCard.jsx": [],
+        "client/src/components/ui/ScrollToTopButton.jsx": [],
+        "client/src/components/ui/SupportButton.jsx": [],
+        "client/src/config/breakpoints.js": [],
+        "client/src/config/entrance.js": [],
+        "client/src/content/catalog/brands.js": [],
+        "client/src/content/catalog/categories.js": [],
+        "client/src/content/catalog/helpers.js": [
+          "client/src/content/catalog/categories.js"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": "client/src/content/catalog/index.js",
+          "language": "javascript",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/catalog/products.js",
+          "language": "javascript",
+          "sizeLines": 693,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/ctaBanner.js",
+          "language": "javascript",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/fastenerDiagram.js",
+          "language": "javascript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/footer.js",
+          "language": "javascript",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/header.js",
+          "language": "javascript",
+          "sizeLines": 21,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/hero.js",
+          "language": "javascript",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/menu.js",
+          "language": "javascript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/numbers.js",
+          "language": "javascript",
+          "sizeLines": 15,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/ourValues.js",
+          "language": "javascript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/partners.js",
+          "language": "javascript",
+          "sizeLines": 71,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/content/serviceProgram.js",
+          "language": "javascript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useBreakpoint.js",
+          "language": "javascript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useCatalogFilters.js",
+          "language": "javascript",
+          "sizeLines": 268,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useCountUp.js",
+          "language": "javascript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useElementHeight.js",
+          "language": "javascript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useEntranceProps.js",
+          "language": "javascript",
+          "sizeLines": 50,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useInfiniteScroll.js",
+          "language": "javascript",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useLenis.js",
+          "language": "javascript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useMediaQuery.js",
+          "language": "javascript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useScrollDirection.js",
+          "language": "javascript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/hooks/useViewport.js",
+          "language": "javascript",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/main.jsx",
+          "language": "javascript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/store/index.js",
+          "language": "javascript",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/store/slices/cartSlice.js",
+          "language": "javascript",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "client/src/content/catalog/index.js": [],
+        "client/src/content/catalog/products.js": [],
+        "client/src/content/ctaBanner.js": [],
+        "client/src/content/fastenerDiagram.js": [],
+        "client/src/content/footer.js": [],
+        "client/src/content/header.js": [],
+        "client/src/content/hero.js": [],
+        "client/src/content/menu.js": [],
+        "client/src/content/numbers.js": [],
+        "client/src/content/ourValues.js": [],
+        "client/src/content/partners.js": [],
+        "client/src/content/serviceProgram.js": [],
+        "client/src/hooks/useBreakpoint.js": [
+          "client/src/hooks/useMediaQuery.js"
+        ],
+        "client/src/hooks/useCatalogFilters.js": [],
+        "client/src/hooks/useCountUp.js": [],
+        "client/src/hooks/useElementHeight.js": [],
+        "client/src/hooks/useEntranceProps.js": [],
+        "client/src/hooks/useInfiniteScroll.js": [],
+        "client/src/hooks/useLenis.js": [],
+        "client/src/hooks/useMediaQuery.js": [],
+        "client/src/hooks/useScrollDirection.js": [],
+        "client/src/hooks/useViewport.js": [],
+        "client/src/main.jsx": [
+          "client/src/App.jsx",
+          "client/src/components/ui/ErrorBoundary.jsx",
+          "client/src/styles/index.css"
+        ],
+        "client/src/store/index.js": [],
+        "client/src/store/slices/cartSlice.js": []
+      },
+      "neighborMap": {
+        "client/src/main.jsx": [
+          {
+            "path": "client/src/App.jsx",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "client/src/components/ui/ErrorBoundary.jsx",
+            "batchIndex": 6,
+            "symbols": [
+              "default"
+            ]
+          },
+          {
+            "path": "client/src/styles/index.css",
+            "batchIndex": 9,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 9,
+      "files": [
+        {
+          "path": "client/src/store/slices/favoritesSlice.js",
+          "language": "javascript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/store/slices/uiSlice.js",
+          "language": "javascript",
+          "sizeLines": 8,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/src/styles/index.css",
+          "language": "css",
+          "sizeLines": 35,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "client/src/utils/cn.js",
+          "language": "javascript",
+          "sizeLines": 12,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/tailwind.config.js",
+          "language": "javascript",
+          "sizeLines": 62,
+          "fileCategory": "code"
+        },
+        {
+          "path": "client/vite.config.js",
+          "language": "javascript",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "docker-compose.yml",
+          "language": "yaml",
+          "sizeLines": 13,
+          "fileCategory": "infra"
+        },
+        {
+          "path": "package.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "server/.env.example",
+          "language": "config",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": "server/drizzle.config.js",
+          "language": "javascript",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "server/package.json",
+          "language": "json",
+          "sizeLines": 23,
+          "fileCategory": "config"
+        },
+        {
+          "path": "server/src/db/index.js",
+          "language": "javascript",
+          "sizeLines": 4,
+          "fileCategory": "code"
+        },
+        {
+          "path": "server/src/db/schema/index.js",
+          "language": "javascript",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "client/src/store/slices/favoritesSlice.js": [],
+        "client/src/store/slices/uiSlice.js": [],
+        "client/src/styles/index.css": [],
+        "client/src/utils/cn.js": [],
+        "client/tailwind.config.js": [],
+        "client/vite.config.js": [],
+        "docker-compose.yml": [],
+        "package.json": [],
+        "server/.env.example": [],
+        "server/drizzle.config.js": [],
+        "server/package.json": [],
+        "server/src/db/index.js": [],
+        "server/src/db/schema/index.js": []
+      },
+      "neighborMap": {
+        "client/src/styles/index.css": [
+          {
+            "path": "client/src/main.jsx",
+            "batchIndex": 8,
+            "symbols": []
+          }
+        ]
+      }
+    }
+  ]
+}

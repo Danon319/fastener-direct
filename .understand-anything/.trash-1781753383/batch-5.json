@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    {
+      "id": "config:client/.prettierrc.json",
+      "type": "config",
+      "name": ".prettierrc.json",
+      "filePath": "client/.prettierrc.json",
+      "summary": "Конфигурация Prettier для клиента: задаёт стиль форматирования (без точек с запятой, одинарные кавычки, printWidth, ширина табуляции) и подключает плагин prettier-plugin-tailwindcss для сортировки Tailwind-классов.",
+      "tags": ["configuration", "prettier", "code-style", "formatting", "tailwind"],
+      "complexity": "simple",
+      "languageNotes": "Плагин prettier-plugin-tailwindcss автоматически упорядочивает Tailwind utility-классы в нужном порядке."
+    },
+    {
+      "id": "document:client/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "client/README.md",
+      "summary": "Стандартный README шаблона Vite + React: краткое описание HMR, упоминание React Compiler и рекомендации по расширению конфигурации ESLint.",
+      "tags": ["documentation", "entry-point", "vite", "boilerplate"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "client/index.html",
+      "summary": "Входной HTML-документ Vite: содержит корневой контейнер #root и подключает ES-модуль /src/main.jsx, который монтирует React-приложение.",
+      "tags": ["entry-point", "html", "vite", "markup", "bootstrap"],
+      "complexity": "simple",
+      "languageNotes": "Vite использует index.html как точку входа сборки; скрипт подключён как нативный ES-модуль (type=\"module\")."
+    },
+    {
+      "id": "config:client/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "client/package.json",
+      "summary": "Манифест клиентского пакета: объявляет зависимости (React 19, react-router-dom 7, zustand, motion, lenis, tailwind-merge, clsx) и npm-скрипты для dev-сервера, сборки, превью, линтинга и форматирования через Vite/ESLint/Prettier.",
+      "tags": ["configuration", "dependencies", "build-system", "npm", "vite"],
+      "complexity": "simple",
+      "languageNotes": "Поле \"type\": \"module\" переводит пакет в режим ES-модулей; сборка и dev-сервер обслуживаются Vite 8."
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:client/package.json",
+      "target": "file:client/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:client/.prettierrc.json",
+      "target": "file:client/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:client/README.md",
+      "target": "file:client/index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/index.html",
+      "target": "file:client/src/main.jsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

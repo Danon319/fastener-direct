@@ -1,0 +1,1128 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "file:client/src/App.jsx",
+      "score": 5,
+      "name": "App.jsx",
+      "type": "file",
+      "summary": "Корневой компонент приложения: задаёт глобальную раскладку (TopStrip, Header, MobileMenu, Footer), маршруты React Router (Home, CatalogPage, ProductPage) и инициализирует плавный скролл через useLenis."
+    },
+    {
+      "id": "file:server/src/app.js",
+      "score": 5,
+      "name": "app.js",
+      "type": "file",
+      "summary": "Точка входа backend-сервера: создаёт инстанс Fastify с логированием, регистрирует plugin CORS и routes, затем поднимает HTTP-сервер на порту из PORT или 3000."
+    },
+    {
+      "id": "file:client/src/hooks/index.js",
+      "score": 4,
+      "name": "index.js",
+      "type": "file",
+      "summary": "Barrel-файл хуков: реэкспортирует все кастомные хуки (useViewport, useCountUp, useScrollDirection, useLenis, useCatalogFilters и др.) для единой точки импорта через @/hooks."
+    },
+    {
+      "id": "file:client/index.html",
+      "score": 4,
+      "name": "index.html",
+      "type": "file",
+      "summary": "Входной HTML-документ Vite: содержит корневой контейнер #root и подключает ES-модуль /src/main.jsx, который монтирует React-приложение."
+    },
+    {
+      "id": "file:client/src/components/ui/index.js",
+      "score": 4,
+      "name": "index.js",
+      "type": "file",
+      "summary": "Barrel-файл UI-слоя: реэкспортирует все UI-примитивы (Button, IconButton, MenuOpenButton, Logo, NavPill, GridLines, Checkbox, SupportButton) и весь набор иконок."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:client/src/utils/cn.js",
+      "fanIn": 28,
+      "name": "cn.js"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/index.js",
+      "fanIn": 15,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/src/hooks/index.js",
+      "fanIn": 14,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/src/components/ui/index.js",
+      "fanIn": 9,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/src/store/index.js",
+      "fanIn": 5,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/src/config/entrance.js",
+      "fanIn": 4,
+      "name": "entrance.js"
+    },
+    {
+      "id": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "fanIn": 3,
+      "name": "ToolbarMenu.jsx"
+    },
+    {
+      "id": "file:client/src/components/ui/Button.jsx",
+      "fanIn": 3,
+      "name": "Button.jsx"
+    },
+    {
+      "id": "file:client/src/components/ui/IconButton.jsx",
+      "fanIn": 3,
+      "name": "IconButton.jsx"
+    },
+    {
+      "id": "file:client/index.html",
+      "fanIn": 3,
+      "name": "index.html"
+    },
+    {
+      "id": "file:client/src/content/header.js",
+      "fanIn": 3,
+      "name": "header.js"
+    },
+    {
+      "id": "file:client/src/styles/index.css",
+      "fanIn": 3,
+      "name": "index.css"
+    },
+    {
+      "id": "file:client/src/hooks/useCatalogFilters.js",
+      "fanIn": 2,
+      "name": "useCatalogFilters.js"
+    },
+    {
+      "id": "file:client/src/hooks/useLenis.js",
+      "fanIn": 2,
+      "name": "useLenis.js"
+    },
+    {
+      "id": "file:client/src/hooks/useMediaQuery.js",
+      "fanIn": 2,
+      "name": "useMediaQuery.js"
+    },
+    {
+      "id": "file:client/src/hooks/useViewport.js",
+      "fanIn": 2,
+      "name": "useViewport.js"
+    },
+    {
+      "id": "config:server/.env.example",
+      "fanIn": 2,
+      "name": ".env.example"
+    },
+    {
+      "id": "file:server/src/db/schema/index.js",
+      "fanIn": 2,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/src/App.jsx",
+      "fanIn": 1,
+      "name": "App.jsx"
+    },
+    {
+      "id": "file:client/src/components/sections/Footer.jsx",
+      "fanIn": 1,
+      "name": "Footer.jsx"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:client/src/pages/CatalogPage.jsx",
+      "fanOut": 15,
+      "name": "CatalogPage.jsx"
+    },
+    {
+      "id": "file:client/src/hooks/index.js",
+      "fanOut": 10,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/src/pages/Home.jsx",
+      "fanOut": 10,
+      "name": "Home.jsx"
+    },
+    {
+      "id": "file:client/src/App.jsx",
+      "fanOut": 9,
+      "name": "App.jsx"
+    },
+    {
+      "id": "file:client/src/components/ui/index.js",
+      "fanOut": 9,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/src/components/sections/MobileMenu.jsx",
+      "fanOut": 7,
+      "name": "MobileMenu.jsx"
+    },
+    {
+      "id": "file:client/src/components/sections/Header.jsx",
+      "fanOut": 6,
+      "name": "Header.jsx"
+    },
+    {
+      "id": "file:client/src/components/sections/HeroHeader.jsx",
+      "fanOut": 6,
+      "name": "HeroHeader.jsx"
+    },
+    {
+      "id": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "fanOut": 5,
+      "name": "ServiceProgramSection.jsx"
+    },
+    {
+      "id": "file:client/src/components/sections/Footer.jsx",
+      "fanOut": 4,
+      "name": "Footer.jsx"
+    },
+    {
+      "id": "file:client/src/components/sections/Hero.jsx",
+      "fanOut": 4,
+      "name": "Hero.jsx"
+    },
+    {
+      "id": "file:client/src/components/sections/OurValuesSection.jsx",
+      "fanOut": 4,
+      "name": "OurValuesSection.jsx"
+    },
+    {
+      "id": "file:client/src/components/ui/ProductCard.jsx",
+      "fanOut": 4,
+      "name": "ProductCard.jsx"
+    },
+    {
+      "id": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "fanOut": 3,
+      "name": "ActiveFilterChips.jsx"
+    },
+    {
+      "id": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "fanOut": 3,
+      "name": "CatalogToolbar.jsx"
+    },
+    {
+      "id": "file:client/src/components/ui/SupportButton.jsx",
+      "fanOut": 3,
+      "name": "SupportButton.jsx"
+    },
+    {
+      "id": "file:client/src/main.jsx",
+      "fanOut": 3,
+      "name": "main.jsx"
+    },
+    {
+      "id": "file:client/src/components/catalog/CategoryButton.jsx",
+      "fanOut": 2,
+      "name": "CategoryButton.jsx"
+    },
+    {
+      "id": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "fanOut": 2,
+      "name": "MenuOpenButton.jsx"
+    },
+    {
+      "id": "file:server/src/app.js",
+      "fanOut": 2,
+      "name": "app.js"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:client/src/App.jsx",
+    "order": [
+      "file:client/src/App.jsx",
+      "file:client/src/pages/Home.jsx",
+      "file:client/src/pages/CatalogPage.jsx",
+      "file:client/src/pages/ProductPage.jsx",
+      "file:client/src/components/sections/Footer.jsx",
+      "file:client/src/components/sections/Header.jsx",
+      "file:client/src/components/sections/TopStrip.jsx",
+      "file:client/src/components/sections/MobileMenu.jsx",
+      "file:client/src/hooks/index.js",
+      "file:client/src/components/sections/CtaBannerSection.jsx",
+      "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "file:client/src/components/sections/Hero.jsx",
+      "file:client/src/components/sections/HeroHeader.jsx",
+      "file:client/src/components/sections/NumbersSection.jsx",
+      "file:client/src/components/sections/OurValuesSection.jsx",
+      "file:client/src/components/sections/PartnersSection.jsx",
+      "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "file:client/src/components/ui/index.js",
+      "file:client/src/components/ui/ProductCard.jsx",
+      "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "file:client/src/components/ui/icons/index.js",
+      "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "file:client/src/components/catalog/FilterButton.jsx",
+      "file:client/src/components/catalog/SearchBar.jsx",
+      "file:client/src/components/catalog/SortDropdown.jsx",
+      "file:client/src/components/catalog/CategoryButton.jsx",
+      "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+      "file:client/src/config/entrance.js",
+      "file:client/src/store/index.js",
+      "file:client/src/content/footer.js",
+      "file:client/src/utils/cn.js",
+      "file:client/src/content/header.js",
+      "file:client/src/components/sections/_MenuItem.jsx",
+      "file:client/src/content/menu.js",
+      "file:client/src/hooks/useViewport.js",
+      "file:client/src/hooks/useCountUp.js",
+      "file:client/src/hooks/useScrollDirection.js",
+      "file:client/src/hooks/useLenis.js",
+      "file:client/src/hooks/useElementHeight.js",
+      "file:client/src/hooks/useMediaQuery.js",
+      "file:client/src/hooks/useBreakpoint.js",
+      "file:client/src/hooks/useCatalogFilters.js",
+      "file:client/src/hooks/useInfiniteScroll.js",
+      "file:client/src/hooks/useEntranceProps.js",
+      "file:client/src/components/ui/Button.jsx",
+      "file:client/src/content/ctaBanner.js",
+      "file:client/src/content/fastenerDiagram.js",
+      "file:client/src/components/sections/_TaglineLine.jsx",
+      "file:client/src/content/hero.js",
+      "file:client/src/content/numbers.js",
+      "file:client/src/content/ourValues.js",
+      "file:client/src/content/partners.js",
+      "file:client/src/content/serviceProgram.js",
+      "file:client/src/components/ui/IconButton.jsx",
+      "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "file:client/src/content/catalog/index.js"
+    ],
+    "depthMap": {
+      "file:client/src/App.jsx": 0,
+      "file:client/src/pages/Home.jsx": 1,
+      "file:client/src/pages/CatalogPage.jsx": 1,
+      "file:client/src/pages/ProductPage.jsx": 1,
+      "file:client/src/components/sections/Footer.jsx": 1,
+      "file:client/src/components/sections/Header.jsx": 1,
+      "file:client/src/components/sections/TopStrip.jsx": 1,
+      "file:client/src/components/sections/MobileMenu.jsx": 1,
+      "file:client/src/hooks/index.js": 1,
+      "file:client/src/components/sections/CtaBannerSection.jsx": 2,
+      "file:client/src/components/sections/FastenerDiagramSection.jsx": 2,
+      "file:client/src/components/sections/Hero.jsx": 2,
+      "file:client/src/components/sections/HeroHeader.jsx": 2,
+      "file:client/src/components/sections/NumbersSection.jsx": 2,
+      "file:client/src/components/sections/OurValuesSection.jsx": 2,
+      "file:client/src/components/sections/PartnersSection.jsx": 2,
+      "file:client/src/components/sections/ServiceProgramSection.jsx": 2,
+      "file:client/src/components/ui/index.js": 2,
+      "file:client/src/components/ui/ProductCard.jsx": 2,
+      "file:client/src/components/ui/ScrollToTopButton.jsx": 2,
+      "file:client/src/components/ui/icons/index.js": 2,
+      "file:client/src/components/catalog/CatalogToolbar.jsx": 2,
+      "file:client/src/components/catalog/FilterButton.jsx": 2,
+      "file:client/src/components/catalog/SearchBar.jsx": 2,
+      "file:client/src/components/catalog/SortDropdown.jsx": 2,
+      "file:client/src/components/catalog/CategoryButton.jsx": 2,
+      "file:client/src/components/catalog/ActiveFilterChips.jsx": 2,
+      "file:client/src/components/catalog/ProductCardSkeleton.jsx": 2,
+      "file:client/src/config/entrance.js": 2,
+      "file:client/src/store/index.js": 2,
+      "file:client/src/content/footer.js": 2,
+      "file:client/src/utils/cn.js": 2,
+      "file:client/src/content/header.js": 2,
+      "file:client/src/components/sections/_MenuItem.jsx": 2,
+      "file:client/src/content/menu.js": 2,
+      "file:client/src/hooks/useViewport.js": 2,
+      "file:client/src/hooks/useCountUp.js": 2,
+      "file:client/src/hooks/useScrollDirection.js": 2,
+      "file:client/src/hooks/useLenis.js": 2,
+      "file:client/src/hooks/useElementHeight.js": 2,
+      "file:client/src/hooks/useMediaQuery.js": 2,
+      "file:client/src/hooks/useBreakpoint.js": 2,
+      "file:client/src/hooks/useCatalogFilters.js": 2,
+      "file:client/src/hooks/useInfiniteScroll.js": 2,
+      "file:client/src/hooks/useEntranceProps.js": 2,
+      "file:client/src/components/ui/Button.jsx": 3,
+      "file:client/src/content/ctaBanner.js": 3,
+      "file:client/src/content/fastenerDiagram.js": 3,
+      "file:client/src/components/sections/_TaglineLine.jsx": 3,
+      "file:client/src/content/hero.js": 3,
+      "file:client/src/content/numbers.js": 3,
+      "file:client/src/content/ourValues.js": 3,
+      "file:client/src/content/partners.js": 3,
+      "file:client/src/content/serviceProgram.js": 3,
+      "file:client/src/components/ui/IconButton.jsx": 3,
+      "file:client/src/components/catalog/ToolbarMenu.jsx": 3,
+      "file:client/src/components/catalog/CategoryDropdown.jsx": 3,
+      "file:client/src/content/catalog/index.js": 3
+    },
+    "byDepth": {
+      "0": [
+        "file:client/src/App.jsx"
+      ],
+      "1": [
+        "file:client/src/pages/Home.jsx",
+        "file:client/src/pages/CatalogPage.jsx",
+        "file:client/src/pages/ProductPage.jsx",
+        "file:client/src/components/sections/Footer.jsx",
+        "file:client/src/components/sections/Header.jsx",
+        "file:client/src/components/sections/TopStrip.jsx",
+        "file:client/src/components/sections/MobileMenu.jsx",
+        "file:client/src/hooks/index.js"
+      ],
+      "2": [
+        "file:client/src/components/sections/CtaBannerSection.jsx",
+        "file:client/src/components/sections/FastenerDiagramSection.jsx",
+        "file:client/src/components/sections/Hero.jsx",
+        "file:client/src/components/sections/HeroHeader.jsx",
+        "file:client/src/components/sections/NumbersSection.jsx",
+        "file:client/src/components/sections/OurValuesSection.jsx",
+        "file:client/src/components/sections/PartnersSection.jsx",
+        "file:client/src/components/sections/ServiceProgramSection.jsx",
+        "file:client/src/components/ui/index.js",
+        "file:client/src/components/ui/ProductCard.jsx",
+        "file:client/src/components/ui/ScrollToTopButton.jsx",
+        "file:client/src/components/ui/icons/index.js",
+        "file:client/src/components/catalog/CatalogToolbar.jsx",
+        "file:client/src/components/catalog/FilterButton.jsx",
+        "file:client/src/components/catalog/SearchBar.jsx",
+        "file:client/src/components/catalog/SortDropdown.jsx",
+        "file:client/src/components/catalog/CategoryButton.jsx",
+        "file:client/src/components/catalog/ActiveFilterChips.jsx",
+        "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+        "file:client/src/config/entrance.js",
+        "file:client/src/store/index.js",
+        "file:client/src/content/footer.js",
+        "file:client/src/utils/cn.js",
+        "file:client/src/content/header.js",
+        "file:client/src/components/sections/_MenuItem.jsx",
+        "file:client/src/content/menu.js",
+        "file:client/src/hooks/useViewport.js",
+        "file:client/src/hooks/useCountUp.js",
+        "file:client/src/hooks/useScrollDirection.js",
+        "file:client/src/hooks/useLenis.js",
+        "file:client/src/hooks/useElementHeight.js",
+        "file:client/src/hooks/useMediaQuery.js",
+        "file:client/src/hooks/useBreakpoint.js",
+        "file:client/src/hooks/useCatalogFilters.js",
+        "file:client/src/hooks/useInfiniteScroll.js",
+        "file:client/src/hooks/useEntranceProps.js"
+      ],
+      "3": [
+        "file:client/src/components/ui/Button.jsx",
+        "file:client/src/content/ctaBanner.js",
+        "file:client/src/content/fastenerDiagram.js",
+        "file:client/src/components/sections/_TaglineLine.jsx",
+        "file:client/src/content/hero.js",
+        "file:client/src/content/numbers.js",
+        "file:client/src/content/ourValues.js",
+        "file:client/src/content/partners.js",
+        "file:client/src/content/serviceProgram.js",
+        "file:client/src/components/ui/IconButton.jsx",
+        "file:client/src/components/catalog/ToolbarMenu.jsx",
+        "file:client/src/components/catalog/CategoryDropdown.jsx",
+        "file:client/src/content/catalog/index.js"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:client/README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Стандартный README шаблона Vite + React: краткое описание HMR, упоминание React Compiler и рекомендации по расширению конфигурации ESLint."
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "service:docker-compose.yml",
+        "name": "docker-compose.yml",
+        "type": "service",
+        "summary": "Docker Compose с single-service postgres:16 (БД fastener_direct, порт 5432) и именованным volume pg_data для персистентности данных."
+      }
+    ],
+    "data": [
+      {
+        "id": "endpoint:server/src/routes/index.js:GET /api/health",
+        "name": "GET /api/health",
+        "type": "endpoint",
+        "summary": "Health-check endpoint, возвращающий JSON { status: 'ok' } для проверки доступности сервера."
+      }
+    ],
+    "config": [
+      {
+        "id": "config:client/.prettierrc.json",
+        "name": ".prettierrc.json",
+        "type": "config",
+        "summary": "Конфигурация Prettier для клиента: задаёт стиль форматирования (без точек с запятой, одинарные кавычки, printWidth, ширина табуляции) и подключает плагин prettier-plugin-tailwindcss для сортировки Tailwind-классов."
+      },
+      {
+        "id": "config:client/package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Манифест клиентского пакета: объявляет зависимости (React 19, react-router-dom 7, zustand, motion, lenis, tailwind-merge, clsx) и npm-скрипты для dev-сервера, сборки, превью, линтинга и форматирования через Vite/ESLint/Prettier."
+      },
+      {
+        "id": "config:client/eslint.config.js",
+        "name": "eslint.config.js",
+        "type": "config",
+        "summary": "Flat-config ESLint для клиента: правила для JS/JSX, плагины React Hooks и React Refresh, глобалы браузера."
+      },
+      {
+        "id": "config:client/postcss.config.js",
+        "name": "postcss.config.js",
+        "type": "config",
+        "summary": "Конфигурация PostCSS, подключающая плагины Tailwind CSS и Autoprefixer для сборки стилей."
+      },
+      {
+        "id": "config:client/tailwind.config.js",
+        "name": "tailwind.config.js",
+        "type": "config",
+        "summary": "Конфигурация Tailwind с design token'ами проекта: фирменные цвета, тени (popover/btn), шрифт Neue Montreal, грид каталога и слоистый z-index стек."
+      },
+      {
+        "id": "config:client/vite.config.js",
+        "name": "vite.config.js",
+        "type": "config",
+        "summary": "Конфигурация Vite: плагин React, alias @/ → client/src и dev-proxy /api → http://localhost:3000, связывающий клиент с backend."
+      },
+      {
+        "id": "config:package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Корневой package.json монорепозитория с npm-скриптами и общими зависимостями для запуска client и server."
+      },
+      {
+        "id": "config:server/.env.example",
+        "name": ".env.example",
+        "type": "config",
+        "summary": "Шаблон переменных окружения сервера (например, DATABASE_URL) для подключения к PostgreSQL."
+      },
+      {
+        "id": "config:server/drizzle.config.js",
+        "name": "drizzle.config.js",
+        "type": "config",
+        "summary": "Конфигурация Drizzle ORM: путь к схеме (src/db/schema/index.js), каталог миграций drizzle, драйвер pg и connectionString из DATABASE_URL."
+      },
+      {
+        "id": "config:server/package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Манифест backend-пакета (Fastify/Drizzle): npm-скрипты, зависимости и метаданные сервера."
+      }
+    ]
+  },
+  "clusters": [],
+  "layers": {
+    "count": 8,
+    "list": [
+      {
+        "id": "layer:ui-layer",
+        "name": "UI-слой",
+        "description": "Страницы-маршруты, лэндинг- и каталог-секции, UI-примитивы, иконки и глобальные стили клиента — весь визуальный слой и точки входа React-приложения."
+      },
+      {
+        "id": "layer:service-layer",
+        "name": "Сервисный слой",
+        "description": "Кастомные hooks (фильтрация каталога, скролл, viewport, анимации) и Zustand-store со slice'ами корзины, избранного и UI — переиспользуемая логика состояния, к которой обращается весь UI."
+      },
+      {
+        "id": "layer:content-layer",
+        "name": "Контент-слой",
+        "description": "Статические content-модули: тексты секций лэндинга, навигация, а также данные каталога (категории, бренды, товары) и хелперы по дереву категорий — единый источник правды для отображаемого контента."
+      },
+      {
+        "id": "layer:utility-layer",
+        "name": "Утилитарный слой",
+        "description": "Сквозные хелперы и константы: слияние Tailwind-классов (cn) и source-level конфиг адаптивных breakpoint'ов и канона entrance-анимаций, импортируемые повсеместно без обратных зависимостей."
+      },
+      {
+        "id": "layer:api-layer",
+        "name": "Backend/API-слой",
+        "description": "Fastify-сервер: точка входа app.js, CORS-plugin (middleware) и маршруты с health-check endpoint GET /api/health."
+      },
+      {
+        "id": "layer:data-layer",
+        "name": "Слой данных",
+        "description": "Подключение к PostgreSQL через Drizzle ORM, заготовка схем БД и сервис postgres:16 из docker-compose — слой хранения и доступа к данным."
+      },
+      {
+        "id": "layer:config-layer",
+        "name": "Конфигурация",
+        "description": "Конфиги сборки, линтинга и форматирования (Vite, Tailwind, PostCSS, ESLint, Prettier), манифесты пакетов монорепозитория и шаблон окружения сервера с настройкой Drizzle."
+      },
+      {
+        "id": "layer:documentation-layer",
+        "name": "Документация",
+        "description": "Документация проекта: README клиентского пакета с описанием стека Vite + React."
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:client/src/App.jsx": {
+      "name": "App.jsx",
+      "type": "file",
+      "summary": "Корневой компонент приложения: задаёт глобальную раскладку (TopStrip, Header, MobileMenu, Footer), маршруты React Router (Home, CatalogPage, ProductPage) и инициализирует плавный скролл через useLenis."
+    },
+    "file:client/src/components/sections/Footer.jsx": {
+      "name": "Footer.jsx",
+      "type": "file",
+      "summary": "Подвал сайта с навигацией, контактами, соцсетями и юридическим блоком; фиксированный на главной и относительный на остальных страницах (поведение зависит от useLocation)."
+    },
+    "file:client/src/components/sections/Header.jsx": {
+      "name": "Header.jsx",
+      "type": "file",
+      "summary": "Фиксированный pill-хедер с opacity-fade: на главной появляется после прокрутки Hero, на остальных страницах виден всегда; содержит логотип, навигацию, переключатель языка и кнопку открытия меню."
+    },
+    "file:client/src/components/sections/TopStrip.jsx": {
+      "name": "TopStrip.jsx",
+      "type": "file",
+      "summary": "Декоративная красная полоса 3px, зафиксированная вверху страницы; при первом mount проигрывает slide-in анимацию scaleX слева направо."
+    },
+    "file:client/src/hooks/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Barrel-файл хуков: реэкспортирует все кастомные хуки (useViewport, useCountUp, useScrollDirection, useLenis, useCatalogFilters и др.) для единой точки импорта через @/hooks."
+    },
+    "file:client/src/pages/CatalogPage.jsx": {
+      "name": "CatalogPage.jsx",
+      "type": "file",
+      "summary": "UI-оркестратор страницы каталога: прозрачная шапка, светлый hero-блок с закрепляемым тулбаром и тёмная секция с сеткой товаров; вся логика фильтрации/сортировки/подгрузки делегирована хуку useCatalogFilters."
+    },
+    "file:client/src/pages/Home.jsx": {
+      "name": "Home.jsx",
+      "type": "file",
+      "summary": "Главная страница: компонует Hero, HeroHeader и набор лэндинг-секций в скруглённой обёртке плюс плавающую кнопку поддержки; внизу спейсер высотой с подвал через useElementHeight."
+    },
+    "file:client/src/pages/ProductPage.jsx": {
+      "name": "ProductPage.jsx",
+      "type": "file",
+      "summary": "Страница товара-заглушка: показывает id товара из URL и ссылку обратно в каталог; резервирует место под подвал через useElementHeight."
+    },
+    "file:client/src/components/catalog/CategoryButton.jsx": {
+      "name": "CategoryButton.jsx",
+      "type": "file",
+      "summary": "Кнопка «Категории» в тулбаре каталога: красный триггер, оборачивающий ToolbarMenu с двухшаговым CategoryDropdown в поповере. Сама навигация по /catalog/... делегирована вложенному дропдауну."
+    },
+    "file:client/src/components/catalog/CategoryDropdown.jsx": {
+      "name": "CategoryDropdown.jsx",
+      "type": "file",
+      "summary": "Содержимое поповера выбора раздела: двухшаговая навигация — карточки категорий верхнего уровня, затем подкатегории — с переходом на маршруты /catalog/... через react-router."
+    },
+    "file:client/src/components/catalog/FilterButton.jsx": {
+      "name": "FilterButton.jsx",
+      "type": "file",
+      "summary": "Кнопка «Фильтры» с поповер-панелью всех фасетов (Бренд / Цена / Наличие). Значения редактируются как черновик (staged), синхронизируются с applied при открытии, применяются по «Показать» и сбрасываются по «Сбросить»."
+    },
+    "file:client/src/components/catalog/SortDropdown.jsx": {
+      "name": "SortDropdown.jsx",
+      "type": "file",
+      "summary": "Дропдаун выбора сортировки каталога в тулбаре. Опции (по умолчанию, цена, название, наличие) совпадают со switch в useCatalogFilters; value=null означает порядок по умолчанию."
+    },
+    "file:client/src/components/catalog/ToolbarMenu.jsx": {
+      "name": "ToolbarMenu.jsx",
+      "type": "file",
+      "summary": "Переиспользуемая обвязка дропдаунов тулбара: render-prop триггер + анимированный поповер с всплытием (motion), закрытием по клику снаружи и Escape. Базовый примитив для кнопок «Фильтры», «Сортировка», «Категории»."
+    },
+    "file:client/src/components/ui/Button.jsx": {
+      "name": "Button.jsx",
+      "type": "file",
+      "summary": "CTA-кнопка в форме таблетки с анимированным красным кругом и стрелкой; рендерит либо <button>, либо react-router Link при наличии prop `to`."
+    },
+    "file:client/src/components/ui/IconButton.jsx": {
+      "name": "IconButton.jsx",
+      "type": "file",
+      "summary": "Круглая кнопка-иконка с вариантами оформления (light/dark/filled/slate); пробрасывает forwardRef на корневой <button> для click-outside detection."
+    },
+    "file:client/src/components/ui/Logo.jsx": {
+      "name": "Logo.jsx",
+      "type": "file",
+      "summary": "Логотип Fastener Direct с маркой и текстовым блоком; поддерживает варианты full/mark, темы и масштабирование с пропорциональным расчётом размеров шрифта."
+    },
+    "file:client/src/components/ui/MenuOpenButton.jsx": {
+      "name": "MenuOpenButton.jsx",
+      "type": "file",
+      "summary": "Кнопка открытия мобильного меню — серый slate-круг 48px с иконкой «+»; единый источник для Header, HeroHeader и CatalogToolbar."
+    },
+    "file:client/src/components/ui/icons/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Barrel-файл, реэкспортирующий все 15 SVG-иконок проекта одним именованным набором для удобного импорта."
+    },
+    "file:server/src/app.js": {
+      "name": "app.js",
+      "type": "file",
+      "summary": "Точка входа backend-сервера: создаёт инстанс Fastify с логированием, регистрирует plugin CORS и routes, затем поднимает HTTP-сервер на порту из PORT или 3000."
+    },
+    "file:server/src/plugins/cors.js": {
+      "name": "cors.js",
+      "type": "file",
+      "summary": "Fastify plugin, регистрирующий @fastify/cors с разрешённым origin http://localhost:5173 (dev-сервер Vite клиента)."
+    },
+    "file:server/src/routes/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Корневой Fastify plugin маршрутов: регистрирует health-check endpoint GET /api/health, возвращающий { status: 'ok' }."
+    },
+    "endpoint:server/src/routes/index.js:GET /api/health": {
+      "name": "GET /api/health",
+      "type": "endpoint",
+      "summary": "Health-check endpoint, возвращающий JSON { status: 'ok' } для проверки доступности сервера."
+    },
+    "config:client/.prettierrc.json": {
+      "name": ".prettierrc.json",
+      "type": "config",
+      "summary": "Конфигурация Prettier для клиента: задаёт стиль форматирования (без точек с запятой, одинарные кавычки, printWidth, ширина табуляции) и подключает плагин prettier-plugin-tailwindcss для сортировки Tailwind-классов."
+    },
+    "document:client/README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Стандартный README шаблона Vite + React: краткое описание HMR, упоминание React Compiler и рекомендации по расширению конфигурации ESLint."
+    },
+    "file:client/index.html": {
+      "name": "index.html",
+      "type": "file",
+      "summary": "Входной HTML-документ Vite: содержит корневой контейнер #root и подключает ES-модуль /src/main.jsx, который монтирует React-приложение."
+    },
+    "config:client/package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Манифест клиентского пакета: объявляет зависимости (React 19, react-router-dom 7, zustand, motion, lenis, tailwind-merge, clsx) и npm-скрипты для dev-сервера, сборки, превью, линтинга и форматирования через Vite/ESLint/Prettier."
+    },
+    "config:client/eslint.config.js": {
+      "name": "eslint.config.js",
+      "type": "config",
+      "summary": "Flat-config ESLint для клиента: правила для JS/JSX, плагины React Hooks и React Refresh, глобалы браузера."
+    },
+    "config:client/postcss.config.js": {
+      "name": "postcss.config.js",
+      "type": "config",
+      "summary": "Конфигурация PostCSS, подключающая плагины Tailwind CSS и Autoprefixer для сборки стилей."
+    },
+    "file:client/src/App.css": {
+      "name": "App.css",
+      "type": "file",
+      "summary": "Глобальные стили приложения: базовые правила, утилиты и кастомные классы для лендинга и каталога."
+    },
+    "file:client/src/components/catalog/ActiveFilterChips.jsx": {
+      "name": "ActiveFilterChips.jsx",
+      "type": "file",
+      "summary": "Компонент каталога, отрисовывающий чипы активных фильтров (категория, поиск, бренды, цена, наличие) с возможностью их сброса."
+    },
+    "file:client/src/components/catalog/CatalogToolbar.jsx": {
+      "name": "CatalogToolbar.jsx",
+      "type": "file",
+      "summary": "Панель инструментов каталога с scroll-driven докингом: измеряет геометрию, трансформирует тулбар через motion при прокрутке."
+    },
+    "file:client/src/components/catalog/Pagination.jsx": {
+      "name": "Pagination.jsx",
+      "type": "file",
+      "summary": "Компонент постраничной навигации каталога с вычислением видимых страниц и многоточий вокруг текущей."
+    },
+    "file:client/src/components/catalog/ProductCardSkeleton.jsx": {
+      "name": "ProductCardSkeleton.jsx",
+      "type": "file",
+      "summary": "Скелетон-заглушка карточки товара, отображаемая во время загрузки данных каталога."
+    },
+    "file:client/src/components/catalog/SearchBar.jsx": {
+      "name": "SearchBar.jsx",
+      "type": "file",
+      "summary": "Поле поиска каталога с иконкой поиска и кнопкой очистки, управляемое через проп onChange."
+    },
+    "file:client/src/components/sections/_MenuItem.jsx": {
+      "name": "_MenuItem.jsx",
+      "type": "file",
+      "summary": "Приватный подкомпонент пункта мобильного меню с hover-состоянием и навигацией через react-router Link."
+    },
+    "file:client/src/components/sections/_TaglineLine.jsx": {
+      "name": "_TaglineLine.jsx",
+      "type": "file",
+      "summary": "Приватный подкомпонент Hero: анимированная строка слогана с учётом prefers-reduced-motion."
+    },
+    "file:client/src/components/sections/CtaBannerSection.jsx": {
+      "name": "CtaBannerSection.jsx",
+      "type": "file",
+      "summary": "Секция лендинга с CTA-баннером, появляющимся при попадании во вьюпорт (useInView)."
+    },
+    "file:client/src/components/sections/FastenerDiagramSection.jsx": {
+      "name": "FastenerDiagramSection.jsx",
+      "type": "file",
+      "summary": "Секция лендинга с интерактивной SVG-диаграммой-донатом ассортимента крепежа: вычисляет дуги, анимирует сегменты и подписи."
+    },
+    "file:client/src/components/sections/Hero.jsx": {
+      "name": "Hero.jsx",
+      "type": "file",
+      "summary": "Главная hero-секция лендинга: фоновое видео, фазовая анимация слоганов и реакция на видимость/прокрутку."
+    },
+    "file:client/src/components/sections/HeroHeader.jsx": {
+      "name": "HeroHeader.jsx",
+      "type": "file",
+      "summary": "Шапка hero-секции: логотип, навигация, переключатель языка и кнопка открытия мобильного меню с анимацией входа."
+    },
+    "file:client/src/components/sections/MobileMenu.jsx": {
+      "name": "MobileMenu.jsx",
+      "type": "file",
+      "summary": "Полноэкранное мобильное меню-шторка с анимацией колонок, ловушкой фокуса, навигацией и переключателем языка."
+    },
+    "file:client/src/components/sections/NumbersSection.jsx": {
+      "name": "NumbersSection.jsx",
+      "type": "file",
+      "summary": "Секция статистики лендинга: ряды чисел с анимацией счётчика (useCountUp), запускаемой при попадании во вьюпорт."
+    },
+    "file:client/src/components/sections/OurValuesSection.jsx": {
+      "name": "OurValuesSection.jsx",
+      "type": "file",
+      "summary": "Секция ценностей лендинга: scroll-driven анимация заголовка и карточек с раздельными десктоп/мобильными вариантами."
+    },
+    "file:client/src/components/sections/PartnersSection.jsx": {
+      "name": "PartnersSection.jsx",
+      "type": "file",
+      "summary": "Секция партнёров лендинга: адаптивная сетка карточек партнёров с анимацией появления при скролле."
+    },
+    "file:client/src/components/sections/ServiceProgramSection.jsx": {
+      "name": "ServiceProgramSection.jsx",
+      "type": "file",
+      "summary": "Секция сервисной программы лендинга: список услуг с раскрытием по hover (десктоп) и стопкой строк (мобайл)."
+    },
+    "file:client/src/components/ui/Checkbox.jsx": {
+      "name": "Checkbox.jsx",
+      "type": "file",
+      "summary": "UI-примитив чекбокса с кастомным оформлением, используемый в фильтрах каталога."
+    },
+    "file:client/src/components/ui/ErrorBoundary.jsx": {
+      "name": "ErrorBoundary.jsx",
+      "type": "file",
+      "summary": "Классовый компонент-границы ошибок React, перехватывающий исключения рендера и показывающий запасной UI."
+    },
+    "file:client/src/components/ui/GridLines.jsx": {
+      "name": "GridLines.jsx",
+      "type": "file",
+      "summary": "UI-примитив декоративных вертикальных направляющих сетки, используемый в фоне секций."
+    },
+    "file:client/src/components/ui/icons/Arrow.jsx": {
+      "name": "Arrow.jsx",
+      "type": "file",
+      "summary": "SVG-иконка стрелки вправо, используется внутри Button и ScrollToTopButton. Принимает props размера и className."
+    },
+    "file:client/src/components/ui/icons/BrandMark.jsx": {
+      "name": "BrandMark.jsx",
+      "type": "file",
+      "summary": "SVG-иконка логотипа/знака бренда, используется в шапке и Logo."
+    },
+    "file:client/src/components/ui/icons/Cart.jsx": {
+      "name": "Cart.jsx",
+      "type": "file",
+      "summary": "SVG-иконка корзины, используется в карточках товара и кнопках добавления в корзину."
+    },
+    "file:client/src/components/ui/icons/Check.jsx": {
+      "name": "Check.jsx",
+      "type": "file",
+      "summary": "SVG-иконка галочки, используется в чекбоксах и индикаторах выбора."
+    },
+    "file:client/src/components/ui/icons/ChevronDown.jsx": {
+      "name": "ChevronDown.jsx",
+      "type": "file",
+      "summary": "SVG-иконка шеврона вниз, используется в выпадающих списках каталога (dropdown)."
+    },
+    "file:client/src/components/ui/icons/Close.jsx": {
+      "name": "Close.jsx",
+      "type": "file",
+      "summary": "SVG-иконка закрытия (крестик), используется в мобильном меню и модальных элементах."
+    },
+    "file:client/src/components/ui/icons/Filter.jsx": {
+      "name": "Filter.jsx",
+      "type": "file",
+      "summary": "SVG-иконка фильтра, используется в тулбаре каталога для кнопки фильтрации."
+    },
+    "file:client/src/components/ui/icons/Grid.jsx": {
+      "name": "Grid.jsx",
+      "type": "file",
+      "summary": "SVG-иконка сетки, используется для переключения вида отображения каталога."
+    },
+    "file:client/src/components/ui/icons/Heart.jsx": {
+      "name": "Heart.jsx",
+      "type": "file",
+      "summary": "SVG-иконка сердца, используется в кнопке добавления товара в избранное."
+    },
+    "file:client/src/components/ui/icons/Plus.jsx": {
+      "name": "Plus.jsx",
+      "type": "file",
+      "summary": "SVG-иконка плюса, используется в счётчике количества и элементах добавления."
+    },
+    "file:client/src/components/ui/icons/Search.jsx": {
+      "name": "Search.jsx",
+      "type": "file",
+      "summary": "SVG-иконка поиска (лупа), используется в строке поиска каталога."
+    },
+    "file:client/src/components/ui/icons/Sort.jsx": {
+      "name": "Sort.jsx",
+      "type": "file",
+      "summary": "SVG-иконка сортировки, используется в выпадающем меню сортировки каталога."
+    },
+    "file:client/src/components/ui/icons/User.jsx": {
+      "name": "User.jsx",
+      "type": "file",
+      "summary": "SVG-иконка пользователя, используется в ссылке на личный кабинет в шапке."
+    },
+    "file:client/src/components/ui/icons/VK.jsx": {
+      "name": "VK.jsx",
+      "type": "file",
+      "summary": "SVG-иконка социальной сети ВКонтакте, используется в подвале сайта."
+    },
+    "file:client/src/components/ui/icons/YouTube.jsx": {
+      "name": "YouTube.jsx",
+      "type": "file",
+      "summary": "SVG-иконка YouTube, используется в подвале сайта в блоке соцсетей."
+    },
+    "file:client/src/components/ui/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Barrel-файл UI-слоя: реэкспортирует все UI-примитивы (Button, IconButton, MenuOpenButton, Logo, NavPill, GridLines, Checkbox, SupportButton) и весь набор иконок."
+    },
+    "file:client/src/components/ui/NavPill.jsx": {
+      "name": "NavPill.jsx",
+      "type": "file",
+      "summary": "Pill-кнопка навигации для Header и HeroHeader с четырьмя вариантами оформления; рендерится как Link или button."
+    },
+    "file:client/src/components/ui/ProductCard.jsx": {
+      "name": "ProductCard.jsx",
+      "type": "file",
+      "summary": "Карточка товара каталога: фото, цена, счётчик количества, кнопки корзины и избранного с анимацией; интегрирована с zustand-сторами корзины и избранного."
+    },
+    "file:client/src/components/ui/ScrollToTopButton.jsx": {
+      "name": "ScrollToTopButton.jsx",
+      "type": "file",
+      "summary": "Плавающая круглая FAB-кнопка прокрутки страницы наверх; появляется после прокрутки больше порога SHOW_THRESHOLD."
+    },
+    "file:client/src/components/ui/SupportButton.jsx": {
+      "name": "SupportButton.jsx",
+      "type": "file",
+      "summary": "Фиксированная FAB-кнопка «Поддержка» в правом нижнем углу: появляется ниже Hero и скрывается у Footer, реагируя на направление прокрутки."
+    },
+    "file:client/src/config/breakpoints.js": {
+      "name": "breakpoints.js",
+      "type": "file",
+      "summary": "Конфигурация контрольных точек адаптивной вёрстки (BREAKPOINTS) и хелпер mediaQuery для построения media-запросов."
+    },
+    "file:client/src/config/entrance.js": {
+      "name": "entrance.js",
+      "type": "file",
+      "summary": "Константы анимации входа элементов (длительность, easing, смещение по Y, stagger), единый канон появления секций."
+    },
+    "file:client/src/content/catalog/brands.js": {
+      "name": "brands.js",
+      "type": "file",
+      "summary": "Статические данные списка брендов каталога (массив BRANDS) для фильтрации товаров."
+    },
+    "file:client/src/content/catalog/categories.js": {
+      "name": "categories.js",
+      "type": "file",
+      "summary": "Дерево категорий каталога (CATEGORY_TREE) с подкатегориями — единый источник правды для навигации и фильтров."
+    },
+    "file:client/src/content/catalog/helpers.js": {
+      "name": "helpers.js",
+      "type": "file",
+      "summary": "Утилиты извлечения данных из CATEGORY_TREE: поиск категории/подкатегории по slug, получение лейбла и построение хлебных крошек."
+    },
+    "file:client/src/content/catalog/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Barrel-модуль каталога: реэкспортирует CATEGORY_TREE, BRANDS и PRODUCTS из соседних content-файлов в единую точку импорта."
+    },
+    "file:client/src/content/catalog/products.js": {
+      "name": "products.js",
+      "type": "file",
+      "summary": "Статический каталог товаров (PRODUCTS) — крупный data-модуль с описаниями крепежа, ценами, брендами и категориями, потребляемый каталогом и фильтрами."
+    },
+    "file:client/src/content/ctaBanner.js": {
+      "name": "ctaBanner.js",
+      "type": "file",
+      "summary": "Content-модуль секции CTA-баннера: экспортирует объект CTA_BANNER с текстами призыва к действию."
+    },
+    "file:client/src/content/fastenerDiagram.js": {
+      "name": "fastenerDiagram.js",
+      "type": "file",
+      "summary": "Content- и конфигурационный модуль секции диаграммы крепежа: задаёт геометрию колец (IR, OR, CX, CY), параметры анимации и список секторов SVG-диаграммы."
+    },
+    "file:client/src/content/footer.js": {
+      "name": "footer.js",
+      "type": "file",
+      "summary": "Content-модуль футера: ссылки каталога и навигации, контактная информация, соцсети и юридические тексты, потребляемые компонентом Footer."
+    },
+    "file:client/src/content/header.js": {
+      "name": "header.js",
+      "type": "file",
+      "summary": "Content-модуль шапки: метки языков, навигационные ссылки, ссылки на аккаунт и главную, потребляемые компонентом Header."
+    },
+    "file:client/src/content/hero.js": {
+      "name": "hero.js",
+      "type": "file",
+      "summary": "Content-модуль hero-секции: крупные текстовые блоки (BIG_LEFT, BIG_RIGHT) и набор слоганов TAGLINES для лендинга."
+    },
+    "file:client/src/content/menu.js": {
+      "name": "menu.js",
+      "type": "file",
+      "summary": "Content-модуль мобильного меню: основные и второстепенные пункты навигации (MENU_PRIMARY, MENU_SECONDARY) и CTA-блок."
+    },
+    "file:client/src/content/numbers.js": {
+      "name": "numbers.js",
+      "type": "file",
+      "summary": "Content- и конфигурационный модуль секции статистики: тайминги анимации (COUNT_DURATION, LINE_DURATION) и два ряда числовых показателей."
+    },
+    "file:client/src/content/ourValues.js": {
+      "name": "ourValues.js",
+      "type": "file",
+      "summary": "Content- и конфигурационный модуль секции «Наши ценности»: тексты, карточки CARDS и параметры скролл-анимации (дельты смещения, spring-конфиг)."
+    },
+    "file:client/src/content/partners.js": {
+      "name": "partners.js",
+      "type": "file",
+      "summary": "Content- и конфигурационный модуль секции партнёров: заголовок, параметры grid-раскладки и список партнёров."
+    },
+    "file:client/src/content/serviceProgram.js": {
+      "name": "serviceProgram.js",
+      "type": "file",
+      "summary": "Content-модуль секции сервисной программы: метка секции и список услуг SERVICES."
+    },
+    "file:client/src/hooks/useBreakpoint.js": {
+      "name": "useBreakpoint.js",
+      "type": "file",
+      "summary": "Hook, возвращающий активность именованного breakpoint: оборачивает useMediaQuery медиа-запросом из конфигурации breakpoints."
+    },
+    "file:client/src/hooks/useCatalogFilters.js": {
+      "name": "useCatalogFilters.js",
+      "type": "file",
+      "summary": "Центральный hook каталога: управляет staged/applied фильтрами, поиском, сортировкой, синхронизацией с URL-параметрами и пагинацией отфильтрованных товаров."
+    },
+    "file:client/src/hooks/useCountUp.js": {
+      "name": "useCountUp.js",
+      "type": "file",
+      "summary": "Hook анимации счётчика: плавно увеличивает значение от start до end за duration через requestAnimationFrame с easing."
+    },
+    "file:client/src/hooks/useElementHeight.js": {
+      "name": "useElementHeight.js",
+      "type": "file",
+      "summary": "Hook отслеживания высоты DOM-элемента по селектору через ResizeObserver, возвращающий актуальную высоту."
+    },
+    "file:client/src/hooks/useEntranceProps.js": {
+      "name": "useEntranceProps.js",
+      "type": "file",
+      "summary": "Hook, формирующий пропсы entrance-анимации (initial/animate/transition) для Framer Motion с учётом prefers-reduced-motion."
+    },
+    "file:client/src/hooks/useInfiniteScroll.js": {
+      "name": "useInfiniteScroll.js",
+      "type": "file",
+      "summary": "Hook бесконечной прокрутки: через IntersectionObserver вызывает onLoadMore при появлении sentinel-элемента, когда подгрузка включена."
+    },
+    "file:client/src/hooks/useLenis.js": {
+      "name": "useLenis.js",
+      "type": "file",
+      "summary": "Hook инициализации Lenis smooth-scroll: запускает RAF-цикл и уничтожает экземпляр при размонтировании, уважая prefers-reduced-motion."
+    },
+    "file:client/src/hooks/useMediaQuery.js": {
+      "name": "useMediaQuery.js",
+      "type": "file",
+      "summary": "Базовый hook медиа-запросов на основе useSyncExternalStore: подписывается на matchMedia и возвращает текущее совпадение запроса."
+    },
+    "file:client/src/hooks/useScrollDirection.js": {
+      "name": "useScrollDirection.js",
+      "type": "file",
+      "summary": "Hook определения направления прокрутки (вверх/вниз) и позиции через слушатель scroll, используется для скрытия/показа шапки."
+    },
+    "file:client/src/hooks/useViewport.js": {
+      "name": "useViewport.js",
+      "type": "file",
+      "summary": "Hook определения возможностей viewport (например, поддержки hover) через matchMedia с подпиской на изменения."
+    },
+    "file:client/src/main.jsx": {
+      "name": "main.jsx",
+      "type": "file",
+      "summary": "Точка входа клиента: монтирует App в DOM, оборачивая его в StrictMode, ErrorBoundary и BrowserRouter, и подключает глобальные стили."
+    },
+    "file:client/src/store/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Barrel-модуль стора: реэкспортирует Zustand-хранилища useUiStore, useCartStore и useFavoritesStore из слайсов."
+    },
+    "file:client/src/store/slices/cartSlice.js": {
+      "name": "cartSlice.js",
+      "type": "file",
+      "summary": "Zustand-слайс корзины: хранит товары как Map<productId, quantity> и предоставляет действия добавления, удаления, изменения количества и селекторы состояния."
+    },
+    "file:client/src/store/slices/favoritesSlice.js": {
+      "name": "favoritesSlice.js",
+      "type": "file",
+      "summary": "Zustand store slice для избранного: хранит набор id товаров и предоставляет действия добавить/убрать/проверить наличие в избранном."
+    },
+    "file:client/src/store/slices/uiSlice.js": {
+      "name": "uiSlice.js",
+      "type": "file",
+      "summary": "Zustand store slice для глобального UI-состояния (например, открытие мобильного меню) через хук useUiStore."
+    },
+    "file:client/src/styles/index.css": {
+      "name": "index.css",
+      "type": "file",
+      "summary": "Глобальные стили клиента: подключение шрифта Neue Montreal через @font-face, директивы Tailwind (base/components/utilities) и базовый layer со скрытием скроллбара."
+    },
+    "file:client/src/utils/cn.js": {
+      "name": "cn.js",
+      "type": "file",
+      "summary": "Утилита cn для объединения классов: comбинирует clsx и tailwind-merge для безопасного слияния Tailwind-классов."
+    },
+    "config:client/tailwind.config.js": {
+      "name": "tailwind.config.js",
+      "type": "config",
+      "summary": "Конфигурация Tailwind с design token'ами проекта: фирменные цвета, тени (popover/btn), шрифт Neue Montreal, грид каталога и слоистый z-index стек."
+    },
+    "config:client/vite.config.js": {
+      "name": "vite.config.js",
+      "type": "config",
+      "summary": "Конфигурация Vite: плагин React, alias @/ → client/src и dev-proxy /api → http://localhost:3000, связывающий клиент с backend."
+    },
+    "service:docker-compose.yml": {
+      "name": "docker-compose.yml",
+      "type": "service",
+      "summary": "Docker Compose с single-service postgres:16 (БД fastener_direct, порт 5432) и именованным volume pg_data для персистентности данных."
+    },
+    "config:package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Корневой package.json монорепозитория с npm-скриптами и общими зависимостями для запуска client и server."
+    },
+    "config:server/.env.example": {
+      "name": ".env.example",
+      "type": "config",
+      "summary": "Шаблон переменных окружения сервера (например, DATABASE_URL) для подключения к PostgreSQL."
+    },
+    "config:server/drizzle.config.js": {
+      "name": "drizzle.config.js",
+      "type": "config",
+      "summary": "Конфигурация Drizzle ORM: путь к схеме (src/db/schema/index.js), каталог миграций drizzle, драйвер pg и connectionString из DATABASE_URL."
+    },
+    "config:server/package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Манифест backend-пакета (Fastify/Drizzle): npm-скрипты, зависимости и метаданные сервера."
+    },
+    "file:server/src/db/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Точка подключения к БД: создаёт postgres.js client по DATABASE_URL и экспортирует инстанс drizzle() как db."
+    },
+    "file:server/src/db/schema/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Барель-файл Drizzle-схем БД (пока пустой/заготовка) — место для определения таблиц проекта."
+    }
+  },
+  "totalNodes": 111,
+  "totalEdges": 163
+}

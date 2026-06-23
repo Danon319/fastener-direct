@@ -1,0 +1,374 @@
+{
+  "nodes": [
+    {
+      "id": "file:client/src/content/catalog/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/content/catalog/index.js",
+      "summary": "Barrel-модуль каталога: реэкспортирует CATEGORY_TREE, BRANDS и PRODUCTS из соседних content-файлов в единую точку импорта.",
+      "tags": ["barrel", "entry-point", "content", "catalog"],
+      "complexity": "simple",
+      "languageNotes": "Чистый re-export barrel без собственной логики."
+    },
+    {
+      "id": "file:client/src/content/catalog/products.js",
+      "type": "file",
+      "name": "products.js",
+      "filePath": "client/src/content/catalog/products.js",
+      "summary": "Статический каталог товаров (PRODUCTS) — крупный data-модуль с описаниями крепежа, ценами, брендами и категориями, потребляемый каталогом и фильтрами.",
+      "tags": ["content", "data-model", "catalog", "mock-data"],
+      "complexity": "complex",
+      "languageNotes": "Большой литерал-массив данных (~690 строк) без исполняемой логики."
+    },
+    {
+      "id": "file:client/src/content/ctaBanner.js",
+      "type": "file",
+      "name": "ctaBanner.js",
+      "filePath": "client/src/content/ctaBanner.js",
+      "summary": "Content-модуль секции CTA-баннера: экспортирует объект CTA_BANNER с текстами призыва к действию.",
+      "tags": ["content", "data-model", "landing", "section"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/fastenerDiagram.js",
+      "type": "file",
+      "name": "fastenerDiagram.js",
+      "filePath": "client/src/content/fastenerDiagram.js",
+      "summary": "Content- и конфигурационный модуль секции диаграммы крепежа: задаёт геометрию колец (IR, OR, CX, CY), параметры анимации и список секторов SVG-диаграммы.",
+      "tags": ["content", "configuration", "animation", "section", "svg"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/footer.js",
+      "type": "file",
+      "name": "footer.js",
+      "filePath": "client/src/content/footer.js",
+      "summary": "Content-модуль футера: ссылки каталога и навигации, контактная информация, соцсети и юридические тексты, потребляемые компонентом Footer.",
+      "tags": ["content", "data-model", "footer", "navigation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/header.js",
+      "type": "file",
+      "name": "header.js",
+      "filePath": "client/src/content/header.js",
+      "summary": "Content-модуль шапки: метки языков, навигационные ссылки, ссылки на аккаунт и главную, потребляемые компонентом Header.",
+      "tags": ["content", "data-model", "header", "navigation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/hero.js",
+      "type": "file",
+      "name": "hero.js",
+      "filePath": "client/src/content/hero.js",
+      "summary": "Content-модуль hero-секции: крупные текстовые блоки (BIG_LEFT, BIG_RIGHT) и набор слоганов TAGLINES для лендинга.",
+      "tags": ["content", "data-model", "landing", "section"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/menu.js",
+      "type": "file",
+      "name": "menu.js",
+      "filePath": "client/src/content/menu.js",
+      "summary": "Content-модуль мобильного меню: основные и второстепенные пункты навигации (MENU_PRIMARY, MENU_SECONDARY) и CTA-блок.",
+      "tags": ["content", "data-model", "menu", "navigation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/numbers.js",
+      "type": "file",
+      "name": "numbers.js",
+      "filePath": "client/src/content/numbers.js",
+      "summary": "Content- и конфигурационный модуль секции статистики: тайминги анимации (COUNT_DURATION, LINE_DURATION) и два ряда числовых показателей.",
+      "tags": ["content", "configuration", "animation", "section"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/ourValues.js",
+      "type": "file",
+      "name": "ourValues.js",
+      "filePath": "client/src/content/ourValues.js",
+      "summary": "Content- и конфигурационный модуль секции «Наши ценности»: тексты, карточки CARDS и параметры скролл-анимации (дельты смещения, spring-конфиг).",
+      "tags": ["content", "configuration", "animation", "section"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/partners.js",
+      "type": "file",
+      "name": "partners.js",
+      "filePath": "client/src/content/partners.js",
+      "summary": "Content- и конфигурационный модуль секции партнёров: заголовок, параметры grid-раскладки и список партнёров.",
+      "tags": ["content", "configuration", "section", "partners"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/content/serviceProgram.js",
+      "type": "file",
+      "name": "serviceProgram.js",
+      "filePath": "client/src/content/serviceProgram.js",
+      "summary": "Content-модуль секции сервисной программы: метка секции и список услуг SERVICES.",
+      "tags": ["content", "data-model", "section", "services"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useBreakpoint.js",
+      "type": "file",
+      "name": "useBreakpoint.js",
+      "filePath": "client/src/hooks/useBreakpoint.js",
+      "summary": "Hook, возвращающий активность именованного breakpoint: оборачивает useMediaQuery медиа-запросом из конфигурации breakpoints.",
+      "tags": ["hook", "responsive", "media-query", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useCatalogFilters.js",
+      "type": "file",
+      "name": "useCatalogFilters.js",
+      "filePath": "client/src/hooks/useCatalogFilters.js",
+      "summary": "Центральный hook каталога: управляет staged/applied фильтрами, поиском, сортировкой, синхронизацией с URL-параметрами и пагинацией отфильтрованных товаров.",
+      "tags": ["hook", "catalog", "filtering", "state-management", "routing"],
+      "complexity": "complex",
+      "languageNotes": "Опирается на useMemo/useCallback для мемоизации тяжёлой фильтрации и на useParams/useNavigate из react-router для синхронизации состояния с URL."
+    },
+    {
+      "id": "file:client/src/hooks/useCountUp.js",
+      "type": "file",
+      "name": "useCountUp.js",
+      "filePath": "client/src/hooks/useCountUp.js",
+      "summary": "Hook анимации счётчика: плавно увеличивает значение от start до end за duration через requestAnimationFrame с easing.",
+      "tags": ["hook", "animation", "raf", "counter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useElementHeight.js",
+      "type": "file",
+      "name": "useElementHeight.js",
+      "filePath": "client/src/hooks/useElementHeight.js",
+      "summary": "Hook отслеживания высоты DOM-элемента по селектору через ResizeObserver, возвращающий актуальную высоту.",
+      "tags": ["hook", "dom", "resize-observer", "layout"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useEntranceProps.js",
+      "type": "file",
+      "name": "useEntranceProps.js",
+      "filePath": "client/src/hooks/useEntranceProps.js",
+      "summary": "Hook, формирующий пропсы entrance-анимации (initial/animate/transition) для Framer Motion с учётом prefers-reduced-motion.",
+      "tags": ["hook", "animation", "framer-motion", "accessibility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useInfiniteScroll.js",
+      "type": "file",
+      "name": "useInfiniteScroll.js",
+      "filePath": "client/src/hooks/useInfiniteScroll.js",
+      "summary": "Hook бесконечной прокрутки: через IntersectionObserver вызывает onLoadMore при появлении sentinel-элемента, когда подгрузка включена.",
+      "tags": ["hook", "infinite-scroll", "intersection-observer", "pagination"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useLenis.js",
+      "type": "file",
+      "name": "useLenis.js",
+      "filePath": "client/src/hooks/useLenis.js",
+      "summary": "Hook инициализации Lenis smooth-scroll: запускает RAF-цикл и уничтожает экземпляр при размонтировании, уважая prefers-reduced-motion.",
+      "tags": ["hook", "smooth-scroll", "lenis", "raf"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useMediaQuery.js",
+      "type": "file",
+      "name": "useMediaQuery.js",
+      "filePath": "client/src/hooks/useMediaQuery.js",
+      "summary": "Базовый hook медиа-запросов на основе useSyncExternalStore: подписывается на matchMedia и возвращает текущее совпадение запроса.",
+      "tags": ["hook", "media-query", "responsive", "use-sync-external-store"],
+      "complexity": "simple",
+      "languageNotes": "Использует useSyncExternalStore для корректной подписки на внешний источник (matchMedia) без рассинхронизации при гидрации."
+    },
+    {
+      "id": "file:client/src/hooks/useScrollDirection.js",
+      "type": "file",
+      "name": "useScrollDirection.js",
+      "filePath": "client/src/hooks/useScrollDirection.js",
+      "summary": "Hook определения направления прокрутки (вверх/вниз) и позиции через слушатель scroll, используется для скрытия/показа шапки.",
+      "tags": ["hook", "scroll", "event-handler", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useViewport.js",
+      "type": "file",
+      "name": "useViewport.js",
+      "filePath": "client/src/hooks/useViewport.js",
+      "summary": "Hook определения возможностей viewport (например, поддержки hover) через matchMedia с подпиской на изменения.",
+      "tags": ["hook", "viewport", "media-query", "responsive"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/main.jsx",
+      "type": "file",
+      "name": "main.jsx",
+      "filePath": "client/src/main.jsx",
+      "summary": "Точка входа клиента: монтирует App в DOM, оборачивая его в StrictMode, ErrorBoundary и BrowserRouter, и подключает глобальные стили.",
+      "tags": ["entry-point", "bootstrap", "react", "routing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/store/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/store/index.js",
+      "summary": "Barrel-модуль стора: реэкспортирует Zustand-хранилища useUiStore, useCartStore и useFavoritesStore из слайсов.",
+      "tags": ["barrel", "entry-point", "store", "zustand"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/store/slices/cartSlice.js",
+      "type": "file",
+      "name": "cartSlice.js",
+      "filePath": "client/src/store/slices/cartSlice.js",
+      "summary": "Zustand-слайс корзины: хранит товары как Map<productId, quantity> и предоставляет действия добавления, удаления, изменения количества и селекторы состояния.",
+      "tags": ["store", "zustand", "cart", "state-management"],
+      "complexity": "simple",
+      "languageNotes": "Использует Map для items с иммутабельным обновлением (копирование Map в каждом set)."
+    },
+    {
+      "id": "function:client/src/hooks/useBreakpoint.js:useBreakpoint",
+      "type": "function",
+      "name": "useBreakpoint",
+      "filePath": "client/src/hooks/useBreakpoint.js",
+      "lineRange": [12, 14],
+      "summary": "Возвращает true/false для активности именованного breakpoint, делегируя useMediaQuery медиа-запрос из конфигурации.",
+      "tags": ["hook", "responsive", "media-query"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useCatalogFilters.js:useCatalogFilters",
+      "type": "function",
+      "name": "useCatalogFilters",
+      "filePath": "client/src/hooks/useCatalogFilters.js",
+      "lineRange": [66, 268],
+      "summary": "Главный hook каталога: управляет staged/applied фильтрами, поиском и сортировкой, синхронизирует выбранную категорию с URL и отдаёт пагинированный список товаров.",
+      "tags": ["hook", "catalog", "filtering", "state-management", "routing"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/hooks/useCatalogFilters.js:countFilters",
+      "type": "function",
+      "name": "countFilters",
+      "filePath": "client/src/hooks/useCatalogFilters.js",
+      "lineRange": [24, 30],
+      "summary": "Вспомогательная функция подсчёта количества активных фильтров в объекте фильтров.",
+      "tags": ["utility", "filtering", "helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useCountUp.js:useCountUp",
+      "type": "function",
+      "name": "useCountUp",
+      "filePath": "client/src/hooks/useCountUp.js",
+      "lineRange": [17, 44],
+      "summary": "Анимирует число от start до end за заданную длительность через requestAnimationFrame с easing-функцией.",
+      "tags": ["hook", "animation", "raf", "counter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useElementHeight.js:useElementHeight",
+      "type": "function",
+      "name": "useElementHeight",
+      "filePath": "client/src/hooks/useElementHeight.js",
+      "lineRange": [12, 32],
+      "summary": "Отслеживает высоту элемента по CSS-селектору через ResizeObserver и возвращает её актуальное значение.",
+      "tags": ["hook", "dom", "resize-observer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useEntranceProps.js:useEntranceProps",
+      "type": "function",
+      "name": "useEntranceProps",
+      "filePath": "client/src/hooks/useEntranceProps.js",
+      "lineRange": [19, 50],
+      "summary": "Возвращает пропсы entrance-анимации для Framer Motion, отключая движение при включённом prefers-reduced-motion.",
+      "tags": ["hook", "animation", "framer-motion", "accessibility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useInfiniteScroll.js:useInfiniteScroll",
+      "type": "function",
+      "name": "useInfiniteScroll",
+      "filePath": "client/src/hooks/useInfiniteScroll.js",
+      "lineRange": [19, 38],
+      "summary": "Через IntersectionObserver вызывает onLoadMore при появлении sentinel-элемента, когда подгрузка разрешена.",
+      "tags": ["hook", "infinite-scroll", "intersection-observer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useLenis.js:useLenis",
+      "type": "function",
+      "name": "useLenis",
+      "filePath": "client/src/hooks/useLenis.js",
+      "lineRange": [11, 30],
+      "summary": "Инициализирует Lenis smooth-scroll, гоняет RAF-цикл и корректно уничтожает экземпляр при размонтировании.",
+      "tags": ["hook", "smooth-scroll", "lenis", "raf"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useMediaQuery.js:useMediaQuery",
+      "type": "function",
+      "name": "useMediaQuery",
+      "filePath": "client/src/hooks/useMediaQuery.js",
+      "lineRange": [14, 28],
+      "summary": "Подписывается на matchMedia через useSyncExternalStore и возвращает текущее совпадение медиа-запроса.",
+      "tags": ["hook", "media-query", "use-sync-external-store"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useScrollDirection.js:useScrollDirection",
+      "type": "function",
+      "name": "useScrollDirection",
+      "filePath": "client/src/hooks/useScrollDirection.js",
+      "lineRange": [13, 48],
+      "summary": "Определяет направление прокрутки и позицию через слушатель scroll и отдаёт их состоянием для управления UI шапки.",
+      "tags": ["hook", "scroll", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useViewport.js:useViewport",
+      "type": "function",
+      "name": "useViewport",
+      "filePath": "client/src/hooks/useViewport.js",
+      "lineRange": [10, 26],
+      "summary": "Определяет возможности viewport (например, поддержку hover) через matchMedia с подпиской на изменения.",
+      "tags": ["hook", "viewport", "media-query"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "file:client/src/hooks/useBreakpoint.js", "target": "file:client/src/hooks/useMediaQuery.js", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/main.jsx", "target": "file:client/src/App.jsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/main.jsx", "target": "file:client/src/components/ui/ErrorBoundary.jsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:client/src/main.jsx", "target": "file:client/src/styles/index.css", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:client/src/hooks/useBreakpoint.js", "target": "function:client/src/hooks/useBreakpoint.js:useBreakpoint", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useBreakpoint.js", "target": "function:client/src/hooks/useBreakpoint.js:useBreakpoint", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useCatalogFilters.js", "target": "function:client/src/hooks/useCatalogFilters.js:useCatalogFilters", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useCatalogFilters.js", "target": "function:client/src/hooks/useCatalogFilters.js:useCatalogFilters", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useCatalogFilters.js", "target": "function:client/src/hooks/useCatalogFilters.js:countFilters", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useCountUp.js", "target": "function:client/src/hooks/useCountUp.js:useCountUp", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useCountUp.js", "target": "function:client/src/hooks/useCountUp.js:useCountUp", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useElementHeight.js", "target": "function:client/src/hooks/useElementHeight.js:useElementHeight", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useElementHeight.js", "target": "function:client/src/hooks/useElementHeight.js:useElementHeight", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useEntranceProps.js", "target": "function:client/src/hooks/useEntranceProps.js:useEntranceProps", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useEntranceProps.js", "target": "function:client/src/hooks/useEntranceProps.js:useEntranceProps", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useInfiniteScroll.js", "target": "function:client/src/hooks/useInfiniteScroll.js:useInfiniteScroll", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useInfiniteScroll.js", "target": "function:client/src/hooks/useInfiniteScroll.js:useInfiniteScroll", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useLenis.js", "target": "function:client/src/hooks/useLenis.js:useLenis", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useLenis.js", "target": "function:client/src/hooks/useLenis.js:useLenis", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useMediaQuery.js", "target": "function:client/src/hooks/useMediaQuery.js:useMediaQuery", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useMediaQuery.js", "target": "function:client/src/hooks/useMediaQuery.js:useMediaQuery", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useScrollDirection.js", "target": "function:client/src/hooks/useScrollDirection.js:useScrollDirection", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useScrollDirection.js", "target": "function:client/src/hooks/useScrollDirection.js:useScrollDirection", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/src/hooks/useViewport.js", "target": "function:client/src/hooks/useViewport.js:useViewport", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/src/hooks/useViewport.js", "target": "function:client/src/hooks/useViewport.js:useViewport", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "function:client/src/hooks/useBreakpoint.js:useBreakpoint", "target": "function:client/src/hooks/useMediaQuery.js:useMediaQuery", "type": "calls", "direction": "forward", "weight": 0.8}
+  ]
+}

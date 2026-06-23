@@ -1,0 +1,64 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/src/app.js",
+      "type": "file",
+      "name": "app.js",
+      "filePath": "server/src/app.js",
+      "summary": "Точка входа backend-сервера: создаёт инстанс Fastify с логированием, регистрирует plugin CORS и routes, затем поднимает HTTP-сервер на порту из PORT или 3000.",
+      "tags": ["entry-point", "server", "fastify", "bootstrap"],
+      "complexity": "simple",
+      "languageNotes": "ESM-модуль Fastify 5: регистрация плагинов через app.register, запуск через async app.listen."
+    },
+    {
+      "id": "file:server/src/plugins/cors.js",
+      "type": "file",
+      "name": "cors.js",
+      "filePath": "server/src/plugins/cors.js",
+      "summary": "Fastify plugin, регистрирующий @fastify/cors с разрешённым origin http://localhost:5173 (dev-сервер Vite клиента).",
+      "tags": ["middleware", "cors", "plugin", "fastify"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/routes/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "server/src/routes/index.js",
+      "summary": "Корневой Fastify plugin маршрутов: регистрирует health-check endpoint GET /api/health, возвращающий { status: 'ok' }.",
+      "tags": ["routes", "api-handler", "fastify", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:server/src/routes/index.js:GET /api/health",
+      "type": "endpoint",
+      "name": "GET /api/health",
+      "filePath": "server/src/routes/index.js",
+      "summary": "Health-check endpoint, возвращающий JSON { status: 'ok' } для проверки доступности сервера.",
+      "tags": ["endpoint", "health-check", "api", "monitoring"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/src/app.js",
+      "target": "file:server/src/plugins/cors.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/app.js",
+      "target": "file:server/src/routes/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/routes/index.js",
+      "target": "endpoint:server/src/routes/index.js:GET /api/health",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    }
+  ]
+}

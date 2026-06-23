@@ -1,0 +1,582 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "client/src/App.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "App",
+          "startLine": 12,
+          "endLine": 30,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "App",
+          "callee": "useLenis",
+          "lineNumber": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/sections/Footer.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 168,
+      "nonEmptyLines": 155,
+      "functions": [
+        {
+          "name": "FooterLink",
+          "startLine": 19,
+          "endLine": 31,
+          "params": []
+        },
+        {
+          "name": "FooterAnchor",
+          "startLine": 38,
+          "endLine": 52,
+          "params": []
+        },
+        {
+          "name": "Footer",
+          "startLine": 63,
+          "endLine": 166,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "FooterLink",
+          "callee": "cn",
+          "lineNumber": 23
+        },
+        {
+          "caller": "FooterAnchor",
+          "callee": "cn",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Footer",
+          "callee": "useLocation",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Footer",
+          "callee": "cn",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Footer",
+          "callee": "CATALOG_LINKS.map",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Footer",
+          "callee": "NAV_LINKS.map",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/sections/Header.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 137,
+      "nonEmptyLines": 122,
+      "functions": [
+        {
+          "name": "Header",
+          "startLine": 19,
+          "endLine": 135,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Header",
+          "callee": "useUiStore",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Header",
+          "callee": "useLocation",
+          "lineNumber": 21
+        },
+        {
+          "caller": "Header",
+          "callee": "location.pathname.startsWith",
+          "lineNumber": 23
+        },
+        {
+          "caller": "Header",
+          "callee": "useState",
+          "lineNumber": 28
+        },
+        {
+          "caller": "Header",
+          "callee": "useEntranceProps",
+          "lineNumber": 34
+        },
+        {
+          "caller": "toggleLang",
+          "callee": "setLang",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Header",
+          "callee": "useScrollDirection",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Header",
+          "callee": "useScroll",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Header",
+          "callee": "useTransform",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Header",
+          "callee": "cn",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Header",
+          "callee": "entranceProps",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Header",
+          "callee": "entranceProps",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Header",
+          "callee": "entranceProps",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Header",
+          "callee": "SECONDARY_NAV_LINKS.map",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Header",
+          "callee": "entranceProps",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Header",
+          "callee": "entranceProps",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Header",
+          "callee": "entranceProps",
+          "lineNumber": 129
+        },
+        {
+          "caller": "Header",
+          "callee": "setMenuOpen",
+          "lineNumber": 130
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/components/sections/TopStrip.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "TopStrip",
+          "startLine": 14,
+          "endLine": 26,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "TopStrip",
+          "callee": "useReducedMotion",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/hooks/index.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 10,
+      "exports": [
+        {
+          "name": "useViewport",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "useCountUp",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "useScrollDirection",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "useLenis",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "useElementHeight",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "useMediaQuery",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "useBreakpoint",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "useCatalogFilters",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "useInfiniteScroll",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "useEntranceProps",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/pages/CatalogPage.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 219,
+      "nonEmptyLines": 202,
+      "functions": [
+        {
+          "name": "EmptyState",
+          "startLine": 48,
+          "endLine": 69,
+          "params": []
+        },
+        {
+          "name": "CatalogPage",
+          "startLine": 82,
+          "endLine": 219,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CatalogPage",
+          "line": 82,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CatalogPage",
+          "callee": "useParams",
+          "lineNumber": 83
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useNavigate",
+          "lineNumber": 84
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useCatalogFilters",
+          "lineNumber": 86
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useUiStore",
+          "lineNumber": 87
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useBreakpoint",
+          "lineNumber": 88
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useReducedMotion",
+          "lineNumber": 90
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useState",
+          "lineNumber": 92
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useEffect",
+          "lineNumber": 93
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "setTimeout",
+          "lineNumber": 94
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "setIsInitialLoading",
+          "lineNumber": 94
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "clearTimeout",
+          "lineNumber": 95
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useInfiniteScroll",
+          "lineNumber": 104
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "useEffect",
+          "lineNumber": 108
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "window.scrollTo",
+          "lineNumber": 109
+        },
+        {
+          "caller": "resetAllFilters",
+          "callee": "navigate",
+          "lineNumber": 114
+        },
+        {
+          "caller": "resetAllFilters",
+          "callee": "filters.setSearchQuery",
+          "lineNumber": 115
+        },
+        {
+          "caller": "resetAllFilters",
+          "callee": "filters.appliedFilters.brands.forEach",
+          "lineNumber": 116
+        },
+        {
+          "caller": "resetAllFilters",
+          "callee": "filters.removeFilter",
+          "lineNumber": 116
+        },
+        {
+          "caller": "resetAllFilters",
+          "callee": "filters.removeFilter",
+          "lineNumber": 117
+        },
+        {
+          "caller": "resetAllFilters",
+          "callee": "filters.removeFilter",
+          "lineNumber": 118
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "setMenuOpen",
+          "lineNumber": 127
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "filters.removeFilter",
+          "lineNumber": 160
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "filters.removeFilter",
+          "lineNumber": 161
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "filters.removeFilter",
+          "lineNumber": 162
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "filters.removeFilter",
+          "lineNumber": 163
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "Array.from({ length: SKELETON_COUNT }).map",
+          "lineNumber": 170
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "Array.from",
+          "lineNumber": 170
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "filters.visibleProducts.map",
+          "lineNumber": 177
+        },
+        {
+          "caller": "CatalogPage",
+          "callee": "Math.min",
+          "lineNumber": 191
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/pages/Home.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "Home",
+          "startLine": 19,
+          "endLine": 46,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Home",
+          "line": 19,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Home",
+          "callee": "useElementHeight",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Home",
+          "callee": "useEffect",
+          "lineNumber": 22
+        },
+        {
+          "caller": "Home",
+          "callee": "window.scrollTo",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/src/pages/ProductPage.jsx",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "ProductPage",
+          "startLine": 10,
+          "endLine": 32,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProductPage",
+          "line": 10,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ProductPage",
+          "callee": "useParams",
+          "lineNumber": 11
+        },
+        {
+          "caller": "ProductPage",
+          "callee": "useElementHeight",
+          "lineNumber": 12
+        },
+        {
+          "caller": "ProductPage",
+          "callee": "useEffect",
+          "lineNumber": 14
+        },
+        {
+          "caller": "ProductPage",
+          "callee": "window.scrollTo",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

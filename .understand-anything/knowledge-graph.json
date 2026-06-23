@@ -1,0 +1,5325 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "Fastener Direct",
+    "languages": [
+      "css",
+      "html",
+      "javascript",
+      "json",
+      "markdown",
+      "yaml"
+    ],
+    "frameworks": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "React Router",
+      "Zustand",
+      "Motion",
+      "Lenis",
+      "Fastify",
+      "Drizzle ORM",
+      "Docker Compose"
+    ],
+    "description": "B2B/B2C интернет-магазин промышленного крепежа (болты, анкеры, метизы, саморезы, химкрепёж). Monorepo: frontend на React 19 + Vite 8 (Rolldown) с Tailwind CSS, Motion, Lenis, React Router v7 и Zustand; backend на Node.js + Fastify 5 (ESM) с Drizzle ORM поверх PostgreSQL.",
+    "analyzedAt": "2026-06-18T03:28:20.788Z",
+    "gitCommitHash": "a1c7d0fc44f3331d9bd746d8ec01579fb7a8d960"
+  },
+  "nodes": [
+    {
+      "id": "file:client/src/App.jsx",
+      "type": "file",
+      "name": "App.jsx",
+      "filePath": "client/src/App.jsx",
+      "summary": "Корневой компонент приложения: задаёт глобальную раскладку (TopStrip, Header, MobileMenu, Footer), маршруты React Router (Home, CatalogPage, ProductPage) и инициализирует плавный скролл через useLenis.",
+      "tags": [
+        "entry-point",
+        "routing",
+        "layout",
+        "component"
+      ],
+      "complexity": "simple",
+      "languageNotes": "SPA-оркестратор на react-router-dom: App не пересоздаётся при SPA-навигации, что используется для одноразовых mount-анимаций."
+    },
+    {
+      "id": "function:client/src/App.jsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "client/src/App.jsx",
+      "lineRange": [
+        12,
+        30
+      ],
+      "summary": "Главный layout-компонент: монтирует постоянные секции и объявляет дерево маршрутов Routes/Route, вызывает хук useLenis для инерционного скролла.",
+      "tags": [
+        "component",
+        "routing",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/sections/Footer.jsx",
+      "type": "file",
+      "name": "Footer.jsx",
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "summary": "Подвал сайта с навигацией, контактами, соцсетями и юридическим блоком; фиксированный на главной и относительный на остальных страницах (поведение зависит от useLocation).",
+      "tags": [
+        "component",
+        "section",
+        "navigation",
+        "layout"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/Footer.jsx:Footer",
+      "type": "function",
+      "name": "Footer",
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "lineRange": [
+        63,
+        166
+      ],
+      "summary": "Основной компонент подвала: рендерит колонки ссылок каталога и навигации, контактную информацию, соцсети и CTA; меняет позиционирование в зависимости от текущего маршрута.",
+      "tags": [
+        "component",
+        "section",
+        "navigation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/Footer.jsx:FooterLink",
+      "type": "function",
+      "name": "FooterLink",
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "lineRange": [
+        19,
+        31
+      ],
+      "summary": "Внутренний хелпер-компонент для внутренних ссылок подвала (react-router Link) с hover-переходом цвета.",
+      "tags": [
+        "component",
+        "navigation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/sections/Footer.jsx:FooterAnchor",
+      "type": "function",
+      "name": "FooterAnchor",
+      "filePath": "client/src/components/sections/Footer.jsx",
+      "lineRange": [
+        38,
+        52
+      ],
+      "summary": "Внутренний хелпер-компонент для внешних ссылок подвала (нативный anchor) с hover-переходом цвета.",
+      "tags": [
+        "component",
+        "navigation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/sections/Header.jsx",
+      "type": "file",
+      "name": "Header.jsx",
+      "filePath": "client/src/components/sections/Header.jsx",
+      "summary": "Фиксированный pill-хедер с opacity-fade: на главной появляется после прокрутки Hero, на остальных страницах виден всегда; содержит логотип, навигацию, переключатель языка и кнопку открытия меню.",
+      "tags": [
+        "component",
+        "section",
+        "navigation",
+        "header"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Использует motion/react (useScroll, useTransform) для скролл-зависимой прозрачности и хук useEntranceProps для канонической entrance-анимации."
+    },
+    {
+      "id": "function:client/src/components/sections/Header.jsx:Header",
+      "type": "function",
+      "name": "Header",
+      "filePath": "client/src/components/sections/Header.jsx",
+      "lineRange": [
+        19,
+        135
+      ],
+      "summary": "Компонент фиксированного хедера: вычисляет видимость по скроллу и маршруту, управляет состоянием языка и открытием мобильного меню через useUiStore.",
+      "tags": [
+        "component",
+        "navigation",
+        "header",
+        "state"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/TopStrip.jsx",
+      "type": "file",
+      "name": "TopStrip.jsx",
+      "filePath": "client/src/components/sections/TopStrip.jsx",
+      "summary": "Декоративная красная полоса 3px, зафиксированная вверху страницы; при первом mount проигрывает slide-in анимацию scaleX слева направо.",
+      "tags": [
+        "component",
+        "section",
+        "decoration",
+        "animation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/sections/TopStrip.jsx:TopStrip",
+      "type": "function",
+      "name": "TopStrip",
+      "filePath": "client/src/components/sections/TopStrip.jsx",
+      "lineRange": [
+        14,
+        26
+      ],
+      "summary": "Рендерит фиксированную декоративную полосу с motion slide-in анимацией, уважающей prefers-reduced-motion через useReducedMotion.",
+      "tags": [
+        "component",
+        "decoration",
+        "animation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/hooks/index.js",
+      "summary": "Barrel-файл хуков: реэкспортирует все кастомные хуки (useViewport, useCountUp, useScrollDirection, useLenis, useCatalogFilters и др.) для единой точки импорта через @/hooks.",
+      "tags": [
+        "barrel",
+        "entry-point",
+        "hook"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Чистый barrel re-export без собственной логики — упрощает импорты по всему клиенту."
+    },
+    {
+      "id": "file:client/src/pages/CatalogPage.jsx",
+      "type": "file",
+      "name": "CatalogPage.jsx",
+      "filePath": "client/src/pages/CatalogPage.jsx",
+      "summary": "UI-оркестратор страницы каталога: прозрачная шапка, светлый hero-блок с закрепляемым тулбаром и тёмная секция с сеткой товаров; вся логика фильтрации/сортировки/подгрузки делегирована хуку useCatalogFilters.",
+      "tags": [
+        "component",
+        "page",
+        "catalog",
+        "orchestrator"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Композирует множество catalog-компонентов и хуки useInfiniteScroll/useBreakpoint; скелетон-загрузка и stagger fade-in через motion/react."
+    },
+    {
+      "id": "function:client/src/pages/CatalogPage.jsx:CatalogPage",
+      "type": "function",
+      "name": "CatalogPage",
+      "filePath": "client/src/pages/CatalogPage.jsx",
+      "lineRange": [
+        82,
+        219
+      ],
+      "summary": "Компонент страницы каталога: читает параметры маршрута, подключает фильтры через useCatalogFilters, управляет первичной скелетон-загрузкой и бесконечной подгрузкой, рендерит сетку карточек товаров.",
+      "tags": [
+        "component",
+        "page",
+        "catalog",
+        "state"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/pages/CatalogPage.jsx:EmptyState",
+      "type": "function",
+      "name": "EmptyState",
+      "filePath": "client/src/pages/CatalogPage.jsx",
+      "lineRange": [
+        48,
+        69
+      ],
+      "summary": "Внутренний компонент пустого состояния каталога: показывается, когда под текущие фильтры не нашлось товаров.",
+      "tags": [
+        "component",
+        "catalog",
+        "empty-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/pages/Home.jsx",
+      "type": "file",
+      "name": "Home.jsx",
+      "filePath": "client/src/pages/Home.jsx",
+      "summary": "Главная страница: компонует Hero, HeroHeader и набор лэндинг-секций в скруглённой обёртке плюс плавающую кнопку поддержки; внизу спейсер высотой с подвал через useElementHeight.",
+      "tags": [
+        "component",
+        "page",
+        "landing",
+        "orchestrator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/pages/Home.jsx:Home",
+      "type": "function",
+      "name": "Home",
+      "filePath": "client/src/pages/Home.jsx",
+      "lineRange": [
+        19,
+        46
+      ],
+      "summary": "Компонент главной страницы: рендерит последовательность лэндинг-секций, сбрасывает скролл наверх при mount и резервирует место под фиксированный подвал.",
+      "tags": [
+        "component",
+        "page",
+        "landing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/pages/ProductPage.jsx",
+      "type": "file",
+      "name": "ProductPage.jsx",
+      "filePath": "client/src/pages/ProductPage.jsx",
+      "summary": "Страница товара-заглушка: показывает id товара из URL и ссылку обратно в каталог; резервирует место под подвал через useElementHeight.",
+      "tags": [
+        "component",
+        "page",
+        "placeholder"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/pages/ProductPage.jsx:ProductPage",
+      "type": "function",
+      "name": "ProductPage",
+      "filePath": "client/src/pages/ProductPage.jsx",
+      "lineRange": [
+        10,
+        32
+      ],
+      "summary": "Компонент-заглушка страницы товара: читает id через useParams, сбрасывает скролл наверх и рендерит ссылку возврата в каталог.",
+      "tags": [
+        "component",
+        "page",
+        "placeholder"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/catalog/CategoryButton.jsx",
+      "type": "file",
+      "name": "CategoryButton.jsx",
+      "filePath": "client/src/components/catalog/CategoryButton.jsx",
+      "summary": "Кнопка «Категории» в тулбаре каталога: красный триггер, оборачивающий ToolbarMenu с двухшаговым CategoryDropdown в поповере. Сама навигация по /catalog/... делегирована вложенному дропдауну.",
+      "tags": [
+        "component",
+        "catalog",
+        "toolbar",
+        "dropdown-trigger"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React-компонент через render-prop ToolbarMenu: триггер передаётся как функция renderTrigger, содержимое поповера — как function-as-child."
+    },
+    {
+      "id": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "type": "function",
+      "name": "CategoryButton",
+      "filePath": "client/src/components/catalog/CategoryButton.jsx",
+      "lineRange": [
+        12,
+        35
+      ],
+      "summary": "Рендерит триггер-кнопку «Категории» (иконка Grid + ChevronDown с поворотом при open) и подставляет CategoryDropdown в поповер ToolbarMenu.",
+      "tags": [
+        "component",
+        "catalog",
+        "dropdown-trigger"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "type": "file",
+      "name": "CategoryDropdown.jsx",
+      "filePath": "client/src/components/catalog/CategoryDropdown.jsx",
+      "summary": "Содержимое поповера выбора раздела: двухшаговая навигация — карточки категорий верхнего уровня, затем подкатегории — с переходом на маршруты /catalog/... через react-router.",
+      "tags": [
+        "component",
+        "catalog",
+        "navigation",
+        "dropdown"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Локальное состояние parent (useState) переключает шаг 1/шаг 2; навигация через useNavigate из react-router-dom, источник данных — CATEGORY_TREE."
+    },
+    {
+      "id": "function:client/src/components/catalog/CategoryDropdown.jsx:CategoryDropdown",
+      "type": "function",
+      "name": "CategoryDropdown",
+      "filePath": "client/src/components/catalog/CategoryDropdown.jsx",
+      "lineRange": [
+        36,
+        138
+      ],
+      "summary": "Двухшаговый выбор раздела: рендерит карточки CATEGORY_TREE, при выборе категории с children показывает её подкатегории, иначе сразу переходит на ветку каталога и вызывает onClose.",
+      "tags": [
+        "component",
+        "catalog",
+        "navigation",
+        "stateful"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/FilterButton.jsx",
+      "type": "file",
+      "name": "FilterButton.jsx",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "summary": "Кнопка «Фильтры» с поповер-панелью всех фасетов (Бренд / Цена / Наличие). Значения редактируются как черновик (staged), синхронизируются с applied при открытии, применяются по «Показать» и сбрасываются по «Сбросить».",
+      "tags": [
+        "component",
+        "catalog",
+        "filter",
+        "toolbar",
+        "validation"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Файл содержит несколько внутренних под-компонентов (CheckBox, FilterSection, BrandList, PriceFilter, StockToggle, FilterPanel); FilterPanel синхронизирует staged ← applied через useEffect на mount."
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "type": "function",
+      "name": "FilterButton",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [
+        284,
+        310
+      ],
+      "summary": "Экспортируемый триггер «Фильтры»: рендерит кнопку с иконкой и ChevronDown в ToolbarMenu и подставляет FilterPanel с переданными panelProps.",
+      "tags": [
+        "component",
+        "catalog",
+        "filter",
+        "dropdown-trigger"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "type": "function",
+      "name": "FilterPanel",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [
+        177,
+        251
+      ],
+      "summary": "Панель фильтров внутри поповера: собирает секции бренда, цены и наличия, синхронизирует staged-значения при монтировании и вызывает onApply/close по кнопке «Показать».",
+      "tags": [
+        "component",
+        "catalog",
+        "filter",
+        "stateful"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:PriceFilter",
+      "type": "function",
+      "name": "PriceFilter",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [
+        87,
+        134
+      ],
+      "summary": "Фасет цены: поля «от/до» с колбэками onMin/onMax и быстрые диапазоны PRICE_RANGES, заполняющие оба поля.",
+      "tags": [
+        "component",
+        "catalog",
+        "filter",
+        "price"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:BrandList",
+      "type": "function",
+      "name": "BrandList",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [
+        56,
+        79
+      ],
+      "summary": "Прокручиваемый список чекбоксов брендов из BRANDS; отмечает выбранные и переключает их через onToggle.",
+      "tags": [
+        "component",
+        "catalog",
+        "filter",
+        "brand"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/catalog/FilterButton.jsx:StockToggle",
+      "type": "function",
+      "name": "StockToggle",
+      "filePath": "client/src/components/catalog/FilterButton.jsx",
+      "lineRange": [
+        144,
+        167
+      ],
+      "summary": "Переключатель фасета наличия («только в наличии») в виде двух взаимоисключающих опций.",
+      "tags": [
+        "component",
+        "catalog",
+        "filter",
+        "toggle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/catalog/SortDropdown.jsx",
+      "type": "file",
+      "name": "SortDropdown.jsx",
+      "filePath": "client/src/components/catalog/SortDropdown.jsx",
+      "summary": "Дропдаун выбора сортировки каталога в тулбаре. Опции (по умолчанию, цена, название, наличие) совпадают со switch в useCatalogFilters; value=null означает порядок по умолчанию.",
+      "tags": [
+        "component",
+        "catalog",
+        "toolbar",
+        "sort",
+        "dropdown"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Контролируемый компонент (value/onChange); опция с key=null маппится на activeSort=null в хуке useCatalogFilters."
+    },
+    {
+      "id": "function:client/src/components/catalog/SortDropdown.jsx:SortDropdown",
+      "type": "function",
+      "name": "SortDropdown",
+      "filePath": "client/src/components/catalog/SortDropdown.jsx",
+      "lineRange": [
+        26,
+        90
+      ],
+      "summary": "Рендерит триггер с текущей опцией сортировки и список SORT_OPTIONS в поповере ToolbarMenu; при выборе вызывает onChange и закрывает поповер.",
+      "tags": [
+        "component",
+        "catalog",
+        "sort",
+        "dropdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "type": "file",
+      "name": "ToolbarMenu.jsx",
+      "filePath": "client/src/components/catalog/ToolbarMenu.jsx",
+      "summary": "Переиспользуемая обвязка дропдаунов тулбара: render-prop триггер + анимированный поповер с всплытием (motion), закрытием по клику снаружи и Escape. Базовый примитив для кнопок «Фильтры», «Сортировка», «Категории».",
+      "tags": [
+        "component",
+        "catalog",
+        "toolbar",
+        "popover",
+        "utility"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Использует render-prop (renderTrigger) и function-as-child для содержимого; AnimatePresence/motion из motion/react для анимации; слушатели mousedown/keydown навешиваются только когда open."
+    },
+    {
+      "id": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "function",
+      "name": "ToolbarMenu",
+      "filePath": "client/src/components/catalog/ToolbarMenu.jsx",
+      "lineRange": [
+        22,
+        66
+      ],
+      "summary": "Управляет открытием/закрытием поповера (useState, useRef, useEffect), рендерит триггер через renderTrigger и анимированный контейнер с содержимым, закрываясь по клику снаружи и Escape.",
+      "tags": [
+        "component",
+        "popover",
+        "stateful",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/ui/Button.jsx",
+      "type": "file",
+      "name": "Button.jsx",
+      "filePath": "client/src/components/ui/Button.jsx",
+      "summary": "CTA-кнопка в форме таблетки с анимированным красным кругом и стрелкой; рендерит либо <button>, либо react-router Link при наличии prop `to`.",
+      "tags": [
+        "component",
+        "ui-primitive",
+        "button",
+        "cta"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Поддерживает полиморфный рендеринг (button/Link) и три size-пресета через SIZE_MAP."
+    },
+    {
+      "id": "file:client/src/components/ui/IconButton.jsx",
+      "type": "file",
+      "name": "IconButton.jsx",
+      "filePath": "client/src/components/ui/IconButton.jsx",
+      "summary": "Круглая кнопка-иконка с вариантами оформления (light/dark/filled/slate); пробрасывает forwardRef на корневой <button> для click-outside detection.",
+      "tags": [
+        "component",
+        "ui-primitive",
+        "icon-button",
+        "forward-ref"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Использует React.forwardRef + React.cloneElement для инъекции size/className в дочернюю иконку."
+    },
+    {
+      "id": "file:client/src/components/ui/Logo.jsx",
+      "type": "file",
+      "name": "Logo.jsx",
+      "filePath": "client/src/components/ui/Logo.jsx",
+      "summary": "Логотип Fastener Direct с маркой и текстовым блоком; поддерживает варианты full/mark, темы и масштабирование с пропорциональным расчётом размеров шрифта.",
+      "tags": [
+        "component",
+        "ui-primitive",
+        "logo",
+        "branding"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Полиморфный тег (Link/button/div) выбирается по prop `to`/`onClick`; размеры шрифта вычисляются коэффициентами от размера марки."
+    },
+    {
+      "id": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "type": "file",
+      "name": "MenuOpenButton.jsx",
+      "filePath": "client/src/components/ui/MenuOpenButton.jsx",
+      "summary": "Кнопка открытия мобильного меню — серый slate-круг 48px с иконкой «+»; единый источник для Header, HeroHeader и CatalogToolbar.",
+      "tags": [
+        "component",
+        "ui-primitive",
+        "button",
+        "menu"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/components/ui/icons/index.js",
+      "summary": "Barrel-файл, реэкспортирующий все 15 SVG-иконок проекта одним именованным набором для удобного импорта.",
+      "tags": [
+        "barrel",
+        "icons",
+        "entry-point",
+        "re-export"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Чистый barrel: 15 named re-export по умолчанию из отдельных файлов иконок."
+    },
+    {
+      "id": "function:client/src/components/ui/Button.jsx:Button",
+      "type": "function",
+      "name": "Button",
+      "filePath": "client/src/components/ui/Button.jsx",
+      "lineRange": [
+        43,
+        137
+      ],
+      "summary": "Компонент CTA-кнопки: собирает Tailwind-классы через cn, рендерит вложенный анимированный круг со стрелкой и выбирает Link или button по prop `to`.",
+      "tags": [
+        "component",
+        "button",
+        "render",
+        "cta"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/IconButton.jsx:IconButton",
+      "type": "function",
+      "name": "IconButton",
+      "filePath": "client/src/components/ui/IconButton.jsx",
+      "lineRange": [
+        27,
+        99
+      ],
+      "summary": "forwardRef-компонент круглой кнопки-иконки: вычисляет цвет иконки по варианту/pressed/interactive и клонирует дочернюю иконку с нужным размером.",
+      "tags": [
+        "component",
+        "icon-button",
+        "forward-ref",
+        "render"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/Logo.jsx:Logo",
+      "type": "function",
+      "name": "Logo",
+      "filePath": "client/src/components/ui/Logo.jsx",
+      "lineRange": [
+        28,
+        96
+      ],
+      "summary": "Компонент логотипа: вычисляет размеры шрифта/трекинга от размера марки и рендерит марку с опциональным текстовым блоком в выбранном теге.",
+      "tags": [
+        "component",
+        "logo",
+        "render",
+        "branding"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/MenuOpenButton.jsx:MenuOpenButton",
+      "type": "function",
+      "name": "MenuOpenButton",
+      "filePath": "client/src/components/ui/MenuOpenButton.jsx",
+      "lineRange": [
+        17,
+        23
+      ],
+      "summary": "Обёртка над IconButton с фиксированными variant=slate, size=48 и иконкой Plus; наружу выставляет только onClick.",
+      "tags": [
+        "component",
+        "button",
+        "wrapper",
+        "menu"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/app.js",
+      "type": "file",
+      "name": "app.js",
+      "filePath": "server/src/app.js",
+      "summary": "Точка входа backend-сервера: создаёт инстанс Fastify с логированием, регистрирует plugin CORS и routes, затем поднимает HTTP-сервер на порту из PORT или 3000.",
+      "tags": [
+        "entry-point",
+        "server",
+        "fastify",
+        "bootstrap"
+      ],
+      "complexity": "simple",
+      "languageNotes": "ESM-модуль Fastify 5: регистрация плагинов через app.register, запуск через async app.listen."
+    },
+    {
+      "id": "file:server/src/plugins/cors.js",
+      "type": "file",
+      "name": "cors.js",
+      "filePath": "server/src/plugins/cors.js",
+      "summary": "Fastify plugin, регистрирующий @fastify/cors с разрешённым origin http://localhost:5173 (dev-сервер Vite клиента).",
+      "tags": [
+        "middleware",
+        "cors",
+        "plugin",
+        "fastify"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/routes/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "server/src/routes/index.js",
+      "summary": "Корневой Fastify plugin маршрутов: регистрирует health-check endpoint GET /api/health, возвращающий { status: 'ok' }.",
+      "tags": [
+        "routes",
+        "api-handler",
+        "fastify",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:server/src/routes/index.js:GET /api/health",
+      "type": "endpoint",
+      "name": "GET /api/health",
+      "filePath": "server/src/routes/index.js",
+      "summary": "Health-check endpoint, возвращающий JSON { status: 'ok' } для проверки доступности сервера.",
+      "tags": [
+        "endpoint",
+        "health-check",
+        "api",
+        "monitoring"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:client/.prettierrc.json",
+      "type": "config",
+      "name": ".prettierrc.json",
+      "filePath": "client/.prettierrc.json",
+      "summary": "Конфигурация Prettier для клиента: задаёт стиль форматирования (без точек с запятой, одинарные кавычки, printWidth, ширина табуляции) и подключает плагин prettier-plugin-tailwindcss для сортировки Tailwind-классов.",
+      "tags": [
+        "configuration",
+        "prettier",
+        "code-style",
+        "formatting",
+        "tailwind"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Плагин prettier-plugin-tailwindcss автоматически упорядочивает Tailwind utility-классы в нужном порядке."
+    },
+    {
+      "id": "document:client/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "client/README.md",
+      "summary": "Стандартный README шаблона Vite + React: краткое описание HMR, упоминание React Compiler и рекомендации по расширению конфигурации ESLint.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "vite",
+        "boilerplate"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "client/index.html",
+      "summary": "Входной HTML-документ Vite: содержит корневой контейнер #root и подключает ES-модуль /src/main.jsx, который монтирует React-приложение.",
+      "tags": [
+        "entry-point",
+        "html",
+        "vite",
+        "markup",
+        "bootstrap"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Vite использует index.html как точку входа сборки; скрипт подключён как нативный ES-модуль (type=\"module\")."
+    },
+    {
+      "id": "config:client/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "client/package.json",
+      "summary": "Манифест клиентского пакета: объявляет зависимости (React 19, react-router-dom 7, zustand, motion, lenis, tailwind-merge, clsx) и npm-скрипты для dev-сервера, сборки, превью, линтинга и форматирования через Vite/ESLint/Prettier.",
+      "tags": [
+        "configuration",
+        "dependencies",
+        "build-system",
+        "npm",
+        "vite"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Поле \"type\": \"module\" переводит пакет в режим ES-модулей; сборка и dev-сервер обслуживаются Vite 8."
+    },
+    {
+      "id": "config:client/eslint.config.js",
+      "type": "config",
+      "name": "eslint.config.js",
+      "filePath": "client/eslint.config.js",
+      "summary": "Flat-config ESLint для клиента: правила для JS/JSX, плагины React Hooks и React Refresh, глобалы браузера.",
+      "tags": [
+        "configuration",
+        "linting",
+        "build-system",
+        "eslint"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Использует новый flat-config формат ESLint (массив конфигов вместо .eslintrc)."
+    },
+    {
+      "id": "config:client/postcss.config.js",
+      "type": "config",
+      "name": "postcss.config.js",
+      "filePath": "client/postcss.config.js",
+      "summary": "Конфигурация PostCSS, подключающая плагины Tailwind CSS и Autoprefixer для сборки стилей.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "css",
+        "tailwind"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/App.css",
+      "type": "file",
+      "name": "App.css",
+      "filePath": "client/src/App.css",
+      "summary": "Глобальные стили приложения: базовые правила, утилиты и кастомные классы для лендинга и каталога.",
+      "tags": [
+        "css",
+        "styling",
+        "global-styles",
+        "markup"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "type": "file",
+      "name": "ActiveFilterChips.jsx",
+      "filePath": "client/src/components/catalog/ActiveFilterChips.jsx",
+      "summary": "Компонент каталога, отрисовывающий чипы активных фильтров (категория, поиск, бренды, цена, наличие) с возможностью их сброса.",
+      "tags": [
+        "component",
+        "catalog",
+        "filters",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/catalog/ActiveFilterChips.jsx:Chip",
+      "type": "function",
+      "name": "Chip",
+      "filePath": "client/src/components/catalog/ActiveFilterChips.jsx",
+      "lineRange": [
+        35,
+        58
+      ],
+      "summary": "Презентационный подкомпонент: одиночный чип фильтра с меткой и кнопкой удаления.",
+      "tags": [
+        "component",
+        "presentational",
+        "catalog"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/catalog/ActiveFilterChips.jsx:ActiveFilterChips",
+      "type": "function",
+      "name": "ActiveFilterChips",
+      "filePath": "client/src/components/catalog/ActiveFilterChips.jsx",
+      "lineRange": [
+        70,
+        174
+      ],
+      "summary": "Собирает список чипов из активных фильтров и навигации, обрабатывает удаление отдельных фильтров и полный сброс.",
+      "tags": [
+        "component",
+        "catalog",
+        "filters",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "type": "file",
+      "name": "CatalogToolbar.jsx",
+      "filePath": "client/src/components/catalog/CatalogToolbar.jsx",
+      "summary": "Панель инструментов каталога с scroll-driven докингом: измеряет геометрию, трансформирует тулбар через motion при прокрутке.",
+      "tags": [
+        "component",
+        "catalog",
+        "toolbar",
+        "motion"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Использует useScroll/useTransform из motion и useLayoutEffect с ResizeObserver для измерения геометрии."
+    },
+    {
+      "id": "function:client/src/components/catalog/CatalogToolbar.jsx:CatalogToolbar",
+      "type": "function",
+      "name": "CatalogToolbar",
+      "filePath": "client/src/components/catalog/CatalogToolbar.jsx",
+      "lineRange": [
+        41,
+        160
+      ],
+      "summary": "Главный компонент тулбара: измеряет якоря, привязывает трансформации к прогрессу прокрутки и рендерит докируемую панель.",
+      "tags": [
+        "component",
+        "catalog",
+        "motion",
+        "scroll"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:client/src/components/catalog/Pagination.jsx",
+      "type": "file",
+      "name": "Pagination.jsx",
+      "filePath": "client/src/components/catalog/Pagination.jsx",
+      "summary": "Компонент постраничной навигации каталога с вычислением видимых страниц и многоточий вокруг текущей.",
+      "tags": [
+        "component",
+        "catalog",
+        "pagination",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/catalog/Pagination.jsx:getPageItems",
+      "type": "function",
+      "name": "getPageItems",
+      "filePath": "client/src/components/catalog/Pagination.jsx",
+      "lineRange": [
+        13,
+        25
+      ],
+      "summary": "Чистая функция, формирующая список номеров страниц и разделителей-многоточий вокруг текущей страницы.",
+      "tags": [
+        "utility",
+        "pagination",
+        "pure-function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/catalog/Pagination.jsx:Pagination",
+      "type": "function",
+      "name": "Pagination",
+      "filePath": "client/src/components/catalog/Pagination.jsx",
+      "lineRange": [
+        36,
+        111
+      ],
+      "summary": "Рендерит кнопки страниц и навигацию назад/вперёд, вызывая onPageChange при выборе страницы.",
+      "tags": [
+        "component",
+        "catalog",
+        "pagination",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+      "type": "file",
+      "name": "ProductCardSkeleton.jsx",
+      "filePath": "client/src/components/catalog/ProductCardSkeleton.jsx",
+      "summary": "Скелетон-заглушка карточки товара, отображаемая во время загрузки данных каталога.",
+      "tags": [
+        "component",
+        "catalog",
+        "skeleton",
+        "loading-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/catalog/SearchBar.jsx",
+      "type": "file",
+      "name": "SearchBar.jsx",
+      "filePath": "client/src/components/catalog/SearchBar.jsx",
+      "summary": "Поле поиска каталога с иконкой поиска и кнопкой очистки, управляемое через проп onChange.",
+      "tags": [
+        "component",
+        "catalog",
+        "search",
+        "controlled-input"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/sections/_MenuItem.jsx",
+      "type": "file",
+      "name": "_MenuItem.jsx",
+      "filePath": "client/src/components/sections/_MenuItem.jsx",
+      "summary": "Приватный подкомпонент пункта мобильного меню с hover-состоянием и навигацией через react-router Link.",
+      "tags": [
+        "component",
+        "menu",
+        "navigation",
+        "private"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/_MenuItem.jsx:MenuItem",
+      "type": "function",
+      "name": "MenuItem",
+      "filePath": "client/src/components/sections/_MenuItem.jsx",
+      "lineRange": [
+        22,
+        107
+      ],
+      "summary": "Рендерит пункт меню с анимированным hover-эффектом и ссылкой-маршрутом.",
+      "tags": [
+        "component",
+        "menu",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/_TaglineLine.jsx",
+      "type": "file",
+      "name": "_TaglineLine.jsx",
+      "filePath": "client/src/components/sections/_TaglineLine.jsx",
+      "summary": "Приватный подкомпонент Hero: анимированная строка слогана с учётом prefers-reduced-motion.",
+      "tags": [
+        "component",
+        "hero",
+        "motion",
+        "private"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/_TaglineLine.jsx:TaglineLine",
+      "type": "function",
+      "name": "TaglineLine",
+      "filePath": "client/src/components/sections/_TaglineLine.jsx",
+      "lineRange": [
+        28,
+        121
+      ],
+      "summary": "Анимирует появление и смену строк слогана с использованием motion и useReducedMotion.",
+      "tags": [
+        "component",
+        "hero",
+        "motion",
+        "animation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/CtaBannerSection.jsx",
+      "type": "file",
+      "name": "CtaBannerSection.jsx",
+      "filePath": "client/src/components/sections/CtaBannerSection.jsx",
+      "summary": "Секция лендинга с CTA-баннером, появляющимся при попадании во вьюпорт (useInView).",
+      "tags": [
+        "component",
+        "section",
+        "landing",
+        "motion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/CtaBannerSection.jsx:CtaBannerSection",
+      "type": "function",
+      "name": "CtaBannerSection",
+      "filePath": "client/src/components/sections/CtaBannerSection.jsx",
+      "lineRange": [
+        17,
+        79
+      ],
+      "summary": "Рендерит CTA-баннер с анимацией входа, использует контент из @/content/ctaBanner.",
+      "tags": [
+        "component",
+        "section",
+        "landing",
+        "motion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "type": "file",
+      "name": "FastenerDiagramSection.jsx",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "summary": "Секция лендинга с интерактивной SVG-диаграммой-донатом ассортимента крепежа: вычисляет дуги, анимирует сегменты и подписи.",
+      "tags": [
+        "component",
+        "section",
+        "data-visualization",
+        "svg",
+        "motion"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Содержит чистые геометрические функции (arcPath, computeSegmentAt) и motion-анимацию прогресса через useMotionValue."
+    },
+    {
+      "id": "function:client/src/components/sections/FastenerDiagramSection.jsx:computeSegmentAt",
+      "type": "function",
+      "name": "computeSegmentAt",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "lineRange": [
+        72,
+        97
+      ],
+      "summary": "Вычисляет угловые границы и прогресс отрисовки сегмента донат-диаграммы в момент времени t.",
+      "tags": [
+        "utility",
+        "geometry",
+        "pure-function",
+        "data-visualization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/FastenerDiagramSection.jsx:DonutLabel",
+      "type": "function",
+      "name": "DonutLabel",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "lineRange": [
+        165,
+        213
+      ],
+      "summary": "Подкомпонент: анимированная подпись сегмента донат-диаграммы с вычислением позиции.",
+      "tags": [
+        "component",
+        "data-visualization",
+        "motion",
+        "svg"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/FastenerDiagramSection.jsx:DonutChart",
+      "type": "function",
+      "name": "DonutChart",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "lineRange": [
+        251,
+        331
+      ],
+      "summary": "Основной SVG-чарт: управляет прогрессом анимации, рисует декоративные кольца, сегменты и подписи.",
+      "tags": [
+        "component",
+        "data-visualization",
+        "svg",
+        "motion"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/components/sections/FastenerDiagramSection.jsx:FastenerDiagramSection",
+      "type": "function",
+      "name": "FastenerDiagramSection",
+      "filePath": "client/src/components/sections/FastenerDiagramSection.jsx",
+      "lineRange": [
+        337,
+        389
+      ],
+      "summary": "Корневой компонент секции: адаптирует диаграмму под брейкпоинты и запускает анимацию при попадании во вьюпорт.",
+      "tags": [
+        "component",
+        "section",
+        "data-visualization",
+        "responsive"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/Hero.jsx",
+      "type": "file",
+      "name": "Hero.jsx",
+      "filePath": "client/src/components/sections/Hero.jsx",
+      "summary": "Главная hero-секция лендинга: фоновое видео, фазовая анимация слоганов и реакция на видимость/прокрутку.",
+      "tags": [
+        "component",
+        "section",
+        "hero",
+        "entry-point",
+        "motion"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Сложная оркестрация таймеров (pushTimer/clearTimers) и фазовых состояний с очисткой эффектов при размонтировании."
+    },
+    {
+      "id": "function:client/src/components/sections/Hero.jsx:Hero",
+      "type": "function",
+      "name": "Hero",
+      "filePath": "client/src/components/sections/Hero.jsx",
+      "lineRange": [
+        29,
+        304
+      ],
+      "summary": "Управляет циклом смены слоганов, воспроизведением видео и сменой фаз появления, реагируя на видимость вкладки и прокрутку.",
+      "tags": [
+        "component",
+        "hero",
+        "motion",
+        "lifecycle"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:client/src/components/sections/HeroHeader.jsx",
+      "type": "file",
+      "name": "HeroHeader.jsx",
+      "filePath": "client/src/components/sections/HeroHeader.jsx",
+      "summary": "Шапка hero-секции: логотип, навигация, переключатель языка и кнопка открытия мобильного меню с анимацией входа.",
+      "tags": [
+        "component",
+        "section",
+        "header",
+        "navigation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/HeroHeader.jsx:HeroHeader",
+      "type": "function",
+      "name": "HeroHeader",
+      "filePath": "client/src/components/sections/HeroHeader.jsx",
+      "lineRange": [
+        23,
+        108
+      ],
+      "summary": "Рендерит навигационную шапку с entrance-анимацией, привязывает открытие меню к ui-store.",
+      "tags": [
+        "component",
+        "header",
+        "navigation",
+        "motion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/MobileMenu.jsx",
+      "type": "file",
+      "name": "MobileMenu.jsx",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "summary": "Полноэкранное мобильное меню-шторка с анимацией колонок, ловушкой фокуса, навигацией и переключателем языка.",
+      "tags": [
+        "component",
+        "section",
+        "menu",
+        "overlay",
+        "motion"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Реализует focus-trap вручную, использует AnimatePresence и кастомные хуки разметки (useCurtainColumns, useMobileMenuLogoSize)."
+    },
+    {
+      "id": "function:client/src/components/sections/MobileMenu.jsx:MobileMenuContent",
+      "type": "function",
+      "name": "MobileMenuContent",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "lineRange": [
+        59,
+        285
+      ],
+      "summary": "Содержимое меню: рендерит колонки-шторки, навигацию, primary/secondary меню и CTA, управляет фокусом и Escape.",
+      "tags": [
+        "component",
+        "menu",
+        "overlay",
+        "accessibility"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/components/sections/MobileMenu.jsx:MobileMenu",
+      "type": "function",
+      "name": "MobileMenu",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "lineRange": [
+        290,
+        299
+      ],
+      "summary": "Обёртка: читает состояние открытия из ui-store и монтирует MobileMenuContent через AnimatePresence.",
+      "tags": [
+        "component",
+        "menu",
+        "overlay"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/sections/MobileMenu.jsx:useCurtainColumns",
+      "type": "function",
+      "name": "useCurtainColumns",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "lineRange": [
+        27,
+        39
+      ],
+      "summary": "Кастомный хук, вычисляющий число колонок анимации-шторки по ширине окна.",
+      "tags": [
+        "hook",
+        "menu",
+        "responsive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/sections/MobileMenu.jsx:useMobileMenuLogoSize",
+      "type": "function",
+      "name": "useMobileMenuLogoSize",
+      "filePath": "client/src/components/sections/MobileMenu.jsx",
+      "lineRange": [
+        42,
+        54
+      ],
+      "summary": "Кастомный хук, вычисляющий размер логотипа меню в зависимости от ширины окна.",
+      "tags": [
+        "hook",
+        "menu",
+        "responsive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/sections/NumbersSection.jsx",
+      "type": "file",
+      "name": "NumbersSection.jsx",
+      "filePath": "client/src/components/sections/NumbersSection.jsx",
+      "summary": "Секция статистики лендинга: ряды чисел с анимацией счётчика (useCountUp), запускаемой при попадании во вьюпорт.",
+      "tags": [
+        "component",
+        "section",
+        "landing",
+        "motion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/NumbersSection.jsx:StatItem",
+      "type": "function",
+      "name": "StatItem",
+      "filePath": "client/src/components/sections/NumbersSection.jsx",
+      "lineRange": [
+        27,
+        71
+      ],
+      "summary": "Подкомпонент одной цифры статистики с отложенным запуском анимации счётчика через useCountUp.",
+      "tags": [
+        "component",
+        "landing",
+        "animation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/NumbersSection.jsx:NumbersSection",
+      "type": "function",
+      "name": "NumbersSection",
+      "filePath": "client/src/components/sections/NumbersSection.jsx",
+      "lineRange": [
+        85,
+        130
+      ],
+      "summary": "Рендерит два ряда статистики, отслеживая видимость каждого ряда для запуска анимации.",
+      "tags": [
+        "component",
+        "section",
+        "landing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/OurValuesSection.jsx",
+      "type": "file",
+      "name": "OurValuesSection.jsx",
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "summary": "Секция ценностей лендинга: scroll-driven анимация заголовка и карточек с раздельными десктоп/мобильными вариантами.",
+      "tags": [
+        "component",
+        "section",
+        "landing",
+        "motion",
+        "responsive"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Содержит несколько подкомпонентов и кастомный хук useViewportWidth; десктоп использует useScroll/useTransform-анимацию карточек."
+    },
+    {
+      "id": "function:client/src/components/sections/OurValuesSection.jsx:TopBlockDesktop",
+      "type": "function",
+      "name": "TopBlockDesktop",
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "lineRange": [
+        87,
+        145
+      ],
+      "summary": "Десктопный верхний блок секции: пословная scroll-анимация заголовка с цветовым переходом.",
+      "tags": [
+        "component",
+        "landing",
+        "motion",
+        "scroll"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/OurValuesSection.jsx:DesktopCardsAnimated",
+      "type": "function",
+      "name": "DesktopCardsAnimated",
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "lineRange": [
+        187,
+        219
+      ],
+      "summary": "Анимирует разъезд карточек ценностей по горизонтали/вертикали в зависимости от прогресса прокрутки.",
+      "tags": [
+        "component",
+        "landing",
+        "motion",
+        "scroll"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/OurValuesSection.jsx:OurValuesSection",
+      "type": "function",
+      "name": "OurValuesSection",
+      "filePath": "client/src/components/sections/OurValuesSection.jsx",
+      "lineRange": [
+        231,
+        256
+      ],
+      "summary": "Корневой компонент секции: выбирает десктопный или мобильный вариант по брейкпоинту.",
+      "tags": [
+        "component",
+        "section",
+        "responsive"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/PartnersSection.jsx",
+      "type": "file",
+      "name": "PartnersSection.jsx",
+      "filePath": "client/src/components/sections/PartnersSection.jsx",
+      "summary": "Секция партнёров лендинга: адаптивная сетка карточек партнёров с анимацией появления при скролле.",
+      "tags": [
+        "component",
+        "section",
+        "landing",
+        "motion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/PartnersSection.jsx:PartnerCard",
+      "type": "function",
+      "name": "PartnerCard",
+      "filePath": "client/src/components/sections/PartnersSection.jsx",
+      "lineRange": [
+        29,
+        87
+      ],
+      "summary": "Карточка одного партнёра с анимацией и обработкой клика.",
+      "tags": [
+        "component",
+        "landing",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/PartnersSection.jsx:PartnersSection",
+      "type": "function",
+      "name": "PartnersSection",
+      "filePath": "client/src/components/sections/PartnersSection.jsx",
+      "lineRange": [
+        92,
+        147
+      ],
+      "summary": "Рендерит адаптивную сетку партнёров, рассчитывая колонки и задержки анимации.",
+      "tags": [
+        "component",
+        "section",
+        "responsive"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "type": "file",
+      "name": "ServiceProgramSection.jsx",
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "summary": "Секция сервисной программы лендинга: список услуг с раскрытием по hover (десктоп) и стопкой строк (мобайл).",
+      "tags": [
+        "component",
+        "section",
+        "landing",
+        "motion",
+        "responsive"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/components/sections/ServiceProgramSection.jsx:DesktopRow",
+      "type": "function",
+      "name": "DesktopRow",
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "lineRange": [
+        43,
+        114
+      ],
+      "summary": "Десктопная строка услуги с раскрытием описания по hover и двусторонней стрелкой.",
+      "tags": [
+        "component",
+        "landing",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/ServiceProgramSection.jsx:MobileRow",
+      "type": "function",
+      "name": "MobileRow",
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "lineRange": [
+        118,
+        145
+      ],
+      "summary": "Мобильная строка услуги с упрощённой раскладкой.",
+      "tags": [
+        "component",
+        "landing",
+        "responsive"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/sections/ServiceProgramSection.jsx:ServiceProgramSection",
+      "type": "function",
+      "name": "ServiceProgramSection",
+      "filePath": "client/src/components/sections/ServiceProgramSection.jsx",
+      "lineRange": [
+        154,
+        214
+      ],
+      "summary": "Корневой компонент секции: управляет hover-состоянием активной услуги и выбирает раскладку по брейкпоинту.",
+      "tags": [
+        "component",
+        "section",
+        "responsive",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/ui/Checkbox.jsx",
+      "type": "file",
+      "name": "Checkbox.jsx",
+      "filePath": "client/src/components/ui/Checkbox.jsx",
+      "summary": "UI-примитив чекбокса с кастомным оформлением, используемый в фильтрах каталога.",
+      "tags": [
+        "component",
+        "ui",
+        "form",
+        "controlled-input"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/Checkbox.jsx:Checkbox",
+      "type": "function",
+      "name": "Checkbox",
+      "filePath": "client/src/components/ui/Checkbox.jsx",
+      "lineRange": [
+        21,
+        61
+      ],
+      "summary": "Рендерит стилизованный чекбокс с меткой, объединяя классы через cn.",
+      "tags": [
+        "component",
+        "ui",
+        "form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/ui/ErrorBoundary.jsx",
+      "type": "file",
+      "name": "ErrorBoundary.jsx",
+      "filePath": "client/src/components/ui/ErrorBoundary.jsx",
+      "summary": "Классовый компонент-границы ошибок React, перехватывающий исключения рендера и показывающий запасной UI.",
+      "tags": [
+        "component",
+        "ui",
+        "error-handling",
+        "class-component"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Один из немногих классовых компонентов: error boundary требует getDerivedStateFromError/componentDidCatch."
+    },
+    {
+      "id": "class:client/src/components/ui/ErrorBoundary.jsx:ErrorBoundary",
+      "type": "class",
+      "name": "ErrorBoundary",
+      "filePath": "client/src/components/ui/ErrorBoundary.jsx",
+      "lineRange": [
+        21,
+        60
+      ],
+      "summary": "React error boundary: ловит ошибки дочернего дерева и рендерит fallback вместо упавшего поддерева.",
+      "tags": [
+        "component",
+        "error-handling",
+        "class-component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/ui/GridLines.jsx",
+      "type": "file",
+      "name": "GridLines.jsx",
+      "filePath": "client/src/components/ui/GridLines.jsx",
+      "summary": "UI-примитив декоративных вертикальных направляющих сетки, используемый в фоне секций.",
+      "tags": [
+        "component",
+        "ui",
+        "decorative",
+        "layout"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/components/ui/GridLines.jsx:GridLines",
+      "type": "function",
+      "name": "GridLines",
+      "filePath": "client/src/components/ui/GridLines.jsx",
+      "lineRange": [
+        18,
+        35
+      ],
+      "summary": "Генерирует набор вертикальных линий сетки и рендерит их как декоративный фон.",
+      "tags": [
+        "component",
+        "ui",
+        "decorative"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Arrow.jsx",
+      "type": "file",
+      "name": "Arrow.jsx",
+      "filePath": "client/src/components/ui/icons/Arrow.jsx",
+      "summary": "SVG-иконка стрелки вправо, используется внутри Button и ScrollToTopButton. Принимает props размера и className.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/BrandMark.jsx",
+      "type": "file",
+      "name": "BrandMark.jsx",
+      "filePath": "client/src/components/ui/icons/BrandMark.jsx",
+      "summary": "SVG-иконка логотипа/знака бренда, используется в шапке и Logo.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "branding"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Cart.jsx",
+      "type": "file",
+      "name": "Cart.jsx",
+      "filePath": "client/src/components/ui/icons/Cart.jsx",
+      "summary": "SVG-иконка корзины, используется в карточках товара и кнопках добавления в корзину.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Check.jsx",
+      "type": "file",
+      "name": "Check.jsx",
+      "filePath": "client/src/components/ui/icons/Check.jsx",
+      "summary": "SVG-иконка галочки, используется в чекбоксах и индикаторах выбора.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/ChevronDown.jsx",
+      "type": "file",
+      "name": "ChevronDown.jsx",
+      "filePath": "client/src/components/ui/icons/ChevronDown.jsx",
+      "summary": "SVG-иконка шеврона вниз, используется в выпадающих списках каталога (dropdown).",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Close.jsx",
+      "type": "file",
+      "name": "Close.jsx",
+      "filePath": "client/src/components/ui/icons/Close.jsx",
+      "summary": "SVG-иконка закрытия (крестик), используется в мобильном меню и модальных элементах.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Filter.jsx",
+      "type": "file",
+      "name": "Filter.jsx",
+      "filePath": "client/src/components/ui/icons/Filter.jsx",
+      "summary": "SVG-иконка фильтра, используется в тулбаре каталога для кнопки фильтрации.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Grid.jsx",
+      "type": "file",
+      "name": "Grid.jsx",
+      "filePath": "client/src/components/ui/icons/Grid.jsx",
+      "summary": "SVG-иконка сетки, используется для переключения вида отображения каталога.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Heart.jsx",
+      "type": "file",
+      "name": "Heart.jsx",
+      "filePath": "client/src/components/ui/icons/Heart.jsx",
+      "summary": "SVG-иконка сердца, используется в кнопке добавления товара в избранное.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Plus.jsx",
+      "type": "file",
+      "name": "Plus.jsx",
+      "filePath": "client/src/components/ui/icons/Plus.jsx",
+      "summary": "SVG-иконка плюса, используется в счётчике количества и элементах добавления.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Search.jsx",
+      "type": "file",
+      "name": "Search.jsx",
+      "filePath": "client/src/components/ui/icons/Search.jsx",
+      "summary": "SVG-иконка поиска (лупа), используется в строке поиска каталога.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/Sort.jsx",
+      "type": "file",
+      "name": "Sort.jsx",
+      "filePath": "client/src/components/ui/icons/Sort.jsx",
+      "summary": "SVG-иконка сортировки, используется в выпадающем меню сортировки каталога.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/User.jsx",
+      "type": "file",
+      "name": "User.jsx",
+      "filePath": "client/src/components/ui/icons/User.jsx",
+      "summary": "SVG-иконка пользователя, используется в ссылке на личный кабинет в шапке.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/VK.jsx",
+      "type": "file",
+      "name": "VK.jsx",
+      "filePath": "client/src/components/ui/icons/VK.jsx",
+      "summary": "SVG-иконка социальной сети ВКонтакте, используется в подвале сайта.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "social"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/icons/YouTube.jsx",
+      "type": "file",
+      "name": "YouTube.jsx",
+      "filePath": "client/src/components/ui/icons/YouTube.jsx",
+      "summary": "SVG-иконка YouTube, используется в подвале сайта в блоке соцсетей.",
+      "tags": [
+        "icon",
+        "svg",
+        "component",
+        "social"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/components/ui/index.js",
+      "summary": "Barrel-файл UI-слоя: реэкспортирует все UI-примитивы (Button, IconButton, MenuOpenButton, Logo, NavPill, GridLines, Checkbox, SupportButton) и весь набор иконок.",
+      "tags": [
+        "barrel",
+        "entry-point",
+        "ui-primitive",
+        "exports"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Barrel-файл с реэкспортами; `export * from './icons'` подтягивает все иконки в единую точку импорта."
+    },
+    {
+      "id": "file:client/src/components/ui/NavPill.jsx",
+      "type": "file",
+      "name": "NavPill.jsx",
+      "filePath": "client/src/components/ui/NavPill.jsx",
+      "summary": "Pill-кнопка навигации для Header и HeroHeader с четырьмя вариантами оформления; рендерится как Link или button.",
+      "tags": [
+        "component",
+        "navigation",
+        "button",
+        "ui-primitive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/components/ui/ProductCard.jsx",
+      "type": "file",
+      "name": "ProductCard.jsx",
+      "filePath": "client/src/components/ui/ProductCard.jsx",
+      "summary": "Карточка товара каталога: фото, цена, счётчик количества, кнопки корзины и избранного с анимацией; интегрирована с zustand-сторами корзины и избранного.",
+      "tags": [
+        "component",
+        "product-card",
+        "catalog",
+        "state-management"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Содержит несколько вложенных подкомпонентов (QuantitySelector, CartButton, FavoriteButton) и использует motion/react для анимаций."
+    },
+    {
+      "id": "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "type": "file",
+      "name": "ScrollToTopButton.jsx",
+      "filePath": "client/src/components/ui/ScrollToTopButton.jsx",
+      "summary": "Плавающая круглая FAB-кнопка прокрутки страницы наверх; появляется после прокрутки больше порога SHOW_THRESHOLD.",
+      "tags": [
+        "component",
+        "button",
+        "scroll",
+        "fab"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/components/ui/SupportButton.jsx",
+      "type": "file",
+      "name": "SupportButton.jsx",
+      "filePath": "client/src/components/ui/SupportButton.jsx",
+      "summary": "Фиксированная FAB-кнопка «Поддержка» в правом нижнем углу: появляется ниже Hero и скрывается у Footer, реагируя на направление прокрутки.",
+      "tags": [
+        "component",
+        "button",
+        "scroll",
+        "fab"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/config/breakpoints.js",
+      "type": "file",
+      "name": "breakpoints.js",
+      "filePath": "client/src/config/breakpoints.js",
+      "summary": "Конфигурация контрольных точек адаптивной вёрстки (BREAKPOINTS) и хелпер mediaQuery для построения media-запросов.",
+      "tags": [
+        "config",
+        "responsive",
+        "breakpoint",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/config/entrance.js",
+      "type": "file",
+      "name": "entrance.js",
+      "filePath": "client/src/config/entrance.js",
+      "summary": "Константы анимации входа элементов (длительность, easing, смещение по Y, stagger), единый канон появления секций.",
+      "tags": [
+        "config",
+        "animation",
+        "constants"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/catalog/brands.js",
+      "type": "file",
+      "name": "brands.js",
+      "filePath": "client/src/content/catalog/brands.js",
+      "summary": "Статические данные списка брендов каталога (массив BRANDS) для фильтрации товаров.",
+      "tags": [
+        "data-model",
+        "catalog",
+        "content"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/catalog/categories.js",
+      "type": "file",
+      "name": "categories.js",
+      "filePath": "client/src/content/catalog/categories.js",
+      "summary": "Дерево категорий каталога (CATEGORY_TREE) с подкатегориями — единый источник правды для навигации и фильтров.",
+      "tags": [
+        "data-model",
+        "catalog",
+        "content"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/catalog/helpers.js",
+      "type": "file",
+      "name": "helpers.js",
+      "filePath": "client/src/content/catalog/helpers.js",
+      "summary": "Утилиты извлечения данных из CATEGORY_TREE: поиск категории/подкатегории по slug, получение лейбла и построение хлебных крошек.",
+      "tags": [
+        "utility",
+        "catalog",
+        "helpers"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/ProductCard.jsx:ProductCard",
+      "type": "function",
+      "name": "ProductCard",
+      "filePath": "client/src/components/ui/ProductCard.jsx",
+      "lineRange": [
+        159,
+        287
+      ],
+      "summary": "Главный компонент карточки товара: собирает фото, цену и счётчик, связывает локальное состояние количества со стором корзины.",
+      "tags": [
+        "component",
+        "product-card",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/components/ui/ProductCard.jsx:CartButton",
+      "type": "function",
+      "name": "CartButton",
+      "filePath": "client/src/components/ui/ProductCard.jsx",
+      "lineRange": [
+        61,
+        114
+      ],
+      "summary": "Подкомпонент кнопки добавления/удаления товара из корзины с анимацией состояния.",
+      "tags": [
+        "component",
+        "button",
+        "cart"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/ProductCard.jsx:FavoriteButton",
+      "type": "function",
+      "name": "FavoriteButton",
+      "filePath": "client/src/components/ui/ProductCard.jsx",
+      "lineRange": [
+        122,
+        147
+      ],
+      "summary": "Подкомпонент кнопки переключения товара в избранном через стор избранного.",
+      "tags": [
+        "component",
+        "button",
+        "favorites"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/ProductCard.jsx:QuantitySelector",
+      "type": "function",
+      "name": "QuantitySelector",
+      "filePath": "client/src/components/ui/ProductCard.jsx",
+      "lineRange": [
+        30,
+        50
+      ],
+      "summary": "Подкомпонент счётчика количества товара с кнопками увеличения и уменьшения.",
+      "tags": [
+        "component",
+        "quantity",
+        "ui-primitive"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/ScrollToTopButton.jsx:ScrollToTopButton",
+      "type": "function",
+      "name": "ScrollToTopButton",
+      "filePath": "client/src/components/ui/ScrollToTopButton.jsx",
+      "lineRange": [
+        17,
+        56
+      ],
+      "summary": "FAB-компонент: отслеживает прокрутку, показывает кнопку после порога и плавно скроллит страницу наверх.",
+      "tags": [
+        "component",
+        "button",
+        "scroll"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/SupportButton.jsx:SupportButton",
+      "type": "function",
+      "name": "SupportButton",
+      "filePath": "client/src/components/ui/SupportButton.jsx",
+      "lineRange": [
+        18,
+        92
+      ],
+      "summary": "FAB-компонент «Поддержка»: показывается/скрывается в зависимости от направления прокрутки и близости к Footer.",
+      "tags": [
+        "component",
+        "button",
+        "scroll"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/src/components/ui/NavPill.jsx:NavPill",
+      "type": "function",
+      "name": "NavPill",
+      "filePath": "client/src/components/ui/NavPill.jsx",
+      "lineRange": [
+        26,
+        47
+      ],
+      "summary": "Pill-кнопка навигации с выбором варианта оформления и рендером как Link или button.",
+      "tags": [
+        "component",
+        "navigation",
+        "button"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/content/catalog/helpers.js:getCategoryBreadcrumbPath",
+      "type": "function",
+      "name": "getCategoryBreadcrumbPath",
+      "filePath": "client/src/content/catalog/helpers.js",
+      "lineRange": [
+        54,
+        65
+      ],
+      "summary": "Строит путь хлебных крошек по slug категории и подкатегории, обходя CATEGORY_TREE.",
+      "tags": [
+        "utility",
+        "catalog",
+        "breadcrumb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/content/catalog/helpers.js:findSubcategoryBySlug",
+      "type": "function",
+      "name": "findSubcategoryBySlug",
+      "filePath": "client/src/content/catalog/helpers.js",
+      "lineRange": [
+        22,
+        29
+      ],
+      "summary": "Ищет подкатегорию по slug внутри дерева категорий, перебирая детей родительских узлов.",
+      "tags": [
+        "utility",
+        "catalog",
+        "lookup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/config/breakpoints.js:mediaQuery",
+      "type": "function",
+      "name": "mediaQuery",
+      "filePath": "client/src/config/breakpoints.js",
+      "lineRange": [
+        24,
+        30
+      ],
+      "summary": "Возвращает строку CSS media-запроса по имени контрольной точки из BREAKPOINTS.",
+      "tags": [
+        "utility",
+        "responsive",
+        "breakpoint"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/catalog/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/content/catalog/index.js",
+      "summary": "Barrel-модуль каталога: реэкспортирует CATEGORY_TREE, BRANDS и PRODUCTS из соседних content-файлов в единую точку импорта.",
+      "tags": [
+        "barrel",
+        "entry-point",
+        "content",
+        "catalog"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Чистый re-export barrel без собственной логики."
+    },
+    {
+      "id": "file:client/src/content/catalog/products.js",
+      "type": "file",
+      "name": "products.js",
+      "filePath": "client/src/content/catalog/products.js",
+      "summary": "Статический каталог товаров (PRODUCTS) — крупный data-модуль с описаниями крепежа, ценами, брендами и категориями, потребляемый каталогом и фильтрами.",
+      "tags": [
+        "content",
+        "data-model",
+        "catalog",
+        "mock-data"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Большой литерал-массив данных (~690 строк) без исполняемой логики."
+    },
+    {
+      "id": "file:client/src/content/ctaBanner.js",
+      "type": "file",
+      "name": "ctaBanner.js",
+      "filePath": "client/src/content/ctaBanner.js",
+      "summary": "Content-модуль секции CTA-баннера: экспортирует объект CTA_BANNER с текстами призыва к действию.",
+      "tags": [
+        "content",
+        "data-model",
+        "landing",
+        "section"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/fastenerDiagram.js",
+      "type": "file",
+      "name": "fastenerDiagram.js",
+      "filePath": "client/src/content/fastenerDiagram.js",
+      "summary": "Content- и конфигурационный модуль секции диаграммы крепежа: задаёт геометрию колец (IR, OR, CX, CY), параметры анимации и список секторов SVG-диаграммы.",
+      "tags": [
+        "content",
+        "configuration",
+        "animation",
+        "section",
+        "svg"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/footer.js",
+      "type": "file",
+      "name": "footer.js",
+      "filePath": "client/src/content/footer.js",
+      "summary": "Content-модуль футера: ссылки каталога и навигации, контактная информация, соцсети и юридические тексты, потребляемые компонентом Footer.",
+      "tags": [
+        "content",
+        "data-model",
+        "footer",
+        "navigation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/header.js",
+      "type": "file",
+      "name": "header.js",
+      "filePath": "client/src/content/header.js",
+      "summary": "Content-модуль шапки: метки языков, навигационные ссылки, ссылки на аккаунт и главную, потребляемые компонентом Header.",
+      "tags": [
+        "content",
+        "data-model",
+        "header",
+        "navigation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/hero.js",
+      "type": "file",
+      "name": "hero.js",
+      "filePath": "client/src/content/hero.js",
+      "summary": "Content-модуль hero-секции: крупные текстовые блоки (BIG_LEFT, BIG_RIGHT) и набор слоганов TAGLINES для лендинга.",
+      "tags": [
+        "content",
+        "data-model",
+        "landing",
+        "section"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/menu.js",
+      "type": "file",
+      "name": "menu.js",
+      "filePath": "client/src/content/menu.js",
+      "summary": "Content-модуль мобильного меню: основные и второстепенные пункты навигации (MENU_PRIMARY, MENU_SECONDARY) и CTA-блок.",
+      "tags": [
+        "content",
+        "data-model",
+        "menu",
+        "navigation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/numbers.js",
+      "type": "file",
+      "name": "numbers.js",
+      "filePath": "client/src/content/numbers.js",
+      "summary": "Content- и конфигурационный модуль секции статистики: тайминги анимации (COUNT_DURATION, LINE_DURATION) и два ряда числовых показателей.",
+      "tags": [
+        "content",
+        "configuration",
+        "animation",
+        "section"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/ourValues.js",
+      "type": "file",
+      "name": "ourValues.js",
+      "filePath": "client/src/content/ourValues.js",
+      "summary": "Content- и конфигурационный модуль секции «Наши ценности»: тексты, карточки CARDS и параметры скролл-анимации (дельты смещения, spring-конфиг).",
+      "tags": [
+        "content",
+        "configuration",
+        "animation",
+        "section"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/content/partners.js",
+      "type": "file",
+      "name": "partners.js",
+      "filePath": "client/src/content/partners.js",
+      "summary": "Content- и конфигурационный модуль секции партнёров: заголовок, параметры grid-раскладки и список партнёров.",
+      "tags": [
+        "content",
+        "configuration",
+        "section",
+        "partners"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/src/content/serviceProgram.js",
+      "type": "file",
+      "name": "serviceProgram.js",
+      "filePath": "client/src/content/serviceProgram.js",
+      "summary": "Content-модуль секции сервисной программы: метка секции и список услуг SERVICES.",
+      "tags": [
+        "content",
+        "data-model",
+        "section",
+        "services"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useBreakpoint.js",
+      "type": "file",
+      "name": "useBreakpoint.js",
+      "filePath": "client/src/hooks/useBreakpoint.js",
+      "summary": "Hook, возвращающий активность именованного breakpoint: оборачивает useMediaQuery медиа-запросом из конфигурации breakpoints.",
+      "tags": [
+        "hook",
+        "responsive",
+        "media-query",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useCatalogFilters.js",
+      "type": "file",
+      "name": "useCatalogFilters.js",
+      "filePath": "client/src/hooks/useCatalogFilters.js",
+      "summary": "Центральный hook каталога: управляет staged/applied фильтрами, поиском, сортировкой, синхронизацией с URL-параметрами и пагинацией отфильтрованных товаров.",
+      "tags": [
+        "hook",
+        "catalog",
+        "filtering",
+        "state-management",
+        "routing"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Опирается на useMemo/useCallback для мемоизации тяжёлой фильтрации и на useParams/useNavigate из react-router для синхронизации состояния с URL."
+    },
+    {
+      "id": "file:client/src/hooks/useCountUp.js",
+      "type": "file",
+      "name": "useCountUp.js",
+      "filePath": "client/src/hooks/useCountUp.js",
+      "summary": "Hook анимации счётчика: плавно увеличивает значение от start до end за duration через requestAnimationFrame с easing.",
+      "tags": [
+        "hook",
+        "animation",
+        "raf",
+        "counter"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useElementHeight.js",
+      "type": "file",
+      "name": "useElementHeight.js",
+      "filePath": "client/src/hooks/useElementHeight.js",
+      "summary": "Hook отслеживания высоты DOM-элемента по селектору через ResizeObserver, возвращающий актуальную высоту.",
+      "tags": [
+        "hook",
+        "dom",
+        "resize-observer",
+        "layout"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useEntranceProps.js",
+      "type": "file",
+      "name": "useEntranceProps.js",
+      "filePath": "client/src/hooks/useEntranceProps.js",
+      "summary": "Hook, формирующий пропсы entrance-анимации (initial/animate/transition) для Framer Motion с учётом prefers-reduced-motion.",
+      "tags": [
+        "hook",
+        "animation",
+        "framer-motion",
+        "accessibility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useInfiniteScroll.js",
+      "type": "file",
+      "name": "useInfiniteScroll.js",
+      "filePath": "client/src/hooks/useInfiniteScroll.js",
+      "summary": "Hook бесконечной прокрутки: через IntersectionObserver вызывает onLoadMore при появлении sentinel-элемента, когда подгрузка включена.",
+      "tags": [
+        "hook",
+        "infinite-scroll",
+        "intersection-observer",
+        "pagination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useLenis.js",
+      "type": "file",
+      "name": "useLenis.js",
+      "filePath": "client/src/hooks/useLenis.js",
+      "summary": "Hook инициализации Lenis smooth-scroll: запускает RAF-цикл и уничтожает экземпляр при размонтировании, уважая prefers-reduced-motion.",
+      "tags": [
+        "hook",
+        "smooth-scroll",
+        "lenis",
+        "raf"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useMediaQuery.js",
+      "type": "file",
+      "name": "useMediaQuery.js",
+      "filePath": "client/src/hooks/useMediaQuery.js",
+      "summary": "Базовый hook медиа-запросов на основе useSyncExternalStore: подписывается на matchMedia и возвращает текущее совпадение запроса.",
+      "tags": [
+        "hook",
+        "media-query",
+        "responsive",
+        "use-sync-external-store"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Использует useSyncExternalStore для корректной подписки на внешний источник (matchMedia) без рассинхронизации при гидрации."
+    },
+    {
+      "id": "file:client/src/hooks/useScrollDirection.js",
+      "type": "file",
+      "name": "useScrollDirection.js",
+      "filePath": "client/src/hooks/useScrollDirection.js",
+      "summary": "Hook определения направления прокрутки (вверх/вниз) и позиции через слушатель scroll, используется для скрытия/показа шапки.",
+      "tags": [
+        "hook",
+        "scroll",
+        "event-handler",
+        "ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/hooks/useViewport.js",
+      "type": "file",
+      "name": "useViewport.js",
+      "filePath": "client/src/hooks/useViewport.js",
+      "summary": "Hook определения возможностей viewport (например, поддержки hover) через matchMedia с подпиской на изменения.",
+      "tags": [
+        "hook",
+        "viewport",
+        "media-query",
+        "responsive"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/main.jsx",
+      "type": "file",
+      "name": "main.jsx",
+      "filePath": "client/src/main.jsx",
+      "summary": "Точка входа клиента: монтирует App в DOM, оборачивая его в StrictMode, ErrorBoundary и BrowserRouter, и подключает глобальные стили.",
+      "tags": [
+        "entry-point",
+        "bootstrap",
+        "react",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/store/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "client/src/store/index.js",
+      "summary": "Barrel-модуль стора: реэкспортирует Zustand-хранилища useUiStore, useCartStore и useFavoritesStore из слайсов.",
+      "tags": [
+        "barrel",
+        "entry-point",
+        "store",
+        "zustand"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/store/slices/cartSlice.js",
+      "type": "file",
+      "name": "cartSlice.js",
+      "filePath": "client/src/store/slices/cartSlice.js",
+      "summary": "Zustand-слайс корзины: хранит товары как Map<productId, quantity> и предоставляет действия добавления, удаления, изменения количества и селекторы состояния.",
+      "tags": [
+        "store",
+        "zustand",
+        "cart",
+        "state-management"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Использует Map для items с иммутабельным обновлением (копирование Map в каждом set)."
+    },
+    {
+      "id": "function:client/src/hooks/useBreakpoint.js:useBreakpoint",
+      "type": "function",
+      "name": "useBreakpoint",
+      "filePath": "client/src/hooks/useBreakpoint.js",
+      "lineRange": [
+        12,
+        14
+      ],
+      "summary": "Возвращает true/false для активности именованного breakpoint, делегируя useMediaQuery медиа-запрос из конфигурации.",
+      "tags": [
+        "hook",
+        "responsive",
+        "media-query"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useCatalogFilters.js:useCatalogFilters",
+      "type": "function",
+      "name": "useCatalogFilters",
+      "filePath": "client/src/hooks/useCatalogFilters.js",
+      "lineRange": [
+        66,
+        268
+      ],
+      "summary": "Главный hook каталога: управляет staged/applied фильтрами, поиском и сортировкой, синхронизирует выбранную категорию с URL и отдаёт пагинированный список товаров.",
+      "tags": [
+        "hook",
+        "catalog",
+        "filtering",
+        "state-management",
+        "routing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/src/hooks/useCatalogFilters.js:countFilters",
+      "type": "function",
+      "name": "countFilters",
+      "filePath": "client/src/hooks/useCatalogFilters.js",
+      "lineRange": [
+        24,
+        30
+      ],
+      "summary": "Вспомогательная функция подсчёта количества активных фильтров в объекте фильтров.",
+      "tags": [
+        "utility",
+        "filtering",
+        "helper"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useCountUp.js:useCountUp",
+      "type": "function",
+      "name": "useCountUp",
+      "filePath": "client/src/hooks/useCountUp.js",
+      "lineRange": [
+        17,
+        44
+      ],
+      "summary": "Анимирует число от start до end за заданную длительность через requestAnimationFrame с easing-функцией.",
+      "tags": [
+        "hook",
+        "animation",
+        "raf",
+        "counter"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useElementHeight.js:useElementHeight",
+      "type": "function",
+      "name": "useElementHeight",
+      "filePath": "client/src/hooks/useElementHeight.js",
+      "lineRange": [
+        12,
+        32
+      ],
+      "summary": "Отслеживает высоту элемента по CSS-селектору через ResizeObserver и возвращает её актуальное значение.",
+      "tags": [
+        "hook",
+        "dom",
+        "resize-observer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useEntranceProps.js:useEntranceProps",
+      "type": "function",
+      "name": "useEntranceProps",
+      "filePath": "client/src/hooks/useEntranceProps.js",
+      "lineRange": [
+        19,
+        50
+      ],
+      "summary": "Возвращает пропсы entrance-анимации для Framer Motion, отключая движение при включённом prefers-reduced-motion.",
+      "tags": [
+        "hook",
+        "animation",
+        "framer-motion",
+        "accessibility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useInfiniteScroll.js:useInfiniteScroll",
+      "type": "function",
+      "name": "useInfiniteScroll",
+      "filePath": "client/src/hooks/useInfiniteScroll.js",
+      "lineRange": [
+        19,
+        38
+      ],
+      "summary": "Через IntersectionObserver вызывает onLoadMore при появлении sentinel-элемента, когда подгрузка разрешена.",
+      "tags": [
+        "hook",
+        "infinite-scroll",
+        "intersection-observer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useLenis.js:useLenis",
+      "type": "function",
+      "name": "useLenis",
+      "filePath": "client/src/hooks/useLenis.js",
+      "lineRange": [
+        11,
+        30
+      ],
+      "summary": "Инициализирует Lenis smooth-scroll, гоняет RAF-цикл и корректно уничтожает экземпляр при размонтировании.",
+      "tags": [
+        "hook",
+        "smooth-scroll",
+        "lenis",
+        "raf"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useMediaQuery.js:useMediaQuery",
+      "type": "function",
+      "name": "useMediaQuery",
+      "filePath": "client/src/hooks/useMediaQuery.js",
+      "lineRange": [
+        14,
+        28
+      ],
+      "summary": "Подписывается на matchMedia через useSyncExternalStore и возвращает текущее совпадение медиа-запроса.",
+      "tags": [
+        "hook",
+        "media-query",
+        "use-sync-external-store"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useScrollDirection.js:useScrollDirection",
+      "type": "function",
+      "name": "useScrollDirection",
+      "filePath": "client/src/hooks/useScrollDirection.js",
+      "lineRange": [
+        13,
+        48
+      ],
+      "summary": "Определяет направление прокрутки и позицию через слушатель scroll и отдаёт их состоянием для управления UI шапки.",
+      "tags": [
+        "hook",
+        "scroll",
+        "event-handler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/hooks/useViewport.js:useViewport",
+      "type": "function",
+      "name": "useViewport",
+      "filePath": "client/src/hooks/useViewport.js",
+      "lineRange": [
+        10,
+        26
+      ],
+      "summary": "Определяет возможности viewport (например, поддержку hover) через matchMedia с подпиской на изменения.",
+      "tags": [
+        "hook",
+        "viewport",
+        "media-query"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/store/slices/favoritesSlice.js",
+      "type": "file",
+      "name": "favoritesSlice.js",
+      "filePath": "client/src/store/slices/favoritesSlice.js",
+      "summary": "Zustand store slice для избранного: хранит набор id товаров и предоставляет действия добавить/убрать/проверить наличие в избранном.",
+      "tags": [
+        "store",
+        "state-management",
+        "zustand",
+        "favorites"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Zustand slice, экспортирующий хук useFavoritesStore."
+    },
+    {
+      "id": "file:client/src/store/slices/uiSlice.js",
+      "type": "file",
+      "name": "uiSlice.js",
+      "filePath": "client/src/store/slices/uiSlice.js",
+      "summary": "Zustand store slice для глобального UI-состояния (например, открытие мобильного меню) через хук useUiStore.",
+      "tags": [
+        "store",
+        "state-management",
+        "zustand",
+        "ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/src/styles/index.css",
+      "type": "file",
+      "name": "index.css",
+      "filePath": "client/src/styles/index.css",
+      "summary": "Глобальные стили клиента: подключение шрифта Neue Montreal через @font-face, директивы Tailwind (base/components/utilities) и базовый layer со скрытием скроллбара.",
+      "tags": [
+        "styles",
+        "tailwind",
+        "global-css",
+        "fonts"
+      ],
+      "complexity": "simple",
+      "languageNotes": "@font-face с font-display: swap и @tailwind-директивы как точка входа стилей."
+    },
+    {
+      "id": "file:client/src/utils/cn.js",
+      "type": "file",
+      "name": "cn.js",
+      "filePath": "client/src/utils/cn.js",
+      "summary": "Утилита cn для объединения классов: comбинирует clsx и tailwind-merge для безопасного слияния Tailwind-классов.",
+      "tags": [
+        "utility",
+        "tailwind",
+        "class-names",
+        "helper"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/src/utils/cn.js:cn",
+      "type": "function",
+      "name": "cn",
+      "filePath": "client/src/utils/cn.js",
+      "lineRange": [
+        10,
+        12
+      ],
+      "summary": "Объединяет условные классы через clsx и разрешает конфликты Tailwind через twMerge, возвращая итоговую строку классов.",
+      "tags": [
+        "utility",
+        "tailwind",
+        "class-names"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:client/tailwind.config.js",
+      "type": "config",
+      "name": "tailwind.config.js",
+      "filePath": "client/tailwind.config.js",
+      "summary": "Конфигурация Tailwind с design token'ами проекта: фирменные цвета, тени (popover/btn), шрифт Neue Montreal, грид каталога и слоистый z-index стек.",
+      "tags": [
+        "configuration",
+        "tailwind",
+        "design-tokens",
+        "build-system"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Единый источник правды для цветов, z-index и теней; safelist страхует динамический класс bg-gridLine."
+    },
+    {
+      "id": "config:client/vite.config.js",
+      "type": "config",
+      "name": "vite.config.js",
+      "filePath": "client/vite.config.js",
+      "summary": "Конфигурация Vite: плагин React, alias @/ → client/src и dev-proxy /api → http://localhost:3000, связывающий клиент с backend.",
+      "tags": [
+        "configuration",
+        "vite",
+        "build-system",
+        "alias"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Alias @ резолвится через fileURLToPath; proxy /api проксирует запросы на Fastify-сервер :3000."
+    },
+    {
+      "id": "service:docker-compose.yml",
+      "type": "service",
+      "name": "docker-compose.yml",
+      "filePath": "docker-compose.yml",
+      "summary": "Docker Compose с single-service postgres:16 (БД fastener_direct, порт 5432) и именованным volume pg_data для персистентности данных.",
+      "tags": [
+        "infrastructure",
+        "orchestration",
+        "database",
+        "containerization"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Named volume pg_data сохраняет данные PostgreSQL между перезапусками контейнера."
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Корневой package.json монорепозитория с npm-скриптами и общими зависимостями для запуска client и server.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "npm",
+        "monorepo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:server/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "server/.env.example",
+      "summary": "Шаблон переменных окружения сервера (например, DATABASE_URL) для подключения к PostgreSQL.",
+      "tags": [
+        "configuration",
+        "environment",
+        "security",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:server/drizzle.config.js",
+      "type": "config",
+      "name": "drizzle.config.js",
+      "filePath": "server/drizzle.config.js",
+      "summary": "Конфигурация Drizzle ORM: путь к схеме (src/db/schema/index.js), каталог миграций drizzle, драйвер pg и connectionString из DATABASE_URL.",
+      "tags": [
+        "configuration",
+        "drizzle",
+        "database",
+        "orm"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:server/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "server/package.json",
+      "summary": "Манифест backend-пакета (Fastify/Drizzle): npm-скрипты, зависимости и метаданные сервера.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "npm",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/db/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "server/src/db/index.js",
+      "summary": "Точка подключения к БД: создаёт postgres.js client по DATABASE_URL и экспортирует инстанс drizzle() как db.",
+      "tags": [
+        "database",
+        "drizzle",
+        "driver",
+        "data-access"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Использует драйвер postgres-js (drizzle-orm/postgres-js)."
+    },
+    {
+      "id": "file:server/src/db/schema/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "server/src/db/schema/index.js",
+      "summary": "Барель-файл Drizzle-схем БД (пока пустой/заготовка) — место для определения таблиц проекта.",
+      "tags": [
+        "database",
+        "schema",
+        "drizzle",
+        "stub"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/pages/Home.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/pages/CatalogPage.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/pages/ProductPage.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/components/sections/Footer.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/components/sections/Header.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/components/sections/TopStrip.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/components/sections/MobileMenu.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "function:client/src/App.jsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/App.jsx",
+      "target": "file:client/src/hooks/useLenis.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/src/components/sections/Footer.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Footer.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Footer.jsx",
+      "target": "file:client/src/content/footer.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Footer.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Footer.jsx",
+      "target": "function:client/src/components/sections/Footer.jsx:Footer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/Footer.jsx",
+      "target": "function:client/src/components/sections/Footer.jsx:FooterLink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/Footer.jsx",
+      "target": "function:client/src/components/sections/Footer.jsx:FooterAnchor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/Header.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Header.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Header.jsx",
+      "target": "file:client/src/store/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Header.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Header.jsx",
+      "target": "file:client/src/content/header.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Header.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Header.jsx",
+      "target": "function:client/src/components/sections/Header.jsx:Header",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/TopStrip.jsx",
+      "target": "function:client/src/components/sections/TopStrip.jsx:TopStrip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useViewport.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useCountUp.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useScrollDirection.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useLenis.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useElementHeight.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useMediaQuery.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useBreakpoint.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useCatalogFilters.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useInfiniteScroll.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/index.js",
+      "target": "file:client/src/hooks/useEntranceProps.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/ui/ProductCard.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/catalog/FilterButton.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/catalog/SearchBar.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/catalog/SortDropdown.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/catalog/CategoryButton.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/config/entrance.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/store/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "function:client/src/pages/CatalogPage.jsx:CatalogPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "function:client/src/pages/CatalogPage.jsx:EmptyState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "function:client/src/pages/CatalogPage.jsx:CatalogPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/pages/CatalogPage.jsx",
+      "target": "file:client/src/hooks/useCatalogFilters.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/sections/CtaBannerSection.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/sections/Hero.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/sections/HeroHeader.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/sections/NumbersSection.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/sections/OurValuesSection.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/sections/PartnersSection.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "function:client/src/pages/Home.jsx:Home",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/pages/Home.jsx",
+      "target": "function:client/src/pages/Home.jsx:Home",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/pages/ProductPage.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/pages/ProductPage.jsx",
+      "target": "function:client/src/pages/ProductPage.jsx:ProductPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/pages/ProductPage.jsx",
+      "target": "function:client/src/pages/ProductPage.jsx:ProductPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryButton.jsx",
+      "target": "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryButton.jsx",
+      "target": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/SortDropdown.jsx",
+      "target": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryButton.jsx",
+      "target": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryButton.jsx",
+      "target": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "target": "function:client/src/components/catalog/CategoryDropdown.jsx:CategoryDropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/CategoryDropdown.jsx",
+      "target": "function:client/src/components/catalog/CategoryDropdown.jsx:CategoryDropdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:PriceFilter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:BrandList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/FilterButton.jsx",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:StockToggle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:BrandList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:PriceFilter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterPanel",
+      "target": "function:client/src/components/catalog/FilterButton.jsx:StockToggle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/SortDropdown.jsx",
+      "target": "function:client/src/components/catalog/SortDropdown.jsx:SortDropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/SortDropdown.jsx",
+      "target": "function:client/src/components/catalog/SortDropdown.jsx:SortDropdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/ToolbarMenu.jsx",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "target": "function:client/src/components/catalog/CategoryDropdown.jsx:CategoryDropdown",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:client/src/components/catalog/CategoryButton.jsx:CategoryButton",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:client/src/components/catalog/FilterButton.jsx:FilterButton",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:client/src/components/catalog/SortDropdown.jsx:SortDropdown",
+      "target": "function:client/src/components/catalog/ToolbarMenu.jsx:ToolbarMenu",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/src/components/ui/Button.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/Logo.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "target": "file:client/src/components/ui/IconButton.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/Button.jsx",
+      "target": "function:client/src/components/ui/Button.jsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/Button.jsx",
+      "target": "function:client/src/components/ui/Button.jsx:Button",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/IconButton.jsx",
+      "target": "function:client/src/components/ui/IconButton.jsx:IconButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/IconButton.jsx",
+      "target": "function:client/src/components/ui/IconButton.jsx:IconButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/Logo.jsx",
+      "target": "function:client/src/components/ui/Logo.jsx:Logo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/Logo.jsx",
+      "target": "function:client/src/components/ui/Logo.jsx:Logo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "target": "function:client/src/components/ui/MenuOpenButton.jsx:MenuOpenButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "target": "function:client/src/components/ui/MenuOpenButton.jsx:MenuOpenButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:client/src/components/ui/MenuOpenButton.jsx:MenuOpenButton",
+      "target": "function:client/src/components/ui/IconButton.jsx:IconButton",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/app.js",
+      "target": "file:server/src/plugins/cors.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/app.js",
+      "target": "file:server/src/routes/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/routes/index.js",
+      "target": "endpoint:server/src/routes/index.js:GET /api/health",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "config:client/package.json",
+      "target": "file:client/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:client/.prettierrc.json",
+      "target": "file:client/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:client/README.md",
+      "target": "file:client/index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/index.html",
+      "target": "file:client/src/main.jsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:client/postcss.config.js",
+      "target": "file:client/src/App.css",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "target": "function:client/src/components/catalog/ActiveFilterChips.jsx:Chip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "target": "function:client/src/components/catalog/ActiveFilterChips.jsx:ActiveFilterChips",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "target": "function:client/src/components/catalog/ActiveFilterChips.jsx:ActiveFilterChips",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "target": "file:client/src/content/catalog/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/ActiveFilterChips.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "target": "function:client/src/components/catalog/CatalogToolbar.jsx:CatalogToolbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "target": "function:client/src/components/catalog/CatalogToolbar.jsx:CatalogToolbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/CatalogToolbar.jsx",
+      "target": "file:client/src/config/entrance.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/Pagination.jsx",
+      "target": "function:client/src/components/catalog/Pagination.jsx:getPageItems",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/Pagination.jsx",
+      "target": "function:client/src/components/catalog/Pagination.jsx:Pagination",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/catalog/Pagination.jsx",
+      "target": "function:client/src/components/catalog/Pagination.jsx:Pagination",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/catalog/Pagination.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/Pagination.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/catalog/SearchBar.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/_MenuItem.jsx",
+      "target": "function:client/src/components/sections/_MenuItem.jsx:MenuItem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/_MenuItem.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/_TaglineLine.jsx",
+      "target": "function:client/src/components/sections/_TaglineLine.jsx:TaglineLine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/_TaglineLine.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/CtaBannerSection.jsx",
+      "target": "function:client/src/components/sections/CtaBannerSection.jsx:CtaBannerSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/CtaBannerSection.jsx",
+      "target": "function:client/src/components/sections/CtaBannerSection.jsx:CtaBannerSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/sections/CtaBannerSection.jsx",
+      "target": "file:client/src/components/ui/Button.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/CtaBannerSection.jsx",
+      "target": "file:client/src/content/ctaBanner.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:computeSegmentAt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:DonutLabel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:DonutChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:FastenerDiagramSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "target": "function:client/src/components/sections/FastenerDiagramSection.jsx:FastenerDiagramSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/FastenerDiagramSection.jsx",
+      "target": "file:client/src/content/fastenerDiagram.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Hero.jsx",
+      "target": "function:client/src/components/sections/Hero.jsx:Hero",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/Hero.jsx",
+      "target": "function:client/src/components/sections/Hero.jsx:Hero",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/sections/Hero.jsx",
+      "target": "file:client/src/components/sections/_TaglineLine.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Hero.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Hero.jsx",
+      "target": "file:client/src/config/entrance.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/Hero.jsx",
+      "target": "file:client/src/content/hero.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/HeroHeader.jsx",
+      "target": "function:client/src/components/sections/HeroHeader.jsx:HeroHeader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/HeroHeader.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/HeroHeader.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/HeroHeader.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/HeroHeader.jsx",
+      "target": "file:client/src/store/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/HeroHeader.jsx",
+      "target": "file:client/src/content/header.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/HeroHeader.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "function:client/src/components/sections/MobileMenu.jsx:MobileMenuContent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "function:client/src/components/sections/MobileMenu.jsx:MobileMenu",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "function:client/src/components/sections/MobileMenu.jsx:useCurtainColumns",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "function:client/src/components/sections/MobileMenu.jsx:useMobileMenuLogoSize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "file:client/src/components/sections/_MenuItem.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "file:client/src/store/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "file:client/src/content/menu.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/MobileMenu.jsx",
+      "target": "file:client/src/content/header.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/NumbersSection.jsx",
+      "target": "function:client/src/components/sections/NumbersSection.jsx:StatItem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/NumbersSection.jsx",
+      "target": "function:client/src/components/sections/NumbersSection.jsx:NumbersSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/NumbersSection.jsx",
+      "target": "function:client/src/components/sections/NumbersSection.jsx:NumbersSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/sections/NumbersSection.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/NumbersSection.jsx",
+      "target": "file:client/src/content/numbers.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/OurValuesSection.jsx",
+      "target": "function:client/src/components/sections/OurValuesSection.jsx:TopBlockDesktop",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/OurValuesSection.jsx",
+      "target": "function:client/src/components/sections/OurValuesSection.jsx:DesktopCardsAnimated",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/OurValuesSection.jsx",
+      "target": "function:client/src/components/sections/OurValuesSection.jsx:OurValuesSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/OurValuesSection.jsx",
+      "target": "function:client/src/components/sections/OurValuesSection.jsx:OurValuesSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/sections/OurValuesSection.jsx",
+      "target": "file:client/src/components/ui/Button.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/OurValuesSection.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/OurValuesSection.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/OurValuesSection.jsx",
+      "target": "file:client/src/content/ourValues.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/PartnersSection.jsx",
+      "target": "function:client/src/components/sections/PartnersSection.jsx:PartnerCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/PartnersSection.jsx",
+      "target": "function:client/src/components/sections/PartnersSection.jsx:PartnersSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/PartnersSection.jsx",
+      "target": "function:client/src/components/sections/PartnersSection.jsx:PartnersSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/sections/PartnersSection.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/PartnersSection.jsx",
+      "target": "file:client/src/content/partners.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "function:client/src/components/sections/ServiceProgramSection.jsx:DesktopRow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "function:client/src/components/sections/ServiceProgramSection.jsx:MobileRow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "function:client/src/components/sections/ServiceProgramSection.jsx:ServiceProgramSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "function:client/src/components/sections/ServiceProgramSection.jsx:ServiceProgramSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "file:client/src/components/ui/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "file:client/src/config/entrance.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/sections/ServiceProgramSection.jsx",
+      "target": "file:client/src/content/serviceProgram.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/Checkbox.jsx",
+      "target": "function:client/src/components/ui/Checkbox.jsx:Checkbox",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/Checkbox.jsx",
+      "target": "function:client/src/components/ui/Checkbox.jsx:Checkbox",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/Checkbox.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/ErrorBoundary.jsx",
+      "target": "class:client/src/components/ui/ErrorBoundary.jsx:ErrorBoundary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/ErrorBoundary.jsx",
+      "target": "class:client/src/components/ui/ErrorBoundary.jsx:ErrorBoundary",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/GridLines.jsx",
+      "target": "function:client/src/components/ui/GridLines.jsx:GridLines",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/GridLines.jsx",
+      "target": "function:client/src/components/ui/GridLines.jsx:GridLines",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/GridLines.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Arrow.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/BrandMark.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Cart.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Check.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/ChevronDown.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Close.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Filter.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Grid.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Heart.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Plus.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Search.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/Sort.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/icons/User.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/NavPill.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/SupportButton.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/Button.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/IconButton.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/MenuOpenButton.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/Logo.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/GridLines.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/Checkbox.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/index.js",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/NavPill.jsx",
+      "target": "function:client/src/components/ui/NavPill.jsx:NavPill",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/NavPill.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "function:client/src/components/ui/ProductCard.jsx:ProductCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "function:client/src/components/ui/ProductCard.jsx:CartButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "function:client/src/components/ui/ProductCard.jsx:FavoriteButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "function:client/src/components/ui/ProductCard.jsx:QuantitySelector",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "function:client/src/components/ui/ProductCard.jsx:ProductCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "file:client/src/hooks/useViewport.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "file:client/src/store/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/ProductCard.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "target": "function:client/src/components/ui/ScrollToTopButton.jsx:ScrollToTopButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "target": "function:client/src/components/ui/ScrollToTopButton.jsx:ScrollToTopButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "target": "file:client/src/components/ui/IconButton.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/ScrollToTopButton.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/SupportButton.jsx",
+      "target": "function:client/src/components/ui/SupportButton.jsx:SupportButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/components/ui/SupportButton.jsx",
+      "target": "function:client/src/components/ui/SupportButton.jsx:SupportButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/components/ui/SupportButton.jsx",
+      "target": "file:client/src/components/ui/icons/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/SupportButton.jsx",
+      "target": "file:client/src/hooks/index.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/components/ui/SupportButton.jsx",
+      "target": "file:client/src/utils/cn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/config/breakpoints.js",
+      "target": "function:client/src/config/breakpoints.js:mediaQuery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/config/breakpoints.js",
+      "target": "function:client/src/config/breakpoints.js:mediaQuery",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/content/catalog/helpers.js",
+      "target": "file:client/src/content/catalog/categories.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/content/catalog/helpers.js",
+      "target": "function:client/src/content/catalog/helpers.js:getCategoryBreadcrumbPath",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/content/catalog/helpers.js",
+      "target": "function:client/src/content/catalog/helpers.js:findSubcategoryBySlug",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/content/catalog/helpers.js",
+      "target": "function:client/src/content/catalog/helpers.js:getCategoryBreadcrumbPath",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/content/catalog/helpers.js",
+      "target": "function:client/src/content/catalog/helpers.js:findSubcategoryBySlug",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useBreakpoint.js",
+      "target": "file:client/src/hooks/useMediaQuery.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/main.jsx",
+      "target": "file:client/src/App.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/main.jsx",
+      "target": "file:client/src/components/ui/ErrorBoundary.jsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/main.jsx",
+      "target": "file:client/src/styles/index.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:client/src/hooks/useBreakpoint.js",
+      "target": "function:client/src/hooks/useBreakpoint.js:useBreakpoint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useBreakpoint.js",
+      "target": "function:client/src/hooks/useBreakpoint.js:useBreakpoint",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useCatalogFilters.js",
+      "target": "function:client/src/hooks/useCatalogFilters.js:useCatalogFilters",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useCatalogFilters.js",
+      "target": "function:client/src/hooks/useCatalogFilters.js:useCatalogFilters",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useCatalogFilters.js",
+      "target": "function:client/src/hooks/useCatalogFilters.js:countFilters",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useCountUp.js",
+      "target": "function:client/src/hooks/useCountUp.js:useCountUp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useCountUp.js",
+      "target": "function:client/src/hooks/useCountUp.js:useCountUp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useElementHeight.js",
+      "target": "function:client/src/hooks/useElementHeight.js:useElementHeight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useElementHeight.js",
+      "target": "function:client/src/hooks/useElementHeight.js:useElementHeight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useEntranceProps.js",
+      "target": "function:client/src/hooks/useEntranceProps.js:useEntranceProps",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useEntranceProps.js",
+      "target": "function:client/src/hooks/useEntranceProps.js:useEntranceProps",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useInfiniteScroll.js",
+      "target": "function:client/src/hooks/useInfiniteScroll.js:useInfiniteScroll",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useInfiniteScroll.js",
+      "target": "function:client/src/hooks/useInfiniteScroll.js:useInfiniteScroll",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useLenis.js",
+      "target": "function:client/src/hooks/useLenis.js:useLenis",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useLenis.js",
+      "target": "function:client/src/hooks/useLenis.js:useLenis",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useMediaQuery.js",
+      "target": "function:client/src/hooks/useMediaQuery.js:useMediaQuery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useMediaQuery.js",
+      "target": "function:client/src/hooks/useMediaQuery.js:useMediaQuery",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useScrollDirection.js",
+      "target": "function:client/src/hooks/useScrollDirection.js:useScrollDirection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useScrollDirection.js",
+      "target": "function:client/src/hooks/useScrollDirection.js:useScrollDirection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/hooks/useViewport.js",
+      "target": "function:client/src/hooks/useViewport.js:useViewport",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/hooks/useViewport.js",
+      "target": "function:client/src/hooks/useViewport.js:useViewport",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:client/src/hooks/useBreakpoint.js:useBreakpoint",
+      "target": "function:client/src/hooks/useMediaQuery.js:useMediaQuery",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/src/utils/cn.js",
+      "target": "function:client/src/utils/cn.js:cn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/src/utils/cn.js",
+      "target": "function:client/src/utils/cn.js:cn",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:client/tailwind.config.js",
+      "target": "file:client/src/styles/index.css",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:client/tailwind.config.js",
+      "target": "file:client/src/utils/cn.js",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:client/vite.config.js",
+      "target": "file:client/src/styles/index.css",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:server/drizzle.config.js",
+      "target": "file:server/src/db/schema/index.js",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:server/drizzle.config.js",
+      "target": "config:server/.env.example",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/db/index.js",
+      "target": "file:server/src/db/schema/index.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/db/index.js",
+      "target": "config:server/.env.example",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "service:docker-compose.yml",
+      "target": "file:server/src/db/index.js",
+      "type": "serves",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:ui-layer",
+      "name": "UI-слой",
+      "description": "Страницы-маршруты, лэндинг- и каталог-секции, UI-примитивы, иконки и глобальные стили клиента — весь визуальный слой и точки входа React-приложения.",
+      "nodeIds": [
+        "file:client/src/App.jsx",
+        "file:client/src/main.jsx",
+        "file:client/index.html",
+        "file:client/src/App.css",
+        "file:client/src/styles/index.css",
+        "file:client/src/pages/Home.jsx",
+        "file:client/src/pages/CatalogPage.jsx",
+        "file:client/src/pages/ProductPage.jsx",
+        "file:client/src/components/sections/Footer.jsx",
+        "file:client/src/components/sections/Header.jsx",
+        "file:client/src/components/sections/TopStrip.jsx",
+        "file:client/src/components/sections/_MenuItem.jsx",
+        "file:client/src/components/sections/_TaglineLine.jsx",
+        "file:client/src/components/sections/CtaBannerSection.jsx",
+        "file:client/src/components/sections/FastenerDiagramSection.jsx",
+        "file:client/src/components/sections/Hero.jsx",
+        "file:client/src/components/sections/HeroHeader.jsx",
+        "file:client/src/components/sections/MobileMenu.jsx",
+        "file:client/src/components/sections/NumbersSection.jsx",
+        "file:client/src/components/sections/OurValuesSection.jsx",
+        "file:client/src/components/sections/PartnersSection.jsx",
+        "file:client/src/components/sections/ServiceProgramSection.jsx",
+        "file:client/src/components/catalog/CategoryButton.jsx",
+        "file:client/src/components/catalog/CategoryDropdown.jsx",
+        "file:client/src/components/catalog/FilterButton.jsx",
+        "file:client/src/components/catalog/SortDropdown.jsx",
+        "file:client/src/components/catalog/ToolbarMenu.jsx",
+        "file:client/src/components/catalog/ActiveFilterChips.jsx",
+        "file:client/src/components/catalog/CatalogToolbar.jsx",
+        "file:client/src/components/catalog/Pagination.jsx",
+        "file:client/src/components/catalog/ProductCardSkeleton.jsx",
+        "file:client/src/components/catalog/SearchBar.jsx",
+        "file:client/src/components/ui/Button.jsx",
+        "file:client/src/components/ui/IconButton.jsx",
+        "file:client/src/components/ui/Logo.jsx",
+        "file:client/src/components/ui/MenuOpenButton.jsx",
+        "file:client/src/components/ui/NavPill.jsx",
+        "file:client/src/components/ui/Checkbox.jsx",
+        "file:client/src/components/ui/ErrorBoundary.jsx",
+        "file:client/src/components/ui/GridLines.jsx",
+        "file:client/src/components/ui/ProductCard.jsx",
+        "file:client/src/components/ui/ScrollToTopButton.jsx",
+        "file:client/src/components/ui/SupportButton.jsx",
+        "file:client/src/components/ui/index.js",
+        "file:client/src/components/ui/icons/index.js",
+        "file:client/src/components/ui/icons/Arrow.jsx",
+        "file:client/src/components/ui/icons/BrandMark.jsx",
+        "file:client/src/components/ui/icons/Cart.jsx",
+        "file:client/src/components/ui/icons/Check.jsx",
+        "file:client/src/components/ui/icons/ChevronDown.jsx",
+        "file:client/src/components/ui/icons/Close.jsx",
+        "file:client/src/components/ui/icons/Filter.jsx",
+        "file:client/src/components/ui/icons/Grid.jsx",
+        "file:client/src/components/ui/icons/Heart.jsx",
+        "file:client/src/components/ui/icons/Plus.jsx",
+        "file:client/src/components/ui/icons/Search.jsx",
+        "file:client/src/components/ui/icons/Sort.jsx",
+        "file:client/src/components/ui/icons/User.jsx",
+        "file:client/src/components/ui/icons/VK.jsx",
+        "file:client/src/components/ui/icons/YouTube.jsx"
+      ]
+    },
+    {
+      "id": "layer:service-layer",
+      "name": "Сервисный слой",
+      "description": "Кастомные hooks (фильтрация каталога, скролл, viewport, анимации) и Zustand-store со slice'ами корзины, избранного и UI — переиспользуемая логика состояния, к которой обращается весь UI.",
+      "nodeIds": [
+        "file:client/src/hooks/index.js",
+        "file:client/src/hooks/useBreakpoint.js",
+        "file:client/src/hooks/useCatalogFilters.js",
+        "file:client/src/hooks/useCountUp.js",
+        "file:client/src/hooks/useElementHeight.js",
+        "file:client/src/hooks/useEntranceProps.js",
+        "file:client/src/hooks/useInfiniteScroll.js",
+        "file:client/src/hooks/useLenis.js",
+        "file:client/src/hooks/useMediaQuery.js",
+        "file:client/src/hooks/useScrollDirection.js",
+        "file:client/src/hooks/useViewport.js",
+        "file:client/src/store/index.js",
+        "file:client/src/store/slices/cartSlice.js",
+        "file:client/src/store/slices/favoritesSlice.js",
+        "file:client/src/store/slices/uiSlice.js"
+      ]
+    },
+    {
+      "id": "layer:content-layer",
+      "name": "Контент-слой",
+      "description": "Статические content-модули: тексты секций лэндинга, навигация, а также данные каталога (категории, бренды, товары) и хелперы по дереву категорий — единый источник правды для отображаемого контента.",
+      "nodeIds": [
+        "file:client/src/content/ctaBanner.js",
+        "file:client/src/content/fastenerDiagram.js",
+        "file:client/src/content/footer.js",
+        "file:client/src/content/header.js",
+        "file:client/src/content/hero.js",
+        "file:client/src/content/menu.js",
+        "file:client/src/content/numbers.js",
+        "file:client/src/content/ourValues.js",
+        "file:client/src/content/partners.js",
+        "file:client/src/content/serviceProgram.js",
+        "file:client/src/content/catalog/index.js",
+        "file:client/src/content/catalog/brands.js",
+        "file:client/src/content/catalog/categories.js",
+        "file:client/src/content/catalog/products.js",
+        "file:client/src/content/catalog/helpers.js"
+      ]
+    },
+    {
+      "id": "layer:utility-layer",
+      "name": "Утилитарный слой",
+      "description": "Сквозные хелперы и константы: слияние Tailwind-классов (cn) и source-level конфиг адаптивных breakpoint'ов и канона entrance-анимаций, импортируемые повсеместно без обратных зависимостей.",
+      "nodeIds": [
+        "file:client/src/utils/cn.js",
+        "file:client/src/config/breakpoints.js",
+        "file:client/src/config/entrance.js"
+      ]
+    },
+    {
+      "id": "layer:api-layer",
+      "name": "Backend/API-слой",
+      "description": "Fastify-сервер: точка входа app.js, CORS-plugin (middleware) и маршруты с health-check endpoint GET /api/health.",
+      "nodeIds": [
+        "file:server/src/app.js",
+        "file:server/src/plugins/cors.js",
+        "file:server/src/routes/index.js",
+        "endpoint:server/src/routes/index.js:GET /api/health"
+      ]
+    },
+    {
+      "id": "layer:data-layer",
+      "name": "Слой данных",
+      "description": "Подключение к PostgreSQL через Drizzle ORM, заготовка схем БД и сервис postgres:16 из docker-compose — слой хранения и доступа к данным.",
+      "nodeIds": [
+        "file:server/src/db/index.js",
+        "file:server/src/db/schema/index.js",
+        "service:docker-compose.yml"
+      ]
+    },
+    {
+      "id": "layer:config-layer",
+      "name": "Конфигурация",
+      "description": "Конфиги сборки, линтинга и форматирования (Vite, Tailwind, PostCSS, ESLint, Prettier), манифесты пакетов монорепозитория и шаблон окружения сервера с настройкой Drizzle.",
+      "nodeIds": [
+        "config:package.json",
+        "config:client/package.json",
+        "config:client/vite.config.js",
+        "config:client/tailwind.config.js",
+        "config:client/postcss.config.js",
+        "config:client/eslint.config.js",
+        "config:client/.prettierrc.json",
+        "config:server/package.json",
+        "config:server/drizzle.config.js",
+        "config:server/.env.example"
+      ]
+    },
+    {
+      "id": "layer:documentation-layer",
+      "name": "Документация",
+      "description": "Документация проекта: README клиентского пакета с описанием стека Vite + React.",
+      "nodeIds": [
+        "document:client/README.md"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Точка входа клиента",
+      "description": "Тур начинается там же, где стартует приложение в браузере. index.html содержит контейнер #root и подключает ES-модуль main.jsx, который монтирует React-дерево, оборачивая его в StrictMode, ErrorBoundary и BrowserRouter. Это даёт первое представление о том, как Vite поднимает SPA и где включается клиентский роутинг.",
+      "nodeIds": [
+        "file:client/index.html",
+        "file:client/src/main.jsx",
+        "file:client/src/components/ui/ErrorBoundary.jsx"
+      ],
+      "languageLesson": "ErrorBoundary — единственный классовый компонент в проекте: только классы умеют ловить ошибки рендера через componentDidCatch/getDerivedStateFromError. BrowserRouter из react-router v7 оборачивает App, поэтому хуки маршрутизации доступны во всём дереве."
+    },
+    {
+      "order": 2,
+      "title": "Корневой компонент App",
+      "description": "App.jsx — это оболочка всего интерфейса (depth 0 в графе зависимостей). Он задаёт постоянную раскладку — TopStrip, Header, MobileMenu, Footer — и описывает маршруты React Router: / (Home), /catalog (CatalogPage) и /product/:id (ProductPage). Здесь же через useLenis инициализируется глобальный плавный скролл, поэтому App — лучшая отправная точка, чтобы увидеть скелет приложения целиком.",
+      "nodeIds": [
+        "file:client/src/App.jsx"
+      ],
+      "languageLesson": "В React Router v7 маршруты описываются декларативно через <Routes>/<Route>, а постоянный shell (Header/Footer) живёт вне <Routes> — он рендерится один раз и переживает смену страниц."
+    },
+    {
+      "order": 3,
+      "title": "Постоянный каркас страницы",
+      "description": "Опираясь на раскладку из App (шаг 2), разберём компоненты, видимые на каждой странице. Header — фиксированный pill-хедер с opacity-fade, Footer меняет поведение в зависимости от useLocation, TopStrip — декоративная красная полоса с анимацией входа, а MobileMenu — полноэкранная шторка навигации. Эти компоненты задают фирменный визуальный язык всего сайта.",
+      "nodeIds": [
+        "file:client/src/components/sections/Header.jsx",
+        "file:client/src/components/sections/Footer.jsx",
+        "file:client/src/components/sections/TopStrip.jsx",
+        "file:client/src/components/sections/MobileMenu.jsx"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Страницы-маршруты",
+      "description": "Три страницы, на которые ведут маршруты из App. Home компонует Hero и набор лендинг-секций (depth 1, fan-out 10), CatalogPage оркестрирует каталог и делегирует всю логику хуку useCatalogFilters (fan-out 15 — самый «широкий» файл проекта), а ProductPage пока заглушка, читающая id из URL. Страницы — это оркестраторы: они почти не содержат логики, а собирают компоненты и хуки воедино.",
+      "nodeIds": [
+        "file:client/src/pages/Home.jsx",
+        "file:client/src/pages/CatalogPage.jsx",
+        "file:client/src/pages/ProductPage.jsx"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Лендинг: Hero и секции",
+      "description": "Главная страница (шаг 4) собрана из Hero с видео-фоном и шести анимированных секций. Hero задаёт фазовую анимацию слоганов, OurValues и ServiceProgram используют scroll-driven и hover-эффекты, NumbersSection анимирует счётчики, а FastenerDiagram рисует интерактивную SVG-диаграмму ассортимента. Это витрина проекта — здесь сосредоточена основная работа с анимацией через motion/react.",
+      "nodeIds": [
+        "file:client/src/components/sections/Hero.jsx",
+        "file:client/src/components/sections/OurValuesSection.jsx",
+        "file:client/src/components/sections/ServiceProgramSection.jsx",
+        "file:client/src/components/sections/NumbersSection.jsx",
+        "file:client/src/components/sections/FastenerDiagramSection.jsx"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Каталог: тулбар и фильтры",
+      "description": "CatalogPage (шаг 4) строится вокруг тулбара с scroll-driven докингом. CatalogToolbar измеряет геометрию и трансформируется при прокрутке, FilterButton открывает поповер фасетов (бренд/цена/наличие) с черновиком staged→applied, SortDropdown и CategoryButton переиспользуют общую обвязку ToolbarMenu, а ActiveFilterChips показывает и сбрасывает активные фильтры. Здесь UI-слой стыкуется с бизнес-логикой каталога.",
+      "nodeIds": [
+        "file:client/src/components/catalog/CatalogToolbar.jsx",
+        "file:client/src/components/catalog/FilterButton.jsx",
+        "file:client/src/components/catalog/SortDropdown.jsx",
+        "file:client/src/components/catalog/ToolbarMenu.jsx",
+        "file:client/src/components/catalog/ActiveFilterChips.jsx"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "UI-примитивы и иконки",
+      "description": "Низлежащий строительный материал интерфейса, который переиспользуют все секции и каталог. ui/index.js — barrel с fan-in 9, через него импортируются Button, IconButton, NavPill и др. ProductCard интегрирована с Zustand-сторами корзины и избранного, а icons/index.js (fan-in 15) — единая точка для всех 15 SVG-иконок. Понимание этого слоя объясняет, как устроена визуальная консистентность проекта.",
+      "nodeIds": [
+        "file:client/src/components/ui/index.js",
+        "file:client/src/components/ui/Button.jsx",
+        "file:client/src/components/ui/ProductCard.jsx",
+        "file:client/src/components/ui/icons/index.js"
+      ],
+      "languageLesson": "Barrel-файл (index.js с реэкспортами) даёт единую точку импорта через alias @/components/ui — отсюда высокий fan-in. Это упрощает импорты, но связывает модули: изменение barrel затрагивает всех потребителей."
+    },
+    {
+      "order": 8,
+      "title": "Сервисный слой: hooks",
+      "description": "Переиспользуемая логика состояния, к которой обращается весь UI. hooks/index.js — barrel с fan-in 14; за ним стоят useCatalogFilters (сердце каталога: staged/applied фильтры, сортировка, синхронизация с URL и пагинация), useLenis (плавный скролл из шага 2), а также базовые useMediaQuery/useBreakpoint для адаптива. Здесь живёт логика, вынесенная из компонентов-оркестраторов.",
+      "nodeIds": [
+        "file:client/src/hooks/index.js",
+        "file:client/src/hooks/useCatalogFilters.js",
+        "file:client/src/hooks/useLenis.js",
+        "file:client/src/hooks/useMediaQuery.js"
+      ],
+      "languageLesson": "useMediaQuery построен на useSyncExternalStore — это рекомендованный React-способ подписки на внешние источники (matchMedia) без рассинхронизации при конкурентном рендере."
+    },
+    {
+      "order": 9,
+      "title": "Глобальный стейт: Zustand store",
+      "description": "Состояние, общее для всего приложения, вынесено в Zustand-слайсы и собрано в store/index.js (fan-in 5). uiSlice хранит флаг открытия мобильного меню, cartSlice — корзину как Map<id, qty>, favoritesSlice — набор id избранного. Именно эти сторы потребляет ProductCard из шага 7 и Header/MobileMenu из шага 3.",
+      "nodeIds": [
+        "file:client/src/store/index.js",
+        "file:client/src/store/slices/cartSlice.js",
+        "file:client/src/store/slices/favoritesSlice.js",
+        "file:client/src/store/slices/uiSlice.js"
+      ],
+      "languageLesson": "Zustand разбивает store на слайсы и собирает их в barrel — компоненты подписываются на конкретные срезы состояния через селекторы, что минимизирует лишние перерендеры."
+    },
+    {
+      "order": 10,
+      "title": "Контент-слой и данные каталога",
+      "description": "Весь отображаемый текст и данные вынесены в статические content-модули — единый источник правды. Секции лендинга читают тексты из hero.js, ourValues.js и т.п., а каталог опирается на CATEGORY_TREE (categories.js), список товаров (products.js) и хелперы навигации по дереву категорий. Это разделение позволяет менять контент, не трогая компоненты.",
+      "nodeIds": [
+        "file:client/src/content/catalog/index.js",
+        "file:client/src/content/catalog/categories.js",
+        "file:client/src/content/catalog/products.js",
+        "file:client/src/content/catalog/helpers.js",
+        "file:client/src/content/hero.js"
+      ]
+    },
+    {
+      "order": 11,
+      "title": "Утилитарный слой",
+      "description": "Сквозные хелперы и константы без обратных зависимостей, импортируемые повсеместно. cn.js — абсолютный лидер по fan-in (28): объединяет clsx и tailwind-merge для безопасного слияния Tailwind-классов. breakpoints.js задаёт контрольные точки адаптива (используется useBreakpoint из шага 8), а entrance.js (fan-in 4) — единый канон анимаций появления секций.",
+      "nodeIds": [
+        "file:client/src/utils/cn.js",
+        "file:client/src/config/breakpoints.js",
+        "file:client/src/config/entrance.js"
+      ],
+      "languageLesson": "cn = clsx + tailwind-merge: clsx собирает классы по условиям, а tailwind-merge снимает конфликты (например, последний из px-2 px-4 побеждает). Высокий fan-in оправдан — это базовый кирпич стилизации."
+    },
+    {
+      "order": 12,
+      "title": "Backend: Fastify-сервер",
+      "description": "Переходим из браузера на сервер. app.js поднимает инстанс Fastify на порту 3000, регистрирует CORS-plugin (разрешает origin dev-сервера Vite :5173) и плагин маршрутов с единственным пока endpoint GET /api/health. Backend находится в Phase 0 — это минимальный каркас, к которому клиент обращается через dev-proxy /api.",
+      "nodeIds": [
+        "file:server/src/app.js",
+        "file:server/src/plugins/cors.js",
+        "file:server/src/routes/index.js",
+        "endpoint:server/src/routes/index.js:GET /api/health"
+      ],
+      "languageLesson": "Fastify строится на плагинах: каждый плагин (cors, routes) инкапсулирует часть функциональности и регистрируется через fastify.register — это и middleware, и модульность одновременно."
+    },
+    {
+      "order": 13,
+      "title": "Слой данных: Drizzle и PostgreSQL",
+      "description": "Хранилище данных проекта. db/index.js создаёт postgres.js-клиент по DATABASE_URL и экспортирует инстанс Drizzle ORM, schema/index.js — пока пустая заготовка под таблицы, а docker-compose.yml поднимает сервис postgres:16 с именованным volume для персистентности. Схемы ещё не определены, поэтому этот слой показывает фундамент будущей работы с БД.",
+      "nodeIds": [
+        "file:server/src/db/index.js",
+        "file:server/src/db/schema/index.js",
+        "service:docker-compose.yml"
+      ],
+      "languageLesson": "docker-compose: именованный volume (pg_data) сохраняет данные между перезапусками контейнера, иначе база обнулялась бы. Drizzle config указывает на путь схемы и каталог миграций, а connectionString берётся из .env."
+    },
+    {
+      "order": 14,
+      "title": "Сборка и конфигурация",
+      "description": "Завершаем тур инструментарием, который связывает всё воедино. vite.config.js задаёт alias @/ → client/src и dev-proxy /api → :3000 (мост клиента и backend из шага 12), tailwind.config.js хранит design token'ы (цвета, шрифт Neue Montreal, грид каталога), client/package.json объявляет стек (React 19, react-router 7, zustand, motion, lenis), а корневой package.json и drizzle.config.js управляют монорепозиторием.",
+      "nodeIds": [
+        "config:client/vite.config.js",
+        "config:client/tailwind.config.js",
+        "config:client/package.json",
+        "config:package.json",
+        "config:server/drizzle.config.js"
+      ],
+      "languageLesson": "Vite dev-proxy перенаправляет запросы /api на backend :3000 в обход CORS на этапе разработки, а alias @/ убирает относительные ../../ из импортов. Это объясняет, почему по всему коду встречается @/."
+    }
+  ]
+}
