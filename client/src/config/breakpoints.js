@@ -1,9 +1,7 @@
 /**
- * Единый источник правды для значений Tailwind breakpoint'ов в JS-коде.
+ * Единый источник правды для значений Tailwind breakpoint в JS-коде.
  *
  * Значения тут ОБЯЗАНЫ совпадать с Tailwind v3 defaults — иначе CSS-адаптив
- * (классы `md:`, `lg:` и т.п.) разойдётся с JS-вычислениями useBreakpoint.
- * Это не «настройка проекта», а отражение конфигурации Tailwind as-is.
  */
 
 export const BREAKPOINTS = {

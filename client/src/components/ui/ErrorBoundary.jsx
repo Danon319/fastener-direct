@@ -1,9 +1,3 @@
-// Error Boundary — перехватывает ошибки рендера в дочернем дереве и показывает
-// фолбэк вместо белого экрана на всём сайте.
-//
-// ИСКЛЮЧЕНИЕ из запрета на классовые компоненты (CODE_STYLE §0): Error Boundary
-// нельзя реализовать функциональным компонентом — React не даёт хук-аналога
-// getDerivedStateFromError / componentDidCatch. Это единственный класс в проекте.
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 

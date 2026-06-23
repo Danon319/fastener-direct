@@ -11,7 +11,7 @@ import { useCallback, useSyncExternalStore } from 'react'
  * @param {boolean} [ssrDefault=false] - Значение для SSR-рендера.
  * @returns {boolean} - matches.
  */
-export default function useMediaQuery(query, ssrDefault = false) {
+export default function useMediaQuery(query, ssrDefault = false) { //ssrDefault = false - на будущее
   const subscribe = useCallback(
     (callback) => {
       const mql = window.matchMedia(query)
